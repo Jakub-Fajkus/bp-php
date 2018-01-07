@@ -18,4 +18,14 @@ class FixedMotorDrive implements MotorDriveInterface
     {
         return [1,2,3,4,5,6,7,8,9,10];
     }
+
+    /**
+     * Get the motor name
+     *
+     * @return string
+     */
+    public function getMotorName(): string
+    {
+        return 'motor_1';
+    }
 }

@@ -15,4 +15,11 @@ interface MotorDriveInterface
      * @return int[]
      */
     public function getAsArray(): array;
+
+    /**
+     * Get the motor name
+     *
+     * @return string
+     */
+    public function getMotorName(): string;
 }

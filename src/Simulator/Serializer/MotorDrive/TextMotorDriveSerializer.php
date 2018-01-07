@@ -12,7 +12,12 @@ use Simulator\Model\MotorDriveInterface;
 class TextMotorDriveSerializer implements MotorDriveSerializerInterface
 {
     /**
-     * Serializes the drive data to format, which is suitable for the simulator
+     * Serializes the drive data to this format:
+     * MOTOR_NAME val1 val2 val3
+     *
+     * example:
+     * motor_1 10 20 -3
+     *
      *
      * @param MotorDriveInterface $drive
      *
@@ -20,6 +25,6 @@ class TextMotorDriveSerializer implements MotorDriveSerializerInterface
      */
     public function serialize(MotorDriveInterface $drive): string
     {
-        return \implode(',', $drive->getAsArray());
+        return $drive->getMotorName() . ' ' . \implode(' ', $drive->getAsArray());
     }
 }

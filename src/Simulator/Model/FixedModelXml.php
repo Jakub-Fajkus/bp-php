@@ -33,7 +33,7 @@ class FixedModelXml implements ModelXmlInterface
         <body name="body_0">
             <freejoint/>
             <site name="head" size="0.2 0.2 0.2" rgba="1 0 0 0.5"/>
-            <geom name="geom_0" type="capsule" fromto="0.00 0.00 0.00 0.01 0.01 0.01" size="0.010000"/>
+            <geom name="geom_0" type="sphere" pos="0.00 0.00 0.20" size="0.4"/>
             <body name="body_1">
                 <geom name="geom_1" type="capsule" fromto="0.00 0.00 0.00 0.00 1.00 0.00" size="0.100000"/>
                 <geom name="geom_2" type="capsule" fromto="0.00 1.00 0.00 0.00 -1.00 0.00" size="0.100000"/>

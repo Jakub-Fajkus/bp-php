@@ -19,7 +19,7 @@ class TextMotorDriveSerializerTest extends TestCase
         $result = $serializer->serialize($drive);
 
         static::assertEquals(
-            implode(',', $drive->getAsArray()),
+            $drive->getMotorName() . ' ' . implode(' ', $drive->getAsArray()),
             $result
         );
     }
