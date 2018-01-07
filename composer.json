@@ -1,0 +1,20 @@
+{
+    "name": "jakub/bp",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Jakub Fajkus",
+            "email": "jakub.fajkus@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "": "src/",
+            "Test": "test/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6"
+    }
+}

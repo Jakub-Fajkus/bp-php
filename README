@@ -1,0 +1,12 @@
+Rozhrani...
+===================
+
+Vstupem do simulacniho programu je soubor, ktery obsahuje XML 1 jednotlivce(mozna vice).
+Soubor obsahuje take cisla, ktera znamenaji silu pohybu v jednotlivych casovych momentech(jen pole cisel a jedno cislo udavajici rychlost)
+
+Vystupem je bud fitness, nebo souradnice referencniho bodu...(ruzne fitness funkce bude lepsi implementovat v simulatoru a jine ve skriptech)
+
+
+Skript zajistuje praci s genetickym algoritmem. Pracuje s jedinci a pomoci simulatoru je vyhodnocuje.
+
+
