@@ -27,4 +27,20 @@ class TextMotorDriveSerializer implements MotorDriveSerializerInterface
     {
         return $drive->getMotorName() . ' ' . \implode(' ', $drive->getAsArray());
     }
+
+    /**
+     * @param MotorDriveInterface[] $drives
+     *
+     * @return string
+     */
+    public function serializeArray(array $drives): string
+    {
+        $string = '';
+
+        foreach ($drives as $drive) {
+            $string .= $this->serialize($drive) . '\n';
+        }
+
+        return $string;
+    }
 }

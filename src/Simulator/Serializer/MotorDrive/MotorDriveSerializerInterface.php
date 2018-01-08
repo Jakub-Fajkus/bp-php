@@ -19,4 +19,11 @@ interface MotorDriveSerializerInterface
      * @return string
      */
     public function serialize(MotorDriveInterface $drive): string;
+
+    /**
+     * @param MotorDriveInterface[] $drives
+     *
+     * @return string
+     */
+    public function serializeArray(array $drives): string;
 }
