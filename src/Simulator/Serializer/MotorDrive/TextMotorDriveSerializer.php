@@ -38,7 +38,7 @@ class TextMotorDriveSerializer implements MotorDriveSerializerInterface
         $string = '';
 
         foreach ($drives as $drive) {
-            $string .= $this->serialize($drive) . '\n';
+            $string .= $this->serialize($drive) . "\n";
         }
 
         return $string;
