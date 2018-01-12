@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Simulator;
 
 use Config\Config;
+use Filesystem\Filesystem;
 use Genetic\IndividualInterface;
 use Simulator\Serializer\Model\ModelSerializerInterface;
 use Simulator\Serializer\Model\TextModelSerializer;
@@ -16,43 +17,55 @@ use Simulator\Serializer\MotorDrive\TextMotorDriveSerializer;
  */
 class Simulator implements SimulatorInterface
 {
-    /** @var ModelSerializerInterface */
-    private $modelSerializer;
-
     /** @var MotorDriveSerializerInterface */
     private $motorSerializer;
 
     /**
      * Simulator constructor.
      *
-     * @param ModelSerializerInterface $modelSerializer
      * @param MotorDriveSerializerInterface $motorSerializer
      */
-    public function __construct(
-        ModelSerializerInterface $modelSerializer,
-        MotorDriveSerializerInterface $motorSerializer
-    ) {
-        $this->modelSerializer = $modelSerializer;
+    public function __construct(MotorDriveSerializerInterface $motorSerializer)
+    {
         $this->motorSerializer = $motorSerializer;
     }
 
+
+
+
+
     /**
-     * Evaluate the individual and return it's fitness
+     * Evaluate the individuals
      *
-     * @param IndividualInterface $individual
+     * [0]program name
+     * [1] /some/dir/to/fitnesses/
+     * [2] /some/dir/model.xml
+     * [3] /some/dir/1
+     * [4] /some/dir/2 ...
      *
-     * @return int
+     * @param IndividualInterface[] $individuals
+     * @param string                $modelFilePath
+     * @param string                $fitnessDir
+     * @param string                $motorsDir
      */
-    public function evaluate(IndividualInterface $individual): int
+    public function evaluate(array $individuals, string $modelFilePath, string $fitnessDir, string $motorsDir)
     {
-        $modelFile = Config::getBinDir() . '/model.txt';
-        $motorsFile = Config::getBinDir() . '/motors.txt';
+        $filesystem = new Filesystem();
 
-        file_put_contents($modelFile, $this->modelSerializer->serialize($individual->getModelXMl()), FILE_NO_DEFAULT_CONTEXT);
-        file_put_contents($motorsFile, $this->motorSerializer->serializeArray($individual->getMotorDrives()));
+        $motorFiles = '';
+        foreach ($individuals as $individual) {
+            $motorsString = $this->motorSerializer->serializeArray($individual->getMotorDrives());
+            $motorFileName = $motorsDir . '/' . $individual->getId();
+            file_put_contents($motorFileName, $motorsString);
+            $motorFiles .= $motorFileName . ' ';
+        }
 
-        shell_exec(Config::getBinDir() . "/bp_compute 29 $modelFile $motorsFile");
+        shell_exec(Config::getBinDir() . "/bp_compute 4 $fitnessDir $modelFilePath $motorFiles");
 
-        return 1;
+        foreach ($individuals as $individual) {
+            $content = (float)$filesystem->readFromFile($fitnessDir . '/' . $individual->getId());
+
+            $individual->setFitness($content);
+        }
     }
 }

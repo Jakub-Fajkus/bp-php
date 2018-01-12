@@ -20,7 +20,7 @@ class Individual implements IndividualInterface
     /** @var int[] */
     private $genotype;
 
-    /** @var int */
+    /** @var float */
     private $fitness;
 
     /** @var ModelXmlInterface */
@@ -35,9 +35,9 @@ class Individual implements IndividualInterface
      * @param GenerationInterface $generation
      * @param ModelXmlInterface   $modelXml
      * @param int[]               $genotype
-     * @param int                 $fitness
+     * @param float               $fitness
      */
-    public function __construct(GenerationInterface $generation, ModelXmlInterface $modelXml, array $genotype, int $id, int $fitness = 0)
+    public function __construct(GenerationInterface $generation, ModelXmlInterface $modelXml, array $genotype, int $id, float $fitness = 0)
     {
         $this->generation = $generation;
         $this->genotype = $genotype;
@@ -88,7 +88,7 @@ class Individual implements IndividualInterface
      * @return IndividualInterface[] Array of 2 individuals that were created by the crossover
      * @throws \Exception
      */
-    public function onePointCrossover(IndividualInterface $individual, ?int $crossoverPoint): array
+    public function onePointCrossover(IndividualInterface $individual, ?int $crossoverPoint = null): array
     {
         if ($crossoverPoint === null) {
             $crossoverPoint = random_int(0, \count($this->genotype));
@@ -124,7 +124,7 @@ class Individual implements IndividualInterface
      *
      * @throws \Exception
      */
-    public function mutate(bool $forced): void
+    public function mutate(bool $forced = false): void
     {
         if ($forced || random_int(0, Config::getMutationRate()) === Config::getMutationRate() / 2) {
             $mutatedGeneIndex = random_int(0, \count($this->genotype) - 1);
@@ -142,17 +142,17 @@ class Individual implements IndividualInterface
     }
 
     /**
-     * @return int
+     * @return float
      */
-    public function getFitness(): int
+    public function getFitness(): float
     {
         return $this->fitness;
     }
 
     /**
-     * @param int $fitness
+     * @param float $fitness
      */
-    public function setFitness(int $fitness): void
+    public function setFitness(float $fitness): void
     {
         $this->fitness = $fitness;
     }
@@ -171,5 +171,25 @@ class Individual implements IndividualInterface
     public function getId(): int
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * Generate random genotype
+     */
+    public function randomizeGenotype(): void
+    {
+        $this->genotype = [];
+
+        for ($i = 0; $i < Config::getMotorDriveValuesCount() * 12; $i++) {
+            $this->genotype[] = random_int(Config::getMotorDriveMinimum(), Config::getMotorDriveMaximum());
+        }
     }
 }

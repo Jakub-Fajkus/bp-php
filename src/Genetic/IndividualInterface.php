@@ -33,14 +33,14 @@ interface IndividualInterface
      *
      * @return IndividualInterface[] Array of 2 individuals that were created by the crossover
      */
-    public function onePointCrossover(IndividualInterface $individual, ?int $crossoverPoint): array;
+    public function onePointCrossover(IndividualInterface $individual, ?int $crossoverPoint = null): array;
 
     /**
      * Perform a mutation
      *
      * @param bool $forced
      */
-    public function mutate(bool $forced): void;
+    public function mutate(bool $forced = false): void;
 
     /**
      * @return int[]
@@ -48,17 +48,27 @@ interface IndividualInterface
     public function getGenotype(): array;
 
     /**
-     * @return int
+     * Generate random genotype
      */
-    public function getFitness(): int;
+    public function randomizeGenotype(): void;
 
     /**
-     * @param int $fitness
+     * @return float
      */
-    public function setFitness(int $fitness): void;
+    public function getFitness(): float;
+
+    /**
+     * @param float $fitness
+     */
+    public function setFitness(float $fitness): void;
 
     /**
      * @return int
      */
     public function getId(): int;
+
+    /**
+     * @return int
+     */
+    public function setId(int $id): void;
 }

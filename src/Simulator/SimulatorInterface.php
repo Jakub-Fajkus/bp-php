@@ -12,11 +12,18 @@ use Genetic\IndividualInterface;
 interface SimulatorInterface
 {
     /**
-     * Evaluate the individual and return it's fitness
+     * Evaluate the individuals
      *
-     * @param IndividualInterface $individual
+     * [0]program name
+     * [1] /some/dir/model.xml
+     * [2] /some/dir/to/fitnesses/
+     * [3] /some/dir/1
+     * [4] /some/dir/2 ...
      *
-     * @return int
+     * @param IndividualInterface[] $individuals
+     * @param string                $modelFilePath
+     * @param string                $fitnessDir
+     * @param string                $motorsDir
      */
-    public function evaluate(IndividualInterface $individual): int;
+    public function evaluate(array $individuals, string $modelFilePath, string $fitnessDir, string $motorsDir);
 }

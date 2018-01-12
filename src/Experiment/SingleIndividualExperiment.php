@@ -22,18 +22,13 @@ class SingleIndividualExperiment implements ExperimentInterface
      */
     public function run(): void
     {
-        $model = new FixedModelXml();
-        $generation = new Generation();
-
-        $genotype = [];
-
-        for ($i = 0; $i < Config::getMotorDriveValuesCount() * 12; $i++) {
-            $genotype[] = random_int(Config::getMotorDriveMinimum(), Config::getMotorDriveMaximum());
-        }
-
-        $individual = new Individual($generation, $model, $genotype, 0);
-
-        $simulator = new Simulator(new TextModelSerializer(), new TextMotorDriveSerializer());
-        $simulator->evaluate($individual);
+//        $model = new FixedModelXml();
+//        $generation = new Generation(1, []);
+//
+//        $individual = new Individual($generation, $model, [], 0);
+//        $individual->randomizeGenotype();
+//
+//        $simulator = new Simulator(new TextMotorDriveSerializer());
+//        $simulator->evaluate($individual);
     }
 }

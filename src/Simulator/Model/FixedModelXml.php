@@ -28,7 +28,7 @@ class FixedModelXml implements ModelXmlInterface
         <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1" width="256" height="256"/>
     </asset>
     <worldbody>
-        <geom name="reference" pos="-5 0 -6" size=".5 .5 .5" type="box" rgba="0 0 0 1"/>
+        <geom name="reference" pos="0 0 -6" size=".5 .5 .5" type="box" rgba="0 0 0 1"/>
         <geom name="floor" pos="0 0 -4" size="50 50 .125" rgba="0 1 0 1" type="plane" condim="3"/>
         <body name="body_0">
             <freejoint/>
