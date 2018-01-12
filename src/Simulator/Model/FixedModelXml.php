@@ -18,7 +18,7 @@ class FixedModelXml implements ModelXmlInterface
     {
         $model = <<<MODEL
 <mujoco>
-    <option timestep="0.001" viscosity="0.00002" density="1.2" gravity="0 0 -9.81"/>
+    <option timestep="0.001" viscosity="0.00002" density="1.2" gravity="0 0 -9.81" collision="dynamic" />
     <compiler coordinate="global" angle="degree"/>
     <default>
         <geom rgba=".8 .6 .4 1"/>
@@ -28,8 +28,8 @@ class FixedModelXml implements ModelXmlInterface
         <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1" width="256" height="256"/>
     </asset>
     <worldbody>
-        <geom name="reference" pos="-5 0 -21" size=".5 .5 .5" type="box" rgba="0 0 0 1"/>
-        <geom name="floor" pos="0 0 -20" size="50 50 .125" rgba="0 1 0 1" type="plane" condim="3"/>
+        <geom name="reference" pos="-5 0 -6" size=".5 .5 .5" type="box" rgba="0 0 0 1"/>
+        <geom name="floor" pos="0 0 -4" size="50 50 .125" rgba="0 1 0 1" type="plane" condim="3"/>
         <body name="body_0">
             <freejoint/>
             <site name="head" size="0.2 0.2 0.2" rgba="1 0 0 0.5"/>
@@ -94,19 +94,20 @@ class FixedModelXml implements ModelXmlInterface
             </body>
         </body>
     </worldbody>
+
     <actuator>
-        <motor name="motor_0" joint="motor_0" gear="400 400 400"/>
-        <motor name="motor_1" joint="motor_1" gear="400 400 400"/>
-        <motor name="motor_2" joint="motor_2" gear="400 400 400"/>
-        <motor name="motor_3" joint="motor_3" gear="400 400 400"/>
-        <motor name="motor_4" joint="motor_4" gear="400 400 400"/>
-        <motor name="motor_5" joint="motor_5" gear="400 400 400"/>
-        <motor name="motor_6" joint="motor_6" gear="400 400 400"/>
-        <motor name="motor_7" joint="motor_7" gear="400 400 400"/>
-        <motor name="motor_8" joint="motor_8" gear="400 400 400"/>
-        <motor name="motor_9" joint="motor_9" gear="400 400 400"/>
-        <motor name="motor_10" joint="motor_10" gear="400 400 400"/>
-        <motor name="motor_11" joint="motor_11" gear="400 400 400"/>
+        <motor name="motor_0" joint="motor_0" gear="100"/>
+        <motor name="motor_1" joint="motor_1" gear="100"/>
+        <motor name="motor_2" joint="motor_2" gear="100"/>
+        <motor name="motor_3" joint="motor_3" gear="100"/>
+        <motor name="motor_4" joint="motor_4" gear="100"/>
+        <motor name="motor_5" joint="motor_5" gear="100"/>
+        <motor name="motor_6" joint="motor_6" gear="100"/>
+        <motor name="motor_7" joint="motor_7" gear="100"/>
+        <motor name="motor_8" joint="motor_8" gear="100"/>
+        <motor name="motor_9" joint="motor_9" gear="100"/>
+        <motor name="motor_10" joint="motor_10" gear="100"/>
+        <motor name="motor_11" joint="motor_11" gear="100"/>
     </actuator>
 </mujoco>
 MODEL;

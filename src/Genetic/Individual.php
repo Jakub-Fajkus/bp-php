@@ -126,7 +126,7 @@ class Individual implements IndividualInterface
      */
     public function mutate(bool $forced): void
     {
-        if ($forced || random_int(0, Config::DEFAULT_MUTATION_RATE) === Config::DEFAULT_MUTATION_RATE / 2) {
+        if ($forced || random_int(0, Config::getMutationRate()) === Config::getMutationRate() / 2) {
             $mutatedGeneIndex = random_int(0, \count($this->genotype) - 1);
             $this->genotype[$mutatedGeneIndex] += random_int(
                 Config::getMotorDriveMinimum() / 2,

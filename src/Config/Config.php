@@ -9,9 +9,13 @@ namespace Config;
  */
 class Config
 {
+    /** @internal  */
     public const DEFAULT_MOTOR_DRIVE_VALUES_COUNT = 100;
+    /** @internal  */
     public const DEFAULT_MUTATION_RATE = 100;
+    /** @internal  */
     public const DEFAULT_MOTOR_DRIVE_MINIMUM = -100;
+    /** @internal  */
     public const DEFAULT_MOTOR_DRIVE_MAXIMUM = 100;
 
     private static $motorDriveValuesCount = self::DEFAULT_MOTOR_DRIVE_VALUES_COUNT;
@@ -81,6 +85,14 @@ class Config
     public static function setMotorDriveMaximum(int $motorDriveMaximum): void
     {
         self::$motorDriveMaximum = $motorDriveMaximum;
+    }
+
+    /**
+     * @return string
+     */
+    public static function getDataDir(): string
+    {
+        return __DIR__ . '/../../data';
     }
 
     /**

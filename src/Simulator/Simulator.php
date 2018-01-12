@@ -51,7 +51,7 @@ class Simulator implements SimulatorInterface
         file_put_contents($modelFile, $this->modelSerializer->serialize($individual->getModelXMl()), FILE_NO_DEFAULT_CONTEXT);
         file_put_contents($motorsFile, $this->motorSerializer->serializeArray($individual->getMotorDrives()));
 
-        shell_exec(Config::getBinDir() . "/bp_render $modelFile $motorsFile");
+        shell_exec(Config::getBinDir() . "/bp_compute 29 $modelFile $motorsFile");
 
         return 1;
     }
