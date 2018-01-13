@@ -19,12 +19,16 @@ class Config
     public const DEFAULT_MOTOR_DRIVE_MAXIMUM = 100;
     /** @internal  */
     public const DEFAULT_INDIVIDUAL_COUNT = 100;
+    /** @internal  */
+    public const DEFAULT_MOTOR_COUNT = 4;
+
 
     private static $motorDriveValuesCount = self::DEFAULT_MOTOR_DRIVE_VALUES_COUNT;
     private static $mutationRate = self::DEFAULT_MUTATION_RATE;
     private static $motorDriveMinimum = self::DEFAULT_MOTOR_DRIVE_MINIMUM;
     private static $motorDriveMaximum = self::DEFAULT_MOTOR_DRIVE_MAXIMUM;
     private static $individualCount = self::DEFAULT_INDIVIDUAL_COUNT;
+    private static $motorCount = self::DEFAULT_MOTOR_COUNT;
 
     /**
      * @return int
@@ -104,6 +108,22 @@ class Config
     public static function setIndividualCount(int $individualCount): void
     {
         self::$individualCount = $individualCount;
+    }
+
+    /**
+     * @return int
+     */
+    public static function getMotorCount(): int
+    {
+        return self::$motorCount;
+    }
+
+    /**
+     * @param int $motorCount
+     */
+    public static function setMotorCount(int $motorCount): void
+    {
+        self::$motorCount = $motorCount;
     }
 
     /**

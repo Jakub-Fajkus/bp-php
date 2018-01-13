@@ -28,6 +28,8 @@ class GenerationExperiment implements ExperimentInterface
         Config::setIndividualCount(40);
         Config::setMotorDriveValuesCount(20);
         Config::setMutationRate(20);
+        Config::setMotorDriveMinimum(-10);
+        Config::setMotorDriveMaximum(10);
 
         $runDir = $filesystem->createDirectory(Config::getDataDir(), $date->format(DATE_ATOM));
 

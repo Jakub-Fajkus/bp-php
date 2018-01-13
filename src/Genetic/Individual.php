@@ -188,7 +188,7 @@ class Individual implements IndividualInterface
     {
         $this->genotype = [];
 
-        for ($i = 0; $i < Config::getMotorDriveValuesCount() * 12; $i++) {
+        for ($i = 0; $i < Config::getMotorDriveValuesCount() * Config::getMotorCount(); $i++) {
             $this->genotype[] = random_int(Config::getMotorDriveMinimum(), Config::getMotorDriveMaximum());
         }
     }

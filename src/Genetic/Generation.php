@@ -100,9 +100,10 @@ class Generation implements GenerationInterface
             );
         }
 
-        //generate the rest of the individuals
-        $remainingIndividualCount = \count($this->individuals) - \count($newGeneration->individuals);
-        for ($i = 0; $i < $remainingIndividualCount/2; $i++) {
+        //we selected N individuals to the next generation
+        //so it is N/2 pairs to reproduce
+        $pairsToReproduce = \count($newGeneration->individuals)/2;
+        for ($i = 0; $i < $pairsToReproduce; $i++) {
             //randomly choose the parents
             $parentA = $newGeneration->individuals[random_int(0, \count($newGeneration->individuals)-1)];
             $parentB = $newGeneration->individuals[random_int(0, \count($newGeneration->individuals)-1)];
@@ -113,6 +114,14 @@ class Generation implements GenerationInterface
             //add the new ones to the generation
             $newGeneration->individuals[] = $newIndividuals[0];
             $newGeneration->individuals[] = $newIndividuals[1];
+        }
+
+        //generate the rest of the individuals
+        $remainingIndividualCount = \count($this->individuals) - \count($newGeneration->individuals);
+        for ($i = 0; $i < $remainingIndividualCount; $i++) {
+            $individual = $individualFactory->createIndividual($newGeneration, $newGeneration->individuals[0]->getModelXMl(), []);
+            $individual->randomizeGenotype();
+            $newGeneration->addIndividual($individual);
         }
 
         $newGeneration->resetIndividualsId();
@@ -146,7 +155,7 @@ class Generation implements GenerationInterface
      */
     private function performSelection(): array
     {
-        return \array_slice($this->individuals, 0, \count($this->individuals)/2);
+        return \array_slice($this->individuals, 0, 10);
     }
 
     /**
