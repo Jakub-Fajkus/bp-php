@@ -30,42 +30,45 @@ class Simulator implements SimulatorInterface
         $this->motorSerializer = $motorSerializer;
     }
 
-
-
-
-
     /**
      * Evaluate the individuals
      *
      * [0]program name
-     * [1] /some/dir/to/fitnesses/
+     * [1] thread count
      * [2] /some/dir/model.xml
-     * [3] /some/dir/1
-     * [4] /some/dir/2 ...
+     * [3] /some/dir/to/generation
      *
      * @param IndividualInterface[] $individuals
      * @param string                $modelFilePath
-     * @param string                $fitnessDir
-     * @param string                $motorsDir
+     * @param string                $generationDirectory
      */
-    public function evaluate(array $individuals, string $modelFilePath, string $fitnessDir, string $motorsDir)
+    public function evaluate(array $individuals, string $modelFilePath, string $generationDirectory): void
     {
         $filesystem = new Filesystem();
 
-        $motorFiles = '';
-        foreach ($individuals as $individual) {
-            $motorsString = $this->motorSerializer->serializeArray($individual->getMotorDrives());
-            $motorFileName = $motorsDir . '/' . $individual->getId();
-            file_put_contents($motorFileName, $motorsString);
-            $motorFiles .= $motorFileName . ' ';
+        $motorsString = '';
+
+        for ($i = 0, $iMax = \count($individuals); $i < $iMax; $i++) {
+            $motorsString .= $this->motorSerializer->serializeArray($individuals[$i]->getMotorDrives());
+
+            if ($i !== $iMax - 1) {
+                $motorsString .= '*' . PHP_EOL;
+            }
         }
 
-        shell_exec(Config::getBinDir() . "/bp_compute 4 $fitnessDir $modelFilePath $motorFiles");
+        $filesystem->writeToFile($generationDirectory . '/individuals.txt', $motorsString);
 
-        foreach ($individuals as $individual) {
-            $content = (float)$filesystem->readFromFile($fitnessDir . '/' . $individual->getId());
+        shell_exec(Config::getBinDir() . "/bp_compute 4 $modelFilePath $generationDirectory");
 
-            $individual->setFitness($content);
+        $content = $filesystem->readFromFile($generationDirectory . '/fitnesses.txt');
+        $fitnesses = explode("\n", $content);
+
+        if (\count($fitnesses) !== \count($individuals)) {
+            throw new \Exception('The fitnesses count is not the same as the individuals!');
+        }
+
+        for ($i = 0, $iMax = \count($individuals); $i < $iMax; $i++) {
+            $individuals[$i]->setFitness((double)$fitnesses[$i]);
         }
     }
 }

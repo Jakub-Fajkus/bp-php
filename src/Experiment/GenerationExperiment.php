@@ -28,8 +28,9 @@ class GenerationExperiment implements ExperimentInterface
         Config::setIndividualCount(40);
         Config::setMotorDriveValuesCount(20);
         Config::setMutationRate(20);
-        Config::setMotorDriveMinimum(-10);
-        Config::setMotorDriveMaximum(10);
+        Config::setMotorCount(8);
+        Config::setMotorDriveMinimum(-100);
+        Config::setMotorDriveMaximum(100);
 
         $runDir = $filesystem->createDirectory(Config::getDataDir(), $date->format(DATE_ATOM));
 
@@ -42,17 +43,16 @@ class GenerationExperiment implements ExperimentInterface
         $simulator = new Simulator(new TextMotorDriveSerializer());
         $stats = new IndividualStatistics();
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             echo "generation {$generation->getId()}" . PHP_EOL;
-            $generations[] = $generation;
 
             $generationDir = $filesystem->createDirectory($runDir, (string)$generation->getId());
-            $fitnessesDir = $filesystem->createDirectory($generationDir, 'fitnesses');
-            $individualsDir = $filesystem->createDirectory($generationDir, 'individuals');
+//            $fitnessesDir = $filesystem->createDirectory($generationDir, 'fitnesses');
+//            $individualsDir = $filesystem->createDirectory($generationDir, 'individuals');
 
             $before = microtime(true);
 
-            $simulator->evaluate($generation->getIndividuals(), $modelFile, $fitnessesDir, $individualsDir);
+            $simulator->evaluate($generation->getIndividuals(), $modelFile, $generationDir);
 
             $after = microtime(true);
 

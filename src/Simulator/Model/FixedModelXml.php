@@ -33,28 +33,48 @@ class FixedModelXml implements ModelXmlInterface
         <body name="body_0">
             <freejoint/>
             <site name="head" size="0.2 0.2 0.2" rgba="1 0 0 0.5"/>
-            <geom name="geom_0" type="sphere" pos="0.00 0.00 0.20" size="0.04"/>
+            <geom name="geom_0" type="sphere" pos="0.00 0.00 0.00" size="0.04"/>
             <body name="body_1">
                 <geom name="geom_1" type="capsule" fromto="0.00 0.00 0.00 1.00 0.00 0.00" size="0.100000"/>
-                <geom name="geom_2" type="capsule" fromto="0.00 0.00 0.00 0.00 1 0.00"  size="0.100000"/>
-                <geom name="geom_3" type="capsule" fromto="0.00 0.00 0.00 -0.50 -0.50 0.00" size="0.100000"/>
-                <geom name="geom_4" type="capsule" fromto="-0.50 -0.50 0.00 -0.80 -0.80 -2.00" size="0.100000"/>
+                <geom name="geom_2" type="capsule" fromto="0.00 0.00 0.00 0.00 1.00 0.00"  size="0.100000"/>
+                <geom name="geom_3" type="capsule" fromto="0.00 0.00 0.00 -1.00 0.00 0.00" size="0.100000"/>
+                <geom name="geom_4" type="capsule" fromto="0.00 0.00 0.00 0.00 -1.00 0.00" size="0.100000"/>
                 <body name="body_2">
                     <joint type="hinge" pos="1.00 0.00 0.00" axis="0 1 0" limited="true" range="-50 0" name="motor_0"/>
                     <geom name="geom_5" type="capsule" fromto="1.00 0.00 0.00 1.00 0.00 -1" size="0.100000"/>
-                    <body name="body_4">
-                        <joint type="hinge" pos="1.00 0.00 -1" axis="0 1 0" limited="true" range="0 35" name="motor_2"/>
+                    <body name="body_3">
+                        <joint type="hinge" pos="1.00 0.00 -1" axis="0 1 0" limited="true" range="0 35" name="motor_1"/>
                         <geom name="geom_6" type="capsule" fromto="1.00 0.00 -1 1.00 0.00 -2" size="0.100000"/>
                     </body>
                 </body>
-                <body name="body_3">
-                    <joint type="hinge" pos="0.00 1.00 0.00" axis="1 0 0" limited="true" range="0 50" name="motor_1"/>
+
+                <body name="body_4">
+                    <joint type="hinge" pos="0.00 1.00 0.00" axis="1 0 0" limited="true" range="0 50" name="motor_2"/>
                     <geom name="geom_7" type="capsule" fromto="0.00 1.00 0.00 0.00 1.00 -1" size="0.100000"/>
                     <body name="body_5">
                         <joint type="hinge" pos="0.00 1.00 -1" axis="1 0 0" limited="true" range="-35 0" name="motor_3"/>
                         <geom name="geom_8" type="capsule" fromto="0.00 1.00 -1 0.00 1.00 -2" size="0.100000"/>
                     </body>
                 </body>
+
+                <body name="body_6">
+                    <joint type="hinge" pos="-1.00 0.00 0.00" axis="0 1 0" limited="true" range="0 50" name="motor_4"/>
+                    <geom name="geom_9" type="capsule" fromto="-1.00 0.00 0.00 -1.00 0.00 -1" size="0.100000"/>
+                    <body name="body_7">
+                        <joint type="hinge" pos="-1.00 0.00 -1" axis="0 1 0" limited="true" range="-35 0" name="motor_5"/>
+                        <geom name="geom_10" type="capsule" fromto="-1.00 0.00 -1 -1.00 0.00 -2" size="0.100000"/>
+                    </body>
+                </body>
+
+                <body name="body_8">
+                    <joint type="hinge" pos="0.00 -1.00 0.00" axis="1 0 0" limited="true" range="-50 0" name="motor_6"/>
+                    <geom name="geom_11" type="capsule" fromto="0.00 -1.00 0.00 0.00 -1.00 -1" size="0.100000"/>
+                    <body name="body_9">
+                        <joint type="hinge" pos="0.00 -1.00 -1" axis="1 0 0" limited="true" range="0 35" name="motor_7"/>
+                        <geom name="geom_12" type="capsule" fromto="0.00 -1.00 -1 0.00 -1.00 -2" size="0.100000"/>
+                    </body>
+                </body>
+
             </body>
         </body>
     </worldbody>
@@ -64,6 +84,10 @@ class FixedModelXml implements ModelXmlInterface
         <motor name="motor_1" joint="motor_1" gear="50"/>
         <motor name="motor_2" joint="motor_2" gear="50"/>
         <motor name="motor_3" joint="motor_3" gear="50"/>
+        <motor name="motor_4" joint="motor_4" gear="50"/>
+        <motor name="motor_5" joint="motor_5" gear="50"/>
+        <motor name="motor_6" joint="motor_6" gear="50"/>
+        <motor name="motor_7" joint="motor_7" gear="50"/>
     </actuator>
 </mujoco>
 MODEL;
