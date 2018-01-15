@@ -29,12 +29,18 @@ class FixedModelXml implements ModelXmlInterface
         <texture type="2d" name="checkers" builtin="checker" width="256" height="256" rgb1="0 0 0" rgb2="1 1 1" />
         <material name="checker_mat" texture="checkers" texrepeat="25 25"/>
     </asset>
+    <visual>
+        <global offwidth="800" offheight="800"/>
+    </visual>
     <worldbody>
-        <geom name="reference" pos="-100 0 0" size=".5 .5 .5" type="box" rgba="255 255 0 1"/>
+        <camera name='targeting' pos='1 1 2' mode='targetbodycom' target='body_0'/>
+
+        <geom name="reference" pos="-120 0 0" size=".5 .5 .5" type="box" rgba="255 255 0 1"/>
         <geom name="floor" material="checker_mat" pos="0 0 -4" size="200 200 .125" rgba="1 1 1 1" type="plane" condim="3"/>
-        <geom name="wall_1" type="box" pos="-10 38 -4" size="1 40 5"/>
-        <geom name="wall_2" type="box" pos="-40 -42 -4" size="1 40 5"/>
-        <geom name="wall_3" type="box" pos="-70 38 -4" size="1 40 5"/>
+        <!--<geom name="wall_1" type="box" pos="-10 38 -4" size="1 40 5"/>-->
+        <!--<geom name="wall_2" type="box" pos="-40 -42 -4" size="1 40 5"/>-->
+        <!--<geom name="wall_3" type="box" pos="-70 38 -4" size="1 40 5"/>-->
+        <!--<geom name="wall_4" type="box" pos="-100 -42 -4" size="1 40 5"/>-->
 
         <body name="body_0">
             <freejoint/>
