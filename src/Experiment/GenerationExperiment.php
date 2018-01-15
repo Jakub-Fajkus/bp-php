@@ -28,7 +28,7 @@ class GenerationExperiment implements ExperimentInterface
         Config::setIndividualCount(50);
         Config::setMotorDriveValuesCount(20);
         Config::setMutationRate(25);
-        Config::setMotorCount(4);
+        Config::setMotorCount(12);
         Config::setMotorDriveMinimum(-100);
         Config::setMotorDriveMaximum(100);
 
@@ -47,8 +47,6 @@ class GenerationExperiment implements ExperimentInterface
             echo "generation {$generation->getId()}" . PHP_EOL;
 
             $generationDir = $filesystem->createDirectory($runDir, (string)$generation->getId());
-//            $fitnessesDir = $filesystem->createDirectory($generationDir, 'fitnesses');
-//            $individualsDir = $filesystem->createDirectory($generationDir, 'individuals');
 
             $before = microtime(true);
 

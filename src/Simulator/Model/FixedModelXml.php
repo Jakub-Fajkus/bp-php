@@ -37,10 +37,10 @@ class FixedModelXml implements ModelXmlInterface
 
         <geom name="reference" pos="-120 0 0" size=".5 .5 .5" type="box" rgba="255 255 0 1"/>
         <geom name="floor" material="checker_mat" pos="0 0 -4" size="200 200 .125" rgba="1 1 1 1" type="plane" condim="3"/>
-        <!--<geom name="wall_1" type="box" pos="-10 38 -4" size="1 40 5"/>-->
-        <!--<geom name="wall_2" type="box" pos="-40 -42 -4" size="1 40 5"/>-->
-        <!--<geom name="wall_3" type="box" pos="-70 38 -4" size="1 40 5"/>-->
-        <!--<geom name="wall_4" type="box" pos="-100 -42 -4" size="1 40 5"/>-->
+        <geom name="wall_1" type="box" pos="-10 38 -4" size="1 40 5"/>
+        <geom name="wall_2" type="box" pos="-40 -42 -4" size="1 40 5"/>
+        <geom name="wall_3" type="box" pos="-70 38 -4" size="1 40 5"/>
+        <geom name="wall_4" type="box" pos="-100 -42 -4" size="1 40 5"/>
 
         <body name="body_0">
             <freejoint/>
