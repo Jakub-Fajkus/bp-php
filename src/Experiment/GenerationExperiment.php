@@ -25,10 +25,10 @@ class GenerationExperiment implements ExperimentInterface
         $filesystem = new Filesystem();
         $date = new \DateTime();
 
-        Config::setIndividualCount(40);
+        Config::setIndividualCount(50);
         Config::setMotorDriveValuesCount(20);
-        Config::setMutationRate(20);
-        Config::setMotorCount(8);
+        Config::setMutationRate(25);
+        Config::setMotorCount(4);
         Config::setMotorDriveMinimum(-100);
         Config::setMotorDriveMaximum(100);
 

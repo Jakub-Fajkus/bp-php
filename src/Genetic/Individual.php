@@ -129,8 +129,8 @@ class Individual implements IndividualInterface
         if ($forced || random_int(0, Config::getMutationRate()) === Config::getMutationRate() / 2) {
             $mutatedGeneIndex = random_int(0, \count($this->genotype) - 1);
             $this->genotype[$mutatedGeneIndex] += random_int(
-                Config::getMotorDriveMinimum() / 10,
-                Config::getMotorDriveMaximum() / 10
+                Config::getMotorDriveMinimum() / 5,
+                Config::getMotorDriveMaximum() / 5
             );
 
             if ($this->genotype[$mutatedGeneIndex] > Config::getMotorDriveMaximum()) {
@@ -189,7 +189,7 @@ class Individual implements IndividualInterface
         $this->genotype = [];
 
         for ($i = 0; $i < Config::getMotorDriveValuesCount() * Config::getMotorCount(); $i++) {
-            $this->genotype[] = random_int(Config::getMotorDriveMinimum(), Config::getMotorDriveMaximum());
+            $this->genotype[] = random_int(Config::getMotorDriveMinimum() / 5, Config::getMotorDriveMaximum() / 5);
         }
     }
 }
