@@ -6,10 +6,7 @@ namespace Simulator;
 use Config\Config;
 use Filesystem\Filesystem;
 use Genetic\IndividualInterface;
-use Simulator\Serializer\Model\ModelSerializerInterface;
-use Simulator\Serializer\Model\TextModelSerializer;
-use Simulator\Serializer\MotorDrive\MotorDriveSerializerInterface;
-use Simulator\Serializer\MotorDrive\TextMotorDriveSerializer;
+use Simulator\Serializer\Instruction\InstructionSerializerInterface;
 
 /**
  * Class Simulator
@@ -17,17 +14,17 @@ use Simulator\Serializer\MotorDrive\TextMotorDriveSerializer;
  */
 class Simulator implements SimulatorInterface
 {
-    /** @var MotorDriveSerializerInterface */
-    private $motorSerializer;
+    /** @var InstructionSerializerInterface */
+    private $instructionSerializer;
 
     /**
      * Simulator constructor.
      *
-     * @param MotorDriveSerializerInterface $motorSerializer
+     * @param InstructionSerializerInterface $serializer
      */
-    public function __construct(MotorDriveSerializerInterface $motorSerializer)
+    public function __construct(InstructionSerializerInterface $serializer)
     {
-        $this->motorSerializer = $motorSerializer;
+        $this->instructionSerializer = $serializer;
     }
 
     /**
@@ -46,17 +43,19 @@ class Simulator implements SimulatorInterface
     {
         $filesystem = new Filesystem();
 
-        $motorsString = '';
+        $instructionsString = '';
 
         for ($i = 0, $iMax = \count($individuals); $i < $iMax; $i++) {
-            $motorsString .= $this->motorSerializer->serializeArray($individuals[$i]->getMotorDrives());
+            $instructions = $individuals[$i]->getInstructions();
+            $instructionsString .= $this->instructionSerializer->serializeInstructions($instructions) . PHP_EOL;
 
+            //ensure that we do not add the asterisk after the last individual
             if ($i !== $iMax - 1) {
-                $motorsString .= '*' . PHP_EOL;
+                $instructionsString .= '*' . $individuals[$i]->getId() . PHP_EOL;
             }
         }
 
-        $filesystem->writeToFile($generationDirectory . '/individuals.txt', $motorsString);
+        $filesystem->writeToFile($generationDirectory . '/individuals.txt', $instructionsString);
 
         shell_exec(Config::getBinDir() . "/bp_compute 4 $modelFilePath $generationDirectory");
 
@@ -64,7 +63,7 @@ class Simulator implements SimulatorInterface
         $fitnesses = explode("\n", $content);
 
         if (\count($fitnesses) !== \count($individuals)) {
-            throw new \Exception('The fitnesses count is not the same as the individuals!');
+            throw new \Exception('The fitnesses count is not the same as the individuals! the diff is: ' . \count($fitnesses) - \count($individuals));
         }
 
         for ($i = 0, $iMax = \count($individuals); $i < $iMax; $i++) {

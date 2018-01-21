@@ -10,9 +10,11 @@ namespace Config;
 class Config
 {
     /** @internal  */
-    public const DEFAULT_MOTOR_DRIVE_VALUES_COUNT = 100;
+    public const DEFAULT_GENOTYPE_SIZE = 20;
     /** @internal  */
-    public const DEFAULT_MUTATION_RATE = 100;
+    public const DEFAULT_MUTATION_RATE = 3;
+    /** @internal  */
+    public const DEFAULT_CROSSOVER_RATE = 90;
     /** @internal  */
     public const DEFAULT_MOTOR_DRIVE_MINIMUM = -100;
     /** @internal  */
@@ -21,29 +23,36 @@ class Config
     public const DEFAULT_INDIVIDUAL_COUNT = 100;
     /** @internal  */
     public const DEFAULT_MOTOR_COUNT = 4;
+    /** @internal  */
+    public const DEFAULT_INSTRUCTION_VALUE_MINIMUM = -5;
+    /** @internal  */
+    public const DEFAULT_INSTRUCTION_VALUE_MAXIMUM = 5;
 
 
-    private static $motorDriveValuesCount = self::DEFAULT_MOTOR_DRIVE_VALUES_COUNT;
+    private static $genotypeSize = self::DEFAULT_GENOTYPE_SIZE;
     private static $mutationRate = self::DEFAULT_MUTATION_RATE;
+    private static $crossoverRate = self::DEFAULT_CROSSOVER_RATE;
     private static $motorDriveMinimum = self::DEFAULT_MOTOR_DRIVE_MINIMUM;
     private static $motorDriveMaximum = self::DEFAULT_MOTOR_DRIVE_MAXIMUM;
     private static $individualCount = self::DEFAULT_INDIVIDUAL_COUNT;
     private static $motorCount = self::DEFAULT_MOTOR_COUNT;
+    private static $instructionValueMinimum = self::DEFAULT_INSTRUCTION_VALUE_MINIMUM;
+    private static $instructionValueMaximum = self::DEFAULT_INSTRUCTION_VALUE_MAXIMUM;
 
     /**
      * @return int
      */
-    public static function getMotorDriveValuesCount(): int
+    public static function getGenotypeSize(): int
     {
-        return self::$motorDriveValuesCount;
+        return self::$genotypeSize;
     }
 
     /**
-     * @param int $motorDriveValuesCount
+     * @param int $genotypeSize
      */
-    public static function setMotorDriveValuesCount(int $motorDriveValuesCount): void
+    public static function setGenotypeSize(int $genotypeSize): void
     {
-        self::$motorDriveValuesCount = $motorDriveValuesCount;
+        self::$genotypeSize = $genotypeSize;
     }
 
     /**
@@ -124,6 +133,54 @@ class Config
     public static function setMotorCount(int $motorCount): void
     {
         self::$motorCount = $motorCount;
+    }
+
+    /**
+     * @return int
+     */
+    public static function getCrossoverRate(): int
+    {
+        return self::$crossoverRate;
+    }
+
+    /**
+     * @param int $crossoverRate
+     */
+    public static function setCrossoverRate(int $crossoverRate): void
+    {
+        self::$crossoverRate = $crossoverRate;
+    }
+
+    /**
+     * @return int
+     */
+    public static function getInstructionValueMinimum(): int
+    {
+        return self::$instructionValueMinimum;
+    }
+
+    /**
+     * @param int $instructionValueMinimum
+     */
+    public static function setInstructionValueMinimum(int $instructionValueMinimum): void
+    {
+        self::$instructionValueMinimum = $instructionValueMinimum;
+    }
+
+    /**
+     * @return int
+     */
+    public static function getInstructionValueMaximum(): int
+    {
+        return self::$instructionValueMaximum;
+    }
+
+    /**
+     * @param int $instructionValueMaximum
+     */
+    public static function setInstructionValueMaximum(int $instructionValueMaximum): void
+    {
+        self::$instructionValueMaximum = $instructionValueMaximum;
     }
 
     /**

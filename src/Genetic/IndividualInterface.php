@@ -17,12 +17,7 @@ interface IndividualInterface
      *
      * @return MotorDriveInterface[]
      */
-    public function getMotorDrives(): array;
-
-    /**
-     * @return ModelXmlInterface
-     */
-    public function getModelXMl(): ModelXmlInterface;
+    public function getInstructions(): array;
 
     /**
      * Perform the one point crossover with the given individual.

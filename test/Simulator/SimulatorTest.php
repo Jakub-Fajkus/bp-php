@@ -28,7 +28,7 @@ class SimulatorTest extends TestCase
         $motorSerializer = static::createMock(MotorDriveSerializerInterface::class);
         $motorSerializer
             ->method('serializeArray')
-            ->with($individual->getMotorDrives())
+            ->with($individual->getInstructions())
             ->willReturn('motors');
 
 

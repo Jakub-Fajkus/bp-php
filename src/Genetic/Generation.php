@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Genetic;
 
+use Config\Config;
+
 /**
  * Class Generation
  * @package Genetic
@@ -72,64 +74,55 @@ class Generation implements GenerationInterface
      */
     public function createNewGeneration(): GenerationInterface
     {
-        //sort the indiviudals
-        usort($this->individuals, function(IndividualInterface $a, IndividualInterface $b) {
-            if ($a->getFitness() > $b->getFitness()) {
-                return -1;
-            } else {
-                return 1;
-            }
-        });
-
-        //select some of the best
-        $selectedIndividuals = $this->performSelection();
-
         //create a new generation
         $newGeneration = new Generation($this->id + 1, []);
+
         $individualFactory = new IndividualFactory();
-        $individualId = 1;
 
-        //copy selected individuals to the new generation
-        /** @var IndividualInterface $selectedIndividual */
-        foreach ($selectedIndividuals as $selectedIndividual) {
-            $newGeneration->individuals[] = $individualFactory->createIndividual(
-                $newGeneration,
-                $selectedIndividual->getModelXMl(),
-                $selectedIndividual->getGenotype(),
-                $individualId++
-            );
-        }
+        //randomize the array positions
+        shuffle($this->individuals);
 
-        //we selected N individuals to the next generation
-        //so it is N/2 pairs to reproduce
-        $pairsToReproduce = \count($newGeneration->individuals)/2;
-        for ($i = 0; $i < $pairsToReproduce; $i++) {
-            //randomly choose the parents
-            $parentA = $newGeneration->individuals[random_int(0, \count($newGeneration->individuals)-1)];
-            $parentB = $newGeneration->individuals[random_int(0, \count($newGeneration->individuals)-1)];
+        $newGeneration->individuals[] = $this->getBestIndividual();
 
-            //crossover them
-            $newIndividuals = $parentA->onePointCrossover($parentB);
+        //create the individuals for the new generation
+        while(\count($newGeneration->individuals) < \count($this->individuals)) {
+            //randomly choose 2 pairs of individuals
+            $individual1a = $this->individuals[random_int(0, \count($this->individuals) - 1)];
+            $individual1b = $this->individuals[random_int(0, \count($this->individuals) - 1)];
+            $individual2a = $this->individuals[random_int(0, \count($this->individuals) - 1)];
+            $individual2b = $this->individuals[random_int(0, \count($this->individuals) - 1)];
 
-            //add the new ones to the generation
-            $newGeneration->individuals[] = $newIndividuals[0];
-            $newGeneration->individuals[] = $newIndividuals[1];
-        }
+            //take the better one from each pair
+            $better1 = ($individual1a->getFitness() >= $individual1b->getFitness()) ? $individual1a : $individual1b;
+            $better2 = ($individual2a->getFitness() >= $individual2b->getFitness()) ? $individual2a : $individual2b;
 
-        //generate the rest of the individuals
-        $remainingIndividualCount = \count($this->individuals) - \count($newGeneration->individuals);
-        for ($i = 0; $i < $remainingIndividualCount; $i++) {
-            $individual = $individualFactory->createIndividual($newGeneration, $newGeneration->individuals[0]->getModelXMl(), []);
-            $individual->randomizeGenotype();
-            $newGeneration->addIndividual($individual);
+            //either do crossover, or direct copy of the individuals
+            if (random_int(0, 99) < Config::getCrossoverRate()) {
+                $newOnes = $better1->onePointCrossover($better2); //todo change to 2 point!
+
+                $newOnes[0]->mutate();
+                $newOnes[1]->mutate();
+
+                $newGeneration->individuals[] = $newOnes[0];
+                $newGeneration->individuals[] = $newOnes[1];
+            } else {
+                //copy the first individual
+                $newGeneration->individuals[] = $individualFactory->createIndividual(
+                    $newGeneration,
+                    $better1->getGenotype(),
+                    0 //does not matter, the ids will be regenerated anyway
+                );
+
+                //copy the other one
+                $newGeneration->individuals[] = $individualFactory->createIndividual(
+                    $newGeneration,
+                    $better2->getGenotype(),
+                    0 //does not matter, the ids will be regenerated anyway
+                );
+            }
         }
 
         $newGeneration->resetIndividualsId();
-
-        //mutate the individuals
-        foreach ($newGeneration->individuals as $individual) {
-            $individual->mutate();
-        }
 
         return $newGeneration;
     }
@@ -161,7 +154,7 @@ class Generation implements GenerationInterface
     /**
      * Resets the id of all individuals
      */
-    public function resetIndividualsId():void
+    public function resetIndividualsId(): void
     {
         $id = 1;
         foreach ($this->individuals as $individual) {

@@ -4,9 +4,8 @@ declare(strict_types=1);
 namespace Genetic;
 
 use Config\Config;
-use Simulator\Model\ModelXmlInterface;
-use Simulator\Model\MotorDriveFactory;
-use Simulator\Model\MotorDriveInterface;
+use Genetic\Instruction\InstructionFactory;
+use Genetic\Instruction\InstructionInterface;
 
 /**
  * Class Individual
@@ -17,14 +16,11 @@ class Individual implements IndividualInterface
     /** @var GenerationInterface */
     private $generation;
 
-    /** @var int[] */
+    /** @var InstructionInterface */
     private $genotype;
 
     /** @var float */
     private $fitness;
-
-    /** @var ModelXmlInterface */
-    private $model;
 
     /** @var int */
     private $id;
@@ -32,50 +28,36 @@ class Individual implements IndividualInterface
     /**
      * Individual constructor.
      *
-     * @param GenerationInterface $generation
-     * @param ModelXmlInterface   $modelXml
-     * @param int[]               $genotype
-     * @param float               $fitness
+     * @param GenerationInterface    $generation
+     * @param InstructionInterface[] $genotype
+     * @param int                    $id
+     * @param float                  $fitness
      */
-    public function __construct(GenerationInterface $generation, ModelXmlInterface $modelXml, array $genotype, int $id, float $fitness = 0)
-    {
+    public function __construct(
+        GenerationInterface $generation,
+        array $genotype,
+        int $id,
+        float $fitness = 0
+    ) {
         $this->generation = $generation;
         $this->genotype = $genotype;
         $this->fitness = $fitness;
-        $this->model = $modelXml;
         $this->id = $id;
     }
 
     /**
-     * Get the motor drives phenotype
+     * Get the motor instructions
      *
-     * @return MotorDriveInterface[]
+     * @return InstructionInterface[]
      */
-    public function getMotorDrives(): array
+    public function getInstructions(): array
     {
         //check if the genotype is of correct size
-        if (\count($this->genotype) % Config::getMotorDriveValuesCount() !== 0) {
+        if (\count($this->genotype) % Config::getGenotypeSize() !== 0) {
             throw new \Exception('The genotype has incorrect size!: ' . \count($this->genotype));
         }
 
-        $motorDrives = [];
-
-        $motorCount = \count($this->genotype) / Config::getMotorDriveValuesCount();
-        $motorNumber = 0;
-        $motorDriveFactory = new MotorDriveFactory();
-
-        //for each motor, get it's part of the array and create the motor drive
-        for ($i = 0; $i < $motorCount; $i++) {
-            $values = \array_slice(
-                $this->genotype,
-                $i * Config::getMotorDriveValuesCount(),
-                Config::getMotorDriveValuesCount()
-            );
-
-            $motorDrives[] = $motorDriveFactory->createMotorDrive('motor_' . $motorNumber++, $values);
-        }
-
-        return $motorDrives;
+        return $this->genotype;
     }
 
     /**
@@ -90,6 +72,7 @@ class Individual implements IndividualInterface
      */
     public function onePointCrossover(IndividualInterface $individual, ?int $crossoverPoint = null): array
     {
+        //todo: 2 point!!!!!!!!!!!!!!!!!!!!
         if ($crossoverPoint === null) {
             $crossoverPoint = random_int(0, \count($this->genotype));
         }
@@ -102,8 +85,8 @@ class Individual implements IndividualInterface
         $individualFactory = new IndividualFactory();
 
         $individuals = [
-            $individualFactory->createIndividual($this->generation, $this->model, \array_merge($thisA, $otherB)),
-            $individualFactory->createIndividual($this->generation, $this->model, \array_merge($otherA, $thisB)),
+            $individualFactory->createIndividual($this->generation, \array_merge($thisA, $otherB)),
+            $individualFactory->createIndividual($this->generation, \array_merge($otherA, $thisB)),
         ];
 
         return $individuals;
@@ -126,18 +109,13 @@ class Individual implements IndividualInterface
      */
     public function mutate(bool $forced = false): void
     {
-        if ($forced || random_int(0, Config::getMutationRate()) === Config::getMutationRate() / 2) {
-            $mutatedGeneIndex = random_int(0, \count($this->genotype) - 1);
-            $this->genotype[$mutatedGeneIndex] += random_int(
-                Config::getMotorDriveMinimum() / 5,
-                Config::getMotorDriveMaximum() / 5
-            );
+        if ($forced || random_int(0, 99) < Config::getMutationRate()) {
+            //randomly choose the mutated gene
+            $mutatingIndex = random_int(0, \count($this->genotype) - 1);
+            $mutating = $this->genotype[$mutatingIndex];
 
-            if ($this->genotype[$mutatedGeneIndex] > Config::getMotorDriveMaximum()) {
-                $this->genotype[$mutatedGeneIndex] = Config::getMotorDriveMaximum();
-            } elseif ($this->genotype[$mutatedGeneIndex] < Config::getMotorDriveMinimum()) {
-                $this->genotype[$mutatedGeneIndex] = Config::getMotorDriveMinimum();
-            }
+            //mutate the instruction
+            $mutating->mutate();
         }
     }
 
@@ -155,14 +133,6 @@ class Individual implements IndividualInterface
     public function setFitness(float $fitness): void
     {
         $this->fitness = $fitness;
-    }
-
-    /**
-     * @return ModelXmlInterface
-     */
-    public function getModelXMl(): ModelXmlInterface
-    {
-        return $this->model;
     }
 
     /**
@@ -186,10 +156,11 @@ class Individual implements IndividualInterface
      */
     public function randomizeGenotype(): void
     {
+        $factory = new InstructionFactory();
         $this->genotype = [];
 
-        for ($i = 0; $i < Config::getMotorDriveValuesCount() * Config::getMotorCount(); $i++) {
-            $this->genotype[] = random_int(Config::getMotorDriveMinimum() / 5, Config::getMotorDriveMaximum() / 5);
+        for ($i = 0; $i < Config::getGenotypeSize(); $i++) {
+            $this->genotype[] = $factory->createRandomInstruction();
         }
     }
 }

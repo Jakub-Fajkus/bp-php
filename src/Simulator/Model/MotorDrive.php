@@ -34,8 +34,8 @@ class MotorDrive implements MotorDriveInterface
      */
     public function getAsArray(): array
     {
-        $this->antiAlias();
-        $this->ensurePeriodicity();
+//        $this->antiAlias();
+//        $this->ensurePeriodicity();
 
         return $this->values;
     }

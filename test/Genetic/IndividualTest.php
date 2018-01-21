@@ -27,7 +27,7 @@ class IndividualTest extends TestCase
 
         $individual = new Individual($generationMock, $modelMock, $genotype, 0);
 
-        $drives = $individual->getMotorDrives();
+        $drives = $individual->getInstructions();
 
         static::assertCount($motorCount, $drives);
 

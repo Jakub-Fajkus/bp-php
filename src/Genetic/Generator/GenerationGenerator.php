@@ -29,7 +29,7 @@ class GenerationGenerator implements GenerationGeneratorInterface
         $individualFactory = new IndividualFactory();
 
         for ($i = 0; $i < $individualCount; $i++) {
-            $newIndividual = $individualFactory->createIndividual($generation, new FixedModelXml(), [], $i+1);
+            $newIndividual = $individualFactory->createIndividual($generation, [], $i+1);
             $newIndividual->randomizeGenotype();
             $generation->addIndividual($newIndividual);
         }

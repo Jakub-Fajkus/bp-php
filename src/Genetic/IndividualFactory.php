@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Genetic;
 
-use Simulator\Model\ModelXmlInterface;
+use Genetic\Instruction\InstructionInterface;
 
 /**
  * Class IndividualFactory
@@ -17,19 +17,21 @@ class IndividualFactory
     private $lastId = 0;
 
     /**
-     * @param GenerationInterface $generation
-     * @param ModelXmlInterface   $modelXml
-     * @param array               $genotype
-     * @param int|null            $id
+     * @param GenerationInterface    $generation
+     * @param InstructionInterface[] $genotype
+     * @param int|null               $id
      *
      * @return Individual
      */
-    public function createIndividual(GenerationInterface $generation, ModelXmlInterface $modelXml, array $genotype, ?int $id = null): Individual
-    {
+    public function createIndividual(
+        GenerationInterface $generation,
+        array $genotype,
+        ?int $id = null
+    ): Individual {
         if ($id === null) {
             $id = $this->lastId++;
         }
 
-        return new Individual($generation, $modelXml, $genotype, $id, 0);
+        return new Individual($generation, $genotype, $id, 0);
     }
 }
