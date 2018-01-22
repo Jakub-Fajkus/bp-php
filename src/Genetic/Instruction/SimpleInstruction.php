@@ -72,4 +72,12 @@ class SimpleInstruction implements InstructionInterface
     {
         return $motorValue->getId() . ' ' . $motorValue->getValue();
     }
+
+    /**
+     * Create a deep copy of the instruction
+     */
+    public function copy(): InstructionInterface
+    {
+        return new SimpleInstruction($this->motorValue->getId(), $this->motorValue->getValue());
+    }
 }

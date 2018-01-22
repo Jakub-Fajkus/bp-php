@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Genetic;
 
+use Genetic\Instruction\InstructionInterface;
 use Simulator\Model\ModelXmlInterface;
 use Simulator\Model\MotorDriveInterface;
 
@@ -15,7 +16,7 @@ interface IndividualInterface
     /**
      * Get the motor drives phenotype
      *
-     * @return MotorDriveInterface[]
+     * @return InstructionInterface[]
      */
     public function getInstructions(): array;
 
@@ -38,7 +39,7 @@ interface IndividualInterface
     public function mutate(bool $forced = false): void;
 
     /**
-     * @return int[]
+     * @return InstructionInterface[]
      */
     public function getGenotype(): array;
 
@@ -61,6 +62,18 @@ interface IndividualInterface
      * @return int
      */
     public function getId(): int;
+
+    /**
+     * @return GenerationInterface
+     */
+    public function getGeneration(): GenerationInterface;
+
+    /**
+     * Create a deep copy of the individual
+     *
+     * @return IndividualInterface
+     */
+    public function copy(): IndividualInterface;
 
     /**
      * @return int

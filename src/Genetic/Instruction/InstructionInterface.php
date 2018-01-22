@@ -24,4 +24,9 @@ interface InstructionInterface
      * @return string
      */
     public function serialize(): string;
+
+    /**
+     * Create a deep copy of the instruction
+     */
+    public function copy(): InstructionInterface;
 }

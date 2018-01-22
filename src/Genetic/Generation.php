@@ -79,7 +79,14 @@ class Generation implements GenerationInterface
         $individualFactory = new IndividualFactory();
 
         //end tmp
+        /** @var IndividualInterface[] $matingPool */
         $matingPool = [];
+
+        $bestIndividual = $this->getBestIndividual()->copy();
+        $bestIndividualMutant = $bestIndividual->copy();
+        $bestIndividualMutant->mutate();
+        $newGeneration->addIndividual($bestIndividual);
+        $newGeneration->addIndividual($bestIndividualMutant);
 
         //create the mating pool
         for ($i = 0; $i < \count($this->individuals); $i++) {
@@ -92,7 +99,7 @@ class Generation implements GenerationInterface
         }
 
         //create the individuals for the new generation
-        for ($i = 0; $i < \count($matingPool) / 2; $i++) {
+        for ($i = 0; $i < \count($matingPool) / 2 - 1; $i++) { //1 -> we choose the best one and insert it to the new generation, as well as it's mutant
             //randomly choose 2 individuals
             $individual1 = $matingPool[random_int(0, \count($matingPool) - 1)];
             $individual2 = $matingPool[random_int(0, \count($matingPool) - 1)];
@@ -101,28 +108,22 @@ class Generation implements GenerationInterface
             if (random_int(0, 99) < Config::getCrossoverRate()) {
                 $newOnes = $individual1->onePointCrossover($individual2); //todo change to 2 point!
 
+                $newOnes[0]->mutate();
+                $newOnes[1]->mutate();
+
                 $newGeneration->individuals[] = $newOnes[0];
                 $newGeneration->individuals[] = $newOnes[1];
             } else {
                 //copy the first individual
-                $newGeneration->individuals[] = $individualFactory->createIndividual(
-                    $newGeneration,
-                    $individual1->getGenotype(),
-                    0 //does not matter, the ids will be regenerated anyway
-                );
+                $ind1 = $individual1->copy();
+                $ind1->mutate();
+                $newGeneration->individuals[] = $ind1;
 
                 //copy the other one
-                $newGeneration->individuals[] = $individualFactory->createIndividual(
-                    $newGeneration,
-                    $individual2->getGenotype(),
-                    0 //does not matter, the ids will be regenerated anyway
-                );
+                $ind2 = $individual2->copy();
+                $ind2->mutate();
+                $newGeneration->individuals[] = $ind2;
             }
-        }
-
-        //mutate the individuals
-        foreach ($newGeneration->individuals as $individual) {
-            $individual->mutate();
         }
 
         //reset the id's

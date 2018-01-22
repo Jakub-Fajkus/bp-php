@@ -26,7 +26,7 @@ class GenerationExperiment implements ExperimentInterface
         $filesystem = new Filesystem();
         $date = new \DateTime();
 
-        Config::setIndividualCount(20);
+        Config::setIndividualCount(60);
         Config::setMutationRate(2);
         Config::setCrossoverRate(90);
         Config::setMotorCount(8);
@@ -43,7 +43,7 @@ class GenerationExperiment implements ExperimentInterface
         $simulator = new Simulator(new InstructionSerializer());
         $stats = new IndividualStatistics();
 
-        for ($i = 0; $i < 200; $i++) {
+        for ($i = 0; $i < 2000; $i++) {
             $generationStart = microtime(true);
 
             echo "generation {$generation->getId()}" . PHP_EOL;

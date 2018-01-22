@@ -93,7 +93,7 @@ class Individual implements IndividualInterface
     }
 
     /**
-     * @return int[]
+     * @return InstructionInterface[]
      */
     public function getGenotype(): array
     {
@@ -161,5 +161,29 @@ class Individual implements IndividualInterface
         for ($i = 0; $i < Config::getGenotypeSize(); $i++) {
             $this->genotype[] = $factory->createRandomInstruction();
         }
+    }
+
+    /**
+     * @return GenerationInterface
+     */
+    public function getGeneration(): GenerationInterface
+    {
+        return $this->generation;
+    }
+
+    /**
+     * Create a deep copy of the individual
+     *
+     * @return IndividualInterface
+     */
+    public function copy(): IndividualInterface
+    {
+        $genotype = [];
+
+        foreach ($this->genotype as $gene) {
+            $genotype[] = $gene->copy();
+        }
+
+        return new Individual($this->generation, $genotype, $this->id);
     }
 }
