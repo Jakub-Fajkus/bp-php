@@ -2,6 +2,7 @@
   <profile version="1.0">
     <option name="myName" value="Project Default" />
     <inspection_tool class="BadExceptionsProcessingInspection" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="CallableInLoopTerminationConditionInspection" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="ComparisonOperandsOrderInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="DisallowWritingIntoStaticPropertiesInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="EfferentObjectCouplingInspection" enabled="true" level="WARNING" enabled_by_default="true" />

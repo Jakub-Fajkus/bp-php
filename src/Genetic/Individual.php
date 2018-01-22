@@ -16,7 +16,7 @@ class Individual implements IndividualInterface
     /** @var GenerationInterface */
     private $generation;
 
-    /** @var InstructionInterface */
+    /** @var InstructionInterface[] */
     private $genotype;
 
     /** @var float */
@@ -109,13 +109,12 @@ class Individual implements IndividualInterface
      */
     public function mutate(bool $forced = false): void
     {
-        if ($forced || random_int(0, 99) < Config::getMutationRate()) {
-            //randomly choose the mutated gene
-            $mutatingIndex = random_int(0, \count($this->genotype) - 1);
-            $mutating = $this->genotype[$mutatingIndex];
-
-            //mutate the instruction
-            $mutating->mutate();
+        //mutate each gene with probability P
+        foreach ($this->genotype as $gene) {
+            if ($forced || random_int(0, 99) < Config::getMutationRate()) {
+                //mutate the instruction
+                $gene->mutate();
+            }
         }
     }
 

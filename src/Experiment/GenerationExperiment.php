@@ -26,8 +26,8 @@ class GenerationExperiment implements ExperimentInterface
         $filesystem = new Filesystem();
         $date = new \DateTime();
 
-        Config::setIndividualCount(40);
-        Config::setMutationRate(4);
+        Config::setIndividualCount(20);
+        Config::setMutationRate(2);
         Config::setCrossoverRate(90);
         Config::setMotorCount(8);
         Config::setGenotypeSize(40);

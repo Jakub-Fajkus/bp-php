@@ -38,14 +38,14 @@ class FixedModelXml implements ModelXmlInterface
         <geom name="reference" pos="-120 0 0" size=".5 .5 .5" type="box" rgba="255 255 0 1"/>
         <geom name="floor" material="checker_mat" pos="0 0 -10" size="200 200 .125" rgba="1 1 1 1" type="plane" condim="6" friction="5 0.5 0.1"/>
 
-        <site name="reference_0" pos="100 0 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_1" pos="200 -100 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_2" pos="120 -220 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_3" pos="-50 -250 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_4" pos="-240 -160 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_5" pos="-300 50 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_6" pos="-200 300 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_7" pos="100 400 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_0" pos="1000 0 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <!--<site name="reference_1" pos="200 -100 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
+        <!--<site name="reference_2" pos="120 -220 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
+        <!--<site name="reference_3" pos="-50 -250 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
+        <!--<site name="reference_4" pos="-240 -160 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
+        <!--<site name="reference_5" pos="-300 50 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
+        <!--<site name="reference_6" pos="-200 300 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
+        <!--<site name="reference_7" pos="100 400 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
 
 
         <body name="body_0">

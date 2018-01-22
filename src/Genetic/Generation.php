@@ -76,32 +76,30 @@ class Generation implements GenerationInterface
     {
         //create a new generation
         $newGeneration = new Generation($this->id + 1, []);
-
         $individualFactory = new IndividualFactory();
 
-        //randomize the array positions
-        shuffle($this->individuals);
+        //end tmp
+        $matingPool = [];
 
-        $newGeneration->individuals[] = $this->getBestIndividual();
+        //create the mating pool
+        for ($i = 0; $i < \count($this->individuals); $i++) {
+            //randomly choose 2 individuals
+            $individual1 = $this->individuals[random_int(0, \count($this->individuals) - 1)];
+            $individual2 = $this->individuals[random_int(0, \count($this->individuals) - 1)];
+
+            //insert the better one into the mating pool
+            $matingPool[] = ($individual1->getFitness() >= $individual2->getFitness()) ? $individual1 : $individual2;
+        }
 
         //create the individuals for the new generation
-        while(\count($newGeneration->individuals) < \count($this->individuals)) {
-            //randomly choose 2 pairs of individuals
-            $individual1a = $this->individuals[random_int(0, \count($this->individuals) - 1)];
-            $individual1b = $this->individuals[random_int(0, \count($this->individuals) - 1)];
-            $individual2a = $this->individuals[random_int(0, \count($this->individuals) - 1)];
-            $individual2b = $this->individuals[random_int(0, \count($this->individuals) - 1)];
-
-            //take the better one from each pair
-            $better1 = ($individual1a->getFitness() >= $individual1b->getFitness()) ? $individual1a : $individual1b;
-            $better2 = ($individual2a->getFitness() >= $individual2b->getFitness()) ? $individual2a : $individual2b;
+        for ($i = 0; $i < \count($matingPool) / 2; $i++) {
+            //randomly choose 2 individuals
+            $individual1 = $matingPool[random_int(0, \count($matingPool) - 1)];
+            $individual2 = $matingPool[random_int(0, \count($matingPool) - 1)];
 
             //either do crossover, or direct copy of the individuals
             if (random_int(0, 99) < Config::getCrossoverRate()) {
-                $newOnes = $better1->onePointCrossover($better2); //todo change to 2 point!
-
-                $newOnes[0]->mutate();
-                $newOnes[1]->mutate();
+                $newOnes = $individual1->onePointCrossover($individual2); //todo change to 2 point!
 
                 $newGeneration->individuals[] = $newOnes[0];
                 $newGeneration->individuals[] = $newOnes[1];
@@ -109,19 +107,25 @@ class Generation implements GenerationInterface
                 //copy the first individual
                 $newGeneration->individuals[] = $individualFactory->createIndividual(
                     $newGeneration,
-                    $better1->getGenotype(),
+                    $individual1->getGenotype(),
                     0 //does not matter, the ids will be regenerated anyway
                 );
 
                 //copy the other one
                 $newGeneration->individuals[] = $individualFactory->createIndividual(
                     $newGeneration,
-                    $better2->getGenotype(),
+                    $individual2->getGenotype(),
                     0 //does not matter, the ids will be regenerated anyway
                 );
             }
         }
 
+        //mutate the individuals
+        foreach ($newGeneration->individuals as $individual) {
+            $individual->mutate();
+        }
+
+        //reset the id's
         $newGeneration->resetIndividualsId();
 
         return $newGeneration;

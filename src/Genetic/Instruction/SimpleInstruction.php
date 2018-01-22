@@ -57,8 +57,8 @@ class SimpleInstruction implements InstructionInterface
         //mutate the motor name - 20%
         if (random_int(0, 99) < 20) {
             $motorValue->setId((string)random_int(0, Config::getMotorCount() - 1));
-            //mutate the instruction value - 80%
         } else {
+            //mutate the instruction value - 80%
             $motorValue->setValue(random_int(Config::getInstructionValueMinimum(), Config::getInstructionValueMaximum()));
         }
     }
