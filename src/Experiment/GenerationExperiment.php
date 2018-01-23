@@ -43,7 +43,7 @@ class GenerationExperiment implements ExperimentInterface
         $simulator = new Simulator(new InstructionSerializer());
         $stats = new IndividualStatistics();
 
-        for ($i = 0; $i < 2000; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $generationStart = microtime(true);
 
             echo "generation {$generation->getId()}" . PHP_EOL;

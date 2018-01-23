@@ -76,7 +76,6 @@ class Generation implements GenerationInterface
     {
         //create a new generation
         $newGeneration = new Generation($this->id + 1, []);
-        $individualFactory = new IndividualFactory();
 
         //end tmp
         /** @var IndividualInterface[] $matingPool */
@@ -149,7 +148,7 @@ class Generation implements GenerationInterface
      *
      * It MUST return a number which is divisible by 2
      *
-     * @return IndividualInterface
+     * @return IndividualInterface[]
      */
     private function performSelection(): array
     {
@@ -163,7 +162,7 @@ class Generation implements GenerationInterface
     {
         $id = 1;
         foreach ($this->individuals as $individual) {
-            $individual->setid($id++);
+            $individual->setId($id++);
         }
     }
 }

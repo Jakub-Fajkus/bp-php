@@ -25,6 +25,9 @@ class Individual implements IndividualInterface
     /** @var int */
     private $id;
 
+    /** @var bool */
+    private $evaluated = false;
+
     /**
      * Individual constructor.
      *
@@ -132,6 +135,7 @@ class Individual implements IndividualInterface
     public function setFitness(float $fitness): void
     {
         $this->fitness = $fitness;
+        $this->evaluated = true;
     }
 
     /**
@@ -184,6 +188,21 @@ class Individual implements IndividualInterface
             $genotype[] = $gene->copy();
         }
 
-        return new Individual($this->generation, $genotype, $this->id);
+        $newOne = new Individual($this->generation, $genotype, $this->id);
+        $newOne->evaluated = $this->evaluated;
+        $newOne->fitness = $this->fitness;
+
+        return $newOne;
+    }
+
+    /**
+     * Return true, if the individual was not evaluated
+     * Return false, if the individual was already evaluated
+     *
+     * @return bool
+     */
+    public function needsEvaluation(): bool
+    {
+        return !$this->evaluated;
     }
 }

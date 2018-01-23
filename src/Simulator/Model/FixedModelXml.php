@@ -18,7 +18,7 @@ class FixedModelXml implements ModelXmlInterface
     {
         $model = <<<MODEL
 <mujoco>
-    <option timestep="0.001" viscosity="0" density="0" gravity="0 0 -9.81" collision="dynamic" />
+    <option timestep="0.02" viscosity="0" density="0" gravity="0 0 -9.81" collision="dynamic" />
     <compiler coordinate="global" angle="degree"/>
     <default>
         <geom rgba=".8 .6 .4 1"/>

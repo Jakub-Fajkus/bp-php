@@ -10,8 +10,8 @@ Vystupem je bud fitness, nebo souradnice referencniho bodu...(ruzne fitness funk
 Skript zajistuje praci s genetickym algoritmem. Pracuje s jedinci a pomoci simulatoru je vyhodnocuje.
 
 
-cat data/2018-01-22T13\:45\:42+00\:00/log.txt  | grep best | cut -d" " -f 6 > best.txt
-cat data/2018-01-22T13\:45\:42+00\:00/log.txt  | grep aver | cut -d" " -f 3 > avg.txt
+cat data/2018-01-22T20\:31\:22+00\:00/log.txt   | grep best | cut -d" " -f 6 > best.txt
+cat data/2018-01-22T20\:31\:22+00\:00/log.txt   | grep aver | cut -d" " -f 3 > avg.txt
 
 #vezme slopec z prvniho, sloupec z druheho a vlozi je do souboru
 paste best.txt avg.txt > joined.txt

@@ -45,29 +45,39 @@ class Simulator implements SimulatorInterface
 
         $instructionsString = '';
 
-        for ($i = 0, $iMax = \count($individuals); $i < $iMax; $i++) {
-            $instructions = $individuals[$i]->getInstructions();
+        $individualsToEvaluate = [];
+
+        foreach ($individuals as $individual) {
+            if ($individual->needsEvaluation()) {
+                $individualsToEvaluate[] = $individual;
+            }
+        }
+
+        echo 'saved ' . (\count($individuals) - \count($individualsToEvaluate)) . PHP_EOL;
+
+        for ($i = 0, $iMax = \count($individualsToEvaluate); $i < $iMax; $i++) {
+            $instructions = $individualsToEvaluate[$i]->getInstructions();
             $instructionsString .= $this->instructionSerializer->serializeInstructions($instructions) . PHP_EOL;
 
             //ensure that we do not add the asterisk after the last individual
             if ($i !== $iMax - 1) {
-                $instructionsString .= '*' . $individuals[$i]->getId() . PHP_EOL;
+                $instructionsString .= '*' . $individualsToEvaluate[$i]->getId() . PHP_EOL;
             }
         }
 
         $filesystem->writeToFile($generationDirectory . '/individuals.txt', $instructionsString);
 
-        shell_exec(Config::getBinDir() . "/bp_compute 4 $modelFilePath $generationDirectory");
+        shell_exec(Config::getBinDir() . "/bp_compute 2 $modelFilePath $generationDirectory");
 
         $content = $filesystem->readFromFile($generationDirectory . '/fitnesses.txt');
         $fitnesses = explode("\n", $content);
 
-        if (\count($fitnesses) !== \count($individuals)) {
-            throw new \Exception('The fitnesses count is not the same as the individuals! the diff is: ' . \count($fitnesses) - \count($individuals));
+        if (\count($fitnesses) !== \count($individualsToEvaluate)) {
+            throw new \Exception('The fitnesses count is not the same as the individuals! the diff is: ' . \count($fitnesses) - \count($individualsToEvaluate));
         }
 
-        for ($i = 0, $iMax = \count($individuals); $i < $iMax; $i++) {
-            $individuals[$i]->setFitness((double)$fitnesses[$i]);
+        for ($i = 0, $iMax = \count($individualsToEvaluate); $i < $iMax; $i++) {
+            $individualsToEvaluate[$i]->setFitness((double)$fitnesses[$i]);
         }
     }
 }

@@ -4,8 +4,6 @@ declare(strict_types=1);
 namespace Genetic;
 
 use Genetic\Instruction\InstructionInterface;
-use Simulator\Model\ModelXmlInterface;
-use Simulator\Model\MotorDriveInterface;
 
 /**
  * Interface IndividualInterface
@@ -54,6 +52,10 @@ interface IndividualInterface
     public function getFitness(): float;
 
     /**
+     * Sets the fitness to the individual.
+     *
+     * Also set's the flag needsEvaluation to false
+     *
      * @param float $fitness
      */
     public function setFitness(float $fitness): void;
@@ -76,7 +78,15 @@ interface IndividualInterface
     public function copy(): IndividualInterface;
 
     /**
-     * @return int
+     * Return true, if the individual was not evaluated
+     * Return false, if the individual was already evaluated
+     *
+     * @return bool
+     */
+    public function needsEvaluation(): bool;
+
+    /**
+     * @return void
      */
     public function setId(int $id): void;
 }
