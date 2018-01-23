@@ -1,0 +1,8 @@
+archive
+.idea/dictionaries/
+.idea/workspace.xml
+bin/
+data/
+mjkey.txt
+test/Simulator/Model/
+vendor/
