@@ -18,7 +18,7 @@ class FixedModelXml implements ModelXmlInterface
     {
         $model = <<<MODEL
 <mujoco>
-    <option timestep="0.02" viscosity="0" density="0" gravity="0 0 -9.81" collision="dynamic" />
+    <option timestep="0.02" viscosity="0" density="0" gravity="0 0 -9.81" collision="dynamic"/>
     <compiler coordinate="global" angle="degree"/>
     <default>
         <geom rgba=".8 .6 .4 1"/>
@@ -26,8 +26,8 @@ class FixedModelXml implements ModelXmlInterface
     </default>
     <asset>
         <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1" width="256" height="256"/>
-        <texture type="2d" name="checkers" builtin="checker" width="256" height="256" rgb1="0 0 0" rgb2="1 1 1" />
-        <material name="checker_mat" texture="checkers" texrepeat="5 5"/>
+        <texture type="2d" name="checkers" builtin="checker" width="256" height="256" rgb1="0 0 0" rgb2="1 1 1"/>
+        <material name="checker_mat" texture="checkers" texrepeat="15 15"/>
     </asset>
     <visual>
         <global offwidth="800" offheight="800"/>
@@ -35,17 +35,27 @@ class FixedModelXml implements ModelXmlInterface
     <worldbody>
         <camera name='targeting' pos='1 1 2' mode='targetbodycom' target='body_0'/>
 
-        <geom name="reference" pos="-120 0 0" size=".5 .5 .5" type="box" rgba="255 255 0 1"/>
-        <geom name="floor" material="checker_mat" pos="0 0 -10" size="200 200 .125" rgba="1 1 1 1" type="plane" condim="6" friction="5 0.5 0.1"/>
+        <geom name="floor" material="checker_mat" pos="0 0 -10" size="420 420 .125" rgba="1 1 1 1" type="plane"
+              condim="6" friction="5 0.5 0.1"/>
 
-        <site name="reference_0" pos="1000 0 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <!--<site name="reference_1" pos="200 -100 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
-        <!--<site name="reference_2" pos="120 -220 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
-        <!--<site name="reference_3" pos="-50 -250 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
-        <!--<site name="reference_4" pos="-240 -160 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
-        <!--<site name="reference_5" pos="-300 50 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
-        <!--<site name="reference_6" pos="-200 300 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
-        <!--<site name="reference_7" pos="100 400 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>-->
+        <site name="reference_0" pos="100 0 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_1" pos="180 -20 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_2" pos="200 -100 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_3" pos="170 -200 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_4" pos="120 -240 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_5" pos="35 -265 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_6" pos="-50 -260 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_7" pos="-145 -225 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_8" pos="-240 -160 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_9" pos="-240 -160 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_10" pos="-290 -55 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_11" pos="-310 50 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_12" pos="-300 150 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_13" pos="-250 235 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_14" pos="-200 300 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_15" pos="-100 350 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_16" pos="0 375 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_17" pos="100 400 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
 
 
         <body name="body_0">
