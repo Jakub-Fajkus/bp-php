@@ -40,6 +40,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/webmozart/assert" />
     </content>
+    <content url="file://$MODULE_DIR$/archive/4_nohy_na_dalku" />
+    <content url="file://$MODULE_DIR$/archive/4_nohy_spirala" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

@@ -1,0 +1,8003 @@
+/usr/bin/php /home/jakub/PhpstormProjects/bp/src/Run/run.php
+generation 1
+saved 0
+generation time: 28.492655992508s
+best indiv 31 with fitness: 100.71
+average fitness: 12.221682466667
+php time: -0.010680913925171s
+
+
+generation 2
+saved 4
+generation time: 19.099476099014s
+best indiv 30 with fitness: 183.077
+average fitness: 19.415727333333
+php time: -0.0071859359741211s
+
+
+generation 3
+saved 2
+generation time: 26.629465818405s
+best indiv 1 with fitness: 183.077
+average fitness: 19.586144
+php time: -0.018034219741821s
+
+
+generation 4
+saved 10
+generation time: 22.74213218689s
+best indiv 1 with fitness: 183.077
+average fitness: 33.497584133333
+php time: -0.01771092414856s
+
+
+generation 5
+saved 8
+generation time: 23.382050991058s
+best indiv 1 with fitness: 183.077
+average fitness: 37.5828003
+php time: -0.009580135345459s
+
+
+generation 6
+saved 10
+generation time: 22.81422495842s
+best indiv 1 with fitness: 183.077
+average fitness: 35.120425833333
+php time: -0.0096120834350586s
+
+
+generation 7
+saved 6
+generation time: 25.029951095581s
+best indiv 1 with fitness: 183.077
+average fitness: 35.202462516667
+php time: -0.0081300735473633s
+
+
+generation 8
+saved 8
+generation time: 24.222754001617s
+best indiv 1 with fitness: 183.077
+average fitness: 31.7328875
+php time: -0.010615110397339s
+
+
+generation 9
+saved 10
+generation time: 22.323830127716s
+best indiv 1 with fitness: 183.077
+average fitness: 35.421543583333
+php time: -0.0090818405151367s
+
+
+generation 10
+saved 10
+generation time: 23.131045103073s
+best indiv 1 with fitness: 183.077
+average fitness: 40.389844083333
+php time: -0.0095217227935791s
+
+
+generation 11
+saved 2
+generation time: 25.361690998077s
+best indiv 1 with fitness: 183.077
+average fitness: 39.71527405
+php time: -0.0091888904571533s
+
+
+generation 12
+saved 4
+generation time: 30.933638811111s
+best indiv 1 with fitness: 183.077
+average fitness: 31.2892357
+php time: -0.0086991786956787s
+
+
+generation 13
+saved 8
+generation time: 27.182317018509s
+best indiv 45 with fitness: 187.067
+average fitness: 44.179074666667
+php time: -0.040958881378174s
+
+
+generation 14
+saved 8
+generation time: 24.308959007263s
+best indiv 1 with fitness: 187.067
+average fitness: 38.521193766667
+php time: -0.0082159042358398s
+
+
+generation 15
+saved 6
+generation time: 22.989236831665s
+best indiv 1 with fitness: 187.067
+average fitness: 38.579907633333
+php time: -0.0076351165771484s
+
+
+generation 16
+saved 2
+generation time: 22.805049180984s
+best indiv 1 with fitness: 187.067
+average fitness: 27.0433311
+php time: -0.0080568790435791s
+
+
+generation 17
+saved 6
+generation time: 18.972707033157s
+best indiv 1 with fitness: 187.067
+average fitness: 30.062247516667
+php time: -0.008430004119873s
+
+
+generation 18
+saved 10
+generation time: 18.007691860199s
+best indiv 57 with fitness: 216.767
+average fitness: 45.9389068
+php time: -0.0085680484771729s
+
+
+generation 19
+saved 8
+generation time: 21.228240966797s
+best indiv 1 with fitness: 216.767
+average fitness: 43.735676166667
+php time: -0.0080180168151855s
+
+
+generation 20
+saved 4
+generation time: 23.162585020065s
+best indiv 1 with fitness: 216.767
+average fitness: 47.913787333333
+php time: -0.0078690052032471s
+
+
+generation 21
+saved 6
+generation time: 20.549357891083s
+best indiv 1 with fitness: 216.767
+average fitness: 36.002019723333
+php time: -0.0078892707824707s
+
+
+generation 22
+saved 6
+generation time: 20.187776088715s
+best indiv 28 with fitness: 219.912
+average fitness: 32.247845333333
+php time: -0.0081098079681396s
+
+
+generation 23
+saved 8
+generation time: 19.176630973816s
+best indiv 1 with fitness: 219.912
+average fitness: 50.951749016667
+php time: -0.0096521377563477s
+
+
+generation 24
+saved 8
+generation time: 20.076460838318s
+best indiv 1 with fitness: 219.912
+average fitness: 44.333586133333
+php time: -0.0077810287475586s
+
+
+generation 25
+saved 6
+generation time: 18.434218883514s
+best indiv 1 with fitness: 219.912
+average fitness: 40.5317895
+php time: -0.00844407081604s
+
+
+generation 26
+saved 8
+generation time: 19.857272863388s
+best indiv 1 with fitness: 219.912
+average fitness: 41.502498486667
+php time: -0.013529062271118s
+
+
+generation 27
+saved 12
+generation time: 17.16944694519s
+best indiv 1 with fitness: 219.912
+average fitness: 45.1049215
+php time: -0.0082008838653564s
+
+
+generation 28
+saved 8
+generation time: 18.973150968552s
+best indiv 1 with fitness: 219.912
+average fitness: 28.789902016667
+php time: -0.01181697845459s
+
+
+generation 29
+saved 8
+generation time: 18.767930984497s
+best indiv 1 with fitness: 219.912
+average fitness: 39.52644365
+php time: -0.012401103973389s
+
+
+generation 30
+saved 12
+generation time: 15.857769012451s
+best indiv 33 with fitness: 271.672
+average fitness: 57.312305
+php time: -0.0084841251373291s
+
+
+generation 31
+saved 8
+generation time: 17.489420175552s
+best indiv 1 with fitness: 271.672
+average fitness: 54.51131
+php time: -0.0068306922912598s
+
+
+generation 32
+saved 2
+generation time: 22.845422029495s
+best indiv 1 with fitness: 271.672
+average fitness: 58.679067666667
+php time: -0.009091854095459s
+
+
+generation 33
+saved 8
+generation time: 18.719651937485s
+best indiv 1 with fitness: 271.672
+average fitness: 51.046569333333
+php time: -0.0077371597290039s
+
+
+generation 34
+saved 6
+generation time: 20.109501838684s
+best indiv 1 with fitness: 271.672
+average fitness: 55.882665666667
+php time: -0.007451057434082s
+
+
+generation 35
+saved 4
+generation time: 24.105138063431s
+best indiv 1 with fitness: 271.672
+average fitness: 61.7923305
+php time: -0.011686086654663s
+
+
+generation 36
+saved 8
+generation time: 29.69918012619s
+best indiv 1 with fitness: 271.672
+average fitness: 91.7620905
+php time: -0.0083069801330566s
+
+
+generation 37
+saved 6
+generation time: 28.150013923645s
+best indiv 1 with fitness: 271.672
+average fitness: 101.973056
+php time: -0.016719102859497s
+
+
+generation 38
+saved 8
+generation time: 33.494101047516s
+best indiv 1 with fitness: 271.672
+average fitness: 97.466749166667
+php time: -0.0080108642578125s
+
+
+generation 39
+saved 4
+generation time: 28.243062019348s
+best indiv 1 with fitness: 271.672
+average fitness: 59.0794975
+php time: -0.0096671581268311s
+
+
+generation 40
+saved 6
+generation time: 26.397267103195s
+best indiv 1 with fitness: 271.672
+average fitness: 49.668865333333
+php time: -0.011351823806763s
+
+
+generation 41
+saved 6
+generation time: 31.046617031097s
+best indiv 1 with fitness: 271.672
+average fitness: 69.064181666667
+php time: -0.016459941864014s
+
+
+generation 42
+saved 8
+generation time: 26.462983846664s
+best indiv 1 with fitness: 271.672
+average fitness: 55.9218442
+php time: -0.0099332332611084s
+
+
+generation 43
+saved 8
+generation time: 22.759207010269s
+best indiv 1 with fitness: 271.672
+average fitness: 60.98944745
+php time: -0.010253190994263s
+
+
+generation 44
+saved 4
+generation time: 22.044770002365s
+best indiv 1 with fitness: 271.672
+average fitness: 75.5337475
+php time: -0.015820026397705s
+
+
+generation 45
+saved 6
+generation time: 18.444054841995s
+best indiv 1 with fitness: 271.672
+average fitness: 72.172986816667
+php time: -0.0076391696929932s
+
+
+generation 46
+saved 6
+generation time: 18.439376115799s
+best indiv 1 with fitness: 271.672
+average fitness: 69.504933333333
+php time: -0.0092477798461914s
+
+
+generation 47
+saved 4
+generation time: 20.28001999855s
+best indiv 1 with fitness: 271.672
+average fitness: 63.539467033333
+php time: -0.0086100101470947s
+
+
+generation 48
+saved 10
+generation time: 17.822355031967s
+best indiv 1 with fitness: 271.672
+average fitness: 93.5427705
+php time: -0.0082838535308838s
+
+
+generation 49
+saved 4
+generation time: 18.075974941254s
+best indiv 1 with fitness: 271.672
+average fitness: 55.825855833333
+php time: -0.010995149612427s
+
+
+generation 50
+saved 8
+generation time: 17.637434959412s
+best indiv 1 with fitness: 271.672
+average fitness: 60.494505
+php time: -0.0091228485107422s
+
+
+generation 51
+saved 12
+generation time: 16.878149032593s
+best indiv 1 with fitness: 271.672
+average fitness: 59.3374355
+php time: -0.0092120170593262s
+
+
+generation 52
+saved 12
+generation time: 20.363747119904s
+best indiv 1 with fitness: 271.672
+average fitness: 73.890167166667
+php time: -0.0081357955932617s
+
+
+generation 53
+saved 4
+generation time: 21.258008956909s
+best indiv 1 with fitness: 271.672
+average fitness: 54.855800916667
+php time: -0.016140222549438s
+
+
+generation 54
+saved 4
+generation time: 18.985342025757s
+best indiv 1 with fitness: 271.672
+average fitness: 62.574318
+php time: -0.0075957775115967s
+
+
+generation 55
+saved 4
+generation time: 17.931789159775s
+best indiv 1 with fitness: 271.672
+average fitness: 68.645856166667
+php time: -0.0083639621734619s
+
+
+generation 56
+saved 8
+generation time: 18.462060928345s
+best indiv 3 with fitness: 272.982
+average fitness: 61.7577275
+php time: -0.01114821434021s
+
+
+generation 57
+saved 2
+generation time: 19.497825860977s
+best indiv 1 with fitness: 272.982
+average fitness: 62.968604833333
+php time: -0.0075321197509766s
+
+
+generation 58
+saved 6
+generation time: 19.012673139572s
+best indiv 1 with fitness: 272.982
+average fitness: 63.237475166667
+php time: -0.0068919658660889s
+
+
+generation 59
+saved 2
+generation time: 19.806087017059s
+best indiv 1 with fitness: 272.982
+average fitness: 60.274824166667
+php time: -0.0093870162963867s
+
+
+generation 60
+saved 10
+generation time: 17.97936797142s
+best indiv 1 with fitness: 272.982
+average fitness: 77.4070015
+php time: -0.0074200630187988s
+
+
+generation 61
+saved 6
+generation time: 19.563931941986s
+best indiv 1 with fitness: 272.982
+average fitness: 48.839516641667
+php time: -0.014218091964722s
+
+
+generation 62
+saved 10
+generation time: 17.813492059708s
+best indiv 1 with fitness: 272.982
+average fitness: 58.243305433333
+php time: -0.0076367855072021s
+
+
+generation 63
+saved 4
+generation time: 21.1917989254s
+best indiv 1 with fitness: 272.982
+average fitness: 42.253148436667
+php time: -0.0090410709381104s
+
+
+generation 64
+saved 12
+generation time: 16.858886003494s
+best indiv 1 with fitness: 272.982
+average fitness: 63.898445016667
+php time: -0.0082249641418457s
+
+
+generation 65
+saved 8
+generation time: 17.322157144547s
+best indiv 1 with fitness: 272.982
+average fitness: 57.489709316667
+php time: -0.0077857971191406s
+
+
+generation 66
+saved 4
+generation time: 25.010663032532s
+best indiv 1 with fitness: 272.982
+average fitness: 49.176089583333
+php time: -0.0094349384307861s
+
+
+generation 67
+saved 10
+generation time: 19.27001786232s
+best indiv 1 with fitness: 272.982
+average fitness: 71.8808379
+php time: -0.0086941719055176s
+
+
+generation 68
+saved 10
+generation time: 16.773745059967s
+best indiv 9 with fitness: 291.009
+average fitness: 75.9027035
+php time: -0.011247873306274s
+
+
+generation 69
+saved 4
+generation time: 18.244740009308s
+best indiv 1 with fitness: 291.009
+average fitness: 94.899622666667
+php time: -0.012789964675903s
+
+
+generation 70
+saved 14
+generation time: 14.974430084229s
+best indiv 1 with fitness: 291.009
+average fitness: 104.62530533333
+php time: -0.0090217590332031s
+
+
+generation 71
+saved 8
+generation time: 16.297116041183s
+best indiv 1 with fitness: 291.009
+average fitness: 98.6350235
+php time: -0.0082907676696777s
+
+
+generation 72
+saved 6
+generation time: 17.789270162582s
+best indiv 1 with fitness: 291.009
+average fitness: 81.689053
+php time: -0.0078887939453125s
+
+
+generation 73
+saved 6
+generation time: 20.264955997467s
+best indiv 1 with fitness: 291.009
+average fitness: 79.988006666667
+php time: -0.0081300735473633s
+
+
+generation 74
+saved 6
+generation time: 18.617269992828s
+best indiv 1 with fitness: 291.009
+average fitness: 54.979447
+php time: -0.0082859992980957s
+
+
+generation 75
+saved 8
+generation time: 18.821344137192s
+best indiv 1 with fitness: 291.009
+average fitness: 57.86859725
+php time: -0.010831832885742s
+
+
+generation 76
+saved 8
+generation time: 20.39467215538s
+best indiv 1 with fitness: 291.009
+average fitness: 57.049763166667
+php time: -0.012990951538086s
+
+
+generation 77
+saved 6
+generation time: 20.227521896362s
+best indiv 1 with fitness: 291.009
+average fitness: 67.781545166667
+php time: -0.0078001022338867s
+
+
+generation 78
+saved 6
+generation time: 17.633570194244s
+best indiv 1 with fitness: 291.009
+average fitness: 64.7823565
+php time: -0.0074167251586914s
+
+
+generation 79
+saved 4
+generation time: 16.780220031738s
+best indiv 1 with fitness: 291.009
+average fitness: 56.3111969
+php time: -0.0082709789276123s
+
+
+generation 80
+saved 10
+generation time: 15.129488945007s
+best indiv 1 with fitness: 291.009
+average fitness: 48.427338333333
+php time: -0.0085940361022949s
+
+
+generation 81
+saved 12
+generation time: 14.467813014984s
+best indiv 1 with fitness: 291.009
+average fitness: 50.473552916667
+php time: -0.0080862045288086s
+
+
+generation 82
+saved 8
+generation time: 15.610545873642s
+best indiv 1 with fitness: 291.009
+average fitness: 51.138712333333
+php time: -0.0069901943206787s
+
+
+generation 83
+saved 2
+generation time: 16.698705911636s
+best indiv 24 with fitness: 315.503
+average fitness: 57.1718435
+php time: -0.007695198059082s
+
+
+generation 84
+saved 6
+generation time: 16.088752031326s
+best indiv 1 with fitness: 315.503
+average fitness: 54.74362445
+php time: -0.0073158740997314s
+
+
+generation 85
+saved 4
+generation time: 17.191051959991s
+best indiv 1 with fitness: 315.503
+average fitness: 36.44376095
+php time: -0.0078320503234863s
+
+
+generation 86
+saved 6
+generation time: 16.554280996323s
+best indiv 1 with fitness: 315.503
+average fitness: 44.052093016667
+php time: -0.0080199241638184s
+
+
+generation 87
+saved 8
+generation time: 15.79786491394s
+best indiv 57 with fitness: 323.334
+average fitness: 80.013442666667
+php time: -0.0078179836273193s
+
+
+generation 88
+saved 6
+generation time: 16.071413040161s
+best indiv 1 with fitness: 323.334
+average fitness: 56.335201666667
+php time: -0.0072059631347656s
+
+
+generation 89
+saved 2
+generation time: 17.135545015335s
+best indiv 1 with fitness: 323.334
+average fitness: 47.401345833333
+php time: -0.007178783416748s
+
+
+generation 90
+saved 8
+generation time: 15.149664878845s
+best indiv 1 with fitness: 323.334
+average fitness: 48.495165166667
+php time: -0.0087339878082275s
+
+
+generation 91
+saved 12
+generation time: 14.593388080597s
+best indiv 1 with fitness: 323.334
+average fitness: 52.863945166667
+php time: -0.0075857639312744s
+
+
+generation 92
+saved 6
+generation time: 16.421882152557s
+best indiv 1 with fitness: 323.334
+average fitness: 53.1437625
+php time: -0.0086739063262939s
+
+
+generation 93
+saved 12
+generation time: 13.876909017563s
+best indiv 59 with fitness: 325.57
+average fitness: 73.70084235
+php time: -0.0080940723419189s
+
+
+generation 94
+saved 8
+generation time: 15.60365486145s
+best indiv 1 with fitness: 325.57
+average fitness: 75.917814
+php time: -0.0079319477081299s
+
+
+generation 95
+saved 8
+generation time: 15.758790016174s
+best indiv 1 with fitness: 325.57
+average fitness: 73.934200333333
+php time: -0.0080990791320801s
+
+
+generation 96
+saved 8
+generation time: 15.148559093475s
+best indiv 1 with fitness: 325.57
+average fitness: 81.051574333333
+php time: -0.0083270072937012s
+
+
+generation 97
+saved 10
+generation time: 15.022515058517s
+best indiv 1 with fitness: 325.57
+average fitness: 80.585702833333
+php time: -0.0074479579925537s
+
+
+generation 98
+saved 4
+generation time: 16.368134021759s
+best indiv 1 with fitness: 325.57
+average fitness: 77.998047666667
+php time: -0.011322975158691s
+
+
+generation 99
+saved 6
+generation time: 16.062829017639s
+best indiv 1 with fitness: 325.57
+average fitness: 68.0857208
+php time: -0.0077559947967529s
+
+
+generation 100
+saved 6
+generation time: 15.634446144104s
+best indiv 1 with fitness: 325.57
+average fitness: 79.820468333333
+php time: -0.0079529285430908s
+
+
+generation 101
+saved 8
+generation time: 15.230339050293s
+best indiv 1 with fitness: 325.57
+average fitness: 87.202740461667
+php time: -0.0074479579925537s
+
+
+generation 102
+saved 4
+generation time: 16.344702005386s
+best indiv 1 with fitness: 325.57
+average fitness: 58.377383066667
+php time: -0.0075721740722656s
+
+
+generation 103
+saved 6
+generation time: 15.859335899353s
+best indiv 1 with fitness: 325.57
+average fitness: 60.1600915
+php time: -0.0071620941162109s
+
+
+generation 104
+saved 4
+generation time: 16.125169038773s
+best indiv 1 with fitness: 325.57
+average fitness: 67.278839
+php time: -0.007159948348999s
+
+
+generation 105
+saved 4
+generation time: 16.804576158524s
+best indiv 1 with fitness: 325.57
+average fitness: 49.238658048333
+php time: -0.007415771484375s
+
+
+generation 106
+saved 4
+generation time: 16.252012968063s
+best indiv 1 with fitness: 325.57
+average fitness: 51.6938745
+php time: -0.0072131156921387s
+
+
+generation 107
+saved 4
+generation time: 16.247797966003s
+best indiv 1 with fitness: 325.57
+average fitness: 62.8701155
+php time: -0.0091791152954102s
+
+
+generation 108
+saved 16
+generation time: 13.187703847885s
+best indiv 1 with fitness: 325.57
+average fitness: 75.778246833333
+php time: -0.0086350440979004s
+
+
+generation 109
+saved 10
+generation time: 14.619853973389s
+best indiv 1 with fitness: 325.57
+average fitness: 74.961650333333
+php time: -0.008432149887085s
+
+
+generation 110
+saved 10
+generation time: 14.56948018074s
+best indiv 1 with fitness: 325.57
+average fitness: 83.046061166667
+php time: -0.0069668292999268s
+
+
+generation 111
+saved 2
+generation time: 16.736932992935s
+best indiv 1 with fitness: 325.57
+average fitness: 72.318065666667
+php time: -0.0073699951171875s
+
+
+generation 112
+saved 4
+generation time: 16.832822799683s
+best indiv 1 with fitness: 325.57
+average fitness: 76.656583976667
+php time: -0.008458137512207s
+
+
+generation 113
+saved 10
+generation time: 15.840144872665s
+best indiv 1 with fitness: 325.57
+average fitness: 72.240461333333
+php time: -0.0080721378326416s
+
+
+generation 114
+saved 8
+generation time: 15.479494094849s
+best indiv 1 with fitness: 325.57
+average fitness: 63.881239333333
+php time: -0.0088019371032715s
+
+
+generation 115
+saved 12
+generation time: 14.106657028198s
+best indiv 1 with fitness: 325.57
+average fitness: 71.005168833333
+php time: -0.0087671279907227s
+
+
+generation 116
+saved 12
+generation time: 14.384310007095s
+best indiv 1 with fitness: 325.57
+average fitness: 71.842522916667
+php time: -0.0085489749908447s
+
+
+generation 117
+saved 10
+generation time: 14.436636924744s
+best indiv 1 with fitness: 325.57
+average fitness: 54.8467893
+php time: -0.0068540573120117s
+
+
+generation 118
+saved 2
+generation time: 17.174046039581s
+best indiv 1 with fitness: 325.57
+average fitness: 49.968327166667
+php time: -0.0087740421295166s
+
+
+generation 119
+saved 12
+generation time: 15.133707046509s
+best indiv 1 with fitness: 325.57
+average fitness: 47.94002895
+php time: -0.012457132339478s
+
+
+generation 120
+saved 10
+generation time: 15.495845079422s
+best indiv 1 with fitness: 325.57
+average fitness: 53.344448833333
+php time: -0.0074207782745361s
+
+
+generation 121
+saved 4
+generation time: 16.579545974731s
+best indiv 1 with fitness: 325.57
+average fitness: 45.748703333333
+php time: -0.007256031036377s
+
+
+generation 122
+saved 4
+generation time: 17.389937877655s
+best indiv 1 with fitness: 325.57
+average fitness: 39.638486083333
+php time: -0.0092980861663818s
+
+
+generation 123
+saved 14
+generation time: 13.960404872894s
+best indiv 1 with fitness: 325.57
+average fitness: 48.212839666667
+php time: -0.0072441101074219s
+
+
+generation 124
+saved 4
+generation time: 16.776335000992s
+best indiv 1 with fitness: 325.57
+average fitness: 44.738458183333
+php time: -0.0085721015930176s
+
+
+generation 125
+saved 12
+generation time: 14.158571958542s
+best indiv 1 with fitness: 325.57
+average fitness: 55.919754166667
+php time: -0.0083918571472168s
+
+
+generation 126
+saved 10
+generation time: 14.702710866928s
+best indiv 1 with fitness: 325.57
+average fitness: 64.7689115
+php time: -0.0080890655517578s
+
+
+generation 127
+saved 8
+generation time: 15.746177911758s
+best indiv 1 with fitness: 325.57
+average fitness: 60.0530285
+php time: -0.0069870948791504s
+
+
+generation 128
+saved 2
+generation time: 17.264959096909s
+best indiv 12 with fitness: 332.269
+average fitness: 69.7358135
+php time: -0.0081658363342285s
+
+
+generation 129
+saved 10
+generation time: 14.631603002548s
+best indiv 56 with fitness: 339.847
+average fitness: 80.69253195
+php time: -0.0077071189880371s
+
+
+generation 130
+saved 8
+generation time: 16.065088033676s
+best indiv 1 with fitness: 339.847
+average fitness: 106.53778773333
+php time: -0.0080587863922119s
+
+
+generation 131
+saved 8
+generation time: 15.193768024445s
+best indiv 1 with fitness: 339.847
+average fitness: 87.51193955
+php time: -0.007573127746582s
+
+
+generation 132
+saved 4
+generation time: 16.331867933273s
+best indiv 1 with fitness: 339.847
+average fitness: 93.370532833333
+php time: -0.0073320865631104s
+
+
+generation 133
+saved 4
+generation time: 16.348510980606s
+best indiv 1 with fitness: 339.847
+average fitness: 84.8249115
+php time: -0.0078849792480469s
+
+
+generation 134
+saved 8
+generation time: 16.163837909698s
+best indiv 1 with fitness: 339.847
+average fitness: 70.294815833333
+php time: -0.0081672668457031s
+
+
+generation 135
+saved 8
+generation time: 15.393010139465s
+best indiv 1 with fitness: 339.847
+average fitness: 71.7334786
+php time: -0.0081770420074463s
+
+
+generation 136
+saved 10
+generation time: 14.361158132553s
+best indiv 1 with fitness: 339.847
+average fitness: 78.714367333333
+php time: -0.0098068714141846s
+
+
+generation 137
+saved 18
+generation time: 12.710094928741s
+best indiv 1 with fitness: 339.847
+average fitness: 97.757203
+php time: -0.0079431533813477s
+
+
+generation 138
+saved 8
+generation time: 15.510969877243s
+best indiv 1 with fitness: 339.847
+average fitness: 75.923192
+php time: -0.0075790882110596s
+
+
+generation 139
+saved 6
+generation time: 16.363085031509s
+best indiv 1 with fitness: 339.847
+average fitness: 71.757860333333
+php time: -0.011436939239502s
+
+
+generation 140
+saved 4
+generation time: 15.504894971848s
+best indiv 1 with fitness: 339.847
+average fitness: 71.701432
+php time: -0.0077149868011475s
+
+
+generation 141
+saved 6
+generation time: 16.009660959244s
+best indiv 1 with fitness: 339.847
+average fitness: 69.948169166667
+php time: -0.0072500705718994s
+
+
+generation 142
+saved 4
+generation time: 16.316359043121s
+best indiv 1 with fitness: 339.847
+average fitness: 56.802943666667
+php time: -0.0075581073760986s
+
+
+generation 143
+saved 6
+generation time: 15.604281902313s
+best indiv 1 with fitness: 339.847
+average fitness: 67.91372
+php time: -0.0068058967590332s
+
+
+generation 144
+saved 2
+generation time: 16.999079942703s
+best indiv 1 with fitness: 339.847
+average fitness: 44.102580666667
+php time: -0.008120059967041s
+
+
+generation 145
+saved 8
+generation time: 15.838090896606s
+best indiv 1 with fitness: 339.847
+average fitness: 62.562008333333
+php time: -0.0078301429748535s
+
+
+generation 146
+saved 8
+generation time: 15.050114870071s
+best indiv 1 with fitness: 339.847
+average fitness: 73.748262333333
+php time: -0.0090782642364502s
+
+
+generation 147
+saved 14
+generation time: 13.178326129913s
+best indiv 1 with fitness: 339.847
+average fitness: 93.416774133333
+php time: -0.0085189342498779s
+
+
+generation 148
+saved 10
+generation time: 14.250416994095s
+best indiv 1 with fitness: 339.847
+average fitness: 99.767914333333
+php time: -0.0087862014770508s
+
+
+generation 149
+saved 12
+generation time: 14.206905126572s
+best indiv 1 with fitness: 339.847
+average fitness: 126.05109616667
+php time: -0.0075256824493408s
+
+
+generation 150
+saved 4
+generation time: 16.066170930862s
+best indiv 1 with fitness: 339.847
+average fitness: 120.4080785
+php time: -0.0070621967315674s
+
+
+generation 151
+saved 2
+generation time: 17.012172937393s
+best indiv 1 with fitness: 339.847
+average fitness: 104.27522833333
+php time: -0.0079190731048584s
+
+
+generation 152
+saved 6
+generation time: 15.236400127411s
+best indiv 1 with fitness: 339.847
+average fitness: 75.310486966667
+php time: -0.0082058906555176s
+
+
+generation 153
+saved 6
+generation time: 15.983388900757s
+best indiv 1 with fitness: 339.847
+average fitness: 68.2462065
+php time: -0.0088179111480713s
+
+
+generation 154
+saved 12
+generation time: 14.219924926758s
+best indiv 1 with fitness: 339.847
+average fitness: 75.285525083333
+php time: -0.0083181858062744s
+
+
+generation 155
+saved 10
+generation time: 14.347218036652s
+best indiv 1 with fitness: 339.847
+average fitness: 70.698574866667
+php time: -0.0075278282165527s
+
+
+generation 156
+saved 6
+generation time: 15.379403114319s
+best indiv 1 with fitness: 339.847
+average fitness: 111.92599433333
+php time: -0.015277862548828s
+
+
+generation 157
+saved 6
+generation time: 16.03268289566s
+best indiv 1 with fitness: 339.847
+average fitness: 90.822185733333
+php time: -0.01366400718689s
+
+
+generation 158
+saved 4
+generation time: 16.352435112s
+best indiv 1 with fitness: 339.847
+average fitness: 102.76732748333
+php time: -0.0073418617248535s
+
+
+generation 159
+saved 6
+generation time: 15.78950715065s
+best indiv 1 with fitness: 339.847
+average fitness: 85.417444833333
+php time: -0.0079426765441895s
+
+
+generation 160
+saved 8
+generation time: 15.253118991852s
+best indiv 1 with fitness: 339.847
+average fitness: 64.264837333333
+php time: -0.0078639984130859s
+
+
+generation 161
+saved 6
+generation time: 15.397857904434s
+best indiv 1 with fitness: 339.847
+average fitness: 59.6978791
+php time: -0.008378267288208s
+
+
+generation 162
+saved 10
+generation time: 14.26455783844s
+best indiv 1 with fitness: 339.847
+average fitness: 92.636365166667
+php time: -0.0076682567596436s
+
+
+generation 163
+saved 8
+generation time: 15.014400959015s
+best indiv 1 with fitness: 339.847
+average fitness: 87.401065166667
+php time: -0.0080668926239014s
+
+
+generation 164
+saved 8
+generation time: 15.191222190857s
+best indiv 1 with fitness: 339.847
+average fitness: 86.8341265
+php time: -0.0080478191375732s
+
+
+generation 165
+saved 8
+generation time: 15.530925035477s
+best indiv 1 with fitness: 339.847
+average fitness: 57.033082983333
+php time: -0.0088229179382324s
+
+
+generation 166
+saved 12
+generation time: 14.004223823547s
+best indiv 1 with fitness: 339.847
+average fitness: 52.41662
+php time: -0.008430004119873s
+
+
+generation 167
+saved 10
+generation time: 15.102154016495s
+best indiv 1 with fitness: 339.847
+average fitness: 51.726166528333
+php time: -0.0085361003875732s
+
+
+generation 168
+saved 10
+generation time: 14.791282176971s
+best indiv 1 with fitness: 339.847
+average fitness: 75.041219666667
+php time: -0.0076577663421631s
+
+
+generation 169
+saved 6
+generation time: 16.598625183105s
+best indiv 1 with fitness: 339.847
+average fitness: 62.196184778333
+php time: -0.008427619934082s
+
+
+generation 170
+saved 10
+generation time: 15.299664974213s
+best indiv 1 with fitness: 339.847
+average fitness: 90.092301911667
+php time: -0.0078930854797363s
+
+
+generation 171
+saved 6
+generation time: 15.912998914719s
+best indiv 1 with fitness: 339.847
+average fitness: 76.6854615
+php time: -0.0080981254577637s
+
+
+generation 172
+saved 10
+generation time: 14.70455288887s
+best indiv 1 with fitness: 339.847
+average fitness: 100.76114666667
+php time: -0.0081701278686523s
+
+
+generation 173
+saved 10
+generation time: 14.498739957809s
+best indiv 1 with fitness: 339.847
+average fitness: 86.4507785
+php time: -0.0076901912689209s
+
+
+generation 174
+saved 8
+generation time: 15.376957893372s
+best indiv 1 with fitness: 339.847
+average fitness: 98.7371695
+php time: -0.008544921875s
+
+
+generation 175
+saved 10
+generation time: 14.920677900314s
+best indiv 1 with fitness: 339.847
+average fitness: 93.568502833333
+php time: -0.0079751014709473s
+
+
+generation 176
+saved 8
+generation time: 15.889612197876s
+best indiv 1 with fitness: 339.847
+average fitness: 78.937204166667
+php time: -0.0079338550567627s
+
+
+generation 177
+saved 8
+generation time: 15.588605880737s
+best indiv 1 with fitness: 339.847
+average fitness: 70.111316666667
+php time: -0.0077390670776367s
+
+
+generation 178
+saved 6
+generation time: 15.470544099808s
+best indiv 1 with fitness: 339.847
+average fitness: 82.890545566667
+php time: -0.0080177783966064s
+
+
+generation 179
+saved 8
+generation time: 15.335826158524s
+best indiv 1 with fitness: 339.847
+average fitness: 55.005360666667
+php time: -0.0077447891235352s
+
+
+generation 180
+saved 6
+generation time: 16.220364093781s
+best indiv 1 with fitness: 339.847
+average fitness: 71.187064483333
+php time: -0.0073397159576416s
+
+
+generation 181
+saved 6
+generation time: 16.32124209404s
+best indiv 1 with fitness: 339.847
+average fitness: 78.072066466667
+php time: -0.0072529315948486s
+
+
+generation 182
+saved 6
+generation time: 15.462832927704s
+best indiv 1 with fitness: 339.847
+average fitness: 95.067989166667
+php time: -0.0077621936798096s
+
+
+generation 183
+saved 6
+generation time: 14.912770986557s
+best indiv 1 with fitness: 339.847
+average fitness: 75.297812333333
+php time: -0.0089609622955322s
+
+
+generation 184
+saved 12
+generation time: 13.828664064407s
+best indiv 1 with fitness: 339.847
+average fitness: 61.234383566667
+php time: -0.008018970489502s
+
+
+generation 185
+saved 8
+generation time: 14.654765129089s
+best indiv 1 with fitness: 339.847
+average fitness: 58.718562833333
+php time: -0.0088577270507812s
+
+
+generation 186
+saved 12
+generation time: 13.760102987289s
+best indiv 1 with fitness: 339.847
+average fitness: 73.490077366667
+php time: -0.007537841796875s
+
+
+generation 187
+saved 6
+generation time: 15.523832082748s
+best indiv 1 with fitness: 339.847
+average fitness: 77.429048833333
+php time: -0.0087499618530273s
+
+
+generation 188
+saved 12
+generation time: 14.454404115677s
+best indiv 1 with fitness: 339.847
+average fitness: 82.955293333333
+php time: -0.0081019401550293s
+
+
+generation 189
+saved 8
+generation time: 15.36950302124s
+best indiv 1 with fitness: 339.847
+average fitness: 88.236147833333
+php time: -0.0083019733428955s
+
+
+generation 190
+saved 10
+generation time: 14.069757938385s
+best indiv 1 with fitness: 339.847
+average fitness: 97.079592833333
+php time: -0.0077049732208252s
+
+
+generation 191
+saved 6
+generation time: 15.545448064804s
+best indiv 1 with fitness: 339.847
+average fitness: 94.891904
+php time: -0.0086548328399658s
+
+
+generation 192
+saved 12
+generation time: 13.564660072327s
+best indiv 44 with fitness: 341.132
+average fitness: 111.32863666667
+php time: -0.012975931167603s
+
+
+generation 193
+saved 8
+generation time: 15.55450797081s
+best indiv 1 with fitness: 341.132
+average fitness: 84.6709135
+php time: -0.0077710151672363s
+
+
+generation 194
+saved 6
+generation time: 15.948036909103s
+best indiv 1 with fitness: 341.132
+average fitness: 90.151843166667
+php time: -0.0071821212768555s
+
+
+generation 195
+saved 4
+generation time: 16.167353868484s
+best indiv 1 with fitness: 341.132
+average fitness: 98.851028883333
+php time: -0.0084991455078125s
+
+
+generation 196
+saved 10
+generation time: 14.167593002319s
+best indiv 1 with fitness: 341.132
+average fitness: 97.2077005
+php time: -0.0073168277740479s
+
+
+generation 197
+saved 4
+generation time: 16.571230888367s
+best indiv 1 with fitness: 341.132
+average fitness: 97.02237
+php time: -0.007946252822876s
+
+
+generation 198
+saved 8
+generation time: 15.014714002609s
+best indiv 1 with fitness: 341.132
+average fitness: 72.660371833333
+php time: -0.0077099800109863s
+
+
+generation 199
+saved 6
+generation time: 14.996354103088s
+best indiv 1 with fitness: 341.132
+average fitness: 77.0811847
+php time: -0.01130485534668s
+
+
+generation 200
+saved 14
+generation time: 13.364725828171s
+best indiv 1 with fitness: 341.132
+average fitness: 103.35578616667
+php time: -0.0073451995849609s
+
+
+generation 201
+saved 4
+generation time: 16.256671190262s
+best indiv 1 with fitness: 341.132
+average fitness: 82.305655
+php time: -0.0084748268127441s
+
+
+generation 202
+saved 10
+generation time: 15.671527147293s
+best indiv 1 with fitness: 341.132
+average fitness: 83.352094333333
+php time: -0.0068657398223877s
+
+
+generation 203
+saved 2
+generation time: 18.458765983582s
+best indiv 29 with fitness: 347.959
+average fitness: 83.531376166667
+php time: -0.0074658393859863s
+
+
+generation 204
+saved 4
+generation time: 16.631870985031s
+best indiv 1 with fitness: 347.959
+average fitness: 64.538859666667
+php time: -0.0077331066131592s
+
+
+generation 205
+saved 6
+generation time: 16.667031049728s
+best indiv 1 with fitness: 347.959
+average fitness: 57.992421666667
+php time: -0.0075521469116211s
+
+
+generation 206
+saved 6
+generation time: 16.216548919678s
+best indiv 1 with fitness: 347.959
+average fitness: 85.953707666667
+php time: -0.0088732242584229s
+
+
+generation 207
+saved 14
+generation time: 14.151048898697s
+best indiv 1 with fitness: 347.959
+average fitness: 86.921607
+php time: -0.0089690685272217s
+
+
+generation 208
+saved 14
+generation time: 13.784908056259s
+best indiv 1 with fitness: 347.959
+average fitness: 62.136830666667
+php time: -0.0073819160461426s
+
+
+generation 209
+saved 4
+generation time: 16.623356103897s
+best indiv 1 with fitness: 347.959
+average fitness: 72.156642
+php time: -0.0075688362121582s
+
+
+generation 210
+saved 6
+generation time: 16.537562847137s
+best indiv 1 with fitness: 347.959
+average fitness: 59.970888666667
+php time: -0.0071480274200439s
+
+
+generation 211
+saved 4
+generation time: 16.568331956863s
+best indiv 1 with fitness: 347.959
+average fitness: 57.819220333333
+php time: -0.0081601142883301s
+
+
+generation 212
+saved 8
+generation time: 15.525161027908s
+best indiv 1 with fitness: 347.959
+average fitness: 73.056085333333
+php time: -0.0071179866790771s
+
+
+generation 213
+saved 2
+generation time: 17.145509958267s
+best indiv 1 with fitness: 347.959
+average fitness: 79.175380133333
+php time: -0.0096590518951416s
+
+
+generation 214
+saved 6
+generation time: 16.144518852234s
+best indiv 1 with fitness: 347.959
+average fitness: 66.265939333333
+php time: -0.0074641704559326s
+
+
+generation 215
+saved 4
+generation time: 17.138440847397s
+best indiv 1 with fitness: 347.959
+average fitness: 57.3677023
+php time: -0.0076460838317871s
+
+
+generation 216
+saved 6
+generation time: 16.930886030197s
+best indiv 1 with fitness: 347.959
+average fitness: 48.618920333333
+php time: -0.0073959827423096s
+
+
+generation 217
+saved 4
+generation time: 16.544178962708s
+best indiv 1 with fitness: 347.959
+average fitness: 43.452074333333
+php time: -0.0078661441802979s
+
+
+generation 218
+saved 6
+generation time: 17.200997114182s
+best indiv 1 with fitness: 347.959
+average fitness: 48.044551966667
+php time: -0.0075299739837646s
+
+
+generation 219
+saved 6
+generation time: 16.817090988159s
+best indiv 1 with fitness: 347.959
+average fitness: 49.8850433
+php time: -0.0080850124359131s
+
+
+generation 220
+saved 10
+generation time: 16.104148864746s
+best indiv 1 with fitness: 347.959
+average fitness: 53.545656133333
+php time: -0.0070390701293945s
+
+
+generation 221
+saved 4
+generation time: 17.515064001083s
+best indiv 1 with fitness: 347.959
+average fitness: 44.346970166667
+php time: -0.0077219009399414s
+
+
+generation 222
+saved 6
+generation time: 16.173429965973s
+best indiv 36 with fitness: 352.659
+average fitness: 63.494797933333
+php time: -0.0075149536132812s
+
+
+generation 223
+saved 6
+generation time: 16.491231918335s
+best indiv 1 with fitness: 352.659
+average fitness: 45.459932733333
+php time: -0.0075011253356934s
+
+
+generation 224
+saved 4
+generation time: 16.727284908295s
+best indiv 1 with fitness: 352.659
+average fitness: 42.455671833333
+php time: -0.0077872276306152s
+
+
+generation 225
+saved 6
+generation time: 16.157499074936s
+best indiv 1 with fitness: 352.659
+average fitness: 43.4274055
+php time: -0.0084419250488281s
+
+
+generation 226
+saved 10
+generation time: 15.244060993195s
+best indiv 20 with fitness: 385.218
+average fitness: 44.729463166667
+php time: -0.0070710182189941s
+
+
+generation 227
+saved 4
+generation time: 17.236613988876s
+best indiv 1 with fitness: 385.218
+average fitness: 58.1421935
+php time: -0.0071520805358887s
+
+
+generation 228
+saved 4
+generation time: 17.391497850418s
+best indiv 1 with fitness: 385.218
+average fitness: 43.463551266667
+php time: -0.0079889297485352s
+
+
+generation 229
+saved 8
+generation time: 15.938764095306s
+best indiv 1 with fitness: 385.218
+average fitness: 42.289309205
+php time: -0.0084340572357178s
+
+
+generation 230
+saved 10
+generation time: 14.398566007614s
+best indiv 1 with fitness: 385.218
+average fitness: 54.707937333333
+php time: -0.0084640979766846s
+
+
+generation 231
+saved 10
+generation time: 15.634384155273s
+best indiv 1 with fitness: 385.218
+average fitness: 50.0010486
+php time: -0.0070137977600098s
+
+
+generation 232
+saved 2
+generation time: 17.539062976837s
+best indiv 1 with fitness: 385.218
+average fitness: 51.5467595
+php time: -0.0080428123474121s
+
+
+generation 233
+saved 8
+generation time: 16.154523134232s
+best indiv 1 with fitness: 385.218
+average fitness: 59.235785875
+php time: -0.0079109668731689s
+
+
+generation 234
+saved 8
+generation time: 16.255611896515s
+best indiv 1 with fitness: 385.218
+average fitness: 54.722617183333
+php time: -0.0074992179870605s
+
+
+generation 235
+saved 6
+generation time: 15.994150161743s
+best indiv 1 with fitness: 385.218
+average fitness: 61.324747883333
+php time: -0.0082347393035889s
+
+
+generation 236
+saved 10
+generation time: 15.24260187149s
+best indiv 1 with fitness: 385.218
+average fitness: 87.6811165
+php time: -0.0072100162506104s
+
+
+generation 237
+saved 10
+generation time: 14.821179866791s
+best indiv 1 with fitness: 385.218
+average fitness: 99.254047
+php time: -0.0078110694885254s
+
+
+generation 238
+saved 6
+generation time: 16.303724050522s
+best indiv 1 with fitness: 385.218
+average fitness: 88.129106
+php time: -0.0071320533752441s
+
+
+generation 239
+saved 2
+generation time: 17.14651799202s
+best indiv 1 with fitness: 385.218
+average fitness: 91.5377995
+php time: -0.0078940391540527s
+
+
+generation 240
+saved 8
+generation time: 16.327101945877s
+best indiv 1 with fitness: 385.218
+average fitness: 72.832088166667
+php time: -0.0081551074981689s
+
+
+generation 241
+saved 8
+generation time: 15.168554067612s
+best indiv 1 with fitness: 385.218
+average fitness: 78.843124283333
+php time: -0.0077400207519531s
+
+
+generation 242
+saved 6
+generation time: 16.009811878204s
+best indiv 1 with fitness: 385.218
+average fitness: 64.495919666667
+php time: -0.0081360340118408s
+
+
+generation 243
+saved 8
+generation time: 14.97443985939s
+best indiv 1 with fitness: 385.218
+average fitness: 85.523540883333
+php time: -0.008430004119873s
+
+
+generation 244
+saved 12
+generation time: 14.311216115952s
+best indiv 1 with fitness: 385.218
+average fitness: 86.640998
+php time: -0.0075268745422363s
+
+
+generation 245
+saved 4
+generation time: 16.613212108612s
+best indiv 1 with fitness: 385.218
+average fitness: 88.810898333333
+php time: -0.0081079006195068s
+
+
+generation 246
+saved 10
+generation time: 15.460786104202s
+best indiv 1 with fitness: 385.218
+average fitness: 88.7585146
+php time: -0.0078248977661133s
+
+
+generation 247
+saved 8
+generation time: 15.580249071121s
+best indiv 1 with fitness: 385.218
+average fitness: 79.025781833333
+php time: -0.0090100765228271s
+
+
+generation 248
+saved 10
+generation time: 14.850975990295s
+best indiv 1 with fitness: 385.218
+average fitness: 76.84975335
+php time: -0.0075068473815918s
+
+
+generation 249
+saved 8
+generation time: 15.418440103531s
+best indiv 1 with fitness: 385.218
+average fitness: 67.509696166667
+php time: -0.0079379081726074s
+
+
+generation 250
+saved 10
+generation time: 14.95386505127s
+best indiv 1 with fitness: 385.218
+average fitness: 63.207432833333
+php time: -0.0080640316009521s
+
+
+generation 251
+saved 8
+generation time: 14.857231855392s
+best indiv 1 with fitness: 385.218
+average fitness: 73.583382
+php time: -0.0084421634674072s
+
+
+generation 252
+saved 10
+generation time: 14.496241092682s
+best indiv 1 with fitness: 385.218
+average fitness: 64.807648166667
+php time: -0.0080549716949463s
+
+
+generation 253
+saved 8
+generation time: 15.452716827393s
+best indiv 1 with fitness: 385.218
+average fitness: 66.807581666667
+php time: -0.0083441734313965s
+
+
+generation 254
+saved 10
+generation time: 14.582481861115s
+best indiv 1 with fitness: 385.218
+average fitness: 54.2200692
+php time: -0.0092182159423828s
+
+
+generation 255
+saved 16
+generation time: 13.411717176437s
+best indiv 1 with fitness: 385.218
+average fitness: 81.297315416667
+php time: -0.0077798366546631s
+
+
+generation 256
+saved 6
+generation time: 15.772336959839s
+best indiv 1 with fitness: 385.218
+average fitness: 55.348984983333
+php time: -0.0099749565124512s
+
+
+generation 257
+saved 4
+generation time: 16.083657979965s
+best indiv 1 with fitness: 385.218
+average fitness: 63.364740783333
+php time: -0.0084259510040283s
+
+
+generation 258
+saved 12
+generation time: 14.077874898911s
+best indiv 1 with fitness: 385.218
+average fitness: 91.282755666667
+php time: -0.0083010196685791s
+
+
+generation 259
+saved 8
+generation time: 15.678403139114s
+best indiv 1 with fitness: 385.218
+average fitness: 57.604507666667
+php time: -0.0081980228424072s
+
+
+generation 260
+saved 8
+generation time: 15.172991037369s
+best indiv 1 with fitness: 385.218
+average fitness: 61.762672166667
+php time: -0.0080270767211914s
+
+
+generation 261
+saved 8
+generation time: 15.653737068176s
+best indiv 1 with fitness: 385.218
+average fitness: 82.573171333333
+php time: -0.0078349113464355s
+
+
+generation 262
+saved 6
+generation time: 15.875427007675s
+best indiv 1 with fitness: 385.218
+average fitness: 61.245197166667
+php time: -0.0076069831848145s
+
+
+generation 263
+saved 6
+generation time: 16.330724000931s
+best indiv 1 with fitness: 385.218
+average fitness: 63.031491316667
+php time: -0.0074648857116699s
+
+
+generation 264
+saved 4
+generation time: 16.507257938385s
+best indiv 1 with fitness: 385.218
+average fitness: 91.315730833333
+php time: -0.0093281269073486s
+
+
+generation 265
+saved 16
+generation time: 13.429557085037s
+best indiv 1 with fitness: 385.218
+average fitness: 84.970986183333
+php time: -0.0082478523254395s
+
+
+generation 266
+saved 8
+generation time: 16.19002199173s
+best indiv 1 with fitness: 385.218
+average fitness: 83.603375833333
+php time: -0.009148120880127s
+
+
+generation 267
+saved 16
+generation time: 13.873383998871s
+best indiv 1 with fitness: 385.218
+average fitness: 78.0648645
+php time: -0.0080997943878174s
+
+
+generation 268
+saved 8
+generation time: 15.44003200531s
+best indiv 1 with fitness: 385.218
+average fitness: 85.085771666667
+php time: -0.0071570873260498s
+
+
+generation 269
+saved 4
+generation time: 17.131145000458s
+best indiv 1 with fitness: 385.218
+average fitness: 83.690472
+php time: -0.0077829360961914s
+
+
+generation 270
+saved 6
+generation time: 16.110100984573s
+best indiv 1 with fitness: 385.218
+average fitness: 80.868326666667
+php time: -0.0081260204315186s
+
+
+generation 271
+saved 8
+generation time: 15.436712026596s
+best indiv 1 with fitness: 385.218
+average fitness: 95.963496333333
+php time: -0.008112907409668s
+
+
+generation 272
+saved 8
+generation time: 15.440639019012s
+best indiv 1 with fitness: 385.218
+average fitness: 108.5443148
+php time: -0.0083510875701904s
+
+
+generation 273
+saved 10
+generation time: 15.374123811722s
+best indiv 1 with fitness: 385.218
+average fitness: 93.993111
+php time: -0.0079731941223145s
+
+
+generation 274
+saved 10
+generation time: 14.574779033661s
+best indiv 1 with fitness: 385.218
+average fitness: 128.25164015
+php time: -0.0075421333312988s
+
+
+generation 275
+saved 6
+generation time: 16.102390050888s
+best indiv 1 with fitness: 385.218
+average fitness: 152.84226166667
+php time: -0.010087966918945s
+
+
+generation 276
+saved 8
+generation time: 15.046272039413s
+best indiv 1 with fitness: 385.218
+average fitness: 121.64463166667
+php time: -0.007889986038208s
+
+
+generation 277
+saved 8
+generation time: 15.515103816986s
+best indiv 1 with fitness: 385.218
+average fitness: 111.04564245
+php time: -0.0081751346588135s
+
+
+generation 278
+saved 8
+generation time: 15.435781002045s
+best indiv 1 with fitness: 385.218
+average fitness: 114.56057333333
+php time: -0.0079140663146973s
+
+
+generation 279
+saved 8
+generation time: 15.175164222717s
+best indiv 1 with fitness: 385.218
+average fitness: 105.0433335
+php time: -0.0085737705230713s
+
+
+generation 280
+saved 12
+generation time: 14.342386007309s
+best indiv 1 with fitness: 385.218
+average fitness: 106.2471845
+php time: -0.0089828968048096s
+
+
+generation 281
+saved 14
+generation time: 14.264227151871s
+best indiv 1 with fitness: 385.218
+average fitness: 101.37001266667
+php time: -0.0075969696044922s
+
+
+generation 282
+saved 6
+generation time: 16.027112007141s
+best indiv 1 with fitness: 385.218
+average fitness: 110.78568766667
+php time: -0.0075740814208984s
+
+
+generation 283
+saved 8
+generation time: 15.029975891113s
+best indiv 1 with fitness: 385.218
+average fitness: 78.850340833333
+php time: -0.0078861713409424s
+
+
+generation 284
+saved 6
+generation time: 16.693541049957s
+best indiv 1 with fitness: 385.218
+average fitness: 76.818665
+php time: -0.0086009502410889s
+
+
+generation 285
+saved 10
+generation time: 14.965059995651s
+best indiv 1 with fitness: 385.218
+average fitness: 87.797484333333
+php time: -0.0077030658721924s
+
+
+generation 286
+saved 6
+generation time: 16.205891132355s
+best indiv 1 with fitness: 385.218
+average fitness: 68.9093055
+php time: -0.0083189010620117s
+
+
+generation 287
+saved 10
+generation time: 15.219007015228s
+best indiv 1 with fitness: 385.218
+average fitness: 87.975571666667
+php time: -0.0087981224060059s
+
+
+generation 288
+saved 12
+generation time: 14.638350963593s
+best indiv 1 with fitness: 385.218
+average fitness: 74.891224
+php time: -0.018707990646362s
+
+
+generation 289
+saved 4
+generation time: 16.774688959122s
+best indiv 40 with fitness: 402.499
+average fitness: 94.756495166667
+php time: -0.007472038269043s
+
+
+generation 290
+saved 6
+generation time: 16.206722021103s
+best indiv 1 with fitness: 402.499
+average fitness: 108.7298975
+php time: -0.0077970027923584s
+
+
+generation 291
+saved 6
+generation time: 17.04095697403s
+best indiv 1 with fitness: 402.499
+average fitness: 104.27159748333
+php time: -0.0071151256561279s
+
+
+generation 292
+saved 4
+generation time: 16.779964923859s
+best indiv 1 with fitness: 402.499
+average fitness: 84.069302
+php time: -0.014377117156982s
+
+
+generation 293
+saved 6
+generation time: 16.336629867554s
+best indiv 1 with fitness: 402.499
+average fitness: 86.329294983333
+php time: -0.0078690052032471s
+
+
+generation 294
+saved 6
+generation time: 16.88041806221s
+best indiv 1 with fitness: 402.499
+average fitness: 71.0821960515
+php time: -0.007174015045166s
+
+
+generation 295
+saved 4
+generation time: 17.495620012283s
+best indiv 1 with fitness: 402.499
+average fitness: 73.735023083333
+php time: -0.0079860687255859s
+
+
+generation 296
+saved 10
+generation time: 14.899037837982s
+best indiv 1 with fitness: 402.499
+average fitness: 81.04548419
+php time: -0.0073821544647217s
+
+
+generation 297
+saved 4
+generation time: 17.320568084717s
+best indiv 1 with fitness: 402.499
+average fitness: 66.344198356667
+php time: -0.0072958469390869s
+
+
+generation 298
+saved 6
+generation time: 16.438670873642s
+best indiv 1 with fitness: 402.499
+average fitness: 86.229471483333
+php time: -0.0076730251312256s
+
+
+generation 299
+saved 8
+generation time: 16.097072124481s
+best indiv 1 with fitness: 402.499
+average fitness: 86.674239833333
+php time: -0.0080349445343018s
+
+
+generation 300
+saved 8
+generation time: 15.837296962738s
+best indiv 1 with fitness: 402.499
+average fitness: 104.63019616667
+php time: -0.0081610679626465s
+
+
+generation 301
+saved 8
+generation time: 15.351058959961s
+best indiv 1 with fitness: 402.499
+average fitness: 101.39767116667
+php time: -0.0086231231689453s
+
+
+generation 302
+saved 12
+generation time: 13.977478027344s
+best indiv 1 with fitness: 402.499
+average fitness: 115.44273533333
+php time: -0.0086319446563721s
+
+
+generation 303
+saved 12
+generation time: 14.192346811295s
+best indiv 1 with fitness: 402.499
+average fitness: 127.43569
+php time: -0.0079841613769531s
+
+
+generation 304
+saved 6
+generation time: 16.346436977386s
+best indiv 1 with fitness: 402.499
+average fitness: 81.758864166667
+php time: -0.0084879398345947s
+
+
+generation 305
+saved 10
+generation time: 15.170578956604s
+best indiv 1 with fitness: 402.499
+average fitness: 91.611045
+php time: -0.008324146270752s
+
+
+generation 306
+saved 10
+generation time: 15.262794971466s
+best indiv 1 with fitness: 402.499
+average fitness: 115.29326466667
+php time: -0.014580011367798s
+
+
+generation 307
+saved 16
+generation time: 13.493702888489s
+best indiv 1 with fitness: 402.499
+average fitness: 87.009631483333
+php time: -0.0085599422454834s
+
+
+generation 308
+saved 10
+generation time: 14.724582910538s
+best indiv 1 with fitness: 402.499
+average fitness: 86.102696301667
+php time: -0.0077099800109863s
+
+
+generation 309
+saved 6
+generation time: 15.760851144791s
+best indiv 1 with fitness: 402.499
+average fitness: 87.106396166667
+php time: -0.0074117183685303s
+
+
+generation 310
+saved 4
+generation time: 16.380644083023s
+best indiv 1 with fitness: 402.499
+average fitness: 68.252250166667
+php time: -0.0080239772796631s
+
+
+generation 311
+saved 6
+generation time: 15.761049032211s
+best indiv 1 with fitness: 402.499
+average fitness: 67.576489
+php time: -0.0080749988555908s
+
+
+generation 312
+saved 8
+generation time: 15.089291095734s
+best indiv 1 with fitness: 402.499
+average fitness: 77.0261415
+php time: -0.0077447891235352s
+
+
+generation 313
+saved 6
+generation time: 16.219407081604s
+best indiv 1 with fitness: 402.499
+average fitness: 63.699988833333
+php time: -0.0079917907714844s
+
+
+generation 314
+saved 8
+generation time: 15.332765102386s
+best indiv 1 with fitness: 402.499
+average fitness: 88.624883333333
+php time: -0.0082108974456787s
+
+
+generation 315
+saved 8
+generation time: 15.538277864456s
+best indiv 1 with fitness: 402.499
+average fitness: 79.914857166667
+php time: -0.0084080696105957s
+
+
+generation 316
+saved 10
+generation time: 15.091450929642s
+best indiv 1 with fitness: 402.499
+average fitness: 98.657189166667
+php time: -0.0077528953552246s
+
+
+generation 317
+saved 6
+generation time: 15.725842952728s
+best indiv 1 with fitness: 402.499
+average fitness: 82.964473166667
+php time: -0.0067338943481445s
+
+
+generation 318
+saved 2
+generation time: 17.006158828735s
+best indiv 1 with fitness: 402.499
+average fitness: 98.812979166667
+php time: -0.0069882869720459s
+
+
+generation 319
+saved 4
+generation time: 16.214473009109s
+best indiv 1 with fitness: 402.499
+average fitness: 81.569615666667
+php time: -0.0074999332427979s
+
+
+generation 320
+saved 6
+generation time: 16.387895107269s
+best indiv 1 with fitness: 402.499
+average fitness: 60.21888785
+php time: -0.010464906692505s
+
+
+generation 321
+saved 16
+generation time: 13.41858792305s
+best indiv 1 with fitness: 402.499
+average fitness: 64.845794766667
+php time: -0.0084109306335449s
+
+
+generation 322
+saved 10
+generation time: 15.073288202286s
+best indiv 1 with fitness: 402.499
+average fitness: 88.13040635
+php time: -0.0091357231140137s
+
+
+generation 323
+saved 14
+generation time: 13.757276773453s
+best indiv 1 with fitness: 402.499
+average fitness: 97.386540183333
+php time: -0.0084981918334961s
+
+
+generation 324
+saved 10
+generation time: 15.024439096451s
+best indiv 1 with fitness: 402.499
+average fitness: 65.017017233333
+php time: -0.0082478523254395s
+
+
+generation 325
+saved 8
+generation time: 15.761001110077s
+best indiv 1 with fitness: 402.499
+average fitness: 83.678721383333
+php time: -0.011656999588013s
+
+
+generation 326
+saved 18
+generation time: 12.674044132233s
+best indiv 1 with fitness: 402.499
+average fitness: 84.154153183333
+php time: -0.0083239078521729s
+
+
+generation 327
+saved 10
+generation time: 15.06809592247s
+best indiv 1 with fitness: 402.499
+average fitness: 82.921868483333
+php time: -0.0083129405975342s
+
+
+generation 328
+saved 10
+generation time: 14.768856048584s
+best indiv 1 with fitness: 402.499
+average fitness: 93.51554305
+php time: -0.0070829391479492s
+
+
+generation 329
+saved 2
+generation time: 16.794225931168s
+best indiv 1 with fitness: 402.499
+average fitness: 74.938112333333
+php time: -0.0079720020294189s
+
+
+generation 330
+saved 8
+generation time: 14.888842105865s
+best indiv 1 with fitness: 402.499
+average fitness: 93.154375
+php time: -0.007429838180542s
+
+
+generation 331
+saved 4
+generation time: 16.695894002914s
+best indiv 1 with fitness: 402.499
+average fitness: 67.837544166667
+php time: -0.0073630809783936s
+
+
+generation 332
+saved 6
+generation time: 15.828971862793s
+best indiv 1 with fitness: 402.499
+average fitness: 78.815591
+php time: -0.012818098068237s
+
+
+generation 333
+saved 6
+generation time: 16.480416059494s
+best indiv 1 with fitness: 402.499
+average fitness: 65.49164
+php time: -0.0088369846343994s
+
+
+generation 334
+saved 12
+generation time: 14.255540132523s
+best indiv 1 with fitness: 402.499
+average fitness: 74.1622545
+php time: -0.0074739456176758s
+
+
+generation 335
+saved 4
+generation time: 16.759788036346s
+best indiv 1 with fitness: 402.499
+average fitness: 94.439116166667
+php time: -0.0075819492340088s
+
+
+generation 336
+saved 6
+generation time: 15.768605947495s
+best indiv 1 with fitness: 402.499
+average fitness: 101.90722843333
+php time: -0.0078270435333252s
+
+
+generation 337
+saved 6
+generation time: 15.975872039795s
+best indiv 1 with fitness: 402.499
+average fitness: 80.883675958333
+php time: -0.007918119430542s
+
+
+generation 338
+saved 8
+generation time: 15.658931016922s
+best indiv 1 with fitness: 402.499
+average fitness: 97.233130333333
+php time: -0.0071840286254883s
+
+
+generation 339
+saved 4
+generation time: 16.896908044815s
+best indiv 1 with fitness: 402.499
+average fitness: 87.454611933333
+php time: -0.0076677799224854s
+
+
+generation 340
+saved 6
+generation time: 15.650280952454s
+best indiv 1 with fitness: 402.499
+average fitness: 107.67972216667
+php time: -0.0090861320495605s
+
+
+generation 341
+saved 14
+generation time: 13.38755607605s
+best indiv 1 with fitness: 402.499
+average fitness: 117.815088
+php time: -0.0081639289855957s
+
+
+generation 342
+saved 10
+generation time: 14.717928171158s
+best indiv 1 with fitness: 402.499
+average fitness: 88.7214081
+php time: -0.0074999332427979s
+
+
+generation 343
+saved 4
+generation time: 16.272639989853s
+best indiv 1 with fitness: 402.499
+average fitness: 64.6539307
+php time: -0.0085208415985107s
+
+
+generation 344
+saved 10
+generation time: 14.719035148621s
+best indiv 1 with fitness: 402.499
+average fitness: 60.378951
+php time: -0.0078299045562744s
+
+
+generation 345
+saved 8
+generation time: 15.5489320755s
+best indiv 1 with fitness: 402.499
+average fitness: 114.26679655
+php time: -0.0076920986175537s
+
+
+generation 346
+saved 6
+generation time: 16.25444984436s
+best indiv 1 with fitness: 402.499
+average fitness: 82.923018433333
+php time: -0.0073022842407227s
+
+
+generation 347
+saved 4
+generation time: 16.571905136108s
+best indiv 1 with fitness: 402.499
+average fitness: 70.804185166667
+php time: -0.0077099800109863s
+
+
+generation 348
+saved 6
+generation time: 16.130609035492s
+best indiv 1 with fitness: 402.499
+average fitness: 70.765471416667
+php time: -0.0080370903015137s
+
+
+generation 349
+saved 8
+generation time: 14.826589107513s
+best indiv 1 with fitness: 402.499
+average fitness: 66.1565015
+php time: -0.0077428817749023s
+
+
+generation 350
+saved 6
+generation time: 16.072907209396s
+best indiv 1 with fitness: 402.499
+average fitness: 81.609607166667
+php time: -0.0073578357696533s
+
+
+generation 351
+saved 4
+generation time: 16.967081069946s
+best indiv 1 with fitness: 402.499
+average fitness: 78.740304166667
+php time: -0.0083928108215332s
+
+
+generation 352
+saved 10
+generation time: 15.38973402977s
+best indiv 1 with fitness: 402.499
+average fitness: 73.262275166667
+php time: -0.007908821105957s
+
+
+generation 353
+saved 6
+generation time: 15.958761930466s
+best indiv 1 with fitness: 402.499
+average fitness: 61.6080265
+php time: -0.012819051742554s
+
+
+generation 354
+saved 8
+generation time: 15.357897996902s
+best indiv 1 with fitness: 402.499
+average fitness: 55.01195075
+php time: -0.0083291530609131s
+
+
+generation 355
+saved 8
+generation time: 16.083990812302s
+best indiv 1 with fitness: 402.499
+average fitness: 36.930132483333
+php time: -0.0069701671600342s
+
+
+generation 356
+saved 2
+generation time: 17.590337991714s
+best indiv 1 with fitness: 402.499
+average fitness: 58.0084575
+php time: -0.008634090423584s
+
+
+generation 357
+saved 12
+generation time: 14.57856297493s
+best indiv 51 with fitness: 403.851
+average fitness: 75.361294166667
+php time: -0.0085210800170898s
+
+
+generation 358
+saved 10
+generation time: 15.652924060822s
+best indiv 1 with fitness: 403.851
+average fitness: 64.376021
+php time: -0.0081799030303955s
+
+
+generation 359
+saved 8
+generation time: 15.320113897324s
+best indiv 1 with fitness: 403.851
+average fitness: 52.067194716667
+php time: -0.0082650184631348s
+
+
+generation 360
+saved 8
+generation time: 15.700673103333s
+best indiv 1 with fitness: 403.851
+average fitness: 62.96268025
+php time: -0.007267951965332s
+
+
+generation 361
+saved 4
+generation time: 17.315068006516s
+best indiv 1 with fitness: 403.851
+average fitness: 62.133348833333
+php time: -0.0089521408081055s
+
+
+generation 362
+saved 12
+generation time: 14.79061293602s
+best indiv 1 with fitness: 403.851
+average fitness: 68.852916716667
+php time: -0.0082521438598633s
+
+
+generation 363
+saved 10
+generation time: 15.014192819595s
+best indiv 1 with fitness: 403.851
+average fitness: 72.702387031667
+php time: -0.0073533058166504s
+
+
+generation 364
+saved 4
+generation time: 17.005298852921s
+best indiv 1 with fitness: 403.851
+average fitness: 67.006657666667
+php time: -0.0069870948791504s
+
+
+generation 365
+saved 4
+generation time: 16.706754922867s
+best indiv 1 with fitness: 403.851
+average fitness: 64.47978865
+php time: -0.0074801445007324s
+
+
+generation 366
+saved 6
+generation time: 16.186110019684s
+best indiv 1 with fitness: 403.851
+average fitness: 60.53461
+php time: -0.0077459812164307s
+
+
+generation 367
+saved 6
+generation time: 16.165327072144s
+best indiv 10 with fitness: 434.104
+average fitness: 89.5049045
+php time: -0.0078258514404297s
+
+
+generation 368
+saved 6
+generation time: 15.681180000305s
+best indiv 1 with fitness: 434.104
+average fitness: 104.57407166667
+php time: -0.0080749988555908s
+
+
+generation 369
+saved 8
+generation time: 15.352437973022s
+best indiv 1 with fitness: 434.104
+average fitness: 83.2923935
+php time: -0.0083889961242676s
+
+
+generation 370
+saved 10
+generation time: 14.664047002792s
+best indiv 1 with fitness: 434.104
+average fitness: 103.2659865
+php time: -0.0081660747528076s
+
+
+generation 371
+saved 8
+generation time: 15.457982063293s
+best indiv 1 with fitness: 434.104
+average fitness: 83.8871981
+php time: -0.0068728923797607s
+
+
+generation 372
+saved 2
+generation time: 17.239791870117s
+best indiv 1 with fitness: 434.104
+average fitness: 69.534064166667
+php time: -0.0085480213165283s
+
+
+generation 373
+saved 12
+generation time: 14.549754858017s
+best indiv 1 with fitness: 434.104
+average fitness: 72.467492833333
+php time: -0.0082111358642578s
+
+
+generation 374
+saved 6
+generation time: 16.785107851028s
+best indiv 1 with fitness: 434.104
+average fitness: 60.713314345
+php time: -0.0077381134033203s
+
+
+generation 375
+saved 6
+generation time: 15.871413946152s
+best indiv 1 with fitness: 434.104
+average fitness: 61.618568233333
+php time: -0.0078921318054199s
+
+
+generation 376
+saved 8
+generation time: 16.192487001419s
+best indiv 1 with fitness: 434.104
+average fitness: 77.968208166667
+php time: -0.0074501037597656s
+
+
+generation 377
+saved 4
+generation time: 17.152204036713s
+best indiv 1 with fitness: 434.104
+average fitness: 76.456431
+php time: -0.0076038837432861s
+
+
+generation 378
+saved 6
+generation time: 16.285706043243s
+best indiv 1 with fitness: 434.104
+average fitness: 84.5793589
+php time: -0.0085849761962891s
+
+
+generation 379
+saved 12
+generation time: 14.968372106552s
+best indiv 1 with fitness: 434.104
+average fitness: 76.667809666667
+php time: -0.0077757835388184s
+
+
+generation 380
+saved 8
+generation time: 15.324409008026s
+best indiv 1 with fitness: 434.104
+average fitness: 81.294769666667
+php time: -0.0088889598846436s
+
+
+generation 381
+saved 14
+generation time: 13.46984910965s
+best indiv 1 with fitness: 434.104
+average fitness: 119.557879
+php time: -0.0089099407196045s
+
+
+generation 382
+saved 12
+generation time: 14.232439041138s
+best indiv 1 with fitness: 434.104
+average fitness: 129.00700023833
+php time: -0.0072968006134033s
+
+
+generation 383
+saved 6
+generation time: 16.234096050262s
+best indiv 1 with fitness: 434.104
+average fitness: 93.780101666667
+php time: -0.0085289478302002s
+
+
+generation 384
+saved 10
+generation time: 14.728736877441s
+best indiv 1 with fitness: 434.104
+average fitness: 63.953626333333
+php time: -0.0080282688140869s
+
+
+generation 385
+saved 10
+generation time: 15.014349222183s
+best indiv 1 with fitness: 434.104
+average fitness: 89.382456833333
+php time: -0.0076167583465576s
+
+
+generation 386
+saved 8
+generation time: 15.008197069168s
+best indiv 1 with fitness: 434.104
+average fitness: 103.28400433333
+php time: -0.0079569816589355s
+
+
+generation 387
+saved 8
+generation time: 14.784636974335s
+best indiv 1 with fitness: 434.104
+average fitness: 91.612060333333
+php time: -0.0076580047607422s
+
+
+generation 388
+saved 8
+generation time: 16.240486860275s
+best indiv 1 with fitness: 434.104
+average fitness: 85.907905433333
+php time: -0.0069022178649902s
+
+
+generation 389
+saved 2
+generation time: 17.438035011292s
+best indiv 1 with fitness: 434.104
+average fitness: 69.568602
+php time: -0.0080029964447021s
+
+
+generation 390
+saved 8
+generation time: 16.260859966278s
+best indiv 1 with fitness: 434.104
+average fitness: 74.0806821855
+php time: -0.0074038505554199s
+
+
+generation 391
+saved 4
+generation time: 16.676305055618s
+best indiv 1 with fitness: 434.104
+average fitness: 82.889599395167
+php time: -0.0095868110656738s
+
+
+generation 392
+saved 12
+generation time: 14.400069952011s
+best indiv 1 with fitness: 434.104
+average fitness: 91.121778833333
+php time: -0.0079410076141357s
+
+
+generation 393
+saved 8
+generation time: 15.919862985611s
+best indiv 1 with fitness: 434.104
+average fitness: 65.952324833333
+php time: -0.0086679458618164s
+
+
+generation 394
+saved 12
+generation time: 14.643999814987s
+best indiv 1 with fitness: 434.104
+average fitness: 82.408123333333
+php time: -0.0073480606079102s
+
+
+generation 395
+saved 4
+generation time: 16.867161989212s
+best indiv 1 with fitness: 434.104
+average fitness: 64.086744666667
+php time: -0.0074269771575928s
+
+
+generation 396
+saved 4
+generation time: 16.339038133621s
+best indiv 1 with fitness: 434.104
+average fitness: 77.808336616667
+php time: -0.0079178810119629s
+
+
+generation 397
+saved 8
+generation time: 15.527747154236s
+best indiv 1 with fitness: 434.104
+average fitness: 80.730282666667
+php time: -0.0078167915344238s
+
+
+generation 398
+saved 6
+generation time: 15.557774066925s
+best indiv 1 with fitness: 434.104
+average fitness: 89.737597
+php time: -0.0086169242858887s
+
+
+generation 399
+saved 12
+generation time: 13.903672933578s
+best indiv 1 with fitness: 434.104
+average fitness: 83.263131666667
+php time: -0.0081260204315186s
+
+
+generation 400
+saved 8
+generation time: 15.082038879395s
+best indiv 1 with fitness: 434.104
+average fitness: 67.432829316667
+php time: -0.0084061622619629s
+
+
+generation 401
+saved 10
+generation time: 14.849519014359s
+best indiv 1 with fitness: 434.104
+average fitness: 73.785881166667
+php time: -0.0077121257781982s
+
+
+generation 402
+saved 6
+generation time: 16.043282985687s
+best indiv 1 with fitness: 434.104
+average fitness: 56.9903816
+php time: -0.0069570541381836s
+
+
+generation 403
+saved 4
+generation time: 16.974200963974s
+best indiv 1 with fitness: 434.104
+average fitness: 58.6396387
+php time: -0.011775016784668s
+
+
+generation 404
+saved 6
+generation time: 16.84609913826s
+best indiv 1 with fitness: 434.104
+average fitness: 84.0677831
+php time: -0.0080978870391846s
+
+
+generation 405
+saved 8
+generation time: 16.159034967422s
+best indiv 1 with fitness: 434.104
+average fitness: 96.8565713
+php time: -0.0072450637817383s
+
+
+generation 406
+saved 4
+generation time: 17.010576963425s
+best indiv 4 with fitness: 471.557
+average fitness: 110.12319016667
+php time: -0.0077149868011475s
+
+
+generation 407
+saved 6
+generation time: 16.290597915649s
+best indiv 1 with fitness: 471.557
+average fitness: 93.3024875
+php time: -0.0084521770477295s
+
+
+generation 408
+saved 10
+generation time: 13.79935002327s
+best indiv 1 with fitness: 471.557
+average fitness: 110.0843045
+php time: -0.0083191394805908s
+
+
+generation 409
+saved 10
+generation time: 14.543292045593s
+best indiv 1 with fitness: 471.557
+average fitness: 94.920579
+php time: -0.0075170993804932s
+
+
+generation 410
+saved 4
+generation time: 16.251950025558s
+best indiv 1 with fitness: 471.557
+average fitness: 88.03679
+php time: -0.0090279579162598s
+
+
+generation 411
+saved 14
+generation time: 13.391951799393s
+best indiv 1 with fitness: 471.557
+average fitness: 83.01983655
+php time: -0.0083973407745361s
+
+
+generation 412
+saved 10
+generation time: 14.268296003342s
+best indiv 1 with fitness: 471.557
+average fitness: 91.8659735
+php time: -0.0080251693725586s
+
+
+generation 413
+saved 8
+generation time: 15.036949157715s
+best indiv 1 with fitness: 471.557
+average fitness: 119.13129533333
+php time: -0.0076737403869629s
+
+
+generation 414
+saved 6
+generation time: 15.642352819443s
+best indiv 1 with fitness: 471.557
+average fitness: 108.36791921667
+php time: -0.0077111721038818s
+
+
+generation 415
+saved 6
+generation time: 15.328552007675s
+best indiv 1 with fitness: 471.557
+average fitness: 93.200594666667
+php time: -0.0074648857116699s
+
+
+generation 416
+saved 4
+generation time: 16.237074136734s
+best indiv 1 with fitness: 471.557
+average fitness: 100.77710466667
+php time: -0.0075898170471191s
+
+
+generation 417
+saved 6
+generation time: 15.583751916885s
+best indiv 1 with fitness: 471.557
+average fitness: 71.683004666667
+php time: -0.0074219703674316s
+
+
+generation 418
+saved 4
+generation time: 16.420374155045s
+best indiv 1 with fitness: 471.557
+average fitness: 65.871579333333
+php time: -0.0091047286987305s
+
+
+generation 419
+saved 6
+generation time: 16.017489910126s
+best indiv 1 with fitness: 471.557
+average fitness: 88.180068333333
+php time: -0.0078921318054199s
+
+
+generation 420
+saved 8
+generation time: 15.047945976257s
+best indiv 1 with fitness: 471.557
+average fitness: 97.353820833333
+php time: -0.0081090927124023s
+
+
+generation 421
+saved 8
+generation time: 15.221349000931s
+best indiv 1 with fitness: 471.557
+average fitness: 99.682711333333
+php time: -0.0083858966827393s
+
+
+generation 422
+saved 10
+generation time: 14.574568986893s
+best indiv 1 with fitness: 471.557
+average fitness: 72.914215333333
+php time: -0.007565975189209s
+
+
+generation 423
+saved 6
+generation time: 15.429354906082s
+best indiv 1 with fitness: 471.557
+average fitness: 93.9075625
+php time: -0.017438173294067s
+
+
+generation 424
+saved 16
+generation time: 12.654571056366s
+best indiv 1 with fitness: 471.557
+average fitness: 93.658068
+php time: -0.0073928833007812s
+
+
+generation 425
+saved 6
+generation time: 15.580116987228s
+best indiv 1 with fitness: 471.557
+average fitness: 101.711547
+php time: -0.0085690021514893s
+
+
+generation 426
+saved 10
+generation time: 14.287150859833s
+best indiv 1 with fitness: 471.557
+average fitness: 91.177761833333
+php time: -0.0088381767272949s
+
+
+generation 427
+saved 12
+generation time: 13.972659826279s
+best indiv 1 with fitness: 471.557
+average fitness: 92.829819466667
+php time: -0.0080971717834473s
+
+
+generation 428
+saved 8
+generation time: 15.364326000214s
+best indiv 1 with fitness: 471.557
+average fitness: 84.562577833333
+php time: -0.0080161094665527s
+
+
+generation 429
+saved 8
+generation time: 15.263391971588s
+best indiv 1 with fitness: 471.557
+average fitness: 118.02480816667
+php time: -0.0069649219512939s
+
+
+generation 430
+saved 2
+generation time: 17.149842023849s
+best indiv 1 with fitness: 471.557
+average fitness: 77.037774333333
+php time: -0.012154817581177s
+
+
+generation 431
+saved 12
+generation time: 13.826833963394s
+best indiv 1 with fitness: 471.557
+average fitness: 82.429170066667
+php time: -0.0086588859558105s
+
+
+generation 432
+saved 12
+generation time: 13.547176122665s
+best indiv 1 with fitness: 471.557
+average fitness: 96.351183666667
+php time: -0.0078809261322021s
+
+
+generation 433
+saved 8
+generation time: 15.612555980682s
+best indiv 1 with fitness: 471.557
+average fitness: 103.75559283333
+php time: -0.0086739063262939s
+
+
+generation 434
+saved 12
+generation time: 14.057008981705s
+best indiv 1 with fitness: 471.557
+average fitness: 119.01814446667
+php time: -0.0081551074981689s
+
+
+generation 435
+saved 10
+generation time: 14.607428073883s
+best indiv 1 with fitness: 471.557
+average fitness: 95.601066166667
+php time: -0.0078749656677246s
+
+
+generation 436
+saved 8
+generation time: 15.326714992523s
+best indiv 1 with fitness: 471.557
+average fitness: 93.128023333333
+php time: -0.0081660747528076s
+
+
+generation 437
+saved 10
+generation time: 14.450300931931s
+best indiv 1 with fitness: 471.557
+average fitness: 78.481371766667
+php time: -0.0096440315246582s
+
+
+generation 438
+saved 16
+generation time: 13.337982177734s
+best indiv 1 with fitness: 471.557
+average fitness: 95.40662235
+php time: -0.011969804763794s
+
+
+generation 439
+saved 10
+generation time: 14.66895198822s
+best indiv 1 with fitness: 471.557
+average fitness: 81.028267333333
+php time: -0.0075159072875977s
+
+
+generation 440
+saved 4
+generation time: 17.105763912201s
+best indiv 1 with fitness: 471.557
+average fitness: 67.596638
+php time: -0.0073561668395996s
+
+
+generation 441
+saved 6
+generation time: 15.825860023499s
+best indiv 1 with fitness: 471.557
+average fitness: 88.045261666667
+php time: -0.0096461772918701s
+
+
+generation 442
+saved 4
+generation time: 15.998251914978s
+best indiv 1 with fitness: 471.557
+average fitness: 66.4706712
+php time: -0.0073010921478271s
+
+
+generation 443
+saved 4
+generation time: 16.986236810684s
+best indiv 1 with fitness: 471.557
+average fitness: 72.0095846
+php time: -0.011076211929321s
+
+
+generation 444
+saved 10
+generation time: 15.038990974426s
+best indiv 1 with fitness: 471.557
+average fitness: 76.207132
+php time: -0.0085229873657227s
+
+
+generation 445
+saved 12
+generation time: 14.21616101265s
+best indiv 1 with fitness: 471.557
+average fitness: 75.282803
+php time: -0.008073091506958s
+
+
+generation 446
+saved 8
+generation time: 15.374020814896s
+best indiv 1 with fitness: 471.557
+average fitness: 74.301461866667
+php time: -0.0085692405700684s
+
+
+generation 447
+saved 10
+generation time: 14.531260967255s
+best indiv 1 with fitness: 471.557
+average fitness: 68.707611125
+php time: -0.007594108581543s
+
+
+generation 448
+saved 6
+generation time: 15.910133123398s
+best indiv 1 with fitness: 471.557
+average fitness: 63.9339835
+php time: -0.007194995880127s
+
+
+generation 449
+saved 2
+generation time: 17.2128469944s
+best indiv 1 with fitness: 471.557
+average fitness: 52.256531466667
+php time: -0.0078690052032471s
+
+
+generation 450
+saved 8
+generation time: 15.413786888123s
+best indiv 1 with fitness: 471.557
+average fitness: 58.896948216667
+php time: -0.0073091983795166s
+
+
+generation 451
+saved 6
+generation time: 15.280388116837s
+best indiv 1 with fitness: 471.557
+average fitness: 70.349773333333
+php time: -0.0075628757476807s
+
+
+generation 452
+saved 6
+generation time: 15.336209058762s
+best indiv 1 with fitness: 471.557
+average fitness: 86.774421666667
+php time: -0.0085771083831787s
+
+
+generation 453
+saved 12
+generation time: 14.217778921127s
+best indiv 1 with fitness: 471.557
+average fitness: 82.8428785
+php time: -0.0071060657501221s
+
+
+generation 454
+saved 2
+generation time: 16.407618999481s
+best indiv 1 with fitness: 471.557
+average fitness: 85.3966635
+php time: -0.0077989101409912s
+
+
+generation 455
+saved 6
+generation time: 16.076542854309s
+best indiv 1 with fitness: 471.557
+average fitness: 65.90988065
+php time: -0.0076441764831543s
+
+
+generation 456
+saved 6
+generation time: 16.112883090973s
+best indiv 1 with fitness: 471.557
+average fitness: 88.911213633333
+php time: -0.0076777935028076s
+
+
+generation 457
+saved 6
+generation time: 14.647594928741s
+best indiv 1 with fitness: 471.557
+average fitness: 92.574813866667
+php time: -0.0073831081390381s
+
+
+generation 458
+saved 4
+generation time: 16.043462991714s
+best indiv 1 with fitness: 471.557
+average fitness: 107.92027383333
+php time: -0.007011890411377s
+
+
+generation 459
+saved 4
+generation time: 16.823656082153s
+best indiv 6 with fitness: 474.495
+average fitness: 72.553773166667
+php time: -0.0081748962402344s
+
+
+generation 460
+saved 10
+generation time: 15.082751989365s
+best indiv 1 with fitness: 474.495
+average fitness: 58.598227
+php time: -0.009552001953125s
+
+
+generation 461
+saved 12
+generation time: 13.93079996109s
+best indiv 1 with fitness: 474.495
+average fitness: 71.602974433333
+php time: -0.0082099437713623s
+
+
+generation 462
+saved 10
+generation time: 15.025367021561s
+best indiv 1 with fitness: 474.495
+average fitness: 69.780265333333
+php time: -0.0093109607696533s
+
+
+generation 463
+saved 6
+generation time: 15.856640100479s
+best indiv 1 with fitness: 474.495
+average fitness: 63.725957083333
+php time: -0.011022806167603s
+
+
+generation 464
+saved 8
+generation time: 16.431499004364s
+best indiv 1 with fitness: 474.495
+average fitness: 74.16658855
+php time: -0.0086319446563721s
+
+
+generation 465
+saved 12
+generation time: 14.576611995697s
+best indiv 1 with fitness: 474.495
+average fitness: 90.4187655
+php time: -0.0084888935089111s
+
+
+generation 466
+saved 10
+generation time: 14.747750043869s
+best indiv 1 with fitness: 474.495
+average fitness: 123.33020566667
+php time: -0.0075640678405762s
+
+
+generation 467
+saved 6
+generation time: 16.173183917999s
+best indiv 1 with fitness: 474.495
+average fitness: 118.67269066667
+php time: -0.0081930160522461s
+
+
+generation 468
+saved 8
+generation time: 15.712138175964s
+best indiv 1 with fitness: 474.495
+average fitness: 130.62828933333
+php time: -0.01457667350769s
+
+
+generation 469
+saved 6
+generation time: 15.948522806168s
+best indiv 1 with fitness: 474.495
+average fitness: 135.8580455
+php time: -0.007817268371582s
+
+
+generation 470
+saved 6
+generation time: 16.134313106537s
+best indiv 1 with fitness: 474.495
+average fitness: 103.46405908333
+php time: -0.0085408687591553s
+
+
+generation 471
+saved 12
+generation time: 14.282100915909s
+best indiv 1 with fitness: 474.495
+average fitness: 106.0092559
+php time: -0.0077879428863525s
+
+
+generation 472
+saved 6
+generation time: 15.934010028839s
+best indiv 1 with fitness: 474.495
+average fitness: 88.175485
+php time: -0.0076711177825928s
+
+
+generation 473
+saved 8
+generation time: 15.503849029541s
+best indiv 47 with fitness: 501.306
+average fitness: 123.001685
+php time: -0.0072391033172607s
+
+
+generation 474
+saved 4
+generation time: 16.547086000443s
+best indiv 1 with fitness: 501.306
+average fitness: 74.9119955
+php time: -0.0091080665588379s
+
+
+generation 475
+saved 14
+generation time: 13.676023960114s
+best indiv 1 with fitness: 501.306
+average fitness: 104.50138166667
+php time: -0.007559061050415s
+
+
+generation 476
+saved 6
+generation time: 15.769801139832s
+best indiv 1 with fitness: 501.306
+average fitness: 95.876221166667
+php time: -0.0075428485870361s
+
+
+generation 477
+saved 6
+generation time: 15.904138088226s
+best indiv 1 with fitness: 501.306
+average fitness: 102.95306878333
+php time: -0.0081968307495117s
+
+
+generation 478
+saved 8
+generation time: 15.292259931564s
+best indiv 1 with fitness: 501.306
+average fitness: 95.903877583333
+php time: -0.0084400177001953s
+
+
+generation 479
+saved 10
+generation time: 14.673504114151s
+best indiv 1 with fitness: 501.306
+average fitness: 111.78165916667
+php time: -0.0072689056396484s
+
+
+generation 480
+saved 4
+generation time: 15.923653125763s
+best indiv 1 with fitness: 501.306
+average fitness: 106.2813146
+php time: -0.0076329708099365s
+
+
+generation 481
+saved 6
+generation time: 15.83766412735s
+best indiv 1 with fitness: 501.306
+average fitness: 104.631111
+php time: -0.0083489418029785s
+
+
+generation 482
+saved 10
+generation time: 14.937005996704s
+best indiv 1 with fitness: 501.306
+average fitness: 72.11253955
+php time: -0.013772010803223s
+
+
+generation 483
+saved 12
+generation time: 14.297670125961s
+best indiv 1 with fitness: 501.306
+average fitness: 91.856413833333
+php time: -0.0075206756591797s
+
+
+generation 484
+saved 6
+generation time: 15.969319105148s
+best indiv 1 with fitness: 501.306
+average fitness: 89.876609833333
+php time: -0.0084969997406006s
+
+
+generation 485
+saved 10
+generation time: 15.094874858856s
+best indiv 1 with fitness: 501.306
+average fitness: 83.052329183333
+php time: -0.007831335067749s
+
+
+generation 486
+saved 6
+generation time: 15.761561870575s
+best indiv 1 with fitness: 501.306
+average fitness: 73.057987666667
+php time: -0.0070450305938721s
+
+
+generation 487
+saved 2
+generation time: 16.315453052521s
+best indiv 1 with fitness: 501.306
+average fitness: 58.203612621667
+php time: -0.0071480274200439s
+
+
+generation 488
+saved 4
+generation time: 16.649701118469s
+best indiv 1 with fitness: 501.306
+average fitness: 69.608026166667
+php time: -0.0077247619628906s
+
+
+generation 489
+saved 8
+generation time: 15.336188077927s
+best indiv 1 with fitness: 501.306
+average fitness: 73.503924333333
+php time: -0.0076179504394531s
+
+
+generation 490
+saved 6
+generation time: 16.924851179123s
+best indiv 1 with fitness: 501.306
+average fitness: 75.050737666667
+php time: -0.0078718662261963s
+
+
+generation 491
+saved 6
+generation time: 16.205389022827s
+best indiv 1 with fitness: 501.306
+average fitness: 75.391501911667
+php time: -0.0086100101470947s
+
+
+generation 492
+saved 10
+generation time: 15.484644889832s
+best indiv 1 with fitness: 501.306
+average fitness: 86.1480135
+php time: -0.0072011947631836s
+
+
+generation 493
+saved 4
+generation time: 16.319468021393s
+best indiv 1 with fitness: 501.306
+average fitness: 72.511563666667
+php time: -0.0078639984130859s
+
+
+generation 494
+saved 6
+generation time: 16.322778940201s
+best indiv 1 with fitness: 501.306
+average fitness: 95.779403716667
+php time: -0.0092661380767822s
+
+
+generation 495
+saved 16
+generation time: 13.039415836334s
+best indiv 1 with fitness: 501.306
+average fitness: 114.58173793333
+php time: -0.0075170993804932s
+
+
+generation 496
+saved 6
+generation time: 15.491091012955s
+best indiv 1 with fitness: 501.306
+average fitness: 86.192693333333
+php time: -0.0080990791320801s
+
+
+generation 497
+saved 8
+generation time: 15.254684925079s
+best indiv 1 with fitness: 501.306
+average fitness: 101.73592966667
+php time: -0.0086421966552734s
+
+
+generation 498
+saved 12
+generation time: 14.421871900558s
+best indiv 1 with fitness: 501.306
+average fitness: 98.858702166667
+php time: -0.0075252056121826s
+
+
+generation 499
+saved 6
+generation time: 15.720295906067s
+best indiv 1 with fitness: 501.306
+average fitness: 84.549395833333
+php time: -0.0090451240539551s
+
+
+generation 500
+saved 6
+generation time: 15.888065099716s
+best indiv 1 with fitness: 501.306
+average fitness: 85.930737
+php time: -0.0074799060821533s
+
+
+generation 501
+saved 4
+generation time: 16.432124853134s
+best indiv 1 with fitness: 501.306
+average fitness: 61.092572016667
+php time: -0.00704026222229s
+
+
+generation 502
+saved 4
+generation time: 16.837453126907s
+best indiv 1 with fitness: 501.306
+average fitness: 80.63564445
+php time: -0.008469820022583s
+
+
+generation 503
+saved 6
+generation time: 15.918034076691s
+best indiv 1 with fitness: 501.306
+average fitness: 76.886767166667
+php time: -0.0074479579925537s
+
+
+generation 504
+saved 4
+generation time: 16.815006017685s
+best indiv 1 with fitness: 501.306
+average fitness: 83.419263
+php time: -0.008275032043457s
+
+
+generation 505
+saved 10
+generation time: 15.070708990097s
+best indiv 1 with fitness: 501.306
+average fitness: 89.667118333333
+php time: -0.0077099800109863s
+
+
+generation 506
+saved 6
+generation time: 16.00022482872s
+best indiv 1 with fitness: 501.306
+average fitness: 76.158139
+php time: -0.0081570148468018s
+
+
+generation 507
+saved 8
+generation time: 16.403704166412s
+best indiv 1 with fitness: 501.306
+average fitness: 63.7132128
+php time: -0.0075500011444092s
+
+
+generation 508
+saved 4
+generation time: 16.712610960007s
+best indiv 1 with fitness: 501.306
+average fitness: 55.493292533333
+php time: -0.0074620246887207s
+
+
+generation 509
+saved 6
+generation time: 16.139183998108s
+best indiv 1 with fitness: 501.306
+average fitness: 73.26859065
+php time: -0.0082731246948242s
+
+
+generation 510
+saved 10
+generation time: 14.620116949081s
+best indiv 1 with fitness: 501.306
+average fitness: 73.4712267
+php time: -0.0078568458557129s
+
+
+generation 511
+saved 6
+generation time: 16.038645982742s
+best indiv 1 with fitness: 501.306
+average fitness: 74.022549833333
+php time: -0.0090382099151611s
+
+
+generation 512
+saved 14
+generation time: 13.134183883667s
+best indiv 1 with fitness: 501.306
+average fitness: 88.485799833333
+php time: -0.0080890655517578s
+
+
+generation 513
+saved 8
+generation time: 15.545830965042s
+best indiv 1 with fitness: 501.306
+average fitness: 64.574800783333
+php time: -0.0077230930328369s
+
+
+generation 514
+saved 6
+generation time: 15.92288517952s
+best indiv 1 with fitness: 501.306
+average fitness: 60.076604666667
+php time: -0.0078616142272949s
+
+
+generation 515
+saved 8
+generation time: 15.349800825119s
+best indiv 1 with fitness: 501.306
+average fitness: 73.6420165
+php time: -0.0084671974182129s
+
+
+generation 516
+saved 10
+generation time: 14.80716085434s
+best indiv 1 with fitness: 501.306
+average fitness: 91.714342833333
+php time: -0.006810188293457s
+
+
+generation 517
+saved 2
+generation time: 16.834640979767s
+best indiv 1 with fitness: 501.306
+average fitness: 80.309363333333
+php time: -0.0081300735473633s
+
+
+generation 518
+saved 8
+generation time: 15.585621118546s
+best indiv 1 with fitness: 501.306
+average fitness: 76.930167
+php time: -0.0078239440917969s
+
+
+generation 519
+saved 6
+generation time: 15.883894920349s
+best indiv 1 with fitness: 501.306
+average fitness: 101.2190708
+php time: -0.0087790489196777s
+
+
+generation 520
+saved 12
+generation time: 14.019115924835s
+best indiv 1 with fitness: 501.306
+average fitness: 112.94679233333
+php time: -0.0084362030029297s
+
+
+generation 521
+saved 6
+generation time: 15.680138111115s
+best indiv 1 with fitness: 501.306
+average fitness: 130.83883438333
+php time: -0.0079789161682129s
+
+
+generation 522
+saved 8
+generation time: 15.117052078247s
+best indiv 1 with fitness: 501.306
+average fitness: 145.2385201
+php time: -0.0074870586395264s
+
+
+generation 523
+saved 4
+generation time: 16.769129037857s
+best indiv 1 with fitness: 501.306
+average fitness: 109.74547983333
+php time: -0.008821964263916s
+
+
+generation 524
+saved 12
+generation time: 14.11160993576s
+best indiv 1 with fitness: 501.306
+average fitness: 115.24077091667
+php time: -0.0086162090301514s
+
+
+generation 525
+saved 10
+generation time: 15.236135005951s
+best indiv 1 with fitness: 501.306
+average fitness: 77.099429946667
+php time: -0.009552001953125s
+
+
+generation 526
+saved 16
+generation time: 12.672278881073s
+best indiv 1 with fitness: 501.306
+average fitness: 91.259560183333
+php time: -0.0089352130889893s
+
+
+generation 527
+saved 14
+generation time: 14.001252889633s
+best indiv 1 with fitness: 501.306
+average fitness: 96.56503405
+php time: -0.0081140995025635s
+
+
+generation 528
+saved 10
+generation time: 14.832822084427s
+best indiv 1 with fitness: 501.306
+average fitness: 130.34341116667
+php time: -0.0076069831848145s
+
+
+generation 529
+saved 6
+generation time: 15.692337989807s
+best indiv 1 with fitness: 501.306
+average fitness: 99.7357331
+php time: -0.0083980560302734s
+
+
+generation 530
+saved 8
+generation time: 15.274677038193s
+best indiv 1 with fitness: 501.306
+average fitness: 100.4271585
+php time: -0.006943941116333s
+
+
+generation 531
+saved 4
+generation time: 16.164183855057s
+best indiv 1 with fitness: 501.306
+average fitness: 73.528344416667
+php time: -0.00748610496521s
+
+
+generation 532
+saved 4
+generation time: 15.706790924072s
+best indiv 1 with fitness: 501.306
+average fitness: 73.80459335
+php time: -0.0073139667510986s
+
+
+generation 533
+saved 4
+generation time: 16.309895992279s
+best indiv 1 with fitness: 501.306
+average fitness: 68.019898831667
+php time: -0.0087370872497559s
+
+
+generation 534
+saved 12
+generation time: 14.058057069778s
+best indiv 1 with fitness: 501.306
+average fitness: 82.884811666667
+php time: -0.0080249309539795s
+
+
+generation 535
+saved 8
+generation time: 15.150174856186s
+best indiv 1 with fitness: 501.306
+average fitness: 96.286980166667
+php time: -0.0068290233612061s
+
+
+generation 536
+saved 2
+generation time: 17.612075090408s
+best indiv 1 with fitness: 501.306
+average fitness: 67.785656666667
+php time: -0.0071408748626709s
+
+
+generation 537
+saved 4
+generation time: 15.640221834183s
+best indiv 1 with fitness: 501.306
+average fitness: 44.675429333333
+php time: -0.0085892677307129s
+
+
+generation 538
+saved 12
+generation time: 14.023797035217s
+best indiv 1 with fitness: 501.306
+average fitness: 59.638732333333
+php time: -0.0071828365325928s
+
+
+generation 539
+saved 2
+generation time: 16.872819185257s
+best indiv 1 with fitness: 501.306
+average fitness: 78.273228333333
+php time: -0.0083847045898438s
+
+
+generation 540
+saved 8
+generation time: 15.279258966446s
+best indiv 1 with fitness: 501.306
+average fitness: 79.61627565
+php time: -0.0068721771240234s
+
+
+generation 541
+saved 2
+generation time: 16.752606868744s
+best indiv 1 with fitness: 501.306
+average fitness: 70.8312745
+php time: -0.0093092918395996s
+
+
+generation 542
+saved 16
+generation time: 13.095736026764s
+best indiv 1 with fitness: 501.306
+average fitness: 85.189077833333
+php time: -0.0079879760742188s
+
+
+generation 543
+saved 8
+generation time: 15.772309064865s
+best indiv 1 with fitness: 501.306
+average fitness: 56.607129333333
+php time: -0.0079951286315918s
+
+
+generation 544
+saved 8
+generation time: 15.819637060165s
+best indiv 1 with fitness: 501.306
+average fitness: 47.745024333333
+php time: -0.0084209442138672s
+
+
+generation 545
+saved 10
+generation time: 14.832278013229s
+best indiv 1 with fitness: 501.306
+average fitness: 99.367549133333
+php time: -0.0085430145263672s
+
+
+generation 546
+saved 12
+generation time: 14.31717300415s
+best indiv 1 with fitness: 501.306
+average fitness: 125.83953333333
+php time: -0.007561206817627s
+
+
+generation 547
+saved 6
+generation time: 16.072273015976s
+best indiv 1 with fitness: 501.306
+average fitness: 89.551978666667
+php time: -0.0086350440979004s
+
+
+generation 548
+saved 12
+generation time: 14.011075019836s
+best indiv 1 with fitness: 501.306
+average fitness: 97.994582333333
+php time: -0.0079259872436523s
+
+
+generation 549
+saved 8
+generation time: 14.736912965775s
+best indiv 1 with fitness: 501.306
+average fitness: 109.754425
+php time: -0.0075888633728027s
+
+
+generation 550
+saved 6
+generation time: 16.091006040573s
+best indiv 1 with fitness: 501.306
+average fitness: 93.1094715
+php time: -0.0077919960021973s
+
+
+generation 551
+saved 6
+generation time: 15.759971141815s
+best indiv 1 with fitness: 501.306
+average fitness: 95.7865227
+php time: -0.012243747711182s
+
+
+generation 552
+saved 12
+generation time: 14.195000886917s
+best indiv 1 with fitness: 501.306
+average fitness: 86.04524354
+php time: -0.0078420639038086s
+
+
+generation 553
+saved 6
+generation time: 16.381523132324s
+best indiv 1 with fitness: 501.306
+average fitness: 67.22254925
+php time: -0.0076978206634521s
+
+
+generation 554
+saved 6
+generation time: 15.815648078918s
+best indiv 1 with fitness: 501.306
+average fitness: 68.803236166667
+php time: -0.0089008808135986s
+
+
+generation 555
+saved 14
+generation time: 14.386039018631s
+best indiv 1 with fitness: 501.306
+average fitness: 69.155811
+php time: -0.0079939365386963s
+
+
+generation 556
+saved 8
+generation time: 15.925297021866s
+best indiv 1 with fitness: 501.306
+average fitness: 78.639775866667
+php time: -0.0072700977325439s
+
+
+generation 557
+saved 4
+generation time: 16.98402094841s
+best indiv 1 with fitness: 501.306
+average fitness: 98.779761616667
+php time: -0.0069830417633057s
+
+
+generation 558
+saved 2
+generation time: 17.22590303421s
+best indiv 1 with fitness: 501.306
+average fitness: 91.331336916667
+php time: -0.0094311237335205s
+
+
+generation 559
+saved 16
+generation time: 13.140615940094s
+best indiv 1 with fitness: 501.306
+average fitness: 79.286222333333
+php time: -0.0078949928283691s
+
+
+generation 560
+saved 6
+generation time: 16.049454927444s
+best indiv 1 with fitness: 501.306
+average fitness: 75.052596066667
+php time: -0.0075712203979492s
+
+
+generation 561
+saved 6
+generation time: 15.354127168655s
+best indiv 1 with fitness: 501.306
+average fitness: 100.6537455
+php time: -0.0071539878845215s
+
+
+generation 562
+saved 2
+generation time: 16.84034204483s
+best indiv 1 with fitness: 501.306
+average fitness: 85.800848903333
+php time: -0.0091807842254639s
+
+
+generation 563
+saved 14
+generation time: 13.819673061371s
+best indiv 1 with fitness: 501.306
+average fitness: 65.521241833333
+php time: -0.008328914642334s
+
+
+generation 564
+saved 10
+generation time: 14.554124832153s
+best indiv 1 with fitness: 501.306
+average fitness: 71.35081671
+php time: -0.008195161819458s
+
+
+generation 565
+saved 8
+generation time: 15.342056035995s
+best indiv 1 with fitness: 501.306
+average fitness: 68.734723533333
+php time: -0.0077428817749023s
+
+
+generation 566
+saved 6
+generation time: 15.53250002861s
+best indiv 1 with fitness: 501.306
+average fitness: 101.3828005
+php time: -0.0073699951171875s
+
+
+generation 567
+saved 4
+generation time: 16.392379045486s
+best indiv 1 with fitness: 501.306
+average fitness: 111.0147914
+php time: -0.0079951286315918s
+
+
+generation 568
+saved 8
+generation time: 15.235441923141s
+best indiv 1 with fitness: 501.306
+average fitness: 107.26670466667
+php time: -0.0081322193145752s
+
+
+generation 569
+saved 8
+generation time: 15.599776983261s
+best indiv 1 with fitness: 501.306
+average fitness: 104.5387136
+php time: -0.0082108974456787s
+
+
+generation 570
+saved 10
+generation time: 14.460297107697s
+best indiv 1 with fitness: 501.306
+average fitness: 118.17079416667
+php time: -0.0080459117889404s
+
+
+generation 571
+saved 8
+generation time: 15.301288127899s
+best indiv 1 with fitness: 501.306
+average fitness: 126.86682755
+php time: -0.0083940029144287s
+
+
+generation 572
+saved 10
+generation time: 14.145937919617s
+best indiv 1 with fitness: 501.306
+average fitness: 160.52096038333
+php time: -0.0076320171356201s
+
+
+generation 573
+saved 6
+generation time: 15.548330068588s
+best indiv 1 with fitness: 501.306
+average fitness: 132.92313916667
+php time: -0.0076918601989746s
+
+
+generation 574
+saved 8
+generation time: 15.49463891983s
+best indiv 1 with fitness: 501.306
+average fitness: 104.83190583333
+php time: -0.0073630809783936s
+
+
+generation 575
+saved 6
+generation time: 16.171278953552s
+best indiv 1 with fitness: 501.306
+average fitness: 100.66275688333
+php time: -0.0088481903076172s
+
+
+generation 576
+saved 4
+generation time: 16.501605033875s
+best indiv 1 with fitness: 501.306
+average fitness: 84.4048875
+php time: -0.015459060668945s
+
+
+generation 577
+saved 12
+generation time: 13.943846940994s
+best indiv 1 with fitness: 501.306
+average fitness: 66.55244175
+php time: -0.0083680152893066s
+
+
+generation 578
+saved 10
+generation time: 14.78417301178s
+best indiv 1 with fitness: 501.306
+average fitness: 69.808560166667
+php time: -0.0073578357696533s
+
+
+generation 579
+saved 6
+generation time: 15.623198986053s
+best indiv 1 with fitness: 501.306
+average fitness: 73.018938166667
+php time: -0.0096540451049805s
+
+
+generation 580
+saved 8
+generation time: 15.462166070938s
+best indiv 1 with fitness: 501.306
+average fitness: 73.0884165
+php time: -0.012650012969971s
+
+
+generation 581
+saved 6
+generation time: 16.108243942261s
+best indiv 1 with fitness: 501.306
+average fitness: 86.665495833333
+php time: -0.00913405418396s
+
+
+generation 582
+saved 14
+generation time: 14.168450117111s
+best indiv 1 with fitness: 501.306
+average fitness: 86.876005833333
+php time: -0.0078718662261963s
+
+
+generation 583
+saved 8
+generation time: 15.76139497757s
+best indiv 1 with fitness: 501.306
+average fitness: 66.899258466667
+php time: -0.0085301399230957s
+
+
+generation 584
+saved 10
+generation time: 15.250731945038s
+best indiv 1 with fitness: 501.306
+average fitness: 54.997993233333
+php time: -0.0069241523742676s
+
+
+generation 585
+saved 2
+generation time: 17.137622833252s
+best indiv 1 with fitness: 501.306
+average fitness: 83.3620685
+php time: -0.0079200267791748s
+
+
+generation 586
+saved 8
+generation time: 15.424804925919s
+best indiv 1 with fitness: 501.306
+average fitness: 76.492923
+php time: -0.0082271099090576s
+
+
+generation 587
+saved 10
+generation time: 14.56450009346s
+best indiv 1 with fitness: 501.306
+average fitness: 67.901502766667
+php time: -0.0080790519714355s
+
+
+generation 588
+saved 8
+generation time: 15.014485120773s
+best indiv 1 with fitness: 501.306
+average fitness: 89.09571
+php time: -0.009829044342041s
+
+
+generation 589
+saved 18
+generation time: 12.194602012634s
+best indiv 1 with fitness: 501.306
+average fitness: 73.155638666667
+php time: -0.0072968006134033s
+
+
+generation 590
+saved 4
+generation time: 16.487415075302s
+best indiv 1 with fitness: 501.306
+average fitness: 68.641932833333
+php time: -0.0075349807739258s
+
+
+generation 591
+saved 6
+generation time: 16.474312067032s
+best indiv 1 with fitness: 501.306
+average fitness: 81.264124666667
+php time: -0.0077898502349854s
+
+
+generation 592
+saved 6
+generation time: 16.259916067123s
+best indiv 1 with fitness: 501.306
+average fitness: 102.4133585
+php time: -0.007429838180542s
+
+
+generation 593
+saved 4
+generation time: 16.344711065292s
+best indiv 1 with fitness: 501.306
+average fitness: 90.665213833333
+php time: -0.0098490715026855s
+
+
+generation 594
+saved 10
+generation time: 14.68733382225s
+best indiv 1 with fitness: 501.306
+average fitness: 81.103195833333
+php time: -0.0083601474761963s
+
+
+generation 595
+saved 10
+generation time: 14.878894090652s
+best indiv 1 with fitness: 501.306
+average fitness: 74.421198166667
+php time: -0.011725902557373s
+
+
+generation 596
+saved 16
+generation time: 13.389972925186s
+best indiv 1 with fitness: 501.306
+average fitness: 85.737885
+php time: -0.0082950592041016s
+
+
+generation 597
+saved 8
+generation time: 15.100249052048s
+best indiv 1 with fitness: 501.306
+average fitness: 83.487141833333
+php time: -0.0075869560241699s
+
+
+generation 598
+saved 6
+generation time: 15.575709104538s
+best indiv 1 with fitness: 501.306
+average fitness: 90.166317166667
+php time: -0.007943868637085s
+
+
+generation 599
+saved 6
+generation time: 15.639375925064s
+best indiv 1 with fitness: 501.306
+average fitness: 95.731073466667
+php time: -0.0071640014648438s
+
+
+generation 600
+saved 2
+generation time: 16.778419971466s
+best indiv 1 with fitness: 501.306
+average fitness: 84.275039566667
+php time: -0.0086801052093506s
+
+
+generation 601
+saved 12
+generation time: 13.941652059555s
+best indiv 1 with fitness: 501.306
+average fitness: 110.33588266667
+php time: -0.0074810981750488s
+
+
+generation 602
+saved 4
+generation time: 16.029923200607s
+best indiv 1 with fitness: 501.306
+average fitness: 99.034913735
+php time: -0.0095338821411133s
+
+
+generation 603
+saved 16
+generation time: 13.310628175735s
+best indiv 1 with fitness: 501.306
+average fitness: 101.77697533333
+php time: -0.0079188346862793s
+
+
+generation 604
+saved 6
+generation time: 15.509198904037s
+best indiv 1 with fitness: 501.306
+average fitness: 105.87560233333
+php time: -0.0072329044342041s
+
+
+generation 605
+saved 4
+generation time: 16.126216888428s
+best indiv 1 with fitness: 501.306
+average fitness: 69.113380833333
+php time: -0.0072810649871826s
+
+
+generation 606
+saved 4
+generation time: 17.174772977829s
+best indiv 1 with fitness: 501.306
+average fitness: 59.800467
+php time: -0.0072410106658936s
+
+
+generation 607
+saved 4
+generation time: 17.08212518692s
+best indiv 1 with fitness: 501.306
+average fitness: 52.9210685
+php time: -0.0080699920654297s
+
+
+generation 608
+saved 8
+generation time: 15.03818488121s
+best indiv 1 with fitness: 501.306
+average fitness: 43.6954966
+php time: -0.0074911117553711s
+
+
+generation 609
+saved 4
+generation time: 16.599323987961s
+best indiv 1 with fitness: 501.306
+average fitness: 47.069576183333
+php time: -0.0077989101409912s
+
+
+generation 610
+saved 6
+generation time: 15.662909984589s
+best indiv 1 with fitness: 501.306
+average fitness: 61.14316085
+php time: -0.0085470676422119s
+
+
+generation 611
+saved 10
+generation time: 14.512032032013s
+best indiv 1 with fitness: 501.306
+average fitness: 91.463520833333
+php time: -0.007321834564209s
+
+
+generation 612
+saved 4
+generation time: 17.010875940323s
+best indiv 1 with fitness: 501.306
+average fitness: 60.446666333333
+php time: -0.0077810287475586s
+
+
+generation 613
+saved 6
+generation time: 16.29606294632s
+best indiv 1 with fitness: 501.306
+average fitness: 78.955922233333
+php time: -0.0081400871276855s
+
+
+generation 614
+saved 8
+generation time: 15.448240995407s
+best indiv 1 with fitness: 501.306
+average fitness: 74.748338
+php time: -0.007565975189209s
+
+
+generation 615
+saved 6
+generation time: 16.732228040695s
+best indiv 1 with fitness: 501.306
+average fitness: 70.677367166667
+php time: -0.0078468322753906s
+
+
+generation 616
+saved 6
+generation time: 15.574049949646s
+best indiv 1 with fitness: 501.306
+average fitness: 72.719049
+php time: -0.0078129768371582s
+
+
+generation 617
+saved 6
+generation time: 15.81264090538s
+best indiv 1 with fitness: 501.306
+average fitness: 95.98093855
+php time: -0.0081441402435303s
+
+
+generation 618
+saved 8
+generation time: 15.284445047379s
+best indiv 1 with fitness: 501.306
+average fitness: 115.00806061667
+php time: -0.0084309577941895s
+
+
+generation 619
+saved 10
+generation time: 14.487088918686s
+best indiv 1 with fitness: 501.306
+average fitness: 152.28295733333
+php time: -0.0079929828643799s
+
+
+generation 620
+saved 8
+generation time: 15.745859146118s
+best indiv 1 with fitness: 501.306
+average fitness: 99.2254607
+php time: -0.0070130825042725s
+
+
+generation 621
+saved 2
+generation time: 17.227373123169s
+best indiv 1 with fitness: 501.306
+average fitness: 95.148186833333
+php time: -0.0084919929504395s
+
+
+generation 622
+saved 10
+generation time: 14.645487070084s
+best indiv 1 with fitness: 501.306
+average fitness: 95.135947
+php time: -0.0076007843017578s
+
+
+generation 623
+saved 6
+generation time: 16.299669027328s
+best indiv 1 with fitness: 501.306
+average fitness: 102.36275193333
+php time: -0.0077400207519531s
+
+
+generation 624
+saved 6
+generation time: 15.822605133057s
+best indiv 1 with fitness: 501.306
+average fitness: 79.554912666667
+php time: -0.0082178115844727s
+
+
+generation 625
+saved 10
+generation time: 15.041081905365s
+best indiv 1 with fitness: 501.306
+average fitness: 125.04885666667
+php time: -0.0081541538238525s
+
+
+generation 626
+saved 8
+generation time: 15.074254989624s
+best indiv 1 with fitness: 501.306
+average fitness: 134.98719316667
+php time: -0.0079858303070068s
+
+
+generation 627
+saved 8
+generation time: 15.892228841782s
+best indiv 1 with fitness: 501.306
+average fitness: 87.1079925
+php time: -0.0076422691345215s
+
+
+generation 628
+saved 6
+generation time: 15.410520076752s
+best indiv 1 with fitness: 501.306
+average fitness: 98.8731369
+php time: -0.0081441402435303s
+
+
+generation 629
+saved 8
+generation time: 15.432912111282s
+best indiv 1 with fitness: 501.306
+average fitness: 93.4818125
+php time: -0.0082168579101562s
+
+
+generation 630
+saved 10
+generation time: 14.613569021225s
+best indiv 1 with fitness: 501.306
+average fitness: 97.622335
+php time: -0.008267879486084s
+
+
+generation 631
+saved 10
+generation time: 14.930506944656s
+best indiv 1 with fitness: 501.306
+average fitness: 98.444371
+php time: -0.0079319477081299s
+
+
+generation 632
+saved 6
+generation time: 16.008800983429s
+best indiv 1 with fitness: 501.306
+average fitness: 51.322711
+php time: -0.0077228546142578s
+
+
+generation 633
+saved 8
+generation time: 15.829581975937s
+best indiv 1 with fitness: 501.306
+average fitness: 81.875303166667
+php time: -0.0099060535430908s
+
+
+generation 634
+saved 18
+generation time: 12.332045078278s
+best indiv 1 with fitness: 501.306
+average fitness: 101.72873783333
+php time: -0.0083258152008057s
+
+
+generation 635
+saved 10
+generation time: 15.426484107971s
+best indiv 1 with fitness: 501.306
+average fitness: 68.78514585
+php time: -0.0088217258453369s
+
+
+generation 636
+saved 12
+generation time: 14.709532976151s
+best indiv 1 with fitness: 501.306
+average fitness: 85.289597816667
+php time: -0.0078520774841309s
+
+
+generation 637
+saved 8
+generation time: 15.110589981079s
+best indiv 1 with fitness: 501.306
+average fitness: 93.460123483333
+php time: -0.0076308250427246s
+
+
+generation 638
+saved 4
+generation time: 16.001956939697s
+best indiv 1 with fitness: 501.306
+average fitness: 79.871817666667
+php time: -0.012234926223755s
+
+
+generation 639
+saved 4
+generation time: 15.955214977264s
+best indiv 1 with fitness: 501.306
+average fitness: 95.173385333333
+php time: -0.007753849029541s
+
+
+generation 640
+saved 6
+generation time: 16.100404024124s
+best indiv 1 with fitness: 501.306
+average fitness: 129.72480516667
+php time: -0.0067739486694336s
+
+
+generation 641
+saved 2
+generation time: 17.025969982147s
+best indiv 1 with fitness: 501.306
+average fitness: 115.27225817167
+php time: -0.0084829330444336s
+
+
+generation 642
+saved 12
+generation time: 13.532721996307s
+best indiv 1 with fitness: 501.306
+average fitness: 105.9364135
+php time: -0.009192943572998s
+
+
+generation 643
+saved 16
+generation time: 12.650957107544s
+best indiv 1 with fitness: 501.306
+average fitness: 97.442119166667
+php time: -0.0074338912963867s
+
+
+generation 644
+saved 4
+generation time: 16.282170057297s
+best indiv 1 with fitness: 501.306
+average fitness: 66.519917666667
+php time: -0.0071818828582764s
+
+
+generation 645
+saved 4
+generation time: 15.082954883575s
+best indiv 1 with fitness: 501.306
+average fitness: 91.627545
+php time: -0.008228063583374s
+
+
+generation 646
+saved 8
+generation time: 15.074229001999s
+best indiv 1 with fitness: 501.306
+average fitness: 94.506880666667
+php time: -0.0084400177001953s
+
+
+generation 647
+saved 10
+generation time: 14.861222982407s
+best indiv 1 with fitness: 501.306
+average fitness: 78.090531466667
+php time: -0.008404016494751s
+
+
+generation 648
+saved 10
+generation time: 14.285432100296s
+best indiv 1 with fitness: 501.306
+average fitness: 111.0424865
+php time: -0.011829853057861s
+
+
+generation 649
+saved 14
+generation time: 13.690481901169s
+best indiv 1 with fitness: 501.306
+average fitness: 107.98150916667
+php time: -0.0077300071716309s
+
+
+generation 650
+saved 6
+generation time: 16.073729038239s
+best indiv 1 with fitness: 501.306
+average fitness: 65.021198233333
+php time: -0.0082077980041504s
+
+
+generation 651
+saved 8
+generation time: 15.85267996788s
+best indiv 1 with fitness: 501.306
+average fitness: 71.345126916667
+php time: -0.0069360733032227s
+
+
+generation 652
+saved 2
+generation time: 17.373075008392s
+best indiv 1 with fitness: 501.306
+average fitness: 62.255811533333
+php time: -0.0092499256134033s
+
+
+generation 653
+saved 14
+generation time: 13.781759977341s
+best indiv 1 with fitness: 501.306
+average fitness: 92.785672333333
+php time: -0.0078971385955811s
+
+
+generation 654
+saved 8
+generation time: 15.081465959549s
+best indiv 1 with fitness: 501.306
+average fitness: 93.210121283333
+php time: -0.0077190399169922s
+
+
+generation 655
+saved 8
+generation time: 14.9943151474s
+best indiv 1 with fitness: 501.306
+average fitness: 87.644983333333
+php time: -0.0071370601654053s
+
+
+generation 656
+saved 4
+generation time: 16.599986076355s
+best indiv 1 with fitness: 501.306
+average fitness: 80.683024
+php time: -0.0076470375061035s
+
+
+generation 657
+saved 6
+generation time: 15.709141969681s
+best indiv 1 with fitness: 501.306
+average fitness: 114.9590825
+php time: -0.00826096534729s
+
+
+generation 658
+saved 8
+generation time: 15.329424858093s
+best indiv 1 with fitness: 501.306
+average fitness: 91.425163333333
+php time: -0.0068981647491455s
+
+
+generation 659
+saved 4
+generation time: 16.246881008148s
+best indiv 1 with fitness: 501.306
+average fitness: 85.985420833333
+php time: -0.0075709819793701s
+
+
+generation 660
+saved 6
+generation time: 15.643790006638s
+best indiv 1 with fitness: 501.306
+average fitness: 114.13401771667
+php time: -0.0068550109863281s
+
+
+generation 661
+saved 2
+generation time: 17.326487064362s
+best indiv 1 with fitness: 501.306
+average fitness: 73.131418752667
+php time: -0.0086357593536377s
+
+
+generation 662
+saved 10
+generation time: 14.821520090103s
+best indiv 1 with fitness: 501.306
+average fitness: 72.0091946
+php time: -0.0078959465026855s
+
+
+generation 663
+saved 8
+generation time: 14.634835958481s
+best indiv 1 with fitness: 501.306
+average fitness: 77.513485366667
+php time: -0.0077641010284424s
+
+
+generation 664
+saved 6
+generation time: 15.126710891724s
+best indiv 1 with fitness: 501.306
+average fitness: 95.8255505
+php time: -0.0064229965209961s
+
+
+generation 665
+saved 4
+generation time: 16.256336927414s
+best indiv 1 with fitness: 501.306
+average fitness: 95.831304083333
+php time: -0.0080060958862305s
+
+
+generation 666
+saved 8
+generation time: 15.469035863876s
+best indiv 1 with fitness: 501.306
+average fitness: 78.242513666667
+php time: -0.0070741176605225s
+
+
+generation 667
+saved 2
+generation time: 16.490130901337s
+best indiv 1 with fitness: 501.306
+average fitness: 96.042493466667
+php time: -0.0075969696044922s
+
+
+generation 668
+saved 4
+generation time: 16.459902048111s
+best indiv 1 with fitness: 501.306
+average fitness: 86.752113
+php time: -0.0084769725799561s
+
+
+generation 669
+saved 10
+generation time: 14.167593002319s
+best indiv 1 with fitness: 501.306
+average fitness: 101.10194983333
+php time: -0.0094330310821533s
+
+
+generation 670
+saved 6
+generation time: 15.213361978531s
+best indiv 1 with fitness: 501.306
+average fitness: 104.54552866667
+php time: -0.0091259479522705s
+
+
+generation 671
+saved 14
+generation time: 13.650906085968s
+best indiv 1 with fitness: 501.306
+average fitness: 83.304656833333
+php time: -0.0079479217529297s
+
+
+generation 672
+saved 8
+generation time: 15.328299045563s
+best indiv 1 with fitness: 501.306
+average fitness: 80.608128833333
+php time: -0.017619132995605s
+
+
+generation 673
+saved 6
+generation time: 15.510136842728s
+best indiv 1 with fitness: 501.306
+average fitness: 72.446703978333
+php time: -0.0080640316009521s
+
+
+generation 674
+saved 10
+generation time: 14.741638898849s
+best indiv 1 with fitness: 501.306
+average fitness: 82.82403879
+php time: -0.0073721408843994s
+
+
+generation 675
+saved 4
+generation time: 16.548019886017s
+best indiv 1 with fitness: 501.306
+average fitness: 89.3803227
+php time: -0.0071980953216553s
+
+
+generation 676
+saved 4
+generation time: 16.367614984512s
+best indiv 1 with fitness: 501.306
+average fitness: 87.471754033333
+php time: -0.0074210166931152s
+
+
+generation 677
+saved 6
+generation time: 15.714426040649s
+best indiv 57 with fitness: 505.037
+average fitness: 87.619938333333
+php time: -0.0078258514404297s
+
+
+generation 678
+saved 8
+generation time: 14.842938899994s
+best indiv 1 with fitness: 505.037
+average fitness: 82.4748585
+php time: -0.0072181224822998s
+
+
+generation 679
+saved 4
+generation time: 15.885598182678s
+best indiv 1 with fitness: 505.037
+average fitness: 101.30890366667
+php time: -0.007915735244751s
+
+
+generation 680
+saved 8
+generation time: 15.272181987762s
+best indiv 1 with fitness: 505.037
+average fitness: 92.533548666667
+php time: -0.01120400428772s
+
+
+generation 681
+saved 8
+generation time: 15.303501844406s
+best indiv 1 with fitness: 505.037
+average fitness: 80.327812
+php time: -0.0072741508483887s
+
+
+generation 682
+saved 6
+generation time: 15.9054210186s
+best indiv 1 with fitness: 505.037
+average fitness: 78.108391666667
+php time: -0.0075831413269043s
+
+
+generation 683
+saved 6
+generation time: 16.169804811478s
+best indiv 1 with fitness: 505.037
+average fitness: 78.337972833333
+php time: -0.0082793235778809s
+
+
+generation 684
+saved 8
+generation time: 14.791954994202s
+best indiv 1 with fitness: 505.037
+average fitness: 90.709855016667
+php time: -0.0081408023834229s
+
+
+generation 685
+saved 8
+generation time: 14.815878868103s
+best indiv 1 with fitness: 505.037
+average fitness: 110.01709633333
+php time: -0.010339260101318s
+
+
+generation 686
+saved 8
+generation time: 15.480323791504s
+best indiv 1 with fitness: 505.037
+average fitness: 138.19992815
+php time: -0.0073151588439941s
+
+
+generation 687
+saved 4
+generation time: 16.646960020065s
+best indiv 1 with fitness: 505.037
+average fitness: 122.23964348333
+php time: -0.0076339244842529s
+
+
+generation 688
+saved 6
+generation time: 16.085819005966s
+best indiv 1 with fitness: 505.037
+average fitness: 66.117956816667
+php time: -0.0069220066070557s
+
+
+generation 689
+saved 2
+generation time: 16.516225099564s
+best indiv 1 with fitness: 505.037
+average fitness: 71.203529316667
+php time: -0.0080399513244629s
+
+
+generation 690
+saved 8
+generation time: 15.813807010651s
+best indiv 1 with fitness: 505.037
+average fitness: 64.07334825
+php time: -0.0073151588439941s
+
+
+generation 691
+saved 4
+generation time: 16.354577064514s
+best indiv 1 with fitness: 505.037
+average fitness: 64.002786666667
+php time: -0.0078198909759521s
+
+
+generation 692
+saved 6
+generation time: 16.105377912521s
+best indiv 1 with fitness: 505.037
+average fitness: 56.836715666667
+php time: -0.0085279941558838s
+
+
+generation 693
+saved 10
+generation time: 14.734242916107s
+best indiv 1 with fitness: 505.037
+average fitness: 81.3909
+php time: -0.010151147842407s
+
+
+generation 694
+saved 6
+generation time: 16.335480928421s
+best indiv 1 with fitness: 505.037
+average fitness: 80.293154333333
+php time: -0.011916160583496s
+
+
+generation 695
+saved 12
+generation time: 13.628196001053s
+best indiv 1 with fitness: 505.037
+average fitness: 97.16448
+php time: -0.0075089931488037s
+
+
+generation 696
+saved 4
+generation time: 16.372542142868s
+best indiv 1 with fitness: 505.037
+average fitness: 114.55685616667
+php time: -0.013700723648071s
+
+
+generation 697
+saved 2
+generation time: 17.005722045898s
+best indiv 1 with fitness: 505.037
+average fitness: 88.295936166667
+php time: -0.0076401233673096s
+
+
+generation 698
+saved 6
+generation time: 15.705178976059s
+best indiv 1 with fitness: 505.037
+average fitness: 74.650038833333
+php time: -0.0076150894165039s
+
+
+generation 699
+saved 8
+generation time: 15.469377994537s
+best indiv 1 with fitness: 505.037
+average fitness: 73.6118465
+php time: -0.0087878704071045s
+
+
+generation 700
+saved 12
+generation time: 13.605286836624s
+best indiv 1 with fitness: 505.037
+average fitness: 89.807264333333
+php time: -0.0068991184234619s
+
+
+generation 701
+saved 4
+generation time: 17.135725021362s
+best indiv 1 with fitness: 505.037
+average fitness: 59.1744433
+php time: -0.0081250667572021s
+
+
+generation 702
+saved 8
+generation time: 15.159483194351s
+best indiv 1 with fitness: 505.037
+average fitness: 55.255827366667
+php time: -0.0072016716003418s
+
+
+generation 703
+saved 4
+generation time: 16.479243993759s
+best indiv 1 with fitness: 505.037
+average fitness: 58.986663816667
+php time: -0.0077469348907471s
+
+
+generation 704
+saved 6
+generation time: 15.591145992279s
+best indiv 1 with fitness: 505.037
+average fitness: 70.800303966667
+php time: -0.0073339939117432s
+
+
+generation 705
+saved 6
+generation time: 15.810308933258s
+best indiv 1 with fitness: 505.037
+average fitness: 60.41410915
+php time: -0.0085790157318115s
+
+
+generation 706
+saved 12
+generation time: 14.136012077332s
+best indiv 1 with fitness: 505.037
+average fitness: 68.1508976
+php time: -0.0085880756378174s
+
+
+generation 707
+saved 12
+generation time: 14.564012050629s
+best indiv 1 with fitness: 505.037
+average fitness: 59.826999
+php time: -0.0084950923919678s
+
+
+generation 708
+saved 10
+generation time: 14.832057952881s
+best indiv 1 with fitness: 505.037
+average fitness: 66.827978666667
+php time: -0.0078220367431641s
+
+
+generation 709
+saved 6
+generation time: 15.840190887451s
+best indiv 1 with fitness: 505.037
+average fitness: 98.559941633333
+php time: -0.0080821514129639s
+
+
+generation 710
+saved 8
+generation time: 15.580469846725s
+best indiv 1 with fitness: 505.037
+average fitness: 92.355114383333
+php time: -0.0078761577606201s
+
+
+generation 711
+saved 8
+generation time: 14.93297290802s
+best indiv 1 with fitness: 505.037
+average fitness: 81.533376166667
+php time: -0.0079081058502197s
+
+
+generation 712
+saved 6
+generation time: 16.012140989304s
+best indiv 1 with fitness: 505.037
+average fitness: 73.241894983333
+php time: -0.0082290172576904s
+
+
+generation 713
+saved 8
+generation time: 15.080756902695s
+best indiv 1 with fitness: 505.037
+average fitness: 79.280108
+php time: -0.0077419281005859s
+
+
+generation 714
+saved 6
+generation time: 15.918255090714s
+best indiv 1 with fitness: 505.037
+average fitness: 102.3769123
+php time: -0.0075700283050537s
+
+
+generation 715
+saved 4
+generation time: 16.474784135818s
+best indiv 1 with fitness: 505.037
+average fitness: 82.9386485
+php time: -0.0081188678741455s
+
+
+generation 716
+saved 8
+generation time: 13.3164498806s
+best indiv 1 with fitness: 505.037
+average fitness: 81.800328333333
+php time: -0.0079030990600586s
+
+
+generation 717
+saved 6
+generation time: 16.534547805786s
+best indiv 1 with fitness: 505.037
+average fitness: 82.146716716667
+php time: -0.0082662105560303s
+
+
+generation 718
+saved 4
+generation time: 16.575834035873s
+best indiv 1 with fitness: 505.037
+average fitness: 86.653694166667
+php time: -0.0091748237609863s
+
+
+generation 719
+saved 14
+generation time: 13.13516998291s
+best indiv 1 with fitness: 505.037
+average fitness: 146.15762933333
+php time: -0.0078308582305908s
+
+
+generation 720
+saved 6
+generation time: 15.58847284317s
+best indiv 1 with fitness: 505.037
+average fitness: 156.13721333333
+php time: -0.0074062347412109s
+
+
+generation 721
+saved 6
+generation time: 15.386958837509s
+best indiv 1 with fitness: 505.037
+average fitness: 136.48530733333
+php time: -0.008249044418335s
+
+
+generation 722
+saved 10
+generation time: 14.72993016243s
+best indiv 1 with fitness: 505.037
+average fitness: 141.55480116667
+php time: -0.0075259208679199s
+
+
+generation 723
+saved 6
+generation time: 15.468616008759s
+best indiv 1 with fitness: 505.037
+average fitness: 89.9053186
+php time: -0.00848388671875s
+
+
+generation 724
+saved 10
+generation time: 15.088270902634s
+best indiv 1 with fitness: 505.037
+average fitness: 101.34542033333
+php time: -0.0079171657562256s
+
+
+generation 725
+saved 8
+generation time: 15.250428915024s
+best indiv 1 with fitness: 505.037
+average fitness: 80.540853166667
+php time: -0.0077719688415527s
+
+
+generation 726
+saved 6
+generation time: 15.801265954971s
+best indiv 1 with fitness: 505.037
+average fitness: 106.33957313333
+php time: -0.0077509880065918s
+
+
+generation 727
+saved 6
+generation time: 16.298537015915s
+best indiv 1 with fitness: 505.037
+average fitness: 80.8925633
+php time: -0.010025024414062s
+
+
+generation 728
+saved 18
+generation time: 12.59440112114s
+best indiv 1 with fitness: 505.037
+average fitness: 92.9071105
+php time: -0.0076749324798584s
+
+
+generation 729
+saved 6
+generation time: 15.740010023117s
+best indiv 1 with fitness: 505.037
+average fitness: 96.919367333333
+php time: -0.0080630779266357s
+
+
+generation 730
+saved 8
+generation time: 14.604639053345s
+best indiv 1 with fitness: 505.037
+average fitness: 89.551407833333
+php time: -0.0071849822998047s
+
+
+generation 731
+saved 4
+generation time: 16.70194196701s
+best indiv 1 with fitness: 505.037
+average fitness: 97.101408666667
+php time: -0.0074689388275146s
+
+
+generation 732
+saved 4
+generation time: 17.25739979744s
+best indiv 1 with fitness: 505.037
+average fitness: 68.993639333333
+php time: -0.0075433254241943s
+
+
+generation 733
+saved 4
+generation time: 16.704931020737s
+best indiv 1 with fitness: 505.037
+average fitness: 67.813486533333
+php time: -0.0072479248046875s
+
+
+generation 734
+saved 6
+generation time: 15.986027002335s
+best indiv 1 with fitness: 505.037
+average fitness: 88.936188833333
+php time: -0.0084099769592285s
+
+
+generation 735
+saved 10
+generation time: 14.642395019531s
+best indiv 1 with fitness: 505.037
+average fitness: 96.380977833333
+php time: -0.0072047710418701s
+
+
+generation 736
+saved 4
+generation time: 16.348134994507s
+best indiv 1 with fitness: 505.037
+average fitness: 75.472497
+php time: -0.0083680152893066s
+
+
+generation 737
+saved 10
+generation time: 14.934858083725s
+best indiv 1 with fitness: 505.037
+average fitness: 62.343462166667
+php time: -0.0091259479522705s
+
+
+generation 738
+saved 14
+generation time: 13.4518699646s
+best indiv 1 with fitness: 505.037
+average fitness: 74.649298333333
+php time: -0.007781982421875s
+
+
+generation 739
+saved 6
+generation time: 15.810693979263s
+best indiv 1 with fitness: 505.037
+average fitness: 79.830241833333
+php time: -0.0076501369476318s
+
+
+generation 740
+saved 6
+generation time: 16.974185943604s
+best indiv 1 with fitness: 505.037
+average fitness: 71.018745916667
+php time: -0.0077688694000244s
+
+
+generation 741
+saved 8
+generation time: 15.3672311306s
+best indiv 1 with fitness: 505.037
+average fitness: 88.084839866667
+php time: -0.0086288452148438s
+
+
+generation 742
+saved 10
+generation time: 14.64664888382s
+best indiv 1 with fitness: 505.037
+average fitness: 81.5866485
+php time: -0.0073411464691162s
+
+
+generation 743
+saved 4
+generation time: 16.789324998856s
+best indiv 1 with fitness: 505.037
+average fitness: 57.415072466667
+php time: -0.0088481903076172s
+
+
+generation 744
+saved 12
+generation time: 14.195330142975s
+best indiv 1 with fitness: 505.037
+average fitness: 60.243223
+php time: -0.012321710586548s
+
+
+generation 745
+saved 4
+generation time: 16.769512891769s
+best indiv 1 with fitness: 505.037
+average fitness: 60.686211416667
+php time: -0.0087671279907227s
+
+
+generation 746
+saved 12
+generation time: 14.1315741539s
+best indiv 1 with fitness: 505.037
+average fitness: 74.311613333333
+php time: -0.0078787803649902s
+
+
+generation 747
+saved 6
+generation time: 16.409747123718s
+best indiv 1 with fitness: 505.037
+average fitness: 74.411732516667
+php time: -0.0079617500305176s
+
+
+generation 748
+saved 8
+generation time: 15.229499816895s
+best indiv 1 with fitness: 505.037
+average fitness: 72.8833895
+php time: -0.0082173347473145s
+
+
+generation 749
+saved 8
+generation time: 15.322197914124s
+best indiv 1 with fitness: 505.037
+average fitness: 91.8774795
+php time: -0.010438203811646s
+
+
+generation 750
+saved 10
+generation time: 14.686509132385s
+best indiv 1 with fitness: 505.037
+average fitness: 102.75590116667
+php time: -0.0075807571411133s
+
+
+generation 751
+saved 6
+generation time: 15.974669933319s
+best indiv 1 with fitness: 505.037
+average fitness: 103.59155016667
+php time: -0.0089130401611328s
+
+
+generation 752
+saved 12
+generation time: 13.805867910385s
+best indiv 1 with fitness: 505.037
+average fitness: 138.4857305
+php time: -0.0093920230865479s
+
+
+generation 753
+saved 16
+generation time: 12.895639896393s
+best indiv 1 with fitness: 505.037
+average fitness: 102.02989183333
+php time: -0.0079472064971924s
+
+
+generation 754
+saved 8
+generation time: 15.274272918701s
+best indiv 1 with fitness: 505.037
+average fitness: 85.805693
+php time: -0.0081770420074463s
+
+
+generation 755
+saved 8
+generation time: 15.215453863144s
+best indiv 1 with fitness: 505.037
+average fitness: 79.000532666667
+php time: -0.0079591274261475s
+
+
+generation 756
+saved 8
+generation time: 15.535174131393s
+best indiv 1 with fitness: 505.037
+average fitness: 93.856199
+php time: -0.0081746578216553s
+
+
+generation 757
+saved 8
+generation time: 15.819031953812s
+best indiv 1 with fitness: 505.037
+average fitness: 63.325482766667
+php time: -0.0080339908599854s
+
+
+generation 758
+saved 10
+generation time: 15.171539068222s
+best indiv 1 with fitness: 505.037
+average fitness: 102.9366145
+php time: -0.0077478885650635s
+
+
+generation 759
+saved 6
+generation time: 16.100157022476s
+best indiv 1 with fitness: 505.037
+average fitness: 102.4662795
+php time: -0.0074849128723145s
+
+
+generation 760
+saved 6
+generation time: 16.706086874008s
+best indiv 1 with fitness: 505.037
+average fitness: 94.116347066667
+php time: -0.0083150863647461s
+
+
+generation 761
+saved 10
+generation time: 15.550201892853s
+best indiv 1 with fitness: 505.037
+average fitness: 86.269117
+php time: -0.0078232288360596s
+
+
+generation 762
+saved 6
+generation time: 16.038547992706s
+best indiv 1 with fitness: 505.037
+average fitness: 85.368742916667
+php time: -0.0087621212005615s
+
+
+generation 763
+saved 12
+generation time: 14.479582071304s
+best indiv 1 with fitness: 505.037
+average fitness: 122.33591833333
+php time: -0.0069859027862549s
+
+
+generation 764
+saved 2
+generation time: 16.859519958496s
+best indiv 1 with fitness: 505.037
+average fitness: 87.901078333333
+php time: -0.022033929824829s
+
+
+generation 765
+saved 8
+generation time: 15.478079080582s
+best indiv 1 with fitness: 505.037
+average fitness: 73.509496666667
+php time: -0.0078809261322021s
+
+
+generation 766
+saved 6
+generation time: 15.657756090164s
+best indiv 1 with fitness: 505.037
+average fitness: 90.078959166667
+php time: -0.0078060626983643s
+
+
+generation 767
+saved 6
+generation time: 16.049565076828s
+best indiv 1 with fitness: 505.037
+average fitness: 91.636214366667
+php time: -0.0078287124633789s
+
+
+generation 768
+saved 6
+generation time: 16.163058996201s
+best indiv 1 with fitness: 505.037
+average fitness: 101.7864025
+php time: -0.0077838897705078s
+
+
+generation 769
+saved 10
+generation time: 14.63164806366s
+best indiv 1 with fitness: 505.037
+average fitness: 94.967437316667
+php time: -0.0092089176177979s
+
+
+generation 770
+saved 14
+generation time: 14.696639060974s
+best indiv 1 with fitness: 505.037
+average fitness: 69.805798
+php time: -0.0079028606414795s
+
+
+generation 771
+saved 6
+generation time: 16.101032018661s
+best indiv 1 with fitness: 505.037
+average fitness: 80.334466666667
+php time: -0.008018970489502s
+
+
+generation 772
+saved 8
+generation time: 15.559454917908s
+best indiv 1 with fitness: 505.037
+average fitness: 87.637739666667
+php time: -0.011672973632812s
+
+
+generation 773
+saved 4
+generation time: 16.534155845642s
+best indiv 1 with fitness: 505.037
+average fitness: 81.235339
+php time: -0.0074403285980225s
+
+
+generation 774
+saved 4
+generation time: 17.589293003082s
+best indiv 1 with fitness: 505.037
+average fitness: 71.320545266667
+php time: -0.0076169967651367s
+
+
+generation 775
+saved 4
+generation time: 16.847491979599s
+best indiv 1 with fitness: 505.037
+average fitness: 81.3190505
+php time: -0.0080890655517578s
+
+
+generation 776
+saved 8
+generation time: 15.385412931442s
+best indiv 1 with fitness: 505.037
+average fitness: 80.9903945
+php time: -0.0075740814208984s
+
+
+generation 777
+saved 8
+generation time: 15.729584932327s
+best indiv 1 with fitness: 505.037
+average fitness: 58.95654
+php time: -0.0074501037597656s
+
+
+generation 778
+saved 6
+generation time: 16.573445081711s
+best indiv 1 with fitness: 505.037
+average fitness: 61.684025
+php time: -0.0086350440979004s
+
+
+generation 779
+saved 12
+generation time: 14.015180110931s
+best indiv 1 with fitness: 505.037
+average fitness: 71.86748125
+php time: -0.0079939365386963s
+
+
+generation 780
+saved 8
+generation time: 15.363658905029s
+best indiv 1 with fitness: 505.037
+average fitness: 93.022954833333
+php time: -0.0078492164611816s
+
+
+generation 781
+saved 6
+generation time: 15.466396093369s
+best indiv 1 with fitness: 505.037
+average fitness: 80.922668833333
+php time: -0.0080387592315674s
+
+
+generation 782
+saved 8
+generation time: 15.77654504776s
+best indiv 1 with fitness: 505.037
+average fitness: 91.107445166667
+php time: -0.0068490505218506s
+
+
+generation 783
+saved 2
+generation time: 16.989364862442s
+best indiv 1 with fitness: 505.037
+average fitness: 90.573261833333
+php time: -0.0071299076080322s
+
+
+generation 784
+saved 4
+generation time: 15.351530075073s
+best indiv 1 with fitness: 505.037
+average fitness: 92.9209135
+php time: -0.0097708702087402s
+
+
+generation 785
+saved 18
+generation time: 12.873531103134s
+best indiv 1 with fitness: 505.037
+average fitness: 89.410449166667
+php time: -0.0086369514465332s
+
+
+generation 786
+saved 12
+generation time: 14.366159915924s
+best indiv 1 with fitness: 505.037
+average fitness: 105.02080666667
+php time: -0.012023210525513s
+
+
+generation 787
+saved 8
+generation time: 15.315284013748s
+best indiv 1 with fitness: 505.037
+average fitness: 86.318297666667
+php time: -0.0080587863922119s
+
+
+generation 788
+saved 8
+generation time: 15.050536870956s
+best indiv 1 with fitness: 505.037
+average fitness: 85.238965
+php time: -0.0086140632629395s
+
+
+generation 789
+saved 12
+generation time: 13.862605810165s
+best indiv 1 with fitness: 505.037
+average fitness: 112.42385333333
+php time: -0.0074143409729004s
+
+
+generation 790
+saved 4
+generation time: 16.391742944717s
+best indiv 1 with fitness: 505.037
+average fitness: 132.1310385
+php time: -0.0082652568817139s
+
+
+generation 791
+saved 8
+generation time: 14.965003013611s
+best indiv 1 with fitness: 505.037
+average fitness: 112.57084225
+php time: -0.0073950290679932s
+
+
+generation 792
+saved 4
+generation time: 16.152961969376s
+best indiv 1 with fitness: 505.037
+average fitness: 95.937865
+php time: -0.0068831443786621s
+
+
+generation 793
+saved 4
+generation time: 16.180376052856s
+best indiv 1 with fitness: 505.037
+average fitness: 87.231241
+php time: -0.0076968669891357s
+
+
+generation 794
+saved 6
+generation time: 16.345975875854s
+best indiv 1 with fitness: 505.037
+average fitness: 105.73438916667
+php time: -0.0071210861206055s
+
+
+generation 795
+saved 2
+generation time: 16.542747974396s
+best indiv 1 with fitness: 505.037
+average fitness: 77.123504
+php time: -0.0080420970916748s
+
+
+generation 796
+saved 8
+generation time: 15.385009050369s
+best indiv 1 with fitness: 505.037
+average fitness: 88.19896305
+php time: -0.0072908401489258s
+
+
+generation 797
+saved 4
+generation time: 16.272818088531s
+best indiv 1 with fitness: 505.037
+average fitness: 87.223655333333
+php time: -0.0079119205474854s
+
+
+generation 798
+saved 8
+generation time: 15.627889156342s
+best indiv 1 with fitness: 505.037
+average fitness: 52.315146166667
+php time: -0.0075676441192627s
+
+
+generation 799
+saved 6
+generation time: 15.545036077499s
+best indiv 1 with fitness: 505.037
+average fitness: 80.842106
+php time: -0.0070719718933105s
+
+
+generation 800
+saved 2
+generation time: 17.371846914291s
+best indiv 1 with fitness: 505.037
+average fitness: 49.27802525
+php time: -0.007648229598999s
+
+
+generation 801
+saved 6
+generation time: 15.612440109253s
+best indiv 1 with fitness: 505.037
+average fitness: 89.585559611667
+php time: -0.0087080001831055s
+
+
+generation 802
+saved 12
+generation time: 14.284982919693s
+best indiv 1 with fitness: 505.037
+average fitness: 96.5999771
+php time: -0.0077061653137207s
+
+
+generation 803
+saved 8
+generation time: 15.363800048828s
+best indiv 1 with fitness: 505.037
+average fitness: 81.2049265
+php time: -0.0077390670776367s
+
+
+generation 804
+saved 6
+generation time: 15.702716827393s
+best indiv 1 with fitness: 505.037
+average fitness: 78.287805166667
+php time: -0.0080733299255371s
+
+
+generation 805
+saved 8
+generation time: 14.969237804413s
+best indiv 1 with fitness: 505.037
+average fitness: 79.198812883333
+php time: -0.007911205291748s
+
+
+generation 806
+saved 8
+generation time: 14.50893497467s
+best indiv 1 with fitness: 505.037
+average fitness: 53.910934166667
+php time: -0.0074841976165771s
+
+
+generation 807
+saved 4
+generation time: 16.074954986572s
+best indiv 1 with fitness: 505.037
+average fitness: 52.408602153333
+php time: -0.0077328681945801s
+
+
+generation 808
+saved 6
+generation time: 15.603644132614s
+best indiv 1 with fitness: 505.037
+average fitness: 59.257809333333
+php time: -0.0077147483825684s
+
+
+generation 809
+saved 6
+generation time: 14.967632055283s
+best indiv 1 with fitness: 505.037
+average fitness: 62.881157
+php time: -0.01398491859436s
+
+
+generation 810
+saved 12
+generation time: 14.319894790649s
+best indiv 1 with fitness: 505.037
+average fitness: 76.529378416667
+php time: -0.0097742080688477s
+
+
+generation 811
+saved 10
+generation time: 14.36408495903s
+best indiv 1 with fitness: 505.037
+average fitness: 86.146037166667
+php time: -0.0085518360137939s
+
+
+generation 812
+saved 10
+generation time: 14.880702972412s
+best indiv 1 with fitness: 505.037
+average fitness: 80.343077666667
+php time: -0.0084660053253174s
+
+
+generation 813
+saved 10
+generation time: 14.171654939651s
+best indiv 1 with fitness: 505.037
+average fitness: 97.671914333333
+php time: -0.0082230567932129s
+
+
+generation 814
+saved 10
+generation time: 15.132038116455s
+best indiv 1 with fitness: 505.037
+average fitness: 88.687848266667
+php time: -0.0083229541778564s
+
+
+generation 815
+saved 10
+generation time: 14.901553869247s
+best indiv 1 with fitness: 505.037
+average fitness: 108.4629405
+php time: -0.007681131362915s
+
+
+generation 816
+saved 6
+generation time: 15.566316127777s
+best indiv 1 with fitness: 505.037
+average fitness: 90.763844165
+php time: -0.0084218978881836s
+
+
+generation 817
+saved 12
+generation time: 13.470918178558s
+best indiv 1 with fitness: 505.037
+average fitness: 101.24978546667
+php time: -0.0081779956817627s
+
+
+generation 818
+saved 10
+generation time: 14.688074111938s
+best indiv 1 with fitness: 505.037
+average fitness: 106.29239016667
+php time: -0.0073680877685547s
+
+
+generation 819
+saved 4
+generation time: 15.933330059052s
+best indiv 1 with fitness: 505.037
+average fitness: 99.329180333333
+php time: -0.0096068382263184s
+
+
+generation 820
+saved 2
+generation time: 16.647484064102s
+best indiv 1 with fitness: 505.037
+average fitness: 78.207458866667
+php time: -0.0069448947906494s
+
+
+generation 821
+saved 2
+generation time: 17.334146022797s
+best indiv 1 with fitness: 505.037
+average fitness: 66.023358233333
+php time: -0.007166862487793s
+
+
+generation 822
+saved 4
+generation time: 15.839016914368s
+best indiv 1 with fitness: 505.037
+average fitness: 81.189840033333
+php time: -0.0082719326019287s
+
+
+generation 823
+saved 10
+generation time: 15.15141415596s
+best indiv 1 with fitness: 505.037
+average fitness: 74.176893083333
+php time: -0.0087869167327881s
+
+
+generation 824
+saved 12
+generation time: 13.734572887421s
+best indiv 1 with fitness: 505.037
+average fitness: 81.639123166667
+php time: -0.0082001686096191s
+
+
+generation 825
+saved 8
+generation time: 14.868812084198s
+best indiv 1 with fitness: 505.037
+average fitness: 102.50602283333
+php time: -0.0085878372192383s
+
+
+generation 826
+saved 12
+generation time: 13.721695184708s
+best indiv 1 with fitness: 505.037
+average fitness: 113.2307035
+php time: -0.0078847408294678s
+
+
+generation 827
+saved 6
+generation time: 15.853737831116s
+best indiv 1 with fitness: 505.037
+average fitness: 90.124288
+php time: -0.007270336151123s
+
+
+generation 828
+saved 4
+generation time: 16.584921836853s
+best indiv 1 with fitness: 505.037
+average fitness: 75.242517333333
+php time: -0.0070641040802002s
+
+
+generation 829
+saved 2
+generation time: 17.336766004562s
+best indiv 1 with fitness: 505.037
+average fitness: 116.545853
+php time: -0.0081048011779785s
+
+
+generation 830
+saved 8
+generation time: 15.368465900421s
+best indiv 1 with fitness: 505.037
+average fitness: 109.28661833333
+php time: -0.01148796081543s
+
+
+generation 831
+saved 6
+generation time: 15.843889951706s
+best indiv 1 with fitness: 505.037
+average fitness: 92.82405395
+php time: -0.0084402561187744s
+
+
+generation 832
+saved 10
+generation time: 14.995640039444s
+best indiv 1 with fitness: 505.037
+average fitness: 70.748954
+php time: -0.0085570812225342s
+
+
+generation 833
+saved 10
+generation time: 15.190188884735s
+best indiv 1 with fitness: 505.037
+average fitness: 65.292169083333
+php time: -0.0080649852752686s
+
+
+generation 834
+saved 8
+generation time: 15.903724908829s
+best indiv 1 with fitness: 505.037
+average fitness: 67.615353316667
+php time: -0.010090112686157s
+
+
+generation 835
+saved 20
+generation time: 12.010684967041s
+best indiv 1 with fitness: 505.037
+average fitness: 118.5104727
+php time: -0.0077412128448486s
+
+
+generation 836
+saved 6
+generation time: 15.777924060822s
+best indiv 1 with fitness: 505.037
+average fitness: 92.052603166667
+php time: -0.0076000690460205s
+
+
+generation 837
+saved 8
+generation time: 14.766822099686s
+best indiv 1 with fitness: 505.037
+average fitness: 115.5318863
+php time: -0.0083999633789062s
+
+
+generation 838
+saved 10
+generation time: 14.214383840561s
+best indiv 1 with fitness: 505.037
+average fitness: 92.862150833333
+php time: -0.0083382129669189s
+
+
+generation 839
+saved 12
+generation time: 14.030759096146s
+best indiv 1 with fitness: 505.037
+average fitness: 88.8349915
+php time: -0.0079927444458008s
+
+
+generation 840
+saved 8
+generation time: 15.796205043793s
+best indiv 1 with fitness: 505.037
+average fitness: 86.869058166667
+php time: -0.0077829360961914s
+
+
+generation 841
+saved 8
+generation time: 14.904816150665s
+best indiv 1 with fitness: 505.037
+average fitness: 109.25823666667
+php time: -0.0074317455291748s
+
+
+generation 842
+saved 8
+generation time: 14.593189001083s
+best indiv 1 with fitness: 505.037
+average fitness: 99.002015233333
+php time: -0.0085248947143555s
+
+
+generation 843
+saved 12
+generation time: 14.186649084091s
+best indiv 1 with fitness: 505.037
+average fitness: 125.16513141667
+php time: -0.007969856262207s
+
+
+generation 844
+saved 6
+generation time: 15.865426063538s
+best indiv 1 with fitness: 505.037
+average fitness: 113.92342225
+php time: -0.0088310241699219s
+
+
+generation 845
+saved 12
+generation time: 14.155498027802s
+best indiv 1 with fitness: 505.037
+average fitness: 126.22272408333
+php time: -0.0072121620178223s
+
+
+generation 846
+saved 4
+generation time: 15.987915992737s
+best indiv 1 with fitness: 505.037
+average fitness: 104.30193796667
+php time: -0.0079798698425293s
+
+
+generation 847
+saved 8
+generation time: 14.873691082001s
+best indiv 1 with fitness: 505.037
+average fitness: 94.35242285
+php time: -0.0085537433624268s
+
+
+generation 848
+saved 10
+generation time: 14.604605913162s
+best indiv 1 with fitness: 505.037
+average fitness: 100.54074706667
+php time: -0.0090370178222656s
+
+
+generation 849
+saved 12
+generation time: 13.34552693367s
+best indiv 1 with fitness: 505.037
+average fitness: 128.33559166667
+php time: -0.0085930824279785s
+
+
+generation 850
+saved 10
+generation time: 14.358657836914s
+best indiv 1 with fitness: 505.037
+average fitness: 131.2243995
+php time: -0.0076241493225098s
+
+
+generation 851
+saved 6
+generation time: 16.069860935211s
+best indiv 1 with fitness: 505.037
+average fitness: 123.1664283
+php time: -0.009437084197998s
+
+
+generation 852
+saved 16
+generation time: 13.083369970322s
+best indiv 1 with fitness: 505.037
+average fitness: 145.78540533333
+php time: -0.0079469680786133s
+
+
+generation 853
+saved 8
+generation time: 15.301858186722s
+best indiv 1 with fitness: 505.037
+average fitness: 111.21211316667
+php time: -0.0088589191436768s
+
+
+generation 854
+saved 12
+generation time: 14.282166004181s
+best indiv 1 with fitness: 505.037
+average fitness: 125.47664733333
+php time: -0.008389949798584s
+
+
+generation 855
+saved 12
+generation time: 14.01676607132s
+best indiv 1 with fitness: 505.037
+average fitness: 116.510036
+php time: -0.012773990631104s
+
+
+generation 856
+saved 10
+generation time: 13.841345071793s
+best indiv 1 with fitness: 505.037
+average fitness: 121.9041945
+php time: -0.0080368518829346s
+
+
+generation 857
+saved 8
+generation time: 15.214011192322s
+best indiv 1 with fitness: 505.037
+average fitness: 112.52627283333
+php time: -0.0073518753051758s
+
+
+generation 858
+saved 6
+generation time: 15.499176979065s
+best indiv 1 with fitness: 505.037
+average fitness: 119.0975085
+php time: -0.0088598728179932s
+
+
+generation 859
+saved 12
+generation time: 13.972447156906s
+best indiv 1 with fitness: 505.037
+average fitness: 130.15514183333
+php time: -0.0078108310699463s
+
+
+generation 860
+saved 6
+generation time: 16.121038913727s
+best indiv 1 with fitness: 505.037
+average fitness: 107.77755928333
+php time: -0.0075652599334717s
+
+
+generation 861
+saved 4
+generation time: 16.324205160141s
+best indiv 1 with fitness: 505.037
+average fitness: 83.138097983333
+php time: -0.007519006729126s
+
+
+generation 862
+saved 6
+generation time: 16.202090024948s
+best indiv 1 with fitness: 505.037
+average fitness: 112.93527066667
+php time: -0.0079391002655029s
+
+
+generation 863
+saved 6
+generation time: 15.841885089874s
+best indiv 1 with fitness: 505.037
+average fitness: 107.31868516667
+php time: -0.007807731628418s
+
+
+generation 864
+saved 6
+generation time: 15.185039997101s
+best indiv 1 with fitness: 505.037
+average fitness: 88.920085166667
+php time: -0.0077540874481201s
+
+
+generation 865
+saved 6
+generation time: 16.548394918442s
+best indiv 1 with fitness: 505.037
+average fitness: 70.147022044667
+php time: -0.0085620880126953s
+
+
+generation 866
+saved 10
+generation time: 14.058010816574s
+best indiv 1 with fitness: 505.037
+average fitness: 69.25997675
+php time: -0.0073173046112061s
+
+
+generation 867
+saved 6
+generation time: 15.945653915405s
+best indiv 1 with fitness: 505.037
+average fitness: 76.78747985
+php time: -0.0086519718170166s
+
+
+generation 868
+saved 10
+generation time: 14.578300952911s
+best indiv 1 with fitness: 505.037
+average fitness: 108.23548536667
+php time: -0.0073211193084717s
+
+
+generation 869
+saved 4
+generation time: 16.716315031052s
+best indiv 1 with fitness: 505.037
+average fitness: 105.2185825
+php time: -0.0090749263763428s
+
+
+generation 870
+saved 14
+generation time: 13.750002861023s
+best indiv 1 with fitness: 505.037
+average fitness: 108.74365516667
+php time: -0.0085420608520508s
+
+
+generation 871
+saved 12
+generation time: 14.285238027573s
+best indiv 1 with fitness: 505.037
+average fitness: 117.23134433333
+php time: -0.0078449249267578s
+
+
+generation 872
+saved 6
+generation time: 15.471692085266s
+best indiv 1 with fitness: 505.037
+average fitness: 125.86179483333
+php time: -0.0081977844238281s
+
+
+generation 873
+saved 8
+generation time: 14.691518783569s
+best indiv 1 with fitness: 505.037
+average fitness: 91.330107
+php time: -0.0082302093505859s
+
+
+generation 874
+saved 8
+generation time: 15.17168211937s
+best indiv 1 with fitness: 505.037
+average fitness: 90.732005166667
+php time: -0.0088717937469482s
+
+
+generation 875
+saved 14
+generation time: 12.310677051544s
+best indiv 1 with fitness: 505.037
+average fitness: 129.33858
+php time: -0.008018970489502s
+
+
+generation 876
+saved 6
+generation time: 15.476436138153s
+best indiv 1 with fitness: 505.037
+average fitness: 125.42860033333
+php time: -0.014490842819214s
+
+
+generation 877
+saved 16
+generation time: 12.77471613884s
+best indiv 1 with fitness: 505.037
+average fitness: 125.56093166667
+php time: -0.0077147483825684s
+
+
+generation 878
+saved 6
+generation time: 14.514497041702s
+best indiv 1 with fitness: 505.037
+average fitness: 124.31996666667
+php time: -0.006864070892334s
+
+
+generation 879
+saved 2
+generation time: 16.97679400444s
+best indiv 1 with fitness: 505.037
+average fitness: 133.00383333333
+php time: -0.0087089538574219s
+
+
+generation 880
+saved 12
+generation time: 13.782227039337s
+best indiv 1 with fitness: 505.037
+average fitness: 120.461774
+php time: -0.0077888965606689s
+
+
+generation 881
+saved 6
+generation time: 15.609405040741s
+best indiv 1 with fitness: 505.037
+average fitness: 126.70459883333
+php time: -0.0091829299926758s
+
+
+generation 882
+saved 14
+generation time: 13.704689025879s
+best indiv 1 with fitness: 505.037
+average fitness: 130.35630966667
+php time: -0.0089640617370605s
+
+
+generation 883
+saved 14
+generation time: 14.0764939785s
+best indiv 1 with fitness: 505.037
+average fitness: 121.4592588
+php time: -0.0086619853973389s
+
+
+generation 884
+saved 10
+generation time: 14.548134088516s
+best indiv 1 with fitness: 505.037
+average fitness: 114.47153533333
+php time: -0.0077278614044189s
+
+
+generation 885
+saved 6
+generation time: 15.524807929993s
+best indiv 1 with fitness: 505.037
+average fitness: 115.52883466667
+php time: -0.0077939033508301s
+
+
+generation 886
+saved 8
+generation time: 15.204843044281s
+best indiv 1 with fitness: 505.037
+average fitness: 94.712571166667
+php time: -0.0075709819793701s
+
+
+generation 887
+saved 4
+generation time: 16.428219079971s
+best indiv 1 with fitness: 505.037
+average fitness: 77.179256333333
+php time: -0.007354736328125s
+
+
+generation 888
+saved 4
+generation time: 15.90644288063s
+best indiv 1 with fitness: 505.037
+average fitness: 71.84376835
+php time: -0.0081541538238525s
+
+
+generation 889
+saved 8
+generation time: 14.97510099411s
+best indiv 1 with fitness: 505.037
+average fitness: 75.646471333333
+php time: -0.0072991847991943s
+
+
+generation 890
+saved 6
+generation time: 15.751132965088s
+best indiv 1 with fitness: 505.037
+average fitness: 84.440581833333
+php time: -0.0077841281890869s
+
+
+generation 891
+saved 6
+generation time: 15.579864025116s
+best indiv 1 with fitness: 505.037
+average fitness: 77.917463083333
+php time: -0.0068421363830566s
+
+
+generation 892
+saved 2
+generation time: 17.122287034988s
+best indiv 1 with fitness: 505.037
+average fitness: 84.225475866667
+php time: -0.0086619853973389s
+
+
+generation 893
+saved 12
+generation time: 14.788186073303s
+best indiv 1 with fitness: 505.037
+average fitness: 96.420519433333
+php time: -0.011427879333496s
+
+
+generation 894
+saved 4
+generation time: 17.006588935852s
+best indiv 1 with fitness: 505.037
+average fitness: 89.888318125
+php time: -0.0088739395141602s
+
+
+generation 895
+saved 12
+generation time: 14.478879213333s
+best indiv 1 with fitness: 505.037
+average fitness: 90.8890745
+php time: -0.0071747303009033s
+
+
+generation 896
+saved 4
+generation time: 16.641590833664s
+best indiv 1 with fitness: 505.037
+average fitness: 89.130112
+php time: -0.012473106384277s
+
+
+generation 897
+saved 12
+generation time: 14.324761152267s
+best indiv 1 with fitness: 505.037
+average fitness: 90.6913345
+php time: -0.0081398487091064s
+
+
+generation 898
+saved 8
+generation time: 15.211941003799s
+best indiv 1 with fitness: 505.037
+average fitness: 101.46527125
+php time: -0.013000965118408s
+
+
+generation 899
+saved 10
+generation time: 14.241974830627s
+best indiv 1 with fitness: 505.037
+average fitness: 100.5886345
+php time: -0.0081162452697754s
+
+
+generation 900
+saved 8
+generation time: 14.952899932861s
+best indiv 1 with fitness: 505.037
+average fitness: 83.341629666667
+php time: -0.0076959133148193s
+
+
+generation 901
+saved 6
+generation time: 15.341976881027s
+best indiv 1 with fitness: 505.037
+average fitness: 92.594186
+php time: -0.012839078903198s
+
+
+generation 902
+saved 6
+generation time: 15.294813156128s
+best indiv 1 with fitness: 505.037
+average fitness: 98.435139
+php time: -0.0082559585571289s
+
+
+generation 903
+saved 10
+generation time: 14.772707939148s
+best indiv 1 with fitness: 505.037
+average fitness: 124.78166433333
+php time: -0.007174015045166s
+
+
+generation 904
+saved 4
+generation time: 15.536313056946s
+best indiv 1 with fitness: 505.037
+average fitness: 150.2026425
+php time: -0.0089709758758545s
+
+
+generation 905
+saved 14
+generation time: 13.680000066757s
+best indiv 1 with fitness: 505.037
+average fitness: 113.71045766667
+php time: -0.0077221393585205s
+
+
+generation 906
+saved 8
+generation time: 14.669290065765s
+best indiv 1 with fitness: 505.037
+average fitness: 116.940552
+php time: -0.0074748992919922s
+
+
+generation 907
+saved 4
+generation time: 16.173313140869s
+best indiv 1 with fitness: 505.037
+average fitness: 124.98981
+php time: -0.0078668594360352s
+
+
+generation 908
+saved 6
+generation time: 15.208986997604s
+best indiv 1 with fitness: 505.037
+average fitness: 102.8445265
+php time: -0.0074100494384766s
+
+
+generation 909
+saved 4
+generation time: 16.086230039597s
+best indiv 1 with fitness: 505.037
+average fitness: 75.48437605
+php time: -0.0084459781646729s
+
+
+generation 910
+saved 12
+generation time: 13.559985876083s
+best indiv 1 with fitness: 505.037
+average fitness: 117.16579117667
+php time: -0.0087401866912842s
+
+
+generation 911
+saved 12
+generation time: 14.138736009598s
+best indiv 1 with fitness: 505.037
+average fitness: 103.91946316667
+php time: -0.0073258876800537s
+
+
+generation 912
+saved 4
+generation time: 15.949887037277s
+best indiv 1 with fitness: 505.037
+average fitness: 93.751722883333
+php time: -0.0073468685150146s
+
+
+generation 913
+saved 4
+generation time: 17.085686922073s
+best indiv 1 with fitness: 505.037
+average fitness: 75.952702659333
+php time: -0.0084521770477295s
+
+
+generation 914
+saved 10
+generation time: 15.300863027573s
+best indiv 1 with fitness: 505.037
+average fitness: 71.447505833333
+php time: -0.0085430145263672s
+
+
+generation 915
+saved 10
+generation time: 13.856892824173s
+best indiv 1 with fitness: 505.037
+average fitness: 96.187232983333
+php time: -0.0074772834777832s
+
+
+generation 916
+saved 4
+generation time: 16.778239965439s
+best indiv 1 with fitness: 505.037
+average fitness: 57.855464166667
+php time: -0.015459060668945s
+
+
+generation 917
+saved 6
+generation time: 16.334450006485s
+best indiv 1 with fitness: 505.037
+average fitness: 69.110491
+php time: -0.0082991123199463s
+
+
+generation 918
+saved 10
+generation time: 14.408360958099s
+best indiv 1 with fitness: 505.037
+average fitness: 96.134925566667
+php time: -0.0078940391540527s
+
+
+generation 919
+saved 8
+generation time: 14.633733034134s
+best indiv 1 with fitness: 505.037
+average fitness: 74.639417033333
+php time: -0.0083839893341064s
+
+
+generation 920
+saved 10
+generation time: 14.921635150909s
+best indiv 1 with fitness: 505.037
+average fitness: 78.34440485
+php time: -0.0084388256072998s
+
+
+generation 921
+saved 10
+generation time: 14.57491517067s
+best indiv 1 with fitness: 505.037
+average fitness: 79.926352066667
+php time: -0.0079066753387451s
+
+
+generation 922
+saved 8
+generation time: 15.510293960571s
+best indiv 1 with fitness: 505.037
+average fitness: 68.981279016667
+php time: -0.006990909576416s
+
+
+generation 923
+saved 2
+generation time: 17.690942049026s
+best indiv 1 with fitness: 505.037
+average fitness: 55.764486
+php time: -0.008159875869751s
+
+
+generation 924
+saved 10
+generation time: 14.422981023788s
+best indiv 1 with fitness: 505.037
+average fitness: 66.469396833333
+php time: -0.0076131820678711s
+
+
+generation 925
+saved 6
+generation time: 16.107549905777s
+best indiv 1 with fitness: 505.037
+average fitness: 62.866723916667
+php time: -0.0083410739898682s
+
+
+generation 926
+saved 10
+generation time: 14.360481977463s
+best indiv 1 with fitness: 505.037
+average fitness: 92.372455188333
+php time: -0.0076019763946533s
+
+
+generation 927
+saved 6
+generation time: 15.891111135483s
+best indiv 1 with fitness: 505.037
+average fitness: 81.327877166667
+php time: -0.0083057880401611s
+
+
+generation 928
+saved 10
+generation time: 15.038817167282s
+best indiv 1 with fitness: 505.037
+average fitness: 84.7861983
+php time: -0.0077240467071533s
+
+
+generation 929
+saved 6
+generation time: 17.243639945984s
+best indiv 1 with fitness: 505.037
+average fitness: 52.824241333333
+php time: -0.0073790550231934s
+
+
+generation 930
+saved 4
+generation time: 17.605352878571s
+best indiv 1 with fitness: 505.037
+average fitness: 44.837769616667
+php time: -0.0097870826721191s
+
+
+generation 931
+saved 14
+generation time: 14.109513998032s
+best indiv 1 with fitness: 505.037
+average fitness: 65.05634
+php time: -0.007411003112793s
+
+
+generation 932
+saved 4
+generation time: 17.157016992569s
+best indiv 1 with fitness: 505.037
+average fitness: 52.145361966667
+php time: -0.0089149475097656s
+
+
+generation 933
+saved 14
+generation time: 13.558983802795s
+best indiv 1 with fitness: 505.037
+average fitness: 76.496582
+php time: -0.0075790882110596s
+
+
+generation 934
+saved 6
+generation time: 15.853092908859s
+best indiv 1 with fitness: 505.037
+average fitness: 84.246445
+php time: -0.008430004119873s
+
+
+generation 935
+saved 10
+generation time: 15.099729061127s
+best indiv 1 with fitness: 505.037
+average fitness: 103.32833233333
+php time: -0.0079591274261475s
+
+
+generation 936
+saved 8
+generation time: 15.280864953995s
+best indiv 1 with fitness: 505.037
+average fitness: 93.57167305
+php time: -0.01137113571167s
+
+
+generation 937
+saved 18
+generation time: 12.98442697525s
+best indiv 1 with fitness: 505.037
+average fitness: 112.885545
+php time: -0.0076439380645752s
+
+
+generation 938
+saved 6
+generation time: 14.789700984955s
+best indiv 1 with fitness: 505.037
+average fitness: 82.4439955
+php time: -0.0077438354492188s
+
+
+generation 939
+saved 6
+generation time: 15.518887042999s
+best indiv 1 with fitness: 505.037
+average fitness: 68.249456833333
+php time: -0.0077641010284424s
+
+
+generation 940
+saved 8
+generation time: 15.272109985352s
+best indiv 1 with fitness: 505.037
+average fitness: 74.795976166667
+php time: -0.00868821144104s
+
+
+generation 941
+saved 12
+generation time: 13.679043054581s
+best indiv 1 with fitness: 505.037
+average fitness: 112.37861318333
+php time: -0.0079050064086914s
+
+
+generation 942
+saved 6
+generation time: 15.776781797409s
+best indiv 1 with fitness: 505.037
+average fitness: 72.061604
+php time: -0.0074501037597656s
+
+
+generation 943
+saved 4
+generation time: 16.273922920227s
+best indiv 1 with fitness: 505.037
+average fitness: 94.261278
+php time: -0.0076920986175537s
+
+
+generation 944
+saved 6
+generation time: 15.541067123413s
+best indiv 1 with fitness: 505.037
+average fitness: 100.59860696667
+php time: -0.0091869831085205s
+
+
+generation 945
+saved 14
+generation time: 13.545985937119s
+best indiv 1 with fitness: 505.037
+average fitness: 99.666260783333
+php time: -0.0070750713348389s
+
+
+generation 946
+saved 2
+generation time: 16.758881092072s
+best indiv 1 with fitness: 505.037
+average fitness: 94.97837
+php time: -0.0071640014648438s
+
+
+generation 947
+saved 4
+generation time: 16.120557069778s
+best indiv 1 with fitness: 505.037
+average fitness: 83.717678616667
+php time: -0.0070390701293945s
+
+
+generation 948
+saved 2
+generation time: 17.024889945984s
+best indiv 1 with fitness: 505.037
+average fitness: 79.873107233333
+php time: -0.0071940422058105s
+
+
+generation 949
+saved 4
+generation time: 16.548311948776s
+best indiv 1 with fitness: 505.037
+average fitness: 78.00077375
+php time: -0.011126041412354s
+
+
+generation 950
+saved 8
+generation time: 15.599415063858s
+best indiv 1 with fitness: 505.037
+average fitness: 90.8366165
+php time: -0.0074930191040039s
+
+
+generation 951
+saved 4
+generation time: 16.422627925873s
+best indiv 1 with fitness: 505.037
+average fitness: 88.990162633333
+php time: -0.0073330402374268s
+
+
+generation 952
+saved 4
+generation time: 17.112083911896s
+best indiv 1 with fitness: 505.037
+average fitness: 82.969971466667
+php time: -0.0079660415649414s
+
+
+generation 953
+saved 8
+generation time: 15.709362983704s
+best indiv 1 with fitness: 505.037
+average fitness: 80.914741833333
+php time: -0.010819911956787s
+
+
+generation 954
+saved 6
+generation time: 16.598955869675s
+best indiv 1 with fitness: 505.037
+average fitness: 78.052349833333
+php time: -0.0078380107879639s
+
+
+generation 955
+saved 6
+generation time: 16.677895069122s
+best indiv 1 with fitness: 505.037
+average fitness: 54.48317
+php time: -0.0088729858398438s
+
+
+generation 956
+saved 12
+generation time: 14.466803073883s
+best indiv 1 with fitness: 505.037
+average fitness: 79.652804983333
+php time: -0.0072309970855713s
+
+
+generation 957
+saved 4
+generation time: 16.544428110123s
+best indiv 1 with fitness: 505.037
+average fitness: 99.000677616667
+php time: -0.0089597702026367s
+
+
+generation 958
+saved 12
+generation time: 13.989408969879s
+best indiv 1 with fitness: 505.037
+average fitness: 105.10933
+php time: -0.0076780319213867s
+
+
+generation 959
+saved 6
+generation time: 16.213886022568s
+best indiv 1 with fitness: 505.037
+average fitness: 97.045988166667
+php time: -0.0082998275756836s
+
+
+generation 960
+saved 10
+generation time: 14.904568910599s
+best indiv 1 with fitness: 505.037
+average fitness: 101.37680966667
+php time: -0.0091562271118164s
+
+
+generation 961
+saved 16
+generation time: 12.80025601387s
+best indiv 1 with fitness: 505.037
+average fitness: 110.95028198333
+php time: -0.0082671642303467s
+
+
+generation 962
+saved 8
+generation time: 15.263597011566s
+best indiv 1 with fitness: 505.037
+average fitness: 104.23320133333
+php time: -0.0087981224060059s
+
+
+generation 963
+saved 12
+generation time: 13.736346960068s
+best indiv 1 with fitness: 505.037
+average fitness: 118.14703216667
+php time: -0.0082399845123291s
+
+
+generation 964
+saved 10
+generation time: 14.576237916946s
+best indiv 1 with fitness: 505.037
+average fitness: 114.192791
+php time: -0.0075139999389648s
+
+
+generation 965
+saved 6
+generation time: 15.959681034088s
+best indiv 1 with fitness: 505.037
+average fitness: 101.1489559
+php time: -0.014902830123901s
+
+
+generation 966
+saved 10
+generation time: 14.995230197906s
+best indiv 1 with fitness: 505.037
+average fitness: 123.0803807
+php time: -0.0088157653808594s
+
+
+generation 967
+saved 12
+generation time: 13.893169879913s
+best indiv 1 with fitness: 505.037
+average fitness: 119.32332666667
+php time: -0.0073361396789551s
+
+
+generation 968
+saved 4
+generation time: 16.16708612442s
+best indiv 1 with fitness: 505.037
+average fitness: 124.68739235
+php time: -0.0087418556213379s
+
+
+generation 969
+saved 12
+generation time: 13.601647138596s
+best indiv 1 with fitness: 505.037
+average fitness: 99.6769405
+php time: -0.0082898139953613s
+
+
+generation 970
+saved 10
+generation time: 14.308212041855s
+best indiv 1 with fitness: 505.037
+average fitness: 113.007737
+php time: -0.007781982421875s
+
+
+generation 971
+saved 6
+generation time: 15.552011966705s
+best indiv 1 with fitness: 505.037
+average fitness: 86.266039
+php time: -0.020585060119629s
+
+
+generation 972
+saved 12
+generation time: 13.763753890991s
+best indiv 1 with fitness: 505.037
+average fitness: 94.1058115
+php time: -0.0084512233734131s
+
+
+generation 973
+saved 10
+generation time: 14.911123991013s
+best indiv 1 with fitness: 505.037
+average fitness: 89.530555333333
+php time: -0.0072150230407715s
+
+
+generation 974
+saved 4
+generation time: 16.64016699791s
+best indiv 1 with fitness: 505.037
+average fitness: 76.096048183333
+php time: -0.0087978839874268s
+
+
+generation 975
+saved 12
+generation time: 14.205892086029s
+best indiv 1 with fitness: 505.037
+average fitness: 73.838417683333
+php time: -0.0076498985290527s
+
+
+generation 976
+saved 6
+generation time: 15.472563028336s
+best indiv 1 with fitness: 505.037
+average fitness: 91.007066616667
+php time: -0.0075528621673584s
+
+
+generation 977
+saved 6
+generation time: 16.099102973938s
+best indiv 1 with fitness: 505.037
+average fitness: 67.549967183333
+php time: -0.0082221031188965s
+
+
+generation 978
+saved 10
+generation time: 14.590460062027s
+best indiv 1 with fitness: 505.037
+average fitness: 90.916897683333
+php time: -0.0072989463806152s
+
+
+generation 979
+saved 4
+generation time: 16.269629001617s
+best indiv 1 with fitness: 505.037
+average fitness: 90.106908933333
+php time: -0.0090110301971436s
+
+
+generation 980
+saved 12
+generation time: 14.492480993271s
+best indiv 1 with fitness: 505.037
+average fitness: 92.9694905
+php time: -0.0073950290679932s
+
+
+generation 981
+saved 4
+generation time: 16.61190199852s
+best indiv 1 with fitness: 505.037
+average fitness: 73.021258833333
+php time: -0.0085148811340332s
+
+
+generation 982
+saved 10
+generation time: 14.913539171219s
+best indiv 1 with fitness: 505.037
+average fitness: 73.391065166667
+php time: -0.0079808235168457s
+
+
+generation 983
+saved 8
+generation time: 15.28542304039s
+best indiv 1 with fitness: 505.037
+average fitness: 81.2731435
+php time: -0.0088028907775879s
+
+
+generation 984
+saved 12
+generation time: 13.762976884842s
+best indiv 1 with fitness: 505.037
+average fitness: 70.981720666667
+php time: -0.0072052478790283s
+
+
+generation 985
+saved 4
+generation time: 16.282423973083s
+best indiv 1 with fitness: 505.037
+average fitness: 120.30780114
+php time: -0.0072472095489502s
+
+
+generation 986
+saved 4
+generation time: 16.993283987045s
+best indiv 1 with fitness: 505.037
+average fitness: 80.361529166667
+php time: -0.014899015426636s
+
+
+generation 987
+saved 10
+generation time: 14.81045293808s
+best indiv 1 with fitness: 505.037
+average fitness: 98.150951666667
+php time: -0.0081920623779297s
+
+
+generation 988
+saved 8
+generation time: 15.105047941208s
+best indiv 1 with fitness: 505.037
+average fitness: 134.825547
+php time: -0.0077311992645264s
+
+
+generation 989
+saved 8
+generation time: 15.898221969604s
+best indiv 1 with fitness: 505.037
+average fitness: 84.098344666667
+php time: -0.007249116897583s
+
+
+generation 990
+saved 4
+generation time: 16.290847063065s
+best indiv 1 with fitness: 505.037
+average fitness: 92.5691565
+php time: -0.0084798336029053s
+
+
+generation 991
+saved 10
+generation time: 14.562599182129s
+best indiv 1 with fitness: 505.037
+average fitness: 80.558477166667
+php time: -0.0081448554992676s
+
+
+generation 992
+saved 10
+generation time: 13.755961179733s
+best indiv 1 with fitness: 505.037
+average fitness: 86.156070583333
+php time: -0.0072367191314697s
+
+
+generation 993
+saved 4
+generation time: 16.568252086639s
+best indiv 1 with fitness: 505.037
+average fitness: 65.6887425
+php time: -0.0080788135528564s
+
+
+generation 994
+saved 8
+generation time: 15.320271015167s
+best indiv 1 with fitness: 505.037
+average fitness: 80.372550533333
+php time: -0.0074851512908936s
+
+
+generation 995
+saved 6
+generation time: 13.040828943253s
+best indiv 1 with fitness: 505.037
+average fitness: 81.438625833333
+php time: -0.0079030990600586s
+
+
+generation 996
+saved 8
+generation time: 14.60942196846s
+best indiv 1 with fitness: 505.037
+average fitness: 70.772474333333
+php time: -0.0072522163391113s
+
+
+generation 997
+saved 4
+generation time: 15.834785938263s
+best indiv 1 with fitness: 505.037
+average fitness: 67.8916015
+php time: -0.008234977722168s
+
+
+generation 998
+saved 10
+generation time: 13.218569993973s
+best indiv 1 with fitness: 505.037
+average fitness: 84.667492716667
+php time: -0.008770227432251s
+
+
+generation 999
+saved 12
+generation time: 9.6555790901184s
+best indiv 1 with fitness: 505.037
+average fitness: 98.3686195
+php time: -0.0071780681610107s
+
+
+generation 1000
+saved 4
+generation time: 11.925539970398s
+best indiv 1 with fitness: 505.037
+average fitness: 88.808731333333
+php time: -0.0079350471496582s
+
+
+
+Process finished with exit code 0
