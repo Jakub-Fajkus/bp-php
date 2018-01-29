@@ -16,10 +16,6 @@ class Config
     /** @internal  */
     public const DEFAULT_CROSSOVER_RATE = 90;
     /** @internal  */
-    public const DEFAULT_MOTOR_DRIVE_MINIMUM = -100;
-    /** @internal  */
-    public const DEFAULT_MOTOR_DRIVE_MAXIMUM = 100;
-    /** @internal  */
     public const DEFAULT_INDIVIDUAL_COUNT = 100;
     /** @internal  */
     public const DEFAULT_MOTOR_COUNT = 4;
@@ -32,8 +28,6 @@ class Config
     private static $genotypeSize = self::DEFAULT_GENOTYPE_SIZE;
     private static $mutationRate = self::DEFAULT_MUTATION_RATE;
     private static $crossoverRate = self::DEFAULT_CROSSOVER_RATE;
-    private static $motorDriveMinimum = self::DEFAULT_MOTOR_DRIVE_MINIMUM;
-    private static $motorDriveMaximum = self::DEFAULT_MOTOR_DRIVE_MAXIMUM;
     private static $individualCount = self::DEFAULT_INDIVIDUAL_COUNT;
     private static $motorCount = self::DEFAULT_MOTOR_COUNT;
     private static $instructionValueMinimum = self::DEFAULT_INSTRUCTION_VALUE_MINIMUM;
@@ -69,38 +63,6 @@ class Config
     public static function setMutationRate(int $mutationRate): void
     {
         self::$mutationRate = $mutationRate;
-    }
-
-    /**
-     * @return int
-     */
-    public static function getMotorDriveMinimum(): int
-    {
-        return self::$motorDriveMinimum;
-    }
-
-    /**
-     * @param int $motorDriveMinimum
-     */
-    public static function setMotorDriveMinimum(int $motorDriveMinimum): void
-    {
-        self::$motorDriveMinimum = $motorDriveMinimum;
-    }
-
-    /**
-     * @return int
-     */
-    public static function getMotorDriveMaximum(): int
-    {
-        return self::$motorDriveMaximum;
-    }
-
-    /**
-     * @param int $motorDriveMaximum
-     */
-    public static function setMotorDriveMaximum(int $motorDriveMaximum): void
-    {
-        self::$motorDriveMaximum = $motorDriveMaximum;
     }
 
     /**

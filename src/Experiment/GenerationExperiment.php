@@ -31,6 +31,8 @@ class GenerationExperiment implements ExperimentInterface
         Config::setCrossoverRate(90);
         Config::setMotorCount(8);
         Config::setGenotypeSize(40);
+        Config::setInstructionValueMinimum(-5);
+        Config::setInstructionValueMaximum(5);
 
         $runDir = $filesystem->createDirectory(Config::getDataDir(), $date->format(DATE_ATOM));
 
@@ -43,7 +45,7 @@ class GenerationExperiment implements ExperimentInterface
         $simulator = new Simulator(new InstructionSerializer());
         $stats = new IndividualStatistics();
 
-        for ($i = 0; $i < 10000; $i++) {
+        for ($i = 0; $i < 4000; $i++) {
             $generationStart = microtime(true);
 
             echo "generation {$generation->getId()}" . PHP_EOL;

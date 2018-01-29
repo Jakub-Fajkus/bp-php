@@ -32,6 +32,8 @@ plot 'generations.txt'  using 1:2 with lines title "Max fitness", 'generations.t
 set terminal epslatex color solid
 set output 'plot.eps'
 replot
+q
+
 
 
 //vysledky:
