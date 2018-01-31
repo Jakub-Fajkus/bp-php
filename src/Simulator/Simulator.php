@@ -67,7 +67,7 @@ class Simulator implements SimulatorInterface
 
         $filesystem->writeToFile($generationDirectory . '/individuals.txt', $instructionsString);
 
-        shell_exec(Config::getBinDir() . "/bp_compute_spirala_17_bodu_450s 4 $modelFilePath $generationDirectory");
+        shell_exec(Config::getBinDir() . "/bp_compute_rovny_200s_3nozka_4reference 4 $modelFilePath $generationDirectory");
 
         $content = $filesystem->readFromFile($generationDirectory . '/fitnesses.txt');
         $fitnesses = explode("\n", $content);

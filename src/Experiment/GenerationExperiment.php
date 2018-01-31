@@ -29,8 +29,8 @@ class GenerationExperiment implements ExperimentInterface
         Config::setIndividualCount(60);
         Config::setMutationRate(2);
         Config::setCrossoverRate(90);
-        Config::setMotorCount(8);
-        Config::setGenotypeSize(40);
+        Config::setMotorCount(3);
+        Config::setGenotypeSize(10);
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
 
