@@ -117,6 +117,7 @@ class Individual implements IndividualInterface
             if ($forced || random_int(0, 99) < Config::getMutationRate()) {
                 //mutate the instruction
                 $gene->mutate();
+                $this->evaluated = false;
             }
         }
     }
