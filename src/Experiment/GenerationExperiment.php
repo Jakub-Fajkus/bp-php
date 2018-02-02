@@ -10,6 +10,7 @@ use Simulator\Model\FixedModelXml;
 use Simulator\Serializer\Instruction\InstructionSerializer;
 use Simulator\Serializer\MotorDrive\TextMotorDriveSerializer;
 use Simulator\Simulator;
+use Statistics\GenerationStatistics;
 use Statistics\IndividualStatistics;
 
 /**
@@ -37,18 +38,21 @@ class GenerationExperiment implements ExperimentInterface
         $runDir = $filesystem->createDirectory(Config::getDataDir(), $date->format(DATE_ATOM));
 
         $modelFile = $filesystem->createFile($runDir, 'model.xml');
+        $logFile = $filesystem->createFile($runDir, 'log.txt');
         $filesystem->writeToFile($modelFile, (new FixedModelXml())->getAsString());
 
         $generationGenerator = new GenerationGenerator();
         $generation = $generationGenerator->generateGeneration(1, Config::getIndividualCount());
 
         $simulator = new Simulator(new InstructionSerializer());
-        $stats = new IndividualStatistics();
+        $individualStats = new IndividualStatistics();
+        $generationStats = new GenerationStatistics();
 
-        for ($i = 0; $i < 4000; $i++) {
+        for ($i = 0; $i < 2000; $i++) {
+            $output = '';
             $generationStart = microtime(true);
 
-            echo "generation {$generation->getId()}" . PHP_EOL;
+            $output .= "generation {$generation->getId()}" . PHP_EOL;
 
             $generationDir = $filesystem->createDirectory($runDir, (string)$generation->getId());
 
@@ -58,19 +62,26 @@ class GenerationExperiment implements ExperimentInterface
 
             $afterSim = microtime(true);
 
-            echo 'generation time: ' . ($afterSim-$beforeSim) . 's' . PHP_EOL;
+            $output .= 'generation time: ' . ($afterSim-$beforeSim) . 's' . PHP_EOL;
 
             $best = $generation->getBestIndividual();
-            echo "best indiv {$best->getId()} with fitness: {$best->getFitness()}" . PHP_EOL;
-            echo 'average fitness: ' . $stats->getAverageFitness($generation->getIndividuals()) . PHP_EOL;
+            $output .= "best indiv {$best->getId()} with fitness: {$best->getFitness()}" . PHP_EOL;
+            $output .= 'average fitness: ' . $individualStats->getAverageFitness($generation->getIndividuals()) . PHP_EOL;
+
+            $generationStats->updateStatistics($generation);
 
             $generation = $generation->createNewGeneration();
             $generationEnd = microtime(true);
 
-            echo 'php time: ' . (($generationStart-$generationEnd) - ($beforeSim - $afterSim)) . 's' . PHP_EOL;
+            $output .= 'php time: ' . (($generationStart-$generationEnd) - ($beforeSim - $afterSim)) . 's' . PHP_EOL;
 
-            echo PHP_EOL . PHP_EOL;
+            $output .= PHP_EOL . PHP_EOL;
 
+            echo $output;
+            file_put_contents($logFile, $output, FILE_APPEND);
         }
+
+        echo $generationStats->getStatistics();
+        file_put_contents($logFile, $generationStats->getStatistics(), FILE_APPEND);
     }
 }

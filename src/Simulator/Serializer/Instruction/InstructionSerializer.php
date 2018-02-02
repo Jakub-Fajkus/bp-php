@@ -14,7 +14,7 @@ class InstructionSerializer implements InstructionSerializerInterface
     /**
      * Serializes the given instructions to a string
      *
-     * Each instruction is on the separate line. There is not line break after the last instruction
+     * Each instruction is on the separate line. There is no line break after the last instruction
      *
      * @param InstructionInterface[] $instructions
      *
