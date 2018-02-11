@@ -36,10 +36,12 @@ class Simulator implements SimulatorInterface
      * [3] /some/dir/to/generation
      *
      * @param IndividualInterface[] $individuals
-     * @param string                $modelFilePath
-     * @param string                $generationDirectory
+     * @param string $modelFilePath
+     * @param string $generationDirectory
+     * @param int $duration
+     * @throws \Exception
      */
-    public function evaluate(array $individuals, string $modelFilePath, string $generationDirectory): void
+    public function evaluate(array $individuals, string $modelFilePath, string $generationDirectory, int $duration): void
     {
         $filesystem = new Filesystem();
 
@@ -67,7 +69,7 @@ class Simulator implements SimulatorInterface
 
         $filesystem->writeToFile($generationDirectory . '/individuals.txt', $instructionsString);
 
-        shell_exec(Config::getBinDir() . "/bp_compute_rovny_100s_3_nozka_4_reference 4 $modelFilePath $generationDirectory");
+        shell_exec(Config::getBinDir() . "/bp_compute_spirala_xs_3nozka_9_referenci 4 $modelFilePath $generationDirectory $duration");
 
         $content = $filesystem->readFromFile($generationDirectory . '/fitnesses.txt');
         $fitnesses = explode("\n", $content);

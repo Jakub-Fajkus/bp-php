@@ -9,23 +9,22 @@ use Genetic\Generator\GenerationGenerator;
 use Genetic\Generator\InitializedGenerationGenerator;
 use Simulator\Model\FixedModelXml;
 use Simulator\Serializer\Instruction\InstructionSerializer;
-use Simulator\Serializer\MotorDrive\TextMotorDriveSerializer;
 use Simulator\Simulator;
 use Statistics\GenerationStatistics;
 use Statistics\IndividualStatistics;
 
 /**
- * Class GenerationExperiment
+ * Class ThreeLegLinearExperiment
  * @package Experiment
  */
-class GenerationExperiment extends BaseExperiment
+class ThreeLegLinearExperiment extends BaseExperiment
 {
     /**
      * Run the whole experiment
      */
     public function run(): void
     {
-        $generationGenerator = new InitializedGenerationGenerator();
+        $generationGenerator = new GenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer());
         $individualStats = new IndividualStatistics();
         $generationStats = new GenerationStatistics();

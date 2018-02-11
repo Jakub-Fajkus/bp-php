@@ -4,7 +4,8 @@ declare(strict_types=1);
 namespace Genetic;
 
 use Config\Config;
-use Genetic\Instruction\InstructionFactory;
+use Genetic\Instruction\InstructionFactoryInterface;
+use Genetic\Instruction\SimpleInstructionFactory;
 use Genetic\Instruction\InstructionInterface;
 
 /**
@@ -157,10 +158,11 @@ class Individual implements IndividualInterface
 
     /**
      * Generate random genotype
+     *
+     * @param InstructionFactoryInterface $factory
      */
-    public function randomizeGenotype(): void
+    public function randomizeGenotype(InstructionFactoryInterface $factory): void
     {
-        $factory = new InstructionFactory();
         $this->genotype = [];
 
         for ($i = 0; $i < Config::getGenotypeSize(); $i++) {

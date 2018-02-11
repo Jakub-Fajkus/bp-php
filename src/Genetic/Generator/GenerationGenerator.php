@@ -6,6 +6,8 @@ namespace Genetic\Generator;
 use Genetic\Generation;
 use Genetic\GenerationInterface;
 use Genetic\IndividualFactory;
+use Genetic\Instruction\ComposedInstructionFactory;
+use Genetic\Instruction\SimpleInstructionFactory;
 use Simulator\Model\FixedModelXml;
 
 /**
@@ -27,10 +29,11 @@ class GenerationGenerator implements GenerationGeneratorInterface
         $generation = new Generation($id, []);
 
         $individualFactory = new IndividualFactory();
+        $instructionFactory = new ComposedInstructionFactory();
 
         for ($i = 0; $i < $individualCount; $i++) {
             $newIndividual = $individualFactory->createIndividual($generation, [], $i+1);
-            $newIndividual->randomizeGenotype();
+            $newIndividual->randomizeGenotype($instructionFactory);
             $generation->addIndividual($newIndividual);
         }
         return $generation;

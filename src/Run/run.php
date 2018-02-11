@@ -5,8 +5,9 @@ namespace Run;
 
 use Experiment\GenerationExperiment;
 use Experiment\SingleIndividualExperiment;
+use Experiment\ThreeLegSpiralExperiment;
 
 include_once __DIR__ . '/../../vendor/autoload.php';
 
-$experiment = new GenerationExperiment();
+$experiment = new ThreeLegSpiralExperiment();
 $experiment->run();

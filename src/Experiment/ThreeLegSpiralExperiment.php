@@ -2,23 +2,21 @@
 declare(strict_types=1);
 
 namespace Experiment;
-
 use Config\Config;
 use Filesystem\Filesystem;
 use Genetic\Generator\GenerationGenerator;
 use Genetic\Generator\InitializedGenerationGenerator;
 use Simulator\Model\FixedModelXml;
 use Simulator\Serializer\Instruction\InstructionSerializer;
-use Simulator\Serializer\MotorDrive\TextMotorDriveSerializer;
 use Simulator\Simulator;
 use Statistics\GenerationStatistics;
 use Statistics\IndividualStatistics;
 
 /**
- * Class GenerationExperiment
+ * Class ThreeLegSpiralExperiment
  * @package Experiment
  */
-class GenerationExperiment extends BaseExperiment
+class ThreeLegSpiralExperiment extends BaseExperiment
 {
     /**
      * Run the whole experiment
@@ -48,17 +46,19 @@ class GenerationExperiment extends BaseExperiment
 
         $generation = $generationGenerator->generateGeneration(1, Config::getIndividualCount());
 
+        $duration = 240;
+
         for ($i = 0; $i < 2000; $i++) {
             $output = '';
             $generationStart = microtime(true);
 
-            $output .= "generation {$generation->getId()}" . PHP_EOL;
+            $output .= "generation {$generation->getId()} with duration $duration" . PHP_EOL;
 
             $generationDir = $filesystem->createDirectory($runDir, (string)$generation->getId());
 
             $beforeSim = microtime(true);
 
-            $simulator->evaluate($generation->getIndividuals(), $modelFile, $generationDir);
+            $simulator->evaluate($generation->getIndividuals(), $modelFile, $generationDir, $duration);
 
             $afterSim = microtime(true);
 
@@ -79,6 +79,12 @@ class GenerationExperiment extends BaseExperiment
 
             echo $output;
             file_put_contents($logFile, $output, FILE_APPEND);
+
+
+            //each 20 generations, increase the duration
+            if ($i % 20 === 0) {
+                $duration++;
+            }
         }
 
         echo $generationStats->getStatistics();

@@ -22,12 +22,12 @@ class MotorValue
     /**
      * MotorValue constructor.
      *
-     * @param string $name
+     * @param string $id
      * @param int    $value
      */
-    public function __construct(string $name, int $value)
+    public function __construct(string $id, int $value)
     {
-        $this->id = $name;
+        $this->id = $id;
         $this->value = $value;
     }
 
@@ -40,11 +40,11 @@ class MotorValue
     }
 
     /**
-     * @param string $name
+     * @param string $id
      */
-    public function setId(string $name): void
+    public function setId(string $id): void
     {
-        $this->id = $name;
+        $this->id = $id;
     }
 
     /**

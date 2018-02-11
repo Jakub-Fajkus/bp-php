@@ -19,8 +19,9 @@ interface SimulatorInterface
      * [2] /some/dir/to/generation
      *
      * @param IndividualInterface[] $individuals
-     * @param string                $modelFilePath
-     * @param string                $generationDirectory
+     * @param string $modelFilePath
+     * @param string $generationDirectory
+     * @param int $duration
      */
-    public function evaluate(array $individuals, string $modelFilePath, string $generationDirectory): void;
+    public function evaluate(array $individuals, string $modelFilePath, string $generationDirectory, int $duration): void;
 }

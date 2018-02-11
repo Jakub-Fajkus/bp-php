@@ -8,6 +8,4 @@ soubory:
 c=1; while [ $c -le 100 ]; do ../../render.sh; (( c++ )); sleep 5; done
 
 
-
-
-
+g++ -O2 -I. -Iinclude -Lbin -lpthread -std=c++17 -mavx main_compute.cpp Fitness.cpp Reference.cpp InstructionFileLoader.cpp MotorInstruction.cpp MotorValue.cpp shared.cpp -lmujoco150nogl  -g -o main_compute

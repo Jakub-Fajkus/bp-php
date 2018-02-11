@@ -146,6 +146,22 @@ class Config
     }
 
     /**
+     * @return int
+     */
+    public static function getRandomMotorValue(): int
+    {
+        return random_int(Config::getInstructionValueMinimum(), Config::getInstructionValueMaximum());
+    }
+
+    /**
+     * @return string
+     */
+    public static function getRandomMotorId(): string
+    {
+        return (string)random_int(0, Config::getMotorCount() - 1);
+    }
+
+    /**
      * @return string
      */
     public static function getDataDir(): string

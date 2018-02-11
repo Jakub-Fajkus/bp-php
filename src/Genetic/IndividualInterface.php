@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Genetic;
 
+use Genetic\Instruction\InstructionFactoryInterface;
+use Genetic\Instruction\SimpleInstructionFactory;
 use Genetic\Instruction\InstructionInterface;
 
 /**
@@ -43,8 +45,10 @@ interface IndividualInterface
 
     /**
      * Generate random genotype
+     *
+     * @param InstructionFactoryInterface $factory
      */
-    public function randomizeGenotype(): void;
+    public function randomizeGenotype(InstructionFactoryInterface $factory): void;
 
     /**
      * @return float

@@ -30,7 +30,7 @@ class FixedModelXml implements ModelXmlInterface
         <material name="checker_mat" texture="checkers" texrepeat="15 15"/>
     </asset>
     <visual>
-        <global offwidth="800" offheight="800"/>
+        <global offwidth="1920" offheight="1080"/>
     </visual>
     <worldbody>
         <camera name='targeting' pos='1 1 2' mode='targetbodycom' target='body_0'/>
@@ -38,11 +38,15 @@ class FixedModelXml implements ModelXmlInterface
          <geom name="floor" material="checker_mat" pos="0 0 -20" size="420 420 .125" rgba="1 1 1 1" type="plane"
               condim="6" friction="5 0.5 0.1"/>
 
-        <site name="reference_0" pos="100 0 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_1" pos="180 0 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_2" pos="260 0 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_3" pos="340 0 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_4" pos="420 0 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_0" pos="30 0 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_1" pos="100 -15 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_2" pos="110 -80 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_3" pos="70 -130 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_4" pos="-30 -145 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_5" pos="-115 -85 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_6" pos="-150 -15 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_7" pos="-110 75 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_8" pos="-40 135 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
                 
         <body name="body_0">
             <freejoint/>

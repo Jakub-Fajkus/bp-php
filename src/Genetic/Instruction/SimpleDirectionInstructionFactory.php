@@ -6,11 +6,12 @@ namespace Genetic\Instruction;
 use Config\Config;
 
 /**
- * Class InstructionFactory
- * @package Genetic\SimpleInstruction
+ * Class SimpleDirectionInstructionFactory
+ * @package Genetic\Instruction
  */
-class InstructionFactory
+class SimpleDirectionInstructionFactory implements InstructionFactoryInterface
 {
+
     /**
      * @param string $motorName
      * @param int    $value
@@ -19,7 +20,7 @@ class InstructionFactory
      */
     public function createInstruction(string $motorName, int $value): InstructionInterface
     {
-        return new SimpleInstruction($motorName, $value);
+        return new SimpleDirectionInstruction($motorName, $value);
     }
 
     /**
@@ -29,9 +30,6 @@ class InstructionFactory
      */
     public function createRandomInstruction(): InstructionInterface
     {
-        $id = random_int(0, Config::getMotorCount() - 1);
-        $value = random_int(Config::getInstructionValueMinimum(), Config::getInstructionValueMaximum());
-
-        return new SimpleInstruction((string)$id, $value);
+        return new SimpleDirectionInstruction(Config::getRandomMotorId(), Config::getRandomMotorValue());
     }
 }
