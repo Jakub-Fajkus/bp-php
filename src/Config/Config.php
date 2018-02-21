@@ -9,20 +9,22 @@ namespace Config;
  */
 class Config
 {
-    /** @internal  */
+    /** @internal */
     public const DEFAULT_GENOTYPE_SIZE = 20;
-    /** @internal  */
+    /** @internal */
     public const DEFAULT_MUTATION_RATE = 3;
-    /** @internal  */
+    /** @internal */
     public const DEFAULT_CROSSOVER_RATE = 90;
-    /** @internal  */
+    /** @internal */
     public const DEFAULT_INDIVIDUAL_COUNT = 100;
-    /** @internal  */
+    /** @internal */
     public const DEFAULT_MOTOR_COUNT = 4;
-    /** @internal  */
+    /** @internal */
     public const DEFAULT_INSTRUCTION_VALUE_MINIMUM = -5;
-    /** @internal  */
+    /** @internal */
     public const DEFAULT_INSTRUCTION_VALUE_MAXIMUM = 5;
+    /** @internal */
+    public const DEFAULT_REGISTER_COUNT = 10;
 
 
     private static $genotypeSize = self::DEFAULT_GENOTYPE_SIZE;
@@ -32,6 +34,7 @@ class Config
     private static $motorCount = self::DEFAULT_MOTOR_COUNT;
     private static $instructionValueMinimum = self::DEFAULT_INSTRUCTION_VALUE_MINIMUM;
     private static $instructionValueMaximum = self::DEFAULT_INSTRUCTION_VALUE_MAXIMUM;
+    private static $registerCount = self::DEFAULT_REGISTER_COUNT;
 
     /**
      * @return int
@@ -154,11 +157,35 @@ class Config
     }
 
     /**
+     * @return int
+     */
+    public static function getRandomRegisterIndex(): int
+    {
+        return random_int(0, Config::getRegisterCount() - 1);
+    }
+
+    /**
      * @return string
      */
     public static function getRandomMotorId(): string
     {
         return (string)random_int(0, Config::getMotorCount() - 1);
+    }
+
+    /**
+     * @return int
+     */
+    public static function getRegisterCount(): int
+    {
+        return self::$registerCount;
+    }
+
+    /**
+     * @param int $registerCount
+     */
+    public static function setRegisterCount(int $registerCount): void
+    {
+        self::$registerCount = $registerCount;
     }
 
     /**

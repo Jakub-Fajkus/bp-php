@@ -17,9 +17,7 @@ interface InstructionInterface
     /**
      * Serializes the instruction
      *
-     * Returns a string, containing a set of pairs of values.
-     * The string has format: M V M V
-     * Where M is motor name and V is motor value
+     * Returns a string, containing the instruction information. It must not contain new line characters.
      *
      * @return string
      */

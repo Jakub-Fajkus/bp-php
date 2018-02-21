@@ -11,17 +11,6 @@ use Config\Config;
  */
 class ComposedInstructionFactory implements InstructionFactoryInterface
 {
-
-    /** @param string $motorName
-     * @param int $value
-     *
-     * @return InstructionInterface
-     */
-    public function createInstruction(string $motorName, int $value): InstructionInterface
-    {
-        return new ComposedInstruction($motorName, $value);
-    }
-
     /**
      * Create a instruction with given motor values.
      *
@@ -41,7 +30,7 @@ class ComposedInstructionFactory implements InstructionFactoryInterface
      *
      * @return InstructionInterface
      */
-    public function createRandomInstruction(): InstructionInterface
+    public function createRandomInstruction(int $index): InstructionInterface
     {
 
         $valueCount = random_int(1, 3);

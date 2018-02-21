@@ -5,6 +5,7 @@ namespace Genetic;
 
 use Config\Config;
 use Genetic\Instruction\InstructionFactoryInterface;
+use Genetic\Instruction\LGP\LGPInstructionFactory;
 use Genetic\Instruction\SimpleInstructionFactory;
 use Genetic\Instruction\InstructionInterface;
 
@@ -57,9 +58,9 @@ class Individual implements IndividualInterface
     public function getInstructions(): array
     {
         //check if the genotype is of correct size
-        if (\count($this->genotype) % Config::getGenotypeSize() !== 0) {
-            throw new \Exception('The genotype has incorrect size!: ' . \count($this->genotype));
-        }
+//        if (\count($this->genotype) % Config::getGenotypeSize() !== 0) {
+//            throw new \Exception('The genotype has incorrect size!: ' . \count($this->genotype));
+//        }
 
         return $this->genotype;
     }
@@ -121,6 +122,18 @@ class Individual implements IndividualInterface
                 $this->evaluated = false;
             }
         }
+
+        $fac = new LGPInstructionFactory();
+
+        //5% adding instruction
+        if (random_int(0, 4) == 2 && \count($this->genotype) < 50) {
+            $this->genotype[] = $fac->createRandomInstruction();
+        }
+
+        //5% removing instruction
+        if (random_int(0, 4) == 2 && \count($this->genotype) > Config::getGenotypeSize()) {
+            $this->genotype[] = $fac->createRandomInstruction();
+        }
     }
 
     /**
@@ -166,7 +179,7 @@ class Individual implements IndividualInterface
         $this->genotype = [];
 
         for ($i = 0; $i < Config::getGenotypeSize(); $i++) {
-            $this->genotype[] = $factory->createRandomInstruction();
+            $this->genotype[] = $factory->createRandomInstruction($i);
         }
     }
 

@@ -8,6 +8,7 @@ use Genetic\GenerationInterface;
 use Genetic\IndividualFactory;
 use Genetic\IndividualInterface;
 use Genetic\Instruction\ComposedInstructionFactory;
+use Genetic\Instruction\LGP\LGPInstructionFactory;
 use Genetic\Instruction\MotorValue;
 use Genetic\Instruction\SimpleInstructionFactory;
 
@@ -18,96 +19,7 @@ use Genetic\Instruction\SimpleInstructionFactory;
 class InitializedGenerationGenerator implements GenerationGeneratorInterface
 {
     /** @var array */
-    private $initialGenomes = [
-        '1 5 2 2 2 5 
-        2 -5 1 -5 
-        0 2 0 -5 2 -3 
-        2 -5 2 4 
-        1 1 
-        0 -4 1 3 1 -5 2 -4 1 -1 
-        1 -5 1 3 
-        2 -2 2 0 
-        0 5 2 5 
-        1 -4 0 -4 2 -5',
-
-        '1 5 2 5 0 4 
-        2 -5 1 -5 0 -5 
-        2 -4 
-        0 -5 
-        0 4 
-        0 -5 
-        2 -3 1 -1 
-        2 5 
-        0 -1 0 -4 
-        2 -2',
-
-        '0 -2 1 3 0 -4 
-        1 -2 2 -5 1 -1 
-        2 1 
-        1 5 
-        2 5 0 5 1 5 
-        0 -5 
-        0 0 1 -5 2 -5 
-        0 -2 
-        0 0 
-        2 3 0 -3 2 5 ',
-
-        '0 -5 
-        1 -2 
-        0 5 1 -4 0 1 
-        1 2 2 -5 0 -5 
-        1 3 
-        1 -4 1 1 1 2 
-        1 -3 0 5 
-        2 0 1 5 2 5 
-        1 -5 
-        1 3',
-
-        '0 -2 
-        1 0 0 -5 0 4 
-        2 -5 1 -5 
-        2 4 
-        1 -4 0 -5 
-        2 -5 
-        1 -4 1 -3 
-        2 2 
-        1 4 
-        2 5 0 5 1 5 ',
-
-        '2 -5 
-        1 5 2 5 0 5 
-        1 -4 2 -5 0 -5 
-        2 -4 1 -1 0 -3 
-        2 -5 1 -4 2 -1 2 -2 
-        1 3 1 -2 0 -5 
-        2 0 
-        1 -4 1 5 
-        2 -5 
-        2 2 1 2 1 -3 ',
-
-        '2 4 
-        1 -3 
-        0 -5 1 -2 2 -4 
-        0 4 1 -5 
-        0 -1 
-        0 -4 1 0 
-        2 5 
-        1 1 1 5 
-        0 -5 0 4 
-        0 -2 1 -2 ',
-
-        '2 1 
-        1 5 
-        1 -4 2 -2 2 1 2 -4 
-        2 2 
-        0 -5 2 5 
-        0 -3 1 5 0 5 
-        0 -5 
-        2 -3 2 1 0 -5 1 1 
-        0 -5 1 -5 
-        2 4 2 2'
-
-        ];
+    private $initialGenomes = [];
 
     /**
      * Create a new generation with given id and with $individualCount of individuals

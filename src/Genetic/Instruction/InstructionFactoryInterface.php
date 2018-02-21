@@ -9,17 +9,11 @@ namespace Genetic\Instruction;
  */
 interface InstructionFactoryInterface
 {
-    /** @param string $motorName
-    * @param int    $value
-    *
-    * @return InstructionInterface
-    */
-    public function createInstruction(string $motorName, int $value): InstructionInterface;
-
     /**
      * Randomizes an instruction
      *
+     * @param int $index Index, at which will the instruction be inserted in genotype
      * @return InstructionInterface
      */
-    public function createRandomInstruction(): InstructionInterface;
+    public function createRandomInstruction(int $index): InstructionInterface;
 }

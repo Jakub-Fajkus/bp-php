@@ -19,11 +19,25 @@ use Statistics\IndividualStatistics;
 class ThreeLegSpiralExperiment extends BaseExperiment
 {
     /**
+    Number of generations 1,000
+    Population size 1,000
+    Tournament size 2
+    Maximum program length 200
+    Initial program length 5–15
+    Macro variation rate 75% - crossover
+    Micro mutation rate 25%
+    Reproduction rate 100%
+
+     */
+
+
+
+    /**
      * Run the whole experiment
      */
     public function run(): void
     {
-        $generationGenerator = new InitializedGenerationGenerator();
+        $generationGenerator = new GenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer());
         $individualStats = new IndividualStatistics();
         $generationStats = new GenerationStatistics();
@@ -31,12 +45,13 @@ class ThreeLegSpiralExperiment extends BaseExperiment
         $date = new \DateTime();
 
         Config::setIndividualCount(60);
-        Config::setMutationRate(2);
+        Config::setMutationRate(3);
         Config::setCrossoverRate(90);
         Config::setMotorCount(3);
-        Config::setGenotypeSize(10);
+        Config::setGenotypeSize(20);
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
+        Config::setRegisterCount(10);
 
         $runDir = $filesystem->createDirectory(Config::getDataDir(), $date->format(DATE_ATOM));
 
@@ -46,7 +61,7 @@ class ThreeLegSpiralExperiment extends BaseExperiment
 
         $generation = $generationGenerator->generateGeneration(1, Config::getIndividualCount());
 
-        $duration = 240;
+        $duration = 350;
 
         for ($i = 0; $i < 2000; $i++) {
             $output = '';
