@@ -22,31 +22,26 @@ class LGPInstructionFactory implements InstructionFactoryInterface
      */
     public function createRandomInstruction(int $index): InstructionInterface
     {
-
-
-        $random = random_int(0, 3);
         $instruction = null;
 
-        switch ($random) {
-            case 0:
-                $instruction = new DecInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
-                break;
-            case 1:
-                $instruction = new IncInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
-                break;
-            case 2:
-                $instruction = new SouInstruction(Config::getRandomRegisterIndex(), (int)Config::getRandomMotorId());
-                break;
-            case 3:
-                $instruction = new SreInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
-                break;
+        if ($index >= 0 && $index < 10) {
+            //init
+            $instruction = new SreInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
+        } else if ($index >= 10 && $index < 15) {
+            //event
+            $random = random_int(0, 1);
+            switch ($random) {
+                case 0:
+                    $instruction = new DecInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
+                    break;
+                case 1:
+                    $instruction = new IncInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
+                    break;
+            }
+        } else {
+            $instruction = new SouInstruction(Config::getRandomRegisterIndex(), (int)Config::getRandomMotorId());
         }
 
         return $instruction;
-    }
-
-    public function createInst($)
-    {
-
     }
 }

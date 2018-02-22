@@ -126,13 +126,8 @@ class Individual implements IndividualInterface
         $fac = new LGPInstructionFactory();
 
         //5% adding instruction
-        if (random_int(0, 4) == 2 && \count($this->genotype) < 50) {
-            $this->genotype[] = $fac->createRandomInstruction();
-        }
-
-        //5% removing instruction
-        if (random_int(0, 4) == 2 && \count($this->genotype) > Config::getGenotypeSize()) {
-            $this->genotype[] = $fac->createRandomInstruction();
+        if (random_int(0, 19) == 0 && \count($this->genotype) < 50) {
+            $this->genotype[] = $fac->createRandomInstruction(\count($this->genotype));
         }
     }
 

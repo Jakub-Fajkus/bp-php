@@ -48,7 +48,7 @@ class ThreeLegSpiralExperiment extends BaseExperiment
         Config::setMutationRate(3);
         Config::setCrossoverRate(90);
         Config::setMotorCount(3);
-        Config::setGenotypeSize(20);
+        Config::setGenotypeSize(45);
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
         Config::setRegisterCount(10);
@@ -61,7 +61,7 @@ class ThreeLegSpiralExperiment extends BaseExperiment
 
         $generation = $generationGenerator->generateGeneration(1, Config::getIndividualCount());
 
-        $duration = 350;
+        $duration = 400;
 
         for ($i = 0; $i < 2000; $i++) {
             $output = '';

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Genetic;
 
+use Cache\IndividualCache;
 use Config\Config;
 
 /**
@@ -105,10 +106,7 @@ class Generation implements GenerationInterface
 
             //either do crossover, or direct copy of the individuals
             if (random_int(0, 99) < Config::getCrossoverRate()) {
-                $newOnes = $individual1->onePointCrossover($individual2); //todo change to 2 point!
-
-                $newOnes[0]->mutate();
-                $newOnes[1]->mutate();
+                $newOnes = $this->createNewOffsprings($individual1, $individual2);
 
                 $newGeneration->individuals[] = $newOnes[0];
                 $newGeneration->individuals[] = $newOnes[1];
@@ -164,5 +162,36 @@ class Generation implements GenerationInterface
         foreach ($this->individuals as $individual) {
             $individual->setId($id++);
         }
+    }
+
+    public function createNewOffsprings(IndividualInterface $individual1, IndividualInterface $individual2)
+    {
+        $newOnes = [];
+        $i = 0;
+
+        //zajistime, aby jsme nevytvorili jiz drive vytvoreneho potomka
+        do {
+            $offsprings = $individual1->onePointCrossover($individual2); //todo change to 2 point!
+
+            $offsprings[0]->mutate();
+            $offsprings[1]->mutate();
+
+            if (!IndividualCache::isCached($offsprings[0])) {
+                IndividualCache::cacheIndivual($offsprings[0]);
+                $newOnes[] = $offsprings[0];
+            }
+
+            if (!IndividualCache::isCached($offsprings[1])) {
+                IndividualCache::cacheIndivual($offsprings[1]);
+                $newOnes[] = $offsprings[1];
+            }
+            $i++;
+
+            if ($i > 10) {
+                echo "i > 10";
+            }
+        } while(\count($newOnes) < 2);
+
+        return $newOnes;
     }
 }
