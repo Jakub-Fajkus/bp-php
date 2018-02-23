@@ -57,11 +57,6 @@ class Individual implements IndividualInterface
      */
     public function getInstructions(): array
     {
-        //check if the genotype is of correct size
-//        if (\count($this->genotype) % Config::getGenotypeSize() !== 0) {
-//            throw new \Exception('The genotype has incorrect size!: ' . \count($this->genotype));
-//        }
-
         return $this->genotype;
     }
 
@@ -114,21 +109,10 @@ class Individual implements IndividualInterface
      */
     public function mutate(bool $forced = false): void
     {
-        //mutate each gene with probability P
-        foreach ($this->genotype as $gene) {
-            if ($forced || random_int(0, 99) < Config::getMutationRate()) {
-                //mutate the instruction
-                $gene->mutate();
-                $this->evaluated = false;
-            }
-        }
+        //mutate a random gene
+        $mutationIndex = random_int(0, \count($this->genotype)-1);
 
-        $fac = new LGPInstructionFactory();
-
-        //5% adding instruction
-        if (random_int(0, 19) == 0 && \count($this->genotype) < 50) {
-            $this->genotype[] = $fac->createRandomInstruction(\count($this->genotype));
-        }
+        $this->genotype[$mutationIndex]->mutate();
     }
 
     /**
@@ -215,5 +199,13 @@ class Individual implements IndividualInterface
     public function needsEvaluation(): bool
     {
         return !$this->evaluated;
+    }
+
+    /**
+     * Mark the individual to be evaluated
+     */
+    public function setNeedsEvaluation(): void
+    {
+        $this->evaluated = false;
     }
 }

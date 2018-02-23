@@ -70,16 +70,12 @@ class IncInstruction extends LGPInstruction
      */
     public function mutate(): void
     {
-        $random = random_int(0, 99);
-
-        if ($random < Config::getMutationRate()) {
-            if (random_int(0, 1) === 0) {
-                //mutate register
-                $this->register = Config::getRandomRegisterIndex();
-            } else {
-                //mutate value
-                $this->value = Config::getRandomMotorValue();
-            }
+        if (random_int(0, 1) === 0) {
+            //mutate register
+            $this->register = Config::getRandomRegisterIndex();
+        } else {
+            //mutate value
+            $this->value = Config::getRandomMotorValue();
         }
     }
 

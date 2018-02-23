@@ -26,7 +26,6 @@ class Config
     /** @internal */
     public const DEFAULT_REGISTER_COUNT = 10;
 
-
     private static $genotypeSize = self::DEFAULT_GENOTYPE_SIZE;
     private static $mutationRate = self::DEFAULT_MUTATION_RATE;
     private static $crossoverRate = self::DEFAULT_CROSSOVER_RATE;

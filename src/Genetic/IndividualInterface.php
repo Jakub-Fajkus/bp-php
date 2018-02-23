@@ -90,6 +90,11 @@ interface IndividualInterface
     public function needsEvaluation(): bool;
 
     /**
+     * Mark the individual to be evaluated
+     */
+    public function setNeedsEvaluation(): void;
+
+    /**
      * @return void
      */
     public function setId(int $id): void;

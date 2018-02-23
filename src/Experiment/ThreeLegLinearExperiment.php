@@ -32,12 +32,13 @@ class ThreeLegLinearExperiment extends BaseExperiment
         $date = new \DateTime();
 
         Config::setIndividualCount(60);
-        Config::setMutationRate(2);
-        Config::setCrossoverRate(90);
+        Config::setMutationRate(3); //does not make sense anymore
+        Config::setCrossoverRate(0);
         Config::setMotorCount(3);
-        Config::setGenotypeSize(10);
+        Config::setGenotypeSize(20);
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
+        Config::setRegisterCount(10);
 
         $runDir = $filesystem->createDirectory(Config::getDataDir(), $date->format(DATE_ATOM));
 
@@ -47,17 +48,19 @@ class ThreeLegLinearExperiment extends BaseExperiment
 
         $generation = $generationGenerator->generateGeneration(1, Config::getIndividualCount());
 
-        for ($i = 0; $i < 2000; $i++) {
+        $duration = 150;
+
+        for ($i = 0; $i < 500; $i++) {
             $output = '';
             $generationStart = microtime(true);
 
-            $output .= "generation {$generation->getId()}" . PHP_EOL;
+            $output .= "generation {$generation->getId()} with duration $duration" . PHP_EOL;
 
             $generationDir = $filesystem->createDirectory($runDir, (string)$generation->getId());
 
             $beforeSim = microtime(true);
 
-            $simulator->evaluate($generation->getIndividuals(), $modelFile, $generationDir);
+            $simulator->evaluate($generation->getIndividuals(), $modelFile, $generationDir, $duration);
 
             $afterSim = microtime(true);
 

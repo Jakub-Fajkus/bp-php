@@ -106,20 +106,15 @@ class Generation implements GenerationInterface
 
             //either do crossover, or direct copy of the individuals
             if (random_int(0, 99) < Config::getCrossoverRate()) {
-                $newOnes = $this->createNewOffsprings($individual1, $individual2);
+                $newOnes = $this->createNewOffsprings($individual1, $individual2, true);
 
                 $newGeneration->individuals[] = $newOnes[0];
                 $newGeneration->individuals[] = $newOnes[1];
             } else {
-                //copy the first individual
-                $ind1 = $individual1->copy();
-                $ind1->mutate();
-                $newGeneration->individuals[] = $ind1;
+                $newOnes = $this->createNewOffsprings($individual1, $individual2, false);
 
-                //copy the other one
-                $ind2 = $individual2->copy();
-                $ind2->mutate();
-                $newGeneration->individuals[] = $ind2;
+                $newGeneration->individuals[] = $newOnes[0];
+                $newGeneration->individuals[] = $newOnes[1];
             }
         }
 
@@ -164,33 +159,45 @@ class Generation implements GenerationInterface
         }
     }
 
-    public function createNewOffsprings(IndividualInterface $individual1, IndividualInterface $individual2)
+    public function createNewOffsprings(IndividualInterface $individual1, IndividualInterface $individual2, bool $doCrossover = true)
     {
+        /** @var IndividualInterface[] $newOnes */
         $newOnes = [];
         $i = 0;
 
         //zajistime, aby jsme nevytvorili jiz drive vytvoreneho potomka
         do {
-            $offsprings = $individual1->onePointCrossover($individual2); //todo change to 2 point!
+            if ($doCrossover) {
+                $offsprings = $individual1->onePointCrossover($individual2); //todo change to 2 point!
+            } else {
+                $offsprings[0] = $individual1->copy();
+                $offsprings[1] = $individual2->copy();
+            }
 
             $offsprings[0]->mutate();
             $offsprings[1]->mutate();
 
-            if (!IndividualCache::isCached($offsprings[0])) {
-                IndividualCache::cacheIndivual($offsprings[0]);
+//            if (!IndividualCache::isCached($offsprings[0])) {
+//                IndividualCache::cacheIndivual($offsprings[0]);
                 $newOnes[] = $offsprings[0];
-            }
+//            }
 
-            if (!IndividualCache::isCached($offsprings[1])) {
-                IndividualCache::cacheIndivual($offsprings[1]);
+//            if (!IndividualCache::isCached($offsprings[1])) {
+//                IndividualCache::cacheIndivual($offsprings[1]);
                 $newOnes[] = $offsprings[1];
-            }
+//            }
             $i++;
 
             if ($i > 10) {
-                echo "i > 10";
+//                echo 'i > 10';
             }
         } while(\count($newOnes) < 2);
+
+        $newOnes[0]->setFitness(0);
+        $newOnes[1]->setFitness(0);
+
+        $newOnes[0]->setNeedsEvaluation();
+        $newOnes[1]->setNeedsEvaluation();
 
         return $newOnes;
     }

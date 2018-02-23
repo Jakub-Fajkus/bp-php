@@ -2,49 +2,29 @@
 declare(strict_types=1);
 
 namespace Genetic\Instruction\LGP;
-
-
 use Config\Config;
 
 /**
- * Class SreInstruction
+ * Class SovInstruction
  * @package Genetic\Instruction\LGP
  */
-class SreInstruction extends LGPInstruction
+class SovInstruction extends LGPInstruction
 {
-    /** @var int */
-    protected $register;
-
     /** @var int */
     protected $value;
 
+    /** @var int */
+    protected $output;
+
     /**
-     * SreInstruction constructor.
-     * @param int $register
+     * DecInstruction constructor.
      * @param int $value
+     * @param int $output
      */
-    public function __construct(int $register, int $value)
+    public function __construct(int $value, int $output)
     {
-        $this->register = $register;
         $this->value = $value;
-    }
-
-    /**
-     * @return int
-     */
-    public function getRegister(): int
-    {
-        return $this->register;
-    }
-
-    /**
-     * @param int $register
-     * @return SreInstruction
-     */
-    public function setRegister(int $register): SreInstruction
-    {
-        $this->register = $register;
-        return $this;
+        $this->output = $output;
     }
 
     /**
@@ -57,11 +37,29 @@ class SreInstruction extends LGPInstruction
 
     /**
      * @param int $value
-     * @return SreInstruction
+     * @return DecInstruction
      */
-    public function setValue(int $value): SreInstruction
+    public function setValue(int $value): DecInstruction
     {
         $this->value = $value;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOutput(): int
+    {
+        return $this->output;
+    }
+
+    /**
+     * @param int $output
+     * @return DecInstruction
+     */
+    public function setOutput(int $output): DecInstruction
+    {
+        $this->output = $output;
         return $this;
     }
 
@@ -71,11 +69,11 @@ class SreInstruction extends LGPInstruction
     public function mutate(): void
     {
         if (random_int(0, 1) === 0) {
-            //mutate register
-            $this->register = Config::getRandomRegisterIndex();
-        } else {
             //mutate value
             $this->value = Config::getRandomMotorValue();
+        } else {
+            //mutate output
+            $this->output = (int)Config::getRandomMotorId();
         }
     }
 
@@ -88,6 +86,6 @@ class SreInstruction extends LGPInstruction
      */
     public function serialize(): string
     {
-        return "SRE {$this->register} {$this->value}";
+        return "SOV {$this->value} {$this->output}";
     }
 }
