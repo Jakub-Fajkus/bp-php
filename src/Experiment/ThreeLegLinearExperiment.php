@@ -33,7 +33,7 @@ class ThreeLegLinearExperiment extends BaseExperiment
 
         Config::setIndividualCount(60);
         Config::setMutationRate(3); //does not make sense anymore
-        Config::setCrossoverRate(0);
+        Config::setCrossoverRate(90);
         Config::setMotorCount(3);
         Config::setGenotypeSize(20);
         Config::setInstructionValueMinimum(-5);
