@@ -7,7 +7,6 @@ use Cache\IndividualCacheFacade;
 use Config\Config;
 use Filesystem\Filesystem;
 use Genetic\Generator\GenerationGenerator;
-use Genetic\Generator\InitializedGenerationGenerator;
 use Simulator\Model\FixedModelXml;
 use Simulator\Serializer\Instruction\InstructionSerializer;
 use Simulator\Simulator;
@@ -26,7 +25,7 @@ class ThreeLegLinearExperiment extends BaseExperiment
      */
     public function run(): void
     {
-        $executableName = 'bp_compute_primka_7_referenci_3nozka_bez_podprogramu'; //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_mravenec'; //bez pocatecniho lomitka!
         $generationGenerator = new GenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
