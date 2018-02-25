@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Simulator;
 
+use Cache\IndividualCacheFacade;
 use Config\Config;
 use Filesystem\Filesystem;
 use Genetic\IndividualInterface;
@@ -17,14 +18,19 @@ class Simulator implements SimulatorInterface
     /** @var InstructionSerializerInterface */
     private $instructionSerializer;
 
+    /** @var string Path to the simulator executable */
+    private $executable;
+
     /**
      * Simulator constructor.
      *
      * @param InstructionSerializerInterface $serializer
+     * @param string $executable
      */
-    public function __construct(InstructionSerializerInterface $serializer)
+    public function __construct(InstructionSerializerInterface $serializer, string $executable)
     {
         $this->instructionSerializer = $serializer;
+        $this->executable = $executable;
     }
 
     /**
@@ -48,14 +54,23 @@ class Simulator implements SimulatorInterface
         $instructionsString = '';
 
         $individualsToEvaluate = [];
+        $cachedCount = 0;
 
         foreach ($individuals as $individual) {
-            if ($individual->needsEvaluation()) {
+            //if is cached
+            $cachedFitness = IndividualCacheFacade::getFitnessFromCache($individual);
+            if ($cachedFitness !== null) {
+                //the individual's genome was already evaluated
+                //assign the cached fitness to the individual
+                $individual->setFitness($cachedFitness);
+                $cachedCount++;
+            } else if ($individual->needsEvaluation()) {
                 $individualsToEvaluate[] = $individual;
             }
         }
 
-        echo 'saved ' . (\count($individuals) - \count($individualsToEvaluate)) . PHP_EOL;
+        $savedCount = (\count($individuals) - \count($individualsToEvaluate));
+        echo "saved $savedCount, $cachedCount of that was from cache\n";
 
         for ($i = 0, $iMax = \count($individualsToEvaluate); $i < $iMax; $i++) {
             $instructions = $individualsToEvaluate[$i]->getInstructions();
@@ -69,17 +84,21 @@ class Simulator implements SimulatorInterface
 
         $filesystem->writeToFile($generationDirectory . '/individuals.txt', $instructionsString);
 
-        shell_exec(Config::getBinDir() . "/po_22_2/bp_compute_primka_7_referenci_bez_podprogramu 2 $modelFilePath $generationDirectory $duration");
+        shell_exec(Config::getBinDir() . "{$this->executable} 3 $modelFilePath $generationDirectory $duration");
 
         $content = $filesystem->readFromFile($generationDirectory . '/fitnesses.txt');
         $fitnesses = explode("\n", $content);
 
         if (\count($fitnesses) !== \count($individualsToEvaluate)) {
-            throw new \Exception('The fitnesses count is not the same as the individuals! the diff is: ' . \count($fitnesses) - \count($individualsToEvaluate));
+            throw new \Exception('The fitnesses count is not the same as the individuals! the diff is: ' .
+                \count($fitnesses) - \count($individualsToEvaluate));
         }
 
         for ($i = 0, $iMax = \count($individualsToEvaluate); $i < $iMax; $i++) {
-            $individualsToEvaluate[$i]->setFitness((double)$fitnesses[$i]);
+            $fitness = (double)$fitnesses[$i];
+            $individualsToEvaluate[$i]->setFitness($fitness);
+
+            IndividualCacheFacade::cacheIndividual($individualsToEvaluate[$i]);
         }
     }
 }
