@@ -25,7 +25,7 @@ class ThreeLegLinearExperiment extends BaseExperiment
      */
     public function run(): void
     {
-        $executableName = 'bp_compute_primka_7_referenci_trojnozka_20_jedincu_bez_rekombinace'; //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_trojnozka_60_jedincu_bez_rekombinace'; //bez pocatecniho lomitka!
         $generationGenerator = new GenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
@@ -34,7 +34,7 @@ class ThreeLegLinearExperiment extends BaseExperiment
         $filesystem = new Filesystem();
         $date = new \DateTime();
 
-        Config::setIndividualCount(20);
+        Config::setIndividualCount(60);
         Config::setMutationRate(3); //does not make sense anymore
         Config::setCrossoverRate(0);
         Config::setMotorCount(3);
@@ -57,7 +57,7 @@ class ThreeLegLinearExperiment extends BaseExperiment
 
         $duration = 150;
 
-        for ($i = 0; $i < 3000; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $output = '';
             $generationStart = microtime(true);
 
