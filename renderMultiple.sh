@@ -5,7 +5,7 @@ BESTS=()
 
 rm bestIndividuals.txt
 
-for d in `ls -al | grep 2018 | cut -d' ' -f 9` ; do
+for d in `ls` ; do
     echo $d
     cd $d
     #get the best individual fitness

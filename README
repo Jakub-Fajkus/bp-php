@@ -12,3 +12,11 @@ c=1; while [ $c -le 100 ]; do php src/Run/run.php; done
 
 
 g++ -O2 -I. -Iinclude -Lbin -lpthread -std=c++17 -mavx main_compute.cpp Fitness.cpp Reference.cpp InstructionFileLoader.cpp MotorInstruction.cpp MotorValue.cpp shared.cpp -lmujoco150nogl  -g -o main_compute
+
+
+http://www.abclinuxu.cz/clanky/jak-spustit-prikazy-na-pozadi-nohup-disown-screen
+$ screen
+$ ./runExperiments.sh
+^AD
+[detached]
+$ screen -r

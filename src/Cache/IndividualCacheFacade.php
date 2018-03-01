@@ -48,20 +48,20 @@ class IndividualCacheFacade
 
     public static function saveToFile(string $filename)
     {
-        file_put_contents($filename, serialize(self::$memoryCache->getCache()));
+//        file_put_contents($filename, serialize(self::$memoryCache->getCache()));
     }
 
     public static function loadFromFile(string $filename)
     {
-        if (file_exists($filename)) {
-            $data = unserialize(file_get_contents($filename), []);
-
-            if ($data !== false) {
-                self::getMemoryCache()->setCache($data);
-            }
-        } else {
-            echo 'cache file not found' . PHP_EOL;
-        }
+//        if (file_exists($filename)) {
+//            $data = unserialize(file_get_contents($filename), []);
+//
+//            if ($data !== false) {
+//                self::getMemoryCache()->setCache($data);
+//            }
+//        } else {
+//            echo 'cache file not found' . PHP_EOL;
+//        }
     }
 
     /**

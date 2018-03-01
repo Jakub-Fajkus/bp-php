@@ -113,6 +113,23 @@ class Individual implements IndividualInterface
         $mutationIndex = random_int(0, \count($this->genotype)-1);
 
         $this->genotype[$mutationIndex]->mutate();
+
+//        tood: az bude vice instrukci, pouzit toto!
+        /*
+         *  //mutate a random gene
+        $mutationIndex = random_int(0, \count($this->genotype)-1);
+
+        $random = random_int(0, 99);
+
+        //29% to change instruction type, 80% to change the parameters
+        if ($random < 10) {
+            $factory = new LGPInstructionFactory();
+            $this->genotype[$mutationIndex] = $factory->createRandomInstruction($mutationIndex);
+
+        } else {
+            $this->genotype[$mutationIndex]->mutate();
+        }
+         */
     }
 
     /**

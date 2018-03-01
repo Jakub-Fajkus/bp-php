@@ -25,7 +25,7 @@ class ThreeLegLinearExperiment extends BaseExperiment
      */
     public function run(): void
     {
-        $executableName = 'bp_compute_primka_7_referenci_mravenec'; //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_trojnozka_20_jedincu_bez_rekombinace'; //bez pocatecniho lomitka!
         $generationGenerator = new GenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
@@ -34,14 +34,14 @@ class ThreeLegLinearExperiment extends BaseExperiment
         $filesystem = new Filesystem();
         $date = new \DateTime();
 
-        Config::setIndividualCount(60);
+        Config::setIndividualCount(20);
         Config::setMutationRate(3); //does not make sense anymore
         Config::setCrossoverRate(0);
         Config::setMotorCount(3);
-        Config::setGenotypeSize(20);
+        Config::setGenotypeSize(6*Config::getMotorCount()); //bulharska konstanta
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
-        Config::setRegisterCount(10);
+        Config::setRegisterCount(15);
 
         $executableDir = $filesystem->createDirectory(Config::getDataDir(), $executableName);
         $runDir = $filesystem->createDirectory($executableDir, $date->format(DATE_ATOM));
@@ -57,7 +57,7 @@ class ThreeLegLinearExperiment extends BaseExperiment
 
         $duration = 150;
 
-        for ($i = 0; $i < 2000; $i++) {
+        for ($i = 0; $i < 3000; $i++) {
             $output = '';
             $generationStart = microtime(true);
 
@@ -89,16 +89,18 @@ class ThreeLegLinearExperiment extends BaseExperiment
             echo $output;
             file_put_contents($logFile, $output, FILE_APPEND);
 
-            //make a backup of the cache as it is very valuable
-            if ($i % 50 === 0) {
-                IndividualCacheFacade::saveToFile($cacheFile);
-            }
+//            //make a backup of the cache as it is very valuable
+//            if ($i % 50 === 0) {
+//                IndividualCacheFacade::saveToFile($cacheFile);
+//            }
         }
 
-        echo $generationStats->getStatistics();
-        echo $cacheStats->getStatistics();
+        $output .= $generationStats->getStatistics();
+        $output .= $cacheStats->getStatistics();
 
-        IndividualCacheFacade::saveToFile($cacheFile);
+        echo $output;
+
+//        IndividualCacheFacade::saveToFile($cacheFile);
 
         file_put_contents($logFile, $generationStats->getStatistics(), FILE_APPEND);
     }
