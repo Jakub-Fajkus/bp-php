@@ -49,7 +49,7 @@
 %  \href{maildvora00@stud.fit.vutbr.cz}{xdvora00@stud.fit.vutbr.cz},
 %  \textit{Faculty of Information Technology, Brno University of Technology}}
 
-\Keywords{Keyword1 --- Keyword2 --- Keyword3}
+\Keywords{Evolutionary computation --- Neural Networks --- Linear Genetic Programming --- Robotics --- Robot evolution}
 
 \Supplementary{\href{http://youtu.be/S3msCdn3fNM}{Demonstration Video} --- \href{http://excel.fit.vutbr.cz/}{Downloadable Code}}
 
@@ -60,51 +60,15 @@
 %--------------------------------------------------------
 
 \Abstract{
-
-Cílem práce je nalézt metodu řízení počítačového modelu jednoduchého robota, který bude vykonávat
-netriviální pohyb. \todo{nebo spise vyvinout framework pro hledani metod obecne?}
-%Pro hledání způsobu řízení jsou použity algoritmy simulující evoluci.
-Pro řízení modelu robota byly použity dva rozdílné přístupy.
-První přístup je založen na instrukcích(inspirováno[nebo rovno] LGP).
-Druhý přístup využívá jednoduché neuronové sítě.
-Kontrolery z obou pristupu jsou vyvijeny pomoci GA.
-\todo{Vysledky?} Tato prace overila, ze lze provadet rizeni modelu robota obemi zpusoby
-se zavedenim samoadaptace(tedy environment awareness).
-Bylo take ukazano, jak jednoduchy pristup bez samoadaptce selhava v netrivialnich pripadech.
-Dale bylo demonstrovano, ze neuronove site
-maji lepsi vysledky, nez-li pouzity pristup zalozeny na instrukcich(
-\todo{Diskutatibilni, NN jsou jendodussi na environment, protoze je tam aritmetika a vyhodocovani celkove
-blackbox a neni treba vymyslet instrukce a vazbu na interpret})
-Hlavnim prinosem prace je overeni konceptu rizeni modelu robota a srovnani dvou rozdilnych pristupu
-k tomuto problemu.
-
-
-Cilem teto prace je vytvorit framework, ktery bude pouzit pro hledani zpusobu rizeni pocitacoveho
-modelu jednoducheho robota. Tento model bude v pocitacove simulaci vykonavat netrivialni pohyb.
+Tato prace se zabyva navrhem a pouzitim frameworku vyuzivajici Evolucni Algoritmy, ktery bude pouzit pro hledani zpusobu rizeni pocitacoveho
+modelu jednoducheho autonomniho robota. Tento model bude v pocitacove simulaci vykonavat netrivialni pohyb.
 Pro řízení modelu robota jsou použity dva rozdílné přístupy.
-První přístup je založen na instrukcích(inspirováno \todo{nebo rovno} LGP.
-Druhý přístup využívá jednoduché neuronové sítě.
-Kontrolery z obou pristupu jsou vyvijeny pomoci GA.
-\todo{Vysledky?} Tato prace overila, ze lze provadet rizeni modelu robota obema zpusoby
-se zavedenim samoadaptace(tedy environment awareness).
-Bylo take ukazano, jak jednoduchy pristup bez samoadaptce selhava v netrivialnich pripadech.
-Dale bylo demonstrovano, ze neuronove site maji lepsi vysledky, nez-li pouzity pristup zalozeny
-na instrukcich(\todo{Diskutatibilni, NN jsou jendodussi na environment, protoze je tam aritmetika
-a vyhodocovani celkove blackbox a neni treba vymyslet instrukce a vazbu na interpret})
-Hlavnim prinosem prace je overeni konceptu rizeni modelu robota a srovnani dvou rozdilnych pristupu
-k tomuto problemu.
-
-What is the problem? What is the topic?, the aim of this paper?
-\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ullamcorper suscipit euismod. Mauris sed lectus non massa molestie congue. In hac habitasse platea dictumst.}
-%
-How is the problem solved, the aim achieved (methodology)?
-\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ullamcorper suscipit euismod. Mauris sed lectus non massa molestie congue. In hac habitasse platea dictumst. Curabitur massa neque, commodo posuere fringilla ut, cursus at dui. Nulla quis purus a justo pellentesque.}
-%
-What are the specific results? How well is the problem solved?
-\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ullamcorper suscipit euismod. Mauris sed lectus non massa molestie congue. In hac habitasse platea dictumst.}
-%
-So what? How useful is this to Science and to the reader?
-\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ullamcorper suscipit euismod.}
+První přístup je založen na instrukcích, odpovidajici Linearnimu Genetickemu Programovani.
+Druhý přístup využívá feedforward neuronové sítě.
+Oba pristupy jsou podrobeny nekolika experimentum, ktere overuji jejich vhodnost pro dany typ problemu.
+Nasledne jsou pristupy vyhodnoceny a diskutovany vysledky s durazem na porovnani obou pristupu.
+Vysledky prace potrvzuji, ze komplexnejsi chovani vyzaduje jistou miru samoadaptace(environment awarness) a ze je toto
+mozne dosahnout obema zvolenymi pristupy.
 }
 
 \Teaser{
@@ -137,21 +101,32 @@ So what? How useful is this to Science and to the reader?
 
 \textbf{[Motivation]} What is the raison d'\^{e}tre of your project? Why should anyone care? No general meaningless claims. Make bulletproof arguments for the importance of your work.
 
-\todo{asi bych prevzal uvod do nejake robotiky obecne}
+\todo{asi bych prevzal uvod do nejake robotiky}
+V oblasti robotiky je velmi dulezita schopnost rychle a levne prototypovat mozna reseni.
+K tomuto ucelu je velmi vhodne pouziti pocitacove modelovani a simulace.
+V situaci, kdy mame navrzenou fyzickou stranku robota, nastava otazka, jak rychle prototypovat jeho rizeni.
+Existuje mnoho moznosti realizace rizeni robota, lisici se v zavislosti na pozadavcich a povaze cinosti robota.
+\todo{Citace, zdroje}
+Rizeni robota muze byt zalozeno na instrukcich nejakeho imperativniho jazyka.
+Mozne je take  pouziti neuronovych siti.
+Dalsi z moznosti jsou ruzne planovaci algoritmy a systemy. \todo{citace, zdroje, terminologie}
+Pro prototypovani je vyhodne mit nastroj, ktery je schopny hledat vyhodne zpusoby rizeni robota.
+K tomuto ucelu je mozne vyuzit evolucni algoritmy, ktere jsou schopne hledat reseni pro vetsinu problemu \todo{zdroj?}.
 
 \textbf{[Problem definition]} What exactly are you solving? What is the core and what is a bonus? What parameters should a proper solution of the problem have? Define the problem precisely and state how its solution should be evaluated.
 
-Mame tedy modely jednoduchych robotu, castecne inspirovane prirodou. \todo{viz obr.}
-Cilem prace je nalezt program nebo konfiguraci neuronove site tak, aby model robota vykonaval dany netrivialni pohyb.
+Hledame reseni pro problem, ktery je definovan takto.
+Mame model jednoducheho robota, ktery je castecne inspirovany prirodou(mravenec). \todo{viz obr.}
+Cilem prace je nalezt program(posloupnost instrukci) nebo konfiguraci neuronove site tak, aby model robota vykonaval dany netrivialni pohyb.
 Hledame tedy jiste reseni.
 Vybrane vzory pohybu jsou pohyb po primce a pohyb po prirale.
 Hledani reseni probiha automatizovane s vyuzitim evolucnich algoritmu.
-Algoritmy pomoci evoluce vyvijeji program, nebo neuronovou sit tak, aby se model pohyboval po pozadovane trajektorii.
-%Vysledne reseni by tedy melo ridit model robota takovym zpusobem, ze se jeho trajektorie bude co nejvice blizit trajektorii nami pozadovane.
+Algoritmy pomoci evoluce vyvijeji program, nebo neuronovou sit tak, aby se robot pohyboval po pozadovane trajektorii.
 K vyhodnoceni uspesnosti reseni je pouzit fyzikalni simulator specializovany na simulaci robotu Mujoco[\todo{odkaz}].
 
 \textbf{[Existing solutions]} Discuss existing solutions, be fair in identifying their strengths and weaknesses. Cite important works from the field of your topic. Try to define well what is the \textit{state of the art}. You can include a Section 2 titled ``Background'' or ``Previous Works'' and have the details there and make this paragraph short. Or, you can enlarge this paragraph to a whole page. In many scientific papers, \emph{this} is the most valuable part if it is written properly.
-\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent congue enim eu eros dictum sagittis. Aliquam ligula arcu, gravida at augue et, aliquet condimentum nulla. Morbi a lectus arcu. Nam ac commodo nisi, a accumsan nunc. Nam sed ante vel nulla elementum lobortis. Aliquam sed laoreet risus. Etiam ipsum odio, gravida eget sapien dictum, eleifend aliquet ex. Duis dapibus vitae enim vitae bibendum. Phasellus eget pulvinar massa. Mauris ornare urna. Maecenas porttitor libero ut turpis porttitor, auctor porta ligula rhoncus. Etiam a turpis blandit, eleifend dolor eget, egestas ligula. Nullam sollicitudin pulvinar mi sit amet interdum. Etiam in ultrices ante. Suspendisse potenti. Duis vel nisi eget tellus volutpat tempor. Suspendisse potenti. Duis vel nisi eget tellus volutpat tempor.}
+Soucasna reseni rizeni autonomnich robotu zahrnuji neuronove site\cite{Prabhu1996}, \cite{He2015}, fuzzy kontrolery\cite{Melendez2012}\cite{Saffiotti1997}
+
 
 \textbf{[Our solution]} Make a quick outline of your approach -- pitch your solution.  The solution will be described in detail later, but give the reader a very quick overview now.
 \phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi laoreet risus a egestas imperdiet. Ut egestas nibh non fermentum vestibulum. Nullam quis eleifend ex, sed maximus nisl. Mauris maximus non dolor id tristique. Nunc pulvinar congue gravida. Nullam lobortis viverra leo sed commodo. Nulla in elit congue, ullamcorper metus non, eleifend risus. Vivamus porttitor, ex nec porttitor pretium, libero turpis ultrices dui, eu efficitur ante ipsum vel justo. Vivamus nec nulla nisi. Aenean quis mauris vitae metus gravida congue.}
@@ -164,198 +139,47 @@ K vyhodnoceni uspesnosti reseni je pouzit fyzikalni simulator specializovany na 
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
-\section{How To Use This Template}
-\label{sec:HowToUse}
-
-Here will go several sections describing \textbf{your work}. From theoretical background (Section 2), through your own methodology (Section 3), experiments and implementation (Section 4 and possibly 5), to conclusions (Section 6). Instead of such technical content, here in this template we give a few hints how to write the paper.
-
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=0.7\linewidth]{keep-calm.png}
-	\caption{Good writing is bad writing that was rewritten several times.  Don't worry, start somewhere.}
-	\label{fig:KeepCalm}
-\end{figure}
-
-Here is a list of actions to do first when you want to write an Excel@FIT paper:
-\begin{enumerate}
-	\item Download all the template files (Sec.~\ref{sec:FilesInTemplate}) into a directory. Maybe setup a GIT sync for backup, sharing, and for use from multiple computers.
-	\item Rename \textit{2018-ExcelFIT-ShortName.tex} -- replace ShortName with something that identifies your work and is short enough.  For example: \textit{VehicleBoxes}, \textit{VanishingPoints}, \textit{FastShadows}, \textit{NewProbeTesting}, \textit{CheapDynamicDNS}, \ldots  This ensures that the filename already gives a hint what is in there (\textit{mypaper.pdf} is really stupid).
-	\item Decide the language of your paper.  English is recommended, as it is the language of science and technology.  However, if you want to write in Czech or Slovak, you may.  Use the correct option to the \textit{$\backslash$documentclass} command -- the very first line of the template.  The option may be either \textit{[czech]} or \textit{[slovak]}.
-	\item Insert meta information: \textbf{your name}, \textbf{e-mail}, \textbf{paper title}.  Make sure the year in the top right corner of the document is correct.  Do not hesitate to use ěščřžýáíé in your name -- the \LaTeX{} template is configured to eat UTF8 Unicode.
-	\item Insert teaser images (``image abstract'').  Use as many \textit{$\backslash$TeaserImage} commands as suitable -- three or four will usually be fine for a one-line teaser.  If you absolutely don't have any image showing your work (what kind of work could that be, anyway?!), remove the \textit{$\backslash$Teaser} command.
-	\item Insert references to supplementary material.  That will typically be clickable links to a youtube / vimeo video and to downloadable code, hyperlink to an online demo, or a github repo. If you have anything else relevant, put it in.  If there is no supplementary material (really?!), remove or comment out the \textit{$\backslash$Supplementary} command.
-	\item Keep calm and start writing (Figure~\ref{fig:KeepCalm}).  Some suggestions how to do this are in Section~\ref{sec:HowToWrite}.
-	\item When your paper is accepted to Excel@FIT, uncomment \textit{$\backslash$ExcelFinalCopy} at the beginning of this file.  The line numbers will disappear from the sides of the text and your paper is ready for final publication.
-\end{enumerate}
-
-Jean-Luc Lebrun \cite{Lebrun2011} offers excellent recommendations for the canonical sections of scientific/technical papers.  That is why Abstract, Introduction, and Conclusions in this template are already structured (remove the \textbf{[Bold labels]} in the Introduction and Conclusions, they are there just for your information and should not remain in the paper).  This structure is no more than a recommendation, but divert from it only in cases when you exactly know what you are doing.  The ``phony'' texts (typeset in \phony{gray color}) roughly indicate the lengths of individual parts of these sections.  Replace them with reasonable amounts of text.
-
-%--------------------------------------------------------
-%--------------------------------------------------------
-\subsection{What Files are Here and Why}
-\label{sec:FilesInTemplate}
-
-The template package for Excel@FIT papers contains these files:
-\begin{description}[noitemsep]
-	\item[2018-ExcelFIT-ShortName.tex] This is the template for the main \LaTeX{} file -- this is your paper.  Do yourself a favor and replace \textit{ShortName} in the filename with something meaningful.
-	\item[2018-ExcelFIT-ShortName-bib.bib] You can delete the contents of this file completely and start adding BibTeX references.  It is much easier to use a small editing tool (Section~\ref{sec:UsefulTools}, JabRef) than to format \textit{.bib} file manually.  Rename the file so that \textit{ShortName} is consistent with the previous file (and update the filename in the \textit{.tex} file).
-	\item[ExcelAtFIT.cls] \LaTeX{} class file based on the \emph{Stylish Article}%
-	  \footnote{\url{http://www.latextemplates.com/template/stylish-article}} document class.  Do not modify this file.
-	\item[ExcelAtFIT-logo.pdf] This is the logo on the title page.
-	\item[VUT-FIT-logo.pdf] Another logo on the title page.
-	\item[images/placeholder.pdf] Placeholder image; include it, scale it as needed, then replace it with real content.\\ \includegraphics[height=4em]{placeholder.pdf}
-	\item[images/keep-calm.png] You don't need this file; it is only used in this template to show how to include a \textit{.png} file (Figure~\ref{fig:KeepCalm}).
-\end{description}
+\section{Teoreticky uvod}
+\label{sec:theory}
+\todo{Zde bude kratky teoreticky uvod k EA a LGP}
 
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
-\section{How To Write the Paper --- A Few Hints}
+\section{Framework architecture and implementation}
 \label{sec:HowToWrite}
+\todo{zde si popiseme architekturu systemu}
+\todo{Top level architecture, obrazek}
+\todo{1. simulator}
+\todo{2. GA}
 
-A reasonable way to start writing is sketching the \textbf{abstract} \cite{Herout-Abstract}.  Writing the abstract helps focus on what is important in the paper, what is the contribution, the meaning for the community.  This exercise might take some 20 minutes and it pays back by clearing the key points of the text.
-In 99\,\% cases it is very reasonable to stick to the abstract structure \cite{Lebrun2011} which is provided in this template.
-
-Once you have the abstract, it should be very clear what is the message of the paper, what is the newly introduced knowledge, what are the proofs of its contribution, etc.  This is the right time to start constructing the \emph{skeleton} of the paper: it's \textbf{comics edition}~\cite{Herout-Comics}.
-This thing is composed of mainly four items:
-\begin{enumerate} [noitemsep]
-	\item \textbf{Sections and subsections.}
-	\item \textbf{Figures and tables.}  At this phase, knowing that ``once there will be a figure about this and that'' is just fine.  That is why we have the \textit{placeholder.pdf} image -- see Figure~\ref{fig:WidePicture}.  If this totally generic image can be replaced by some temporary image which still needs more work, but which is closer to the target version, go ahead. A hand-drawing photographed by a cellphone is perfect at this stage.
-	\item \textbf{Todo's.} In the early comics version, every section is filled by one or more \texttt{$\backslash$todo} commands and nothing else.  A todo in the text might look like: \todo{you should do something}.  Unlike some elaborated todo packages, this simple solution (defined in the template) does not break the page formatting and it is perfectly sufficient.
-	\item \textbf{Phony placeholder texts.}  These help you estimate the proportions of individual sections and subsections and to better aim at the correct paper length. Use \textit{$\backslash$blind\{3\}} to get three paragraphs of beautiful \phony{grey phony text}.
-\end{enumerate}
-One hour is usually enough for creating a nice comics edition of the paper.  No reason to wait, make a copy of the template and start butchering it.
-
-Having the comics edition usually lubricates the whole writing process.  Now, the paper contains 20 or so todo's -- why not take the easiest one of them and replace it with a few lines of text within 15 minutes or even less.  Writing is no more a scary complex work.
-
-%--------------------------------------------------------
-%--------------------------------------------------------
-\subsection{Images and Tables}
-\label{sec:Images}
-
-Visuals (figures, tables, good equations, section headings) make the skeleton of a properly written paper.  A time-stressed reader should be able to get the idea from only browsing them.
-Therefore:
-\begin{enumerate}[noitemsep]
-\item \textbf{Make them perfect.}  Cheap and ugly images -- cheap and ugly paper.  Imperfect or shorter text -- who cares?
-\item \textbf{Make them self-contained.}  Be not afraid to have a ten-lines-long caption under an image.  The image plus its caption must make perfect sense by themselves, without reading the text.
-\item \textbf{Make them many.}  EVERY technical idea is better explained by an image.  Two images per page are a moderate start.
-\end{enumerate}
-\LaTeX{} lets you easily insert both vector and raster graphics. It is reasonable to use three formats:
-\begin{description}[noitemsep]
-\item[.pdf] Perfect for vector graphics.  All graphs \textbf{must} be in vector and therefore in .pdf.  Gnuplot, pyplot, Matlab -- they all produce vector graphs in .pdf easily.  Diagrams, system structures, sketches -- all vector graphics.  It's 2018, not 1980 anymore\ldots
-\item[.jpg] Suitable for photos.  \textbf{Never} for plots or screenshots.
-\item[.png] Good for precise raster graphics.  Screenshots, raster plots, raster outputs of programs.  Not for diagrams and plots -- unless it is a one-in-ten-years exception.
-\end{description}
-Caption of a table goes \textbf{before} the table (e.g. Table~\ref{tab:ExampleTable}), just the opposite way than with figures.  There is no logic behind, that's just how it is.
-
-%--------------------------------------------------------
-%--------------------------------------------------------
-\subsection{Sections and Subsections}
-\label{sec:Sections}
-
-It is usually wrong to have subsections in the Introduction; it is always wrong to have them in Conclusions.  In this kind of paper, it is very likely to be wrong to have any subsubsections.
-
-Section headings are the skeleton of the paper -- make them accurate and descriptive.  One-word section titles (apart from Introduction and Conclusions) are typically wrong, because they are not descriptive.
-``Proposed Method for Running X by Using Y'' is better than ``The Method''.
-``Implemented Application for PQR Communication'' is better than ``Application''.  The outline of all section titles should contain all the keywords relevant for the work.  Just by seeing them, the reader should be able to tell precisely the topic of the paper.  If not, the section headers are wrong (usually too short and generic).
-
-%--------------------------------------------------------
-%--------------------------------------------------------
-\subsection{Keywords}
-\label{sec:Keywords}
-
-Keywords are specified at the top of the document.
-\begin{enumerate}[noitemsep]
-	\item When making the list of keywords, ask yourself this: ``What should one write to google, so that the right answer would be my paper?''
-	\item Very generic terms (``IT'', ``Graphics'', ``Hardware'') are useless. Narrow terms are fine (``Matrix Code Recognition'', ``Appearance-Based Vehicle Segmentation'', \ldots)
-\end{enumerate}
+\subsection{Program representation}
+\todo{vysvetleni podprogramu}
+\todo{tabulka instrukci}
 
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
-\section{Some Useful Tools}
-\label{sec:UsefulTools}
+\section{Experiements}
+\label{sec:Experiments}
+\subsection{Experiment overview}
+\todo{Zde bude popis experimentu - mravenec na primce? a na spirale}
+\todo{Vsechny informace k experiemntu: tj. konfigurace GA, delka programu, rozdeleni na podprogramy(kolik kam), delka simulace}
 
-This list is not a list and it is by no means complete.  If you prefer other tools -- cool, stick with them.  If you are just beginning, consider these.
-
-\begin{description}
-	\item[\href{http://www.overleaf.com/}{Overleaf}] Online \LaTeX{} editing -- if you don't want to install and learn many tools, Overleaf is a great solution: works online and allows sharing your text with your supervisor.
-	\item[\href{http://miktex.org/download}{MikTeX}] Problem-free \LaTeX{} for Windows; a distribution with perfect automation of package download. Single setup, no more worries.
-	\item[\href{http://texstudio.sourceforge.net/}{TeXstudio}] Portable and opensource GUI for \LaTeX{} writing.  Ctrl+click jumps from pdf to latex and back.  Integrated spellchecker, syntax highlighting, multifile projects, etc.  First, install MikTeX, then TeXstudio.  Ten minutes and you are a \LaTeX{} master.
-	\item[\href{http://jabref.sourceforge.net/download.php}{JabRef}] Nice and simple Java program for managing \textit{.bib} files with references.  Not much to learn -- one window, a straightforward form for editing the entries.
-	\item[\href{https://inkscape.org/en/download/}{InkScape}] Opensource and portable editor of vector files (SVG and -- conveniently -- PDF).  The proper tool for making great drawings for papers -- not the easiest to learn, though.
-	\item[GIT] Great for team collaboration on \LaTeX{} projects, but also helpful to a single author -- for versioning, backup, multi-computer, \ldots
-\end{description}
-
-
+\subsection{Results}
+\todo{Zde budou prehledne vysledky experimentu - grafy, cisla, tabulky, obrazky, vsechno}
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
-\section{Frequently Used \LaTeX{} Fragments}
-\label{sec:Fragments}
 
-Here goes an example of a table:
-\begin{table}[h]
-	\vskip6pt
-	\caption{Table of Grades}
-	\centering
-	\begin{tabular}{llr}
-		\toprule
-		\multicolumn{2}{c}{Name} \\
-		\cmidrule(r){1-2}
-		First name & Last Name & Grade \\
-		\midrule
-		John & Doe & $7.5$ \\
-		Richard & Miles & $2$ \\
-		\bottomrule
-	\end{tabular}
-	\label{tab:ExampleTable}
-\end{table}
-
-Figure~\ref{fig:WidePicture} shows a wide figure, Figure~\ref{fig:KeepCalm} is a single-column figure with width specified relatively to the column.
-\begin{figure*}[t]\centering % Using \begin{figure*} makes the figure take up the entire width of the page
-  \centering
-  \includegraphics[width=0.8\linewidth,height=1.7in]{placeholder.pdf}\\[1pt]
-  \includegraphics[width=0.2\linewidth]{placeholder.pdf}
-  \includegraphics[width=0.2\linewidth]{placeholder.pdf}
-  \includegraphics[width=0.2\linewidth]{placeholder.pdf}
-  \includegraphics[width=0.2\linewidth]{placeholder.pdf}
-  \caption{Wide Picture.  The whole figure can be composed of several smaller images.  If you want to address individual images in the caption or from the text, use the \textit{subcaption} package.}
-  \label{fig:WidePicture}
-\end{figure*}
-Some mathematics $\cos\pi=-1$ and $\alpha$ in the text%
-\footnote{And some mathematics $\cos\pi=-1$ and $\alpha$ in a footnote.}.
-
-Now, this is an equation:
-\begin{linenomath}
-\begin{equation}
-\cos^3 \theta =\frac{1}{4}\cos\theta+\frac{3}{4}\cos 3\theta
-\label{eq:refname2}
-\end{equation}
-\end{linenomath}
-and here is a bunch of equations aligned horizontally:
-\begin{linenomath}
-\begin{align}
-	3x &= 6y + 12 \\
-	x &= 2y + 4
-\end{align}
-\end{linenomath}
-
-\blind{1}
-
-
-%--------------------------------------------------------
-%--------------------------------------------------------
-%--------------------------------------------------------
-%--------------------------------------------------------
 \section{Conclusions}
 \label{sec:Conclusions}
 
 \textbf{[Paper Summary]} What was the paper about, then? What the reader needs to remember about it?
-\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae aliquet metus. Sed pharetra vehicula sem ut varius. Aliquam molestie nulla et mauris suscipit, ut commodo nunc mollis.}
+Tato prace ukazala pouziti evolucnich algoritmu pro hledani programu pro rizeni robota. \todo{neco dalsiho}
 
 \textbf{[Highlights of Results]} Exact numbers. Remind the reader that the paper matters.
 \phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus fermentum ipsum at venenatis. Curabitur ultricies, mauris eu ullamcorper mattis, ligula purus dapibus mi, vel dapibus odio nulla et ex. Sed viverra cursus mattis. Suspendisse ornare semper condimentum. Interdum et malesuada fames ac ante ipsum.}
