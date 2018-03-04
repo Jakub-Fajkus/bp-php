@@ -111,7 +111,7 @@ Rizeni robota muze byt zalozeno na instrukcich nejakeho imperativniho jazyka.
 Mozne je take  pouziti neuronovych siti.
 Dalsi z moznosti jsou ruzne planovaci algoritmy a systemy. \todo{citace, zdroje, terminologie}
 Pro prototypovani je vyhodne mit nastroj, ktery je schopny hledat vyhodne zpusoby rizeni robota.
-K tomuto ucelu je mozne vyuzit evolucni algoritmy, ktere jsou schopne hledat reseni pro vetsinu problemu \todo{zdroj?}.
+Evolutionary algorithms are good for this purpose, because they are applicable for a wide range of problems.~\cite{Eiben2015}
 
 \textbf{[Problem definition]} What exactly are you solving? What is the core and what is a bonus? What parameters should a proper solution of the problem have? Define the problem precisely and state how its solution should be evaluated.
 
@@ -119,7 +119,7 @@ Hledame reseni pro problem, ktery je definovan takto.
 Mame model jednoducheho robota, ktery je castecne inspirovany prirodou(mravenec). \todo{viz obr.}
 Cilem prace je nalezt program(posloupnost instrukci) nebo konfiguraci neuronove site tak, aby model robota vykonaval dany netrivialni pohyb.
 Hledame tedy jiste reseni.
-Vybrane vzory pohybu jsou pohyb po primce a pohyb po prirale.
+Vybrane vzory pohybu jsou pohyb po primce a pohyb po spirale.
 Hledani reseni probiha automatizovane s vyuzitim evolucnich algoritmu.
 Algoritmy pomoci evoluce vyvijeji program, nebo neuronovou sit tak, aby se robot pohyboval po pozadovane trajektorii.
 K vyhodnoceni uspesnosti reseni je pouzit fyzikalni simulator specializovany na simulaci robotu Mujoco[\todo{odkaz}].
@@ -147,16 +147,75 @@ Soucasna reseni rizeni autonomnich robotu zahrnuji neuronove site\cite{Prabhu199
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
-\section{Framework architecture and implementation}
-\label{sec:HowToWrite}
-\todo{zde si popiseme architekturu systemu}
-\todo{Top level architecture, obrazek}
-\todo{1. simulator}
-\todo{2. GA}
 
-\subsection{Program representation}
-\todo{vysvetleni podprogramu}
-\todo{tabulka instrukci}
+\todo{zde se nekde musi vmestnat zakladni veci, tj. mame scenu, kde jsou referencni body}
+\section{Framework architecture and implementation}
+\label{sec:ArchitectureAndImplementation}
+{\includegraphics[height=5.8em]{top_level_architecture.pdf}
+\todo{misto fitness psat o objective function?}
+System je rozdelen na dve aplikace.
+Hlavni aplikaci je EA framework, ktery zajistuje vsechnu praci s evoluci.
+Druhou casti systemu je simulator Mujoco, ktery je doplnen vlastnim kodem, ktery zajistuje prevod instrukci na vstupy simulatoru a pocita fitness.
+Propojeni techto dvou aplikaci je realizovano pres systemova volani pro spousteni procesu pres shell.
+EA framework tedy pro kazdou generaci vytvori soubor, ktery obsahuje instrukce a spusti simulator.
+Simulator nacte instrukce ze souboru, provede simulaci postupne pro vsechny sady instrukci a nasledne do jineho souboru ulozi hodnoty fitness.
+EA framework pote tyto hodnoty fitness ze souboru precte a dale s nimi pracuje.
+
+\subsection{dunno}
+Rizeni robota je realizovano pomoci jednoduchych instrukci.
+V simulatoru je zabudovat interpret, ktery je schopny tyto instrukce prevadet na signaly, ktere zpracovava simulator.
+Tyto signaly rikaji, jaka sila se bude aplikovat v jednotlivych kloubech modelu robota.
+Interpret pracuje pouze s celymi cisly, a to od -5 do 5 vcetne.
+
+Interpret obsahuje predem dany pocet vnitrnich pametovych mist(vnitrni registry), ktere je mozne modifikovat za pouziti instrukci.
+Interpret take obsahuje vystupni pametova mista(vystupni registry).
+Kazdy vystupni registr je prirazen k jednomu kloubu robota.
+Hodnoty v techto registrech jsou prevadeny na intenzitu sily, ktera bude v techto kloubech pusobit.
+
+Program se sklada z instrukci, ktere meni stav vnitrnich registru a stav vnejsich registru.
+Tyto instrukce jsou vypsany v (e.g. Table~\ref{tab:Instructions}) (e.g. Table~\ref{tab:ExampleTable})
+
+Program je rozdelen do tri podprogramu - init, event a main.
+Init program je proveden v nulovem case a to pouze po spusteni simulace.
+Slouzi k nastaveni pocatecniho stavu vnitrnich registru. Jsou zde povoleny jen instrukce \todo{SRE?}
+
+Dalsim podprogramem je event.
+Ten je spousten pokazde, kdyz se model robota dostatecne priblizi k nekteremu z referencnich bodu(pro kazdy bod ale pouze jednou).
+Vsechny instrukce jsou provedeny v nulovem case, stejne jako v init podprogramu.
+Tento podprogram slouzi ke zmene vnitrich registru.
+Jsou zde povoleny instrukce \todo{inc, dec?}
+
+Hlavnim podprogramem je main.
+Tento podprogram je provaden v nekonecne smycke.
+Zde probiha kopirovani hodnot z vnitrnich registru do vystupnich registru.
+Instrukce zde nejsou provadeny v nulovem case, ale casovy rozestup mezi nimi je 0.5 sekundy.
+Jsou zde povoleny instrukce \todo{pro kopirovani z registru a naplneni registru konstantou}
+
+
+\begin{table}[h]
+	\caption{Instructions of the interpret}
+\caption*{
+%\vspace*{.8em}
+
+Table of interpret instructions.
+INC increments an internal register by a given constant.
+DEC decrements an internal register by a given constant.
+SOU copies an internal register value to a output register.
+SOV copies a constant value to a output register.
+SRE copies a constant to an internal register.
+}
+	\begin{tabular}{l|{c}|r}
+		\textbf{Instruction}    & \textbf{Parameter 1} & \textbf{Parameter 2}    \\
+		\hline
+		INC                     & Internal register    & Constant        \\
+		DEC                     & Internal register    & Constant        \\
+		SOU                     & Internal register    & Output register \\
+		SOV                     & Constant             & Output register \\
+		SRE                     & Internal register    & Constant        \\
+	\end{tabular}
+	\label{tab:Instructions}
+\end{table}
+
 
 %--------------------------------------------------------
 %--------------------------------------------------------
