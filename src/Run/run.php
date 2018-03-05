@@ -3,25 +3,31 @@ declare(strict_types=1);
 
 namespace Run;
 
-use Experiment\GenerationExperiment;
-use Experiment\SingleIndividualExperiment;
+use Experiment\ExperimentInterface;
 use Experiment\ThreeLegLinearExperiment;
+use Experiment\ThreeLegLinearExperiment20Individuals;
 use Experiment\ThreeLegLinearExperimentRecombination;
-use Experiment\ThreeLegSpiralExperiment;
 
 include_once __DIR__ . '/../../vendor/autoload.php';
 
+/** @var ExperimentInterface[] $experiments */
+$experiments = [
+    'rec' => new ThreeLegLinearExperimentRecombination(),
+    'norec' => new ThreeLegLinearExperiment(),
+    'norec20' => new ThreeLegLinearExperiment20Individuals()
+];
+
+if ($argc === 1) {
+    echo 'ERROR, missing experiment argument, try one of those: ' . implode(', ', array_keys($experiments)) . PHP_EOL;
+    exit(1);
+}
 $experimentName = $argv[1];
 
-if ($experimentName == 'recombination') {
-    $experiment = new ThreeLegLinearExperimentRecombination();
-    echo 'running ThreeLegLinearExperimentRecombination' . PHP_EOL;
-} elseif ($experimentName == 'norecombination') {
-    $experiment = new ThreeLegLinearExperiment();
-    echo 'running ThreeLegLinearExperiment' . PHP_EOL;
-
+if (array_key_exists($experimentName, $experiments)) {
+    $experiment = $experiments[$experimentName];
+    echo 'runing : ' . get_class($experiment) . PHP_EOL;
+    $experiment->run();
 } else {
-    echo 'Unknown experiment';
+    echo "ERROR: unknown experiment $experimentName, try one of those: " . implode(', ', array_keys($experiments)) . PHP_EOL;
+    exit(1);
 }
-
-$experiment->run();
