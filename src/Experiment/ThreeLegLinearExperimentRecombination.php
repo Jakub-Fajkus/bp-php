@@ -76,6 +76,9 @@ class ThreeLegLinearExperimentRecombination extends BaseExperiment
             $best = $generation->getBestIndividual();
             $output .= "best indiv {$best->getId()} with fitness: {$best->getFitness()}" . PHP_EOL;
             $output .= 'average fitness: ' . $individualStats->getAverageFitness($generation->getIndividuals()) . PHP_EOL;
+            $output .= 'avg fitness in top half: ' . $individualStats->getAverageFitnessInTopHalf($generation->getIndividuals()) . PHP_EOL;
+            $output .= 'avg fitness in bottom half: ' . $individualStats->getAverageFitnessBottomTopHalf($generation->getIndividuals()) . PHP_EOL;
+            $output .= 'median fitness: ' . $individualStats->getFitnessMedian($generation->getIndividuals()) . PHP_EOL;
 
             $generationStats->updateStatistics($generation);
 

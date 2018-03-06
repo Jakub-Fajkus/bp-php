@@ -149,6 +149,7 @@ Soucasna reseni rizeni autonomnich robotu zahrnuji neuronove site\cite{Prabhu199
 %--------------------------------------------------------
 
 \todo{zde se nekde musi vmestnat zakladni veci, tj. mame scenu, kde jsou referencni body}
+
 \section{Framework architecture and implementation}
 \label{sec:ArchitectureAndImplementation}
 {\includegraphics[height=5.8em]{top_level_architecture.pdf}
@@ -161,7 +162,11 @@ EA framework tedy pro kazdou generaci vytvori soubor, ktery obsahuje instrukce a
 Simulator nacte instrukce ze souboru, provede simulaci postupne pro vsechny sady instrukci a nasledne do jineho souboru ulozi hodnoty fitness.
 EA framework pote tyto hodnoty fitness ze souboru precte a dale s nimi pracuje.
 
-\subsection{dunno}
+V simulatoru je pripravena scena, ve ktere je umisten model robota a mnozina referencnich bodu, ktere jsou umisteny na spirale.
+Robot ma za ukol se pohybovat ve scene tak, ze se ke vsem referencnim bodum priblizi co nejvice.
+Timto robot vykonava pohyb po dane trajektorii.
+
+\subsection{Realizace rizeni robota}
 Rizeni robota je realizovano pomoci jednoduchych instrukci.
 V simulatoru je zabudovat interpret, ktery je schopny tyto instrukce prevadet na signaly, ktere zpracovava simulator.
 Tyto signaly rikaji, jaka sila se bude aplikovat v jednotlivych kloubech modelu robota.
@@ -195,8 +200,6 @@ Jsou zde povoleny instrukce \todo{pro kopirovani z registru a naplneni registru 
 \begin{table}[h]
 	\caption{Instructions of the interpret}
 \caption*{
-%\vspace*{.8em}
-
 Table of interpret instructions.
 INC increments an internal register by a given constant.
 DEC decrements an internal register by a given constant.

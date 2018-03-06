@@ -15,4 +15,4 @@ g++ -O2 -I. -Iinclude -Lbin -lpthread -std=c++17 -mavx main_compute.cpp Fitness.
 
 
 http://www.abclinuxu.cz/clanky/jak-spustit-prikazy-na-pozadi-nohup-disown-screen
-screen -d -m -S second ./runExperiments.sh 10 variation "second"
+screen -d -m -S JMENO_SCREENU ./runExperiments.sh 10 variation
