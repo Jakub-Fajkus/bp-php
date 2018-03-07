@@ -1,1 +1,0 @@
-experimenty se 4 nohym modelem a s optimalizaci na pohyb k jednomu bodu, binarka bp_compute_rovny_80s
