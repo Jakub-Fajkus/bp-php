@@ -72,7 +72,6 @@ class Individual implements IndividualInterface
      */
     public function onePointCrossover(IndividualInterface $individual, ?int $crossoverPoint = null): array
     {
-        //todo: 2 point!!!!!!!!!!!!!!!!!!!!
         if ($crossoverPoint === null) {
             $crossoverPoint = random_int(0, \count($this->genotype));
         }
@@ -87,6 +86,75 @@ class Individual implements IndividualInterface
         $individuals = [
             $individualFactory->createIndividual($this->generation, \array_merge($thisA, $otherB)),
             $individualFactory->createIndividual($this->generation, \array_merge($otherA, $thisB)),
+        ];
+
+        return $individuals;
+    }
+
+    /**
+     * Perform the two point crossover with the given individual.
+     *
+     * @param IndividualInterface $individual
+     *
+     * @return IndividualInterface[] Array of 2 individuals that were created by the crossover
+     */
+    public function twoPointCrossover(IndividualInterface $individual): array
+    {
+        $point1 = random_int(1, \count($this->genotype)-2);
+        $point2 = random_int(1, \count($this->genotype)-2);
+
+        $a = [];
+        $b = [];
+
+        $start = min($point1, $point2);
+        $end = max($point1, $point2);
+
+        for ($i = 0; $i < \count($this->genotype); $i++) {
+            if ($i <= $start || $i >= $end) {
+                $a[] = $this->genotype[$i];
+                $b[] = $individual->getGenotype()[$i];
+            } elseif ($i < $end) {
+                $a[] = $individual->getGenotype()[$i];
+                $b[] = $this->genotype[$i];
+            } else {
+                throw new \InvalidArgumentException('unknow index in 2po cross');
+            }
+        }
+
+        $individualFactory = new IndividualFactory();
+
+        $individuals = [
+            $individualFactory->createIndividual($this->generation, $a),
+            $individualFactory->createIndividual($this->generation, $b),
+        ];
+
+        return $individuals;
+    }
+
+    /**
+     * @param IndividualInterface $individual
+     * @return array
+     */
+    public function uniformCrossover(IndividualInterface $individual): array
+    {
+        $a = [];
+        $b = [];
+
+        for ($i = 0; $i < \count($this->genotype); $i++) {
+            if (random_int(0, 1) == 0) {
+                $a[$i] = $this->genotype[$i];
+                $b[$i] = $individual->getGenotype()[$i];
+            } else {
+                $a[$i] = $individual->getGenotype()[$i];
+                $b[$i] = $this->genotype[$i];
+            }
+        }
+
+        $individualFactory = new IndividualFactory();
+
+        $individuals = [
+            $individualFactory->createIndividual($this->generation, $a),
+            $individualFactory->createIndividual($this->generation, $b),
         ];
 
         return $individuals;

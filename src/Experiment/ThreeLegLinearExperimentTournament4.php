@@ -15,17 +15,17 @@ use Statistics\GenerationStatistics;
 use Statistics\IndividualStatistics;
 
 /**
- * Class ThreeLegLinearExperimentRecombination
+ * Class ThreeLegLinearExperiment
  * @package Experiment
  */
-class ThreeLegLinearExperimentRecombination extends BaseExperiment
+class ThreeLegLinearExperimentTournament4 extends BaseExperiment
 {
     /**
      * Run the whole experiment
      */
     public function run(): void
     {
-        $executableName = 'bp_compute_primka_7_referenci_trojnozka_60_jedincu_s_uniform'; //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_trojnozka_60_jedincu_bez_rekombinace_turnaj_4'; //bez pocatecniho lomitka!
         $generationGenerator = new GenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
@@ -36,12 +36,13 @@ class ThreeLegLinearExperimentRecombination extends BaseExperiment
 
         Config::setIndividualCount(60);
         Config::setMutationRate(3); //does not make sense anymore
-        Config::setCrossoverRate(90);
+        Config::setCrossoverRate(0);
         Config::setMotorCount(3);
         Config::setGenotypeSize(6*Config::getMotorCount()); //bulharska konstanta
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
         Config::setRegisterCount(15);
+        Config::$tournamentSize=4;
 
         $executableDir = $filesystem->createDirectory(Config::getDataDir(), $executableName);
         $runDir = $filesystem->createDirectory($executableDir, $date->format(DATE_ATOM));

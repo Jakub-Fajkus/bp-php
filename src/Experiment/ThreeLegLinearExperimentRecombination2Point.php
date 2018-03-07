@@ -18,14 +18,14 @@ use Statistics\IndividualStatistics;
  * Class ThreeLegLinearExperimentRecombination
  * @package Experiment
  */
-class ThreeLegLinearExperimentRecombination extends BaseExperiment
+class ThreeLegLinearExperimentRecombination2Point extends BaseExperiment
 {
     /**
      * Run the whole experiment
      */
     public function run(): void
     {
-        $executableName = 'bp_compute_primka_7_referenci_trojnozka_60_jedincu_s_uniform'; //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_trojnozka_60_jedincu_s_2point'; //bez pocatecniho lomitka!
         $generationGenerator = new GenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
@@ -42,6 +42,7 @@ class ThreeLegLinearExperimentRecombination extends BaseExperiment
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
         Config::setRegisterCount(15);
+        Config::$useUniform = false;
 
         $executableDir = $filesystem->createDirectory(Config::getDataDir(), $executableName);
         $runDir = $filesystem->createDirectory($executableDir, $date->format(DATE_ATOM));

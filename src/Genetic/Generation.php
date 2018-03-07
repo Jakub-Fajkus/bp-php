@@ -20,7 +20,7 @@ class Generation implements GenerationInterface
     /**
      * Generation constructor.
      *
-     * @param int                   $id
+     * @param int $id
      * @param IndividualInterface[] $individuals
      */
     public function __construct(int $id, array $individuals)
@@ -89,12 +89,14 @@ class Generation implements GenerationInterface
 
         //create the mating pool
         for ($i = 0; $i < \count($this->individuals); $i++) {
-            //randomly choose 2 individuals
-            $individual1 = $this->individuals[random_int(0, \count($this->individuals) - 1)];
-            $individual2 = $this->individuals[random_int(0, \count($this->individuals) - 1)];
+            $randomPick = [];
+            //select the k individuals
+            for ($j = 0; $j < Config::$tournamentSize; $j++) {
+                //randomly pick a individual
+                $randomPick[] = $this->individuals[random_int(0, \count($this->individuals) - 1)];
+            }
 
-            //insert the better one into the mating pool
-            $matingPool[] = ($individual1->getFitness() >= $individual2->getFitness()) ? $individual1 : $individual2;
+            $matingPool[] = $this->getBestIndividualFromTournament($randomPick);
         }
 
         //create the individuals for the new generation
@@ -167,7 +169,11 @@ class Generation implements GenerationInterface
         //zajistime, aby jsme nevytvorili jiz drive vytvoreneho potomka
         do {
             if ($doCrossover) {
-                $offsprings = $individual1->onePointCrossover($individual2); //todo change to 2 point!
+                if (Config::$useUniform) {
+                    $offsprings = $individual1->uniformCrossover($individual2);
+                } else {
+                    $offsprings = $individual1->twoPointCrossover($individual2);
+                }
             } else {
                 $offsprings[0] = $individual1->copy();
                 $offsprings[1] = $individual2->copy();
@@ -179,7 +185,7 @@ class Generation implements GenerationInterface
             $newOnes[] = $offsprings[0];
             $newOnes[] = $offsprings[1];
             $i++;
-        } while(\count($newOnes) < 2);
+        } while (\count($newOnes) < 2);
 
         $newOnes[0]->setFitness(0);
         $newOnes[1]->setFitness(0);
@@ -188,5 +194,23 @@ class Generation implements GenerationInterface
         $newOnes[1]->setNeedsEvaluation();
 
         return $newOnes;
+    }
+
+    /**
+     * @param IndividualInterface[] $individuals
+     *
+     * @return IndividualInterface
+     */
+    protected function getBestIndividualFromTournament(array $individuals): IndividualInterface
+    {
+        $best = $individuals[0];
+
+        foreach ($individuals as $individual) {
+            if ($individual->getFitness() > $best->getFitness()) {
+                $best = $individual;
+            }
+        }
+
+        return $best;
     }
 }

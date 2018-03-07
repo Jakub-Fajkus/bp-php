@@ -7,6 +7,7 @@ use Experiment\ExperimentInterface;
 use Experiment\ThreeLegLinearExperiment;
 use Experiment\ThreeLegLinearExperiment20Individuals;
 use Experiment\ThreeLegLinearExperimentRecombination;
+use Experiment\ThreeLegLinearExperimentRecombination2Point;
 
 include_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -14,7 +15,9 @@ include_once __DIR__ . '/../../vendor/autoload.php';
 $experiments = [
     'rec' => new ThreeLegLinearExperimentRecombination(),
     'norec' => new ThreeLegLinearExperiment(),
-    'norec20' => new ThreeLegLinearExperiment20Individuals()
+    'norec20' => new ThreeLegLinearExperiment20Individuals(),
+    '2point' => new ThreeLegLinearExperimentRecombination2Point(),
+    'uniform' => new ThreeLegLinearExperimentRecombination()
 ];
 
 if ($argc === 1) {

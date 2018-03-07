@@ -32,6 +32,21 @@ interface IndividualInterface
     public function onePointCrossover(IndividualInterface $individual, ?int $crossoverPoint = null): array;
 
     /**
+     * Perform the two point crossover with the given individual.
+     *
+     * @param IndividualInterface $individual
+     *
+     * @return IndividualInterface[] Array of 2 individuals that were created by the crossover
+     */
+    public function twoPointCrossover(IndividualInterface $individual): array;
+
+    /**
+     * @param IndividualInterface $individual
+     * @return array
+     */
+    public function uniformCrossover(IndividualInterface $individual):array;
+
+    /**
      * Perform a mutation
      *
      * @param bool $forced
