@@ -5,6 +5,7 @@ namespace Run;
 
 use Experiment\ExperimentInterface;
 use Experiment\ThreeLegLinearExperiment;
+use Experiment\ThreeLegLinearExperiment1000Individuals;
 use Experiment\ThreeLegLinearExperiment20Individuals;
 use Experiment\ThreeLegLinearExperimentRecombination;
 use Experiment\ThreeLegLinearExperimentRecombination2Point;
@@ -22,6 +23,7 @@ $experiments = [
     'uniform' => new ThreeLegLinearExperimentRecombination(),
     'norectour3' => new ThreeLegLinearExperimentTournament3(),
     'norectour4' => new ThreeLegLinearExperimentTournament4(),
+    'norec1000' => new ThreeLegLinearExperiment1000Individuals(),
 ];
 
 if ($argc === 1) {
