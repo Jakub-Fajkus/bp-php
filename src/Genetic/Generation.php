@@ -172,7 +172,7 @@ class Generation implements GenerationInterface
                 if (Config::$useUniform) {
                     $offsprings = $individual1->uniformCrossover($individual2);
                 } else {
-                    $offsprings = $individual1->twoPointCrossover($individual2);
+                    $offsprings = $individual1->onePointCrossover($individual2);
                 }
             } else {
                 $offsprings[0] = $individual1->copy();

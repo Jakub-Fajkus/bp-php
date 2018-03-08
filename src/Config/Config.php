@@ -28,6 +28,8 @@ class Config
 
     public static $useUniform = true;
     public static $tournamentSize = 3; // 2 is minimum
+    public static $simulationDuration = 130;
+    public static $generationCount = 60;
 
     private static $genotypeSize = self::DEFAULT_GENOTYPE_SIZE;
     private static $mutationRate = self::DEFAULT_MUTATION_RATE;

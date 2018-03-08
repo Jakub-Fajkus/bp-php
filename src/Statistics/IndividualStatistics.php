@@ -27,28 +27,28 @@ class IndividualStatistics implements IndividualsStatisticsInterface
         return $sum / \count($individuals);
     }
 
-    /**
-     * @param IndividualInterface[] $individuals
-     * @return float
-     */
-    public function getAverageFitnessInTopHalf(array $individuals): float
-    {
-        $this->sortIndividuals($individuals);
-
-        return $this->getAverageFitness(\array_slice($individuals, 0, \count($individuals) / 2));
-    }
-
-    /**
-     * @param IndividualInterface[] $individuals
-     * @return float
-     */
-    public function getAverageFitnessBottomTopHalf(array $individuals): float
-    {
-        $this->sortIndividuals($individuals);
-
-        $halfLength = \count($individuals) / 2;
-        return $this->getAverageFitness(\array_slice($individuals, $halfLength, $halfLength));
-    }
+//    /**
+//     * @param IndividualInterface[] $individuals
+//     * @return float
+//     */
+//    public function getAverageFitnessInTopHalf(array $individuals): float
+//    {
+//        $this->sortIndividuals($individuals);
+//
+//        return $this->getAverageFitness(\array_slice($individuals, 0, \count($individuals) / 2));
+//    }
+//
+//    /**
+//     * @param IndividualInterface[] $individuals
+//     * @return float
+//     */
+//    public function getAverageFitnessBottomTopHalf(array $individuals): float
+//    {
+//        $this->sortIndividuals($individuals);
+//
+//        $halfLength = \count($individuals) / 2;
+//        return $this->getAverageFitness(\array_slice($individuals, $halfLength, $halfLength));
+//    }
 
     /**
      * @param IndividualInterface[] $individuals
