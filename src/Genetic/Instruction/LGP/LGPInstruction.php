@@ -17,6 +17,6 @@ abstract class LGPInstruction implements InstructionInterface
      */
     public function copy(): InstructionInterface
     {
-       return clone $this;
+        return clone $this;
     }
 }

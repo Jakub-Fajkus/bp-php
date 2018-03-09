@@ -177,11 +177,13 @@ class Individual implements IndividualInterface
      */
     public function mutate(bool $forced = false): void
     {
+        //never ever forget this!
+        $this->evaluated = false;
+
         //mutate a random gene
         $mutationIndex = random_int(0, \count($this->genotype)-1);
 
         $this->genotype[$mutationIndex]->mutate();
-        $this->evaluated = false;
 
 //        tood: az bude vice instrukci, pouzit toto!
         /*

@@ -166,7 +166,6 @@ class Generation implements GenerationInterface
         $newOnes = [];
         $i = 0;
 
-        //zajistime, aby jsme nevytvorili jiz drive vytvoreneho potomka
         do {
             if ($doCrossover) {
                 if (Config::$useUniform) {

@@ -2,7 +2,9 @@
 declare(strict_types=1);
 
 namespace Genetic\Instruction\LGP;
+
 use Config\Config;
+use Genetic\Instruction\InstructionInterface;
 
 /**
  * Class SovInstruction
@@ -87,5 +89,13 @@ class SovInstruction extends LGPInstruction
     public function serialize(): string
     {
         return "SOV {$this->value} {$this->output}";
+    }
+
+    /**
+     * @return InstructionInterface
+     */
+    public function copy(): InstructionInterface
+    {
+        return new self($this->value, $this->output);
     }
 }
