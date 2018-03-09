@@ -181,6 +181,7 @@ class Individual implements IndividualInterface
         $mutationIndex = random_int(0, \count($this->genotype)-1);
 
         $this->genotype[$mutationIndex]->mutate();
+        $this->evaluated = false;
 
 //        tood: az bude vice instrukci, pouzit toto!
         /*
