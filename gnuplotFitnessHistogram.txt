@@ -19,10 +19,12 @@ set title "Individuals of fitness in generation number #".generationNumber
 set grid ytics
 set yrange [0:]
 
+set key
 
 set style histogram clustered
 set xlabel "Fitness"
 set ylabel "# of individuals"
 
 #dataFile je promenna, ktera se zadava z prikazove radky pres: -e "dataFile='filename'"
-plot for [COL=1:2] dataFile using COL:xticlabels(1) title columnheader, '' using 0:2:2 with labels offset -2.2,0.5
+#columnCount je promenna z konzole
+plot for [COL=1:dataColumns+1] dataFile using COL:xticlabels(1) title columnheader

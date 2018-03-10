@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Experiment;
+namespace Experiment\Ant;
 
 use Cache\IndividualCacheFacade;
 use Config\Config;
+use Experiment\BaseExperiment;
 use Filesystem\Filesystem;
 use Genetic\Generator\GenerationGenerator;
 use Simulator\Model\ThreeLegLinearModelXml;
@@ -15,22 +16,23 @@ use Statistics\GenerationStatistics;
 use Statistics\IndividualStatistics;
 
 /**
- * Class ThreeLegLinearExperiment1000Individual4Tournament
+ * Class AntLinearExperiment1000Individuals7Tournament200Gen
  * @package Experiment
  */
-class ThreeLegLinearExperiment1000Individuals4Tournament extends BaseExperiment
+class AntLinearExperiment1000Individuals7Tournament200Gen extends BaseExperiment
 {
     public function prepare()
     {
         Config::setIndividualCount(1000);
         Config::setMutationRate(3); //does not make sense anymore
         Config::setCrossoverRate(0);
-        Config::setMotorCount(3);
+        Config::setMotorCount(12);
         Config::setGenotypeSize(6*Config::getMotorCount()); //bulharska konstanta
+        Config::setRegisterCount(30);
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
-        Config::$tournamentSize=4;
+        Config::$tournamentSize=7;
         Config::$simulationDuration = 130;
-        Config::$generationCount=60;
+        Config::$generationCount=120;
     }
 }

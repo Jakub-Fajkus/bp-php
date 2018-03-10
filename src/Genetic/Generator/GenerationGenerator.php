@@ -9,7 +9,7 @@ use Genetic\IndividualFactory;
 use Genetic\Instruction\ComposedInstructionFactory;
 use Genetic\Instruction\LGP\LGPInstructionFactory;
 use Genetic\Instruction\SimpleInstructionFactory;
-use Simulator\Model\FixedModelXml;
+use Simulator\Model\ThreeLegLinearModelXml;
 
 /**
  * Class GenerationGenerator

@@ -15,10 +15,10 @@ use Statistics\GenerationStatistics;
 use Statistics\IndividualStatistics;
 
 /**
- * Class ThreeLegLinearExperiment1000Individual4Tournament
+ * Class ThreeLegLinearExperiment1000Individuals7Tournament200Gen
  * @package Experiment
  */
-class ThreeLegLinearExperiment1000Individuals4Tournament extends BaseExperiment
+class ThreeLegLinearExperiment1000Individuals7Tournament200Gen extends BaseExperiment
 {
     public function prepare()
     {
@@ -29,8 +29,8 @@ class ThreeLegLinearExperiment1000Individuals4Tournament extends BaseExperiment
         Config::setGenotypeSize(6*Config::getMotorCount()); //bulharska konstanta
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
-        Config::$tournamentSize=4;
+        Config::$tournamentSize=7;
         Config::$simulationDuration = 130;
-        Config::$generationCount=60;
+        Config::$generationCount=200;
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Genetic;
 
 use PHPUnit\Framework\TestCase;
-use Simulator\Model\FixedModelXml;
+use Simulator\Model\ThreeLegLinearModelXml;
 
 class GenerationTest extends TestCase
 {
@@ -14,10 +14,10 @@ class GenerationTest extends TestCase
         $generation = new Generation(1, []);
 
         $individuals = [
-            new Individual($generation, new FixedModelXml(), [], 1, 5),
-            new Individual($generation, new FixedModelXml(), [], 2, 10),
-            new Individual($generation, new FixedModelXml(), [], 3, 15),
-            new Individual($generation, new FixedModelXml(), [], 4, 8),
+            new Individual($generation, new ThreeLegLinearModelXml(), [], 1, 5),
+            new Individual($generation, new ThreeLegLinearModelXml(), [], 2, 10),
+            new Individual($generation, new ThreeLegLinearModelXml(), [], 3, 15),
+            new Individual($generation, new ThreeLegLinearModelXml(), [], 4, 8),
         ];
 
         foreach ($individuals as $individual) {
@@ -32,10 +32,10 @@ class GenerationTest extends TestCase
         $generation = new Generation(1, []);
 
         $individuals = [
-            new Individual($generation, new FixedModelXml(), [], 1, 5),
-            new Individual($generation, new FixedModelXml(), [], 2, 10),
-            new Individual($generation, new FixedModelXml(), [], 3, 15),
-            new Individual($generation, new FixedModelXml(), [], 4, 8),
+            new Individual($generation, new ThreeLegLinearModelXml(), [], 1, 5),
+            new Individual($generation, new ThreeLegLinearModelXml(), [], 2, 10),
+            new Individual($generation, new ThreeLegLinearModelXml(), [], 3, 15),
+            new Individual($generation, new ThreeLegLinearModelXml(), [], 4, 8),
         ];
 
         foreach ($individuals as $individual) {

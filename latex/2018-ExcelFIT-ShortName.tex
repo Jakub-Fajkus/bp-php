@@ -111,18 +111,18 @@ Rizeni robota muze byt zalozeno na instrukcich nejakeho imperativniho jazyka.
 Mozne je take  pouziti neuronovych siti.
 Dalsi z moznosti jsou ruzne planovaci algoritmy a systemy. \todo{citace, zdroje, terminologie}
 Pro prototypovani je vyhodne mit nastroj, ktery je schopny hledat vyhodne zpusoby rizeni robota.
-Evolutionary algorithms are good for this purpose, because they are applicable for a wide range of problems.~\cite{Eiben2015}
+Evolutionary algorithms are good for this purpose, because they are applicable for a wide range of problems.\todo{citovat?}~\cite{Eiben2015}
 
 \textbf{[Problem definition]} What exactly are you solving? What is the core and what is a bonus? What parameters should a proper solution of the problem have? Define the problem precisely and state how its solution should be evaluated.
 
 Hledame reseni pro problem, ktery je definovan takto.
 Mame model jednoducheho robota, ktery je castecne inspirovany prirodou(mravenec). \todo{viz obr.}
-Cilem prace je nalezt program(posloupnost instrukci) nebo konfiguraci neuronove site tak, aby model robota vykonaval dany netrivialni pohyb.
+Cilem je nalezt program(posloupnost instrukci) nebo konfiguraci neuronove site tak, aby model robota vykonaval dany netrivialni pohyb.
 Hledame tedy jiste reseni.
 Vybrane vzory pohybu jsou pohyb po primce a pohyb po spirale.
 Hledani reseni probiha automatizovane s vyuzitim evolucnich algoritmu.
 Algoritmy pomoci evoluce vyvijeji program, nebo neuronovou sit tak, aby se robot pohyboval po pozadovane trajektorii.
-K vyhodnoceni uspesnosti reseni je pouzit fyzikalni simulator specializovany na simulaci robotu Mujoco[\todo{odkaz}].
+K vyhodnoceni uspesnosti reseni je pouzit fyzikalni simulator specializovany na simulaci robotu Mujoco\cite{Todorov2012}.
 
 \textbf{[Existing solutions]} Discuss existing solutions, be fair in identifying their strengths and weaknesses. Cite important works from the field of your topic. Try to define well what is the \textit{state of the art}. You can include a Section 2 titled ``Background'' or ``Previous Works'' and have the details there and make this paragraph short. Or, you can enlarge this paragraph to a whole page. In many scientific papers, \emph{this} is the most valuable part if it is written properly.
 Soucasna reseni rizeni autonomnich robotu zahrnuji neuronove site\cite{Prabhu1996}, \cite{He2015}, fuzzy kontrolery\cite{Melendez2012}\cite{Saffiotti1997}
@@ -148,19 +148,14 @@ Soucasna reseni rizeni autonomnich robotu zahrnuji neuronove site\cite{Prabhu199
 %--------------------------------------------------------
 %--------------------------------------------------------
 
-\todo{zde se nekde musi vmestnat zakladni veci, tj. mame scenu, kde jsou referencni body}
-
 \section{Framework architecture and implementation}
 \label{sec:ArchitectureAndImplementation}
 {\includegraphics[height=5.8em]{top_level_architecture.pdf}
 \todo{misto fitness psat o objective function?}
 System je rozdelen na dve aplikace.
 Hlavni aplikaci je EA framework, ktery zajistuje vsechnu praci s evoluci.
-Druhou casti systemu je simulator Mujoco, ktery je doplnen vlastnim kodem, ktery zajistuje prevod instrukci na vstupy simulatoru a pocita fitness.
+Druhou casti systemu je simulator Mujoco, ktery je doplnen vlastnim kodem, ktery zajistuje prevod instrukci na vstupy simulatoru a pocita objective function.
 Propojeni techto dvou aplikaci je realizovano pres systemova volani pro spousteni procesu pres shell.
-EA framework tedy pro kazdou generaci vytvori soubor, ktery obsahuje instrukce a spusti simulator.
-Simulator nacte instrukce ze souboru, provede simulaci postupne pro vsechny sady instrukci a nasledne do jineho souboru ulozi hodnoty fitness.
-EA framework pote tyto hodnoty fitness ze souboru precte a dale s nimi pracuje.
 
 V simulatoru je pripravena scena, ve ktere je umisten model robota a mnozina referencnich bodu, ktere jsou umisteny na spirale.
 Robot ma za ukol se pohybovat ve scene tak, ze se ke vsem referencnim bodum priblizi co nejvice.
@@ -178,29 +173,29 @@ Kazdy vystupni registr je prirazen k jednomu kloubu robota.
 Hodnoty v techto registrech jsou prevadeny na intenzitu sily, ktera bude v techto kloubech pusobit.
 
 Program se sklada z instrukci, ktere meni stav vnitrnich registru a stav vnejsich registru.
-Tyto instrukce jsou vypsany v (e.g. Table~\ref{tab:Instructions}) (e.g. Table~\ref{tab:ExampleTable})
+Tyto instrukce jsou vypsany v Table~\ref{tab:Instructions}.
 
 Program je rozdelen do tri podprogramu - init, event a main.
 Init program je proveden v nulovem case a to pouze po spusteni simulace.
-Slouzi k nastaveni pocatecniho stavu vnitrnich registru. Jsou zde povoleny jen instrukce \todo{SRE?}
+Slouzi k nastaveni pocatecniho stavu vnitrnich registru. Jsou zde povoleny jen instrukce SRE a SOV\@.
 
 Dalsim podprogramem je event.
 Ten je spousten pokazde, kdyz se model robota dostatecne priblizi k nekteremu z referencnich bodu(pro kazdy bod ale pouze jednou).
 Vsechny instrukce jsou provedeny v nulovem case, stejne jako v init podprogramu.
 Tento podprogram slouzi ke zmene vnitrich registru.
-Jsou zde povoleny instrukce \todo{inc, dec?}
+Jsou zde povoleny instrukce SRE, SOV, INC, DEC
 
 Hlavnim podprogramem je main.
-Tento podprogram je provaden v nekonecne smycke.
+Tento podprogram je provaden v nekonecne smycce.
 Zde probiha kopirovani hodnot z vnitrnich registru do vystupnich registru.
 Instrukce zde nejsou provadeny v nulovem case, ale casovy rozestup mezi nimi je 0.5 sekundy.
-Jsou zde povoleny instrukce \todo{pro kopirovani z registru a naplneni registru konstantou}
+Jsou zde povoleny instrukce SOU, SOV.
 
 
 \begin{table}[h]
 	\caption{Instructions of the interpret}
+	\vspace{1em}
 \caption*{
-Table of interpret instructions.
 INC increments an internal register by a given constant.
 DEC decrements an internal register by a given constant.
 SOU copies an internal register value to a output register.
@@ -226,6 +221,8 @@ SRE copies a constant to an internal register.
 %--------------------------------------------------------
 \section{Experiements}
 \label{sec:Experiments}
+Zde popiseme jednitlive experimenty a nastaveni EA, ktere bylo pouzito.
+
 \subsection{Experiment overview}
 \todo{Zde bude popis experimentu - mravenec na primce? a na spirale}
 \todo{Vsechny informace k experiemntu: tj. konfigurace GA, delka programu, rozdeleni na podprogramy(kolik kam), delka simulace}

@@ -12,7 +12,7 @@ class TextModelSerializerTest extends TestCase
 {
     public function testItSerializesFixedModelXml()
     {
-        $modelXml = new \Simulator\Model\FixedModelXml();
+        $modelXml = new \Simulator\Model\ThreeLegLinearModelXml();
 
         $serializer = new \Simulator\Serializer\Model\TextModelSerializer();
 

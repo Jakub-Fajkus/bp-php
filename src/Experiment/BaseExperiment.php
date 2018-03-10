@@ -6,7 +6,9 @@ namespace Experiment;
 use Config\Config;
 use Filesystem\FilesystemInterface;
 use Genetic\Generator\GenerationGeneratorInterface;
-use Simulator\Model\FixedModelXml;
+use Simulator\Model\ThreeLegLinearModelXml;
+use Simulator\Model\ModelInterface;
+use Simulator\Model\ModelXmlInterface;
 use Simulator\SimulatorInterface;
 use Statistics\AllIndividualsStatisticsInterface;
 use Statistics\CacheStatistics;
@@ -52,6 +54,9 @@ abstract class BaseExperiment implements ExperimentInterface
     /** @var string */
     protected $allIndividualsLogFile = '';
 
+    /** @var ModelXmlInterface */
+    protected $modelXml;
+
     /**
      * BaseExperiment constructor.
      * @param GenerationGeneratorInterface $generationGenerator
@@ -61,6 +66,7 @@ abstract class BaseExperiment implements ExperimentInterface
      * @param AllIndividualsStatisticsInterface $allIndividualsStats
      * @param CacheStatistics $cacheStats
      * @param FilesystemInterface $filesystem
+     * @param ModelXmlInterface $modelXml
      * @param string $executableName
      */
     public function __construct(
@@ -71,6 +77,7 @@ abstract class BaseExperiment implements ExperimentInterface
         AllIndividualsStatisticsInterface $allIndividualsStats,
         CacheStatistics $cacheStats,
         FilesystemInterface $filesystem,
+        ModelXmlInterface $modelXml,
         string $executableName
     )
     {
@@ -82,6 +89,7 @@ abstract class BaseExperiment implements ExperimentInterface
         $this->cacheStats = $cacheStats;
         $this->filesystem = $filesystem;
         $this->executableName = $executableName;
+        $this->modelXml = $modelXml;
     }
 
     /**
@@ -117,7 +125,7 @@ abstract class BaseExperiment implements ExperimentInterface
         $modelFile = $this->filesystem->createFile($runDir, 'model.xml');
         $this->logFile = $this->filesystem->createFile($runDir, 'log.txt');
         $this->allIndividualsLogFile = $this->filesystem->createFile($runDir, 'allIndividuals.txt');
-        $this->filesystem->writeToFile($modelFile, (new FixedModelXml())->getAsString());
+        $this->filesystem->writeToFile($modelFile, $this->modelXml->getAsString());
 
         $generation = $this->generationGenerator->generateGeneration(1, Config::getIndividualCount());
 

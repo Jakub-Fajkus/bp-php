@@ -4,26 +4,30 @@ declare(strict_types=1);
 namespace Run;
 
 use Experiment\ExperimentInterface;
+use Experiment\Factory\AntLinearExperimentFactory;
 use Experiment\Factory\ThreeLegLinearExperimentFactory;
 
 include_once __DIR__ . '/../../vendor/autoload.php';
 
-$experimentFactory = new ThreeLegLinearExperimentFactory();
+$threeLegLinearFactory = new ThreeLegLinearExperimentFactory();
+$antLinearFactory = new AntLinearExperimentFactory();
 
 /** @var ExperimentInterface[] $experiments */
 $experiments = [
-    '1point60t3' => $experimentFactory->create60IndividualsExperiment3Tournament1Point(),
-    'norec60t2' => $experimentFactory->create60IndividualsExperiment2Tournament(),
-    'norec60t3' => $experimentFactory->create60IndividualsExperiment3Tournament(),
-    'norec1000t2' => $experimentFactory->create1000IndividualsExperiment2Tournament(),
-    'norec1000t3' => $experimentFactory->create1000IndividualsExperiment3Tournament(),
-    'norec1000t4' => $experimentFactory->create1000IndividualsExperiment4Tournament(),
-    'norec1000t5' => $experimentFactory->create1000IndividualsExperiment5Tournament(),
-    'norec1000t6' => $experimentFactory->create1000IndividualsExperiment6Tournament(),
-    'norec1000t7' => $experimentFactory->create1000IndividualsExperiment7Tournament(),
-    'norec1000t8' => $experimentFactory->create1000IndividualsExperiment8Tournament(),
-    'norec1000t9' => $experimentFactory->create1000IndividualsExperiment9Tournament(),
-    'norec1000t10' => $experimentFactory->create1000IndividualsExperiment10Tournament(),
+    '1point60t3' => $threeLegLinearFactory->create60IndividualsExperiment3Tournament1Point(),
+    'norec60t2' => $threeLegLinearFactory->create60IndividualsExperiment2Tournament(),
+    'norec60t3' => $threeLegLinearFactory->create60IndividualsExperiment3Tournament(),
+    'norec1000t2' => $threeLegLinearFactory->create1000IndividualsExperiment2Tournament(),
+    'norec1000t3' => $threeLegLinearFactory->create1000IndividualsExperiment3Tournament(),
+    'norec1000t4' => $threeLegLinearFactory->create1000IndividualsExperiment4Tournament(),
+    'norec1000t5' => $threeLegLinearFactory->create1000IndividualsExperiment5Tournament(),
+    'norec1000t6' => $threeLegLinearFactory->create1000IndividualsExperiment6Tournament(),
+    'norec1000t7' => $threeLegLinearFactory->create1000IndividualsExperiment7Tournament(),
+    'norec1000t8' => $threeLegLinearFactory->create1000IndividualsExperiment8Tournament(),
+    'norec1000t9' => $threeLegLinearFactory->create1000IndividualsExperiment9Tournament(),
+    'norec1000t10' => $threeLegLinearFactory->create1000IndividualsExperiment10Tournament(),
+    'norec1000t7-200gen' => $threeLegLinearFactory->create1000IndividualsExperiment7Tournament200Gen(),
+    'norecANT1000t7-200gen' => $antLinearFactory->create1000IndividualsExperiment7Tournament(),
 ];
 
 if ($argc === 1) {

@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace Simulator\Model;
 
 /**
- * Class FixedModelXml
+ * Class ThreeLegLinearModelXml
  * @package Simulator\Model
  */
-class FixedModelXml implements ModelXmlInterface
+class ThreeLegLinearModelXml implements ModelXmlInterface
 {
     /**
      * Returns the model xml as a string

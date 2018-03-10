@@ -15,7 +15,7 @@ class SimulatorTest extends TestCase
     {
         return;
         $generation = static::createMock(\Genetic\GenerationInterface::class);
-        $model = new \Simulator\Model\FixedModelXml();
+        $model = new \Simulator\Model\ThreeLegLinearModelXml();
 
         $individual = new \Genetic\Individual($generation, $model, array_fill(0, Config::DEFAULT_MOTOR_DRIVE_VALUES_COUNT * 12, 50), 0);
 

@@ -7,7 +7,7 @@ use Cache\IndividualCacheFacade;
 use Config\Config;
 use Filesystem\Filesystem;
 use Genetic\Generator\GenerationGenerator;
-use Simulator\Model\FixedModelXml;
+use Simulator\Model\ThreeLegLinearModelXml;
 use Simulator\Serializer\Instruction\InstructionSerializer;
 use Simulator\Simulator;
 use Statistics\CacheStatistics;
@@ -49,7 +49,7 @@ class ThreeLegLinearExperimentRecombination extends BaseExperiment
         $modelFile = $filesystem->createFile($runDir, 'model.xml');
         $logFile = $filesystem->createFile($runDir, 'log.txt');
         $cacheFile = $filesystem->createFile($executableDir, 'cache.txt');
-        $filesystem->writeToFile($modelFile, (new FixedModelXml())->getAsString());
+        $filesystem->writeToFile($modelFile, (new ThreeLegLinearModelXml())->getAsString());
 
         IndividualCacheFacade::loadFromFile($cacheFile);
 

@@ -6,7 +6,7 @@ use Config\Config;
 use Filesystem\Filesystem;
 use Genetic\Generator\GenerationGenerator;
 use Genetic\Generator\InitializedGenerationGenerator;
-use Simulator\Model\FixedModelXml;
+use Simulator\Model\ThreeLegLinearModelXml;
 use Simulator\Serializer\Instruction\InstructionSerializer;
 use Simulator\Simulator;
 use Statistics\GenerationStatistics;
