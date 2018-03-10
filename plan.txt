@@ -1,0 +1,13 @@
+chci od vseho 30!
+
+bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_2      4 u mne, 30 na google
+bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_3      10 u mne, 20 na google
+bp_compute_primka_7_referenci_trojnozka_60_jedincu_bez_rekombinace_turnaj_2        32 na google
+bp_compute_primka_7_referenci_trojnozka_60_jedincu_bez_rekombinace_turnaj_3_1point 30 na google
+bp_compute_primka_7_referenci_trojnozka_60_jedincu_bez_rekombinace_turnaj_3        10 se pocita u mne, 20 se pocita na google
+
+
+
+jakub_fajkus_gmail_com@instance-4:~/bp$ rm -rf  data/bp_compute_primka_7_referenci_trojnozka_60_jedincu_bez_rekombinace_turnaj_3/ 2018-03-09T15:56:04+00:00
+
+bp_compute_primka_7_referenci_trojnozka_60_jedincu_bez_rekombinace_turnaj_2 - 30,

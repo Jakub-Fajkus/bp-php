@@ -1,0 +1,45 @@
+1000 jedincova konfigurace ma lepsi vysledky nez-li 60 jedincova(explorace je zde velkou vyhodou).
+U 1000 jedincovych populaci jsem experimentoval s velikosti turnaje 2 a 3.
+Konfigurace s turnajem 3 ma vyrazne lepsi vysledky jak v prumerne fitness, tak v poctu nalezenych vybornych reseni(9 oproti zadnemu).
+
+Priblizne polovina behu by pravdepodobne dale zlepsovala kvalitu populace, kdyby pocet generaci byl vetsi.
+Vyzkousim tedy trojnasobne vetsi pocet generaci.
+Dale vyzkousim zvyseni velikosti turnaje.
+Aktualne bezi experimenty s velikosti turnaje 7, podle vysledku budu velikost jeste lehce upravovat.
+
+Celkove je take konecne videt mirne zvysovani prumerne fitness i v mistech, kde neroste maximalni fitness.
+Zvyseni selekcniho tlaku tomu rozhodne jeste napomuze.
+
+
+Bohuzel jsem musel sve dosavadni vysledky behu zahodit, protoze jsem nemel zaznamenane fitness hodnoty vsech jedincu v generaci.
+Zaznamenaly se pouze hodnoty fitness jedincu, kteri byli vyhodnoceni v dane generaci. Hloupa a znacne draha chyba...
+
+
+
+
+
+
+Dobry den,
+posilam male srovnani podle toho, jak jsme se minule bavili. Bohuzel jsem musel sve dosavadni vysledky behu zahodit, protoze jsem nemel zaznamenane fitness hodnoty vsech jedincu v generaci. Zaznamenaly se pouze hodnoty fitness jedincu, kteri byli vyhodnoceni v dane generaci(tj. priblizne 1/4 chybela). Hloupa a znacne draha chyba... Proto to zpozdeni, za ktere se omlouvam.
+
+Vyzkousel jsem konfiguraci 1000 jedincu v populaci s delkou behu 60 generaci. Zvolil jsem pro zacatek velikost turnaje 2 a 3.
+Pro porovnani jsem pridal konfiguraci 60 jedincu v populaci, s delkou behu 1000 generaci. Opet s turnajem 2 a 3.
+
+Se vsemi konfiguracemi bylo provedeno 30 behu.
+
+Pro porovnani jsem si vykreslil histogramy hodnot jedincu napric vsemi behy v urcene generaci. Tyto generace jsem zvolil pro 60 jedincu takto: 1,10,25,50,75,100,150,200,400,600,1000. Pro 1000 jedincu: 1,5,10,15,20,25,30,35,40,45,50,55,60.
+
+Z histogramu se da vycist, ze konfigurace s 1000 jedinci ma daleko lepsi vysledky nez-li 60 jedincova(explorace je zde zrejmne velkou vyhodou).
+Konfigurace s turnajem 3 ma vyrazne lepsi vysledky jak v prumerne fitness, tak v poctu nalezenych vybornych reseni(9 oproti zadnemu).
+
+Trochu detailneji k 1000 konfiguraci:
+Priblizne polovina behu by pravdepodobne dale zlepsovala kvalitu populace, kdyby pocet generaci byl vetsi.
+Vyzkousim tedy trojnasobne vetsi pocet generaci.
+Dale vyzkousim zvyseni velikosti turnaje(velikosti 2 a 3 jsou na tuto velikost populace male).
+Aktualne bezi experimenty s velikosti turnaje 7, podle vysledku budu velikost jeste lehce upravovat.
+
+Predbezne vysledky(provedeno 20 behu ze 30) ukazuji vetsi pocet jedincu s vysokou fitness.
+Zajimavy je pocet jedincu s absolutne mizivou fitness i pres relativne vysoky selekcni tlak.
+Davam to za vinu 100%pravdepodobnosti mutace, ktera postihuje jeden z 18 genu jedince. Diky teto mutaci seklidne muze z relativne dobreho jedince stat absolutne neschopny.
+
+Zajimave by bylo pozorovat vyvoj jedincu, rekneme v nejake stromove strukture. V korenovem uzlu by byl jedinec z pocatecni populace. Synovske uzly tohoto uzlu by byly potomci, ktere tento jedinec stvoril. Dal by se na tom krasne pozorovat "pribeh" kazdeho jedince a dopad jednotlivych mutaci. Pravdepodobne neco podobne s timto: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.20.1530&rep=rep1&type=pdf

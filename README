@@ -1,8 +1,9 @@
+Zaradit pouziti EA tak, ze se predpoklada maly pocet behu k nalezeni reseni(ale je zde i poznamka k nejlepsim resenim, viz introduction(kap9)
+
 soubory:
  plot.eps -> nahrat na overleaf
  plot.tex -> vlozit do textu
  plot.png -> pro zvedave oci, pixelovate...
-
 
 
 c=1; while [ $c -le 100 ]; do ../../render.sh; (( c++ )); sleep 5; done
@@ -16,3 +17,18 @@ g++ -O2 -I. -Iinclude -Lbin -lpthread -std=c++17 -mavx main_compute.cpp Fitness.
 
 http://www.abclinuxu.cz/clanky/jak-spustit-prikazy-na-pozadi-nohup-disown-screen
 screen -d -m -S JMENO_SCREENU ./runExperiments.sh 10 variation
+
+
+
+
+
+
+
+../../renderMultiple.sh && ../../mergeRunFitnessImages.sh
+
+php ../../getDataForGenerationsHistogram.php 1 && php ../../getDataForGenerationsHistogram.php 10 && php ../../getDataForGenerationsHistogram.php 25 && php ../../getDataForGenerationsHistogram.php 50 && php ../../getDataForGenerationsHistogram.php 75 && php ../../getDataForGenerationsHistogram.php 100 && php ../../getDataForGenerationsHistogram.php 150 && php ../../getDataForGenerationsHistogram.php 200 && php ../../getDataForGenerationsHistogram.php 400 && php ../../getDataForGenerationsHistogram.php 600 && php ../../getDataForGenerationsHistogram.php 1000 && ../../mergeComparisonImages.sh
+
+php ../../getDataForGenerationsHistogram.php 1 && php ../../getDataForGenerationsHistogram.php 5 && php ../../getDataForGenerationsHistogram.php 10 && php ../../getDataForGenerationsHistogram.php 15 && php ../../getDataForGenerationsHistogram.php 20 && php ../../getDataForGenerationsHistogram.php 25 && php ../../getDataForGenerationsHistogram.php 30 && php ../../getDataForGenerationsHistogram.php 35 && php ../../getDataForGenerationsHistogram.php 40 && php ../../getDataForGenerationsHistogram.php 45 && php ../../getDataForGenerationsHistogram.php 50 && php ../../getDataForGenerationsHistogram.php 55 && php ../../getDataForGenerationsHistogram.php 60 && ../../mergeComparisonImages.sh
+
+
+for DIR in `ls  | grep bp_compute`; do cd $DIR ; ../../createRunStatistics.sh ; cd ..; done

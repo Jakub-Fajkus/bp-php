@@ -1,5 +1,5 @@
 set term png
-set output 'plot.png'
+set output 'runFitnessGraph.png'
 set xlabel "Generations"
 set ylabel "Fitness"
 show xlabel
@@ -7,7 +7,8 @@ show ylabel
 set key under box
 set yrange [0:320]
 
-plot 'generations.txt'  using 1:2 with lines title "Max fitness", 'generations.txt' using 1:3 with lines title "Avg fitness" smooth sbezier, 'generations.txt' using 1:4 with lines title "Avg fitness in top half" smooth sbezier, 'generations.txt' using 1:5 with lines title "Avg fitness in bottom half" smooth sbezier
+plot 'generations.txt'  using 1:2 with lines title "Max fitness", 'generations.txt' using 1:3 with lines title "Avg fitness" smooth sbezier
+
 set terminal epslatex color solid
 set output 'plot.eps'
 replot

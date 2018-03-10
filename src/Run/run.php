@@ -5,12 +5,6 @@ namespace Run;
 
 use Experiment\ExperimentInterface;
 use Experiment\Factory\ThreeLegLinearExperimentFactory;
-use Experiment\ThreeLegLinearExperiment;
-use Experiment\ThreeLegLinearExperiment1000Individuals2Tournament;
-use Experiment\ThreeLegLinearExperimentRecombination;
-use Experiment\ThreeLegLinearExperimentRecombination2Point;
-use Experiment\ThreeLegLinearExperiment60Individuals3Tournament;
-use Experiment\ThreeLegLinearExperiment60Individuals2Tournament;
 
 include_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -18,11 +12,18 @@ $experimentFactory = new ThreeLegLinearExperimentFactory();
 
 /** @var ExperimentInterface[] $experiments */
 $experiments = [
-    'norec1000t2' => $experimentFactory->create1000IndividualsExperiment2Tournament(),
-    'norec1000t3' => $experimentFactory->create1000IndividualsExperiment3Tournament(),
+    '1point60t3' => $experimentFactory->create60IndividualsExperiment3Tournament1Point(),
     'norec60t2' => $experimentFactory->create60IndividualsExperiment2Tournament(),
     'norec60t3' => $experimentFactory->create60IndividualsExperiment3Tournament(),
-    '1point60t3' => $experimentFactory->create60IndividualsExperiment3Tournament1Point(),
+    'norec1000t2' => $experimentFactory->create1000IndividualsExperiment2Tournament(),
+    'norec1000t3' => $experimentFactory->create1000IndividualsExperiment3Tournament(),
+    'norec1000t4' => $experimentFactory->create1000IndividualsExperiment4Tournament(),
+    'norec1000t5' => $experimentFactory->create1000IndividualsExperiment5Tournament(),
+    'norec1000t6' => $experimentFactory->create1000IndividualsExperiment6Tournament(),
+    'norec1000t7' => $experimentFactory->create1000IndividualsExperiment7Tournament(),
+    'norec1000t8' => $experimentFactory->create1000IndividualsExperiment8Tournament(),
+    'norec1000t9' => $experimentFactory->create1000IndividualsExperiment9Tournament(),
+    'norec1000t10' => $experimentFactory->create1000IndividualsExperiment10Tournament(),
 ];
 
 if ($argc === 1) {
@@ -39,3 +40,5 @@ if (array_key_exists($experimentName, $experiments)) {
     echo "ERROR: unknown experiment $experimentName, try one of those: " . implode(', ', array_keys($experiments)) . PHP_EOL;
     exit(1);
 }
+
+
