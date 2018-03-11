@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Experiment\Factory;
 
-use Experiment\Ant\AntLinearExperiment1000Individuals7Tournament200Gen;
+use Experiment\Ant\AntLinearExperiment1000Individuals7Tournament120Gen;
 use Experiment\ExperimentInterface;
 use Filesystem\Filesystem;
 use Genetic\Generator\GenerationGenerator;
@@ -24,7 +24,7 @@ class AntLinearExperimentFactory
     public function create1000IndividualsExperiment7Tournament(): ExperimentInterface
     {
         //bez pocatecniho lomitka!
-        $executableName = 'bp_compute_primka_7_referenci_mravenec_1000_jedincu_bez_rekombinace_turnaj_7_200gen';
+        $executableName = 'bp_compute_primka_7_referenci_mravenec_1000_jedincu_bez_rekombinace_turnaj_7_120gen';
         $generationGenerator = new GenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
@@ -33,7 +33,7 @@ class AntLinearExperimentFactory
         $cacheStats = new CacheStatistics();
         $filesystem = new Filesystem();
 
-        $experiment = new AntLinearExperiment1000Individuals7Tournament200Gen(
+        $experiment = new AntLinearExperiment1000Individuals7Tournament120Gen(
             $generationGenerator,
             $simulator,
             $individualStats,

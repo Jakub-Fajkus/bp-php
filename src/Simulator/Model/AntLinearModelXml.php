@@ -27,45 +27,47 @@ class AntLinearModelXml implements ModelXmlInterface
     <asset>
         <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1" width="256" height="256"/>
         <texture type="2d" name="checkers" builtin="checker" width="256" height="256" rgb1="0 0 0" rgb2="1 1 1"/>
-        <texture type="2d" name="spiral" width="100" height="1000" rgb1="0 0 0" file="/home/jakub/CLionProjects/bp/spiral.png"/>
+        <!--<texture type="2d" name="spiral" width="100" height="1000" rgb1="0 0 0" file="/home/jakub/CLionProjects/bp/spiral.png"/>-->
         <material name="checker_mat" texture="checkers" texrepeat="15 15"/>
-        <material name="spiral_mat"  texture="spiral" texrepeat="1 1"/>
+        <!--<material name="spiral_mat"  texture="spiral" texrepeat="1 1"/>-->
     </asset>
     <visual>
         <global offwidth="1920" offheight="1080"/>
+        <map stiffness="10" stiffnessrot="20"/>
     </visual>
     <worldbody>
         <camera name='targeting' pos='1 1 2' mode='targetbodycom' target='body_0'/>
 
-        <geom name="floor" material="spiral_mat" pos="30 50 -20" size="420 420 .125" rgba="1 1 1 1" type="plane"
+        <geom name="floor" material="checker_mat" pos="30 50 -20" size="420 420 .125" rgba="1 1 1 1" type="plane"
               condim="6" friction="5 0.5 0.1"/>
 
-         <site name="reference_0" pos="100 0 -20" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_1" pos="150 0 -20" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_2" pos="200 0 -20" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_3" pos="250 0 -20" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_4" pos="300 0 -20" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_5" pos="350 0 -20" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_6" pos="400 0 -20" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+       <site name="reference_0"  pos="100 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_1" pos="150 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_2" pos="200 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_3" pos="250 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_4" pos="300 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_5" pos="350 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_6" pos="400 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
 
 
         <body name="body_0">
             <freejoint/>
-            <site name="head" size="2 2 2" rgba="1 0 0 0.5" pos="80 0 0"/>
-            <geom name="geom_0" type="sphere" pos="0.00 0.00 0.20" size="0.3"/>
+            <site name="head" size="2 2 2" rgba="1 0 0 0.5" pos="80 0 10"/>
+            <geom name="contact_0" type="sphere" pos="80.00 0.00 10.00" size="4" rgba="1 0 1 0.5"/>
+            <geom name="geom_0" type="sphere" pos="0.00 0.00 10.00" size="0.3"/>
             <body name="body_1">
                 <!--1st arms-->
-                <geom name="geom_1" type="capsule" fromto="0.00 0.00 0.00 0.00 10.0 10.0" size="01.00000"/>
-                <geom name="geom_2" type="capsule" fromto="0.00 0.00 0.00 0.00 -10.0 10.0" size="01.00000"/>
+                <geom name="geom_1" type="capsule" fromto="0.00 0.00 10.00 0.00 10.0 10.0" size="01.00000"/>
+                <geom name="geom_2" type="capsule" fromto="0.00 0.00 10.00 0.00 -10.0 10.0" size="01.00000"/>
                 <!--spine-->
-                <geom name="geom_3" type="capsule" fromto="0.00 0.00 0.00 80.0 0.00 0.00" size="01.00000"/>
+                <geom name="geom_3" type="capsule" fromto="0.00 0.00 10.00 80.0 0.00 10.00" size="01.00000"/>
                 <!--2nd arms-->
-                <geom name="geom_4" type="capsule" fromto="40.0 0.00 0.00 40.0 10.0 10.0" size="01.00000"/>
-                <geom name="geom_5" type="capsule" fromto="40.0 0.00 0.00 40.0 -10.0 10.0" size="01.00000"/>
+                <geom name="geom_4" type="capsule" fromto="40.0 0.00 10.00 40.0 10.0 10.0" size="01.00000"/>
+                <geom name="geom_5" type="capsule" fromto="40.0 0.00 10.00 40.0 -10.0 10.0" size="01.00000"/>
 
                 <!--3rd arms-->
-                <geom name="geom_18" type="capsule" fromto="80.0 0.00 0.00 80.0 10.0 10.0" size="01.00000"/>
-                <geom name="geom_19" type="capsule" fromto="80.0 0.00 0.00 80.0 -10.0 10.0" size="01.00000"/>
+                <geom name="geom_18" type="capsule" fromto="80.0 0.00 10.00 80.0 10.0 10.0" size="01.00000"/>
+                <geom name="geom_19" type="capsule" fromto="80.0 0.00 10.00 80.0 -10.0 10.0" size="01.00000"/>
 
                 <!--first leg pair-->
                 <!--upper leg-->
@@ -74,7 +76,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_6" type="capsule" fromto="0.00 -10.0 10.0 0.00 -20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_3">
-                        <joint type="hinge" pos="0 -20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_1"/>
+                        <joint type="hinge" pos="0 -20 10" axis="1 0 0" limited="true" range="-55 45" name="motor_1"/>
                         <geom name="geom_7" type="capsule" fromto="0.00 -20.0 10.0 0.00 -30.0 -5.0" size="01.00000"/>
                     </body>
                 </body>
@@ -84,7 +86,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_8" type="capsule" fromto="0.00 10.0 10.0 0.00 20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_5">
-                        <joint type="hinge" pos="0 20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_3"/>
+                        <joint type="hinge" pos="0 20 10" axis="1 0 0" limited="true" range="-45 45" name="motor_3"/>
                         <geom name="geom_9" type="capsule" fromto="0.00 20.0 10.0 0.00 30.0 -5" size="01.00000"/>
                     </body>
                 </body>
@@ -96,7 +98,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_10" type="capsule" fromto="40.0 -10.0 10.0 40.0 -20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_7">
-                        <joint type="hinge" pos="40 -20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_5"/>
+                        <joint type="hinge" pos="40 -20 10" axis="1 0 0" limited="true" range="-55 45" name="motor_5"/>
                         <geom name="geom_11" type="capsule" fromto="40.0 -20.0 10.0 40.0 -30.0 -5.0" size="01.00000"/>
                     </body>
                 </body>
@@ -106,7 +108,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_12" type="capsule" fromto="40.0 10.0 10.0 40.0 20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_9">
-                        <joint type="hinge" pos="40 20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_7"/>
+                        <joint type="hinge" pos="40 20 10" axis="1 0 0" limited="true" range="-45 45" name="motor_7"/>
                         <geom name="geom_13" type="capsule" fromto="40.0 20.0 10.0 40.0 30.0 -0.5" size="01.00000"/>
                     </body>
                 </body>
@@ -118,7 +120,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_14" type="capsule" fromto="80 -10.0 10.0 80 -20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_11">
-                        <joint type="hinge" pos="80 -20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_9"/>
+                        <joint type="hinge" pos="80 -20 10" axis="1 0 0" limited="true" range="-55 45" name="motor_9"/>
                         <geom name="geom_15" type="capsule" fromto="80 -20.0 10.0 80 -30.0 -5.0" size="01.00000"/>
                     </body>
                 </body>
@@ -128,7 +130,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_16" type="capsule" fromto="80 10.0 10.0 80 20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_13">
-                        <joint type="hinge" pos="80 20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_11"/>
+                        <joint type="hinge" pos="80 20 10" axis="1 0 0" limited="true" range="-45 45" name="motor_11"/>
                         <geom name="geom_17" type="capsule" fromto="80 20.0 10.0 80 30.0 -0.5" size="01.00000"/>
                     </body>
                 </body>

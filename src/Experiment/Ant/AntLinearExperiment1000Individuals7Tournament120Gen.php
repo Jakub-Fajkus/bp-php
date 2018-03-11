@@ -16,10 +16,10 @@ use Statistics\GenerationStatistics;
 use Statistics\IndividualStatistics;
 
 /**
- * Class AntLinearExperiment1000Individuals7Tournament200Gen
+ * Class AntLinearExperiment1000Individuals7Tournament120Gen
  * @package Experiment
  */
-class AntLinearExperiment1000Individuals7Tournament200Gen extends BaseExperiment
+class AntLinearExperiment1000Individuals7Tournament120Gen extends BaseExperiment
 {
     public function prepare()
     {

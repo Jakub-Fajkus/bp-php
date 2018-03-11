@@ -27,9 +27,7 @@ class AntSpiralModelXml implements ModelXmlInterface
     <asset>
         <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1" width="256" height="256"/>
         <texture type="2d" name="checkers" builtin="checker" width="256" height="256" rgb1="0 0 0" rgb2="1 1 1"/>
-        <texture type="2d" name="spiral" width="100" height="1000" rgb1="0 0 0" file="/home/jakub/CLionProjects/bp/spiral.png"/>
         <material name="checker_mat" texture="checkers" texrepeat="15 15"/>
-        <material name="spiral_mat"  texture="spiral" texrepeat="1 1"/>
     </asset>
     <visual>
         <global offwidth="1920" offheight="1080"/>
@@ -37,7 +35,7 @@ class AntSpiralModelXml implements ModelXmlInterface
     <worldbody>
         <camera name='targeting' pos='1 1 2' mode='targetbodycom' target='body_0'/>
 
-        <geom name="floor" material="spiral_mat" pos="30 50 -20" size="420 420 .125" rgba="1 1 1 1" type="plane"
+        <geom name="floor" material="checker_mat" pos="30 50 -20" size="420 420 .125" rgba="1 1 1 1" type="plane"
               condim="6" friction="5 0.5 0.1"/>
 
         <site name="reference_0" pos="90 50 0" size="5 5 5" type="sphere" rgba="255 255 0 1"/>

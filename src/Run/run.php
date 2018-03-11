@@ -27,7 +27,7 @@ $experiments = [
     'norec1000t9' => $threeLegLinearFactory->create1000IndividualsExperiment9Tournament(),
     'norec1000t10' => $threeLegLinearFactory->create1000IndividualsExperiment10Tournament(),
     'norec1000t7-200gen' => $threeLegLinearFactory->create1000IndividualsExperiment7Tournament200Gen(),
-    'norecANT1000t7-200gen' => $antLinearFactory->create1000IndividualsExperiment7Tournament(),
+    'norecANT1000t7-120gen' => $antLinearFactory->create1000IndividualsExperiment7Tournament(),
 ];
 
 if ($argc === 1) {
