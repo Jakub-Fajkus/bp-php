@@ -14,9 +14,10 @@ $highValue = 320;
 $step = 10;
 
 $selectFolders = [
-    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_6',
     'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_7',
-    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_8',
+    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_4_ss',
+    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_5_ss',
+    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_6_ss',
 ];
 
 $histogramBounds = range($lowValue, $highValue, $step);

@@ -22,4 +22,4 @@ set xlabel "Measure"
 set ylabel "Fitness"
 set key auto columnheader
 
-plot for [COL=2:10] 'variationComparison.data' using COL:xticlabels(1) title columnheader
+plot for [COL=2:14] 'variationComparison.data' using COL:xticlabels(1) title columnheader
