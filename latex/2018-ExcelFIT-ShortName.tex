@@ -21,7 +21,7 @@
 
 \hypersetup{
 	pdftitle={Paper Title},
-	pdfauthor={Author},
+	pdfauthor={Jakub Fajkus},
 	pdfkeywords={Keyword1, Keyword2, Keyword3}
 }
 
@@ -38,18 +38,8 @@
 \affiliation{*%
   \href{mailto:herout@fit.vutbr.cz}{herout@fit.vutbr.cz},
   \textit{Faculty of Information Technology, Brno University of Technology}}
-%%%%--------------------------------------------------------
-%%%% in case there are multiple authors, use the following fragment instead
-%%%%--------------------------------------------------------
-%\Authors{Jindřich Novák*, Janča Dvořáková**}
-%\affiliation{*%
-%  \href{mailto:xnovak00@stud.fit.vutbr.cz}{xnovak00@stud.fit.vutbr.cz},
-%  \textit{Faculty of Information Technology, Brno University of Technology}}
-%\affiliation{**%
-%  \href{maildvora00@stud.fit.vutbr.cz}{xdvora00@stud.fit.vutbr.cz},
-%  \textit{Faculty of Information Technology, Brno University of Technology}}
 
-\Keywords{Evolutionary computation --- Neural Networks --- Linear Genetic Programming --- Robotics --- Robot evolution}
+\Keywords{Evolutionary computation --- Neural Networks --- Linear Genetic Programming --- Robotics}
 
 \Supplementary{\href{http://youtu.be/S3msCdn3fNM}{Demonstration Video} --- \href{http://excel.fit.vutbr.cz/}{Downloadable Code}}
 
@@ -66,6 +56,7 @@ Pro řízení modelu robota jsou použity dva rozdílné přístupy.
 První přístup je založen na instrukcích, odpovidajici Linearnimu Genetickemu Programovani.
 Druhý přístup využívá feedforward neuronové sítě.
 Oba pristupy jsou podrobeny nekolika experimentum, ktere overuji jejich vhodnost pro dany typ problemu.
+Pro dany problem je provedeno experimentalni srovani ruznych instanci EA.
 Nasledne jsou pristupy vyhodnoceny a diskutovany vysledky s durazem na porovnani obou pristupu.
 Vysledky prace potrvzuji, ze komplexnejsi chovani vyzaduje jistou miru samoadaptace(environment awarness) a ze je toto
 mozne dosahnout obema zvolenymi pristupy.
@@ -106,20 +97,17 @@ V oblasti robotiky je velmi dulezita schopnost rychle a levne prototypovat mozna
 K tomuto ucelu je velmi vhodne pouziti pocitacove modelovani a simulace.
 V situaci, kdy mame navrzenou fyzickou stranku robota, nastava otazka, jak rychle prototypovat jeho rizeni.
 Existuje mnoho moznosti realizace rizeni robota, lisici se v zavislosti na pozadavcich a povaze cinosti robota.
-\todo{Citace, zdroje}
-Rizeni robota muze byt zalozeno na instrukcich nejakeho imperativniho jazyka.
-Mozne je take  pouziti neuronovych siti.
+Rizeni robota muze byt zalozeno na instrukcich nejakeho imperativniho jazyka nebo na neuronovych sitich.
 Dalsi z moznosti jsou ruzne planovaci algoritmy a systemy. \todo{citace, zdroje, terminologie}
 Pro prototypovani je vyhodne mit nastroj, ktery je schopny hledat vyhodne zpusoby rizeni robota.
-Evolutionary algorithms are good for this purpose, because they are applicable for a wide range of problems.\todo{citovat?}~\cite{Eiben2015}
+Evolutionary algorithms are good for this purpose, because they are applicable for a wide range of problems.
 
 \textbf{[Problem definition]} What exactly are you solving? What is the core and what is a bonus? What parameters should a proper solution of the problem have? Define the problem precisely and state how its solution should be evaluated.
 
 Hledame reseni pro problem, ktery je definovan takto.
 Mame model jednoducheho robota, ktery je castecne inspirovany prirodou(mravenec). \todo{viz obr.}
-Cilem je nalezt program(posloupnost instrukci) nebo konfiguraci neuronove site tak, aby model robota vykonaval dany netrivialni pohyb.
+Cilem je nalezt program(posloupnost instrukci) nebo konfiguraci neuronove site tak, aby model robota vykonaval dany netrivialni pohyb(po primce a spirale).
 Hledame tedy jiste reseni.
-Vybrane vzory pohybu jsou pohyb po primce a pohyb po spirale.
 Hledani reseni probiha automatizovane s vyuzitim evolucnich algoritmu.
 Algoritmy pomoci evoluce vyvijeji program, nebo neuronovou sit tak, aby se robot pohyboval po pozadovane trajektorii.
 K vyhodnoceni uspesnosti reseni je pouzit fyzikalni simulator specializovany na simulaci robotu Mujoco\cite{Todorov2012}.
