@@ -90,8 +90,6 @@ mozne dosahnout obema zvolenymi pristupy.
 %--------------------------------------------------------
 \section{Introduction}
 
-\textbf{[Motivation]} What is the raison d'\^{e}tre of your project? Why should anyone care? No general meaningless claims. Make bulletproof arguments for the importance of your work.
-
 \todo{asi bych prevzal uvod do nejake robotiky}
 V oblasti robotiky je velmi dulezita schopnost rychle a levne prototypovat mozna reseni.
 K tomuto ucelu je velmi vhodne pouziti pocitacove modelovani a simulace.
@@ -102,8 +100,6 @@ Dalsi z moznosti jsou ruzne planovaci algoritmy a systemy. \todo{citace, zdroje,
 Pro prototypovani je vyhodne mit nastroj, ktery je schopny hledat vyhodne zpusoby rizeni robota.
 Evolutionary algorithms are good for this purpose, because they are applicable for a wide range of problems.
 
-\textbf{[Problem definition]} What exactly are you solving? What is the core and what is a bonus? What parameters should a proper solution of the problem have? Define the problem precisely and state how its solution should be evaluated.
-
 Hledame reseni pro problem, ktery je definovan takto.
 Mame model jednoducheho robota, ktery je castecne inspirovany prirodou(mravenec). \todo{viz obr.}
 Cilem je nalezt program(posloupnost instrukci) nebo konfiguraci neuronove site tak, aby model robota vykonaval dany netrivialni pohyb(po primce a spirale).
@@ -112,15 +108,24 @@ Hledani reseni probiha automatizovane s vyuzitim evolucnich algoritmu.
 Algoritmy pomoci evoluce vyvijeji program, nebo neuronovou sit tak, aby se robot pohyboval po pozadovane trajektorii.
 K vyhodnoceni uspesnosti reseni je pouzit fyzikalni simulator specializovany na simulaci robotu Mujoco\cite{Todorov2012}.
 
-\textbf{[Existing solutions]} Discuss existing solutions, be fair in identifying their strengths and weaknesses. Cite important works from the field of your topic. Try to define well what is the \textit{state of the art}. You can include a Section 2 titled ``Background'' or ``Previous Works'' and have the details there and make this paragraph short. Or, you can enlarge this paragraph to a whole page. In many scientific papers, \emph{this} is the most valuable part if it is written properly.
-Soucasna reseni rizeni autonomnich robotu zahrnuji neuronove site\cite{Prabhu1996}, \cite{He2015}, fuzzy kontrolery\cite{Melendez2012}\cite{Saffiotti1997}
+There is many works focused on evolutionary robotics.
+The ones that were focusing robot control were using many techniques, including finite state machines\cite{Hodgins1996}, classical control theory\cite{Mita1984} and neural networks \cite{Reil2002}\cite{Lewis1996}.
+There is also a number of works using Evolutionary Algorithms to evolve controllers, particularly neural networks\cite{Randall1992}\cite{Farooq2013}.
+There are also works that are using Genetic Programming\cite{Macedo2017}. The most similar work to ours is the work of Wollf and Mattias\cite{Wolff2007}. They are using Linear Genetic Programming to evolve a bipedal motion of a humanoid model.
 
+Our work, as well as work of Wollf and Mattias, is using LGP, with similar interpret structure, but with different approach to program structure.
+Our approach splits the program into smaller subprograms, as opposed to one program.
+Our instruction set is also reduced and the arithmetic of the interpret are different.
+Both the works use some sort of a environmental awareness.
+Our work implements that by introducing an event subprogram, which is executed when an event occurs in the environment(coming closer to a reference point).
+No sensory information is used.
+Wollf and Mattias used a set of sensors, that are measuring current joint angles of the model.
 
-\textbf{[Our solution]} Make a quick outline of your approach -- pitch your solution.  The solution will be described in detail later, but give the reader a very quick overview now.
-\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi laoreet risus a egestas imperdiet. Ut egestas nibh non fermentum vestibulum. Nullam quis eleifend ex, sed maximus nisl. Mauris maximus non dolor id tristique. Nunc pulvinar congue gravida. Nullam lobortis viverra leo sed commodo. Nulla in elit congue, ullamcorper metus non, eleifend risus. Vivamus porttitor, ex nec porttitor pretium, libero turpis ultrices dui, eu efficitur ante ipsum vel justo. Vivamus nec nulla nisi. Aenean quis mauris vitae metus gravida congue.}
-
-\textbf{[Contributions]} Sell your solution. Pinpoint your achievements. Be fair and objective.
-\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet neque vel mi sodales interdum nec a mi. Aliquam eget turpis venenatis, tincidunt purus eget, euismod neque. Nulla et porta tortor, id lobortis turpis. Sed scelerisque sem eget ante interdum, vel volutpat arcu volutpat. Aliquam cursus, dolor a luctus. }
+This work offers an approach using the subprograms and reduced instruction set.
+This approach is simple both to implement and evolve.
+Cost for that is a reduced environment awareness, as the program does not have a knowledge about its environment but it is rather controlled from the outside.
+This could be used with a combination of some kind of "brain" having a better environment awareness.
+The "brain" would decide, which program will be run.
 
 
 %--------------------------------------------------------
