@@ -90,6 +90,11 @@ interface IndividualInterface
     public function getGeneration(): GenerationInterface;
 
     /**
+     * @param GenerationInterface $generation
+     */
+    public function setGeneration(GenerationInterface $generation): void;
+
+    /**
      * Create a deep copy of the individual
      *
      * @return IndividualInterface

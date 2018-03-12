@@ -69,6 +69,12 @@ class Simulator implements SimulatorInterface
             }
         }
 
+        //there is nothing to evaluate
+        if (\count($individualsToEvaluate) === 0) {
+            echo "nothing to evaluate" . PHP_EOL;
+            return;
+        }
+
         $savedCount = (\count($individuals) - \count($individualsToEvaluate));
         echo "saved $savedCount, $cachedCount of that was from cache\n";
 

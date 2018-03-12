@@ -33,17 +33,18 @@ class Individual implements IndividualInterface
     /**
      * Individual constructor.
      *
-     * @param GenerationInterface    $generation
+     * @param GenerationInterface $generation
      * @param InstructionInterface[] $genotype
-     * @param int                    $id
-     * @param float                  $fitness
+     * @param int $id
+     * @param float $fitness
      */
     public function __construct(
         GenerationInterface $generation,
         array $genotype,
         int $id,
         float $fitness = 0
-    ) {
+    )
+    {
         $this->generation = $generation;
         $this->genotype = $genotype;
         $this->fitness = $fitness;
@@ -65,7 +66,7 @@ class Individual implements IndividualInterface
      *
      * @param IndividualInterface $individual
      *
-     * @param int|null            $crossoverPoint
+     * @param int|null $crossoverPoint
      *
      * @return IndividualInterface[] Array of 2 individuals that were created by the crossover
      * @throws \Exception
@@ -100,8 +101,8 @@ class Individual implements IndividualInterface
      */
     public function twoPointCrossover(IndividualInterface $individual): array
     {
-        $point1 = random_int(1, \count($this->genotype)-2);
-        $point2 = random_int(1, \count($this->genotype)-2);
+        $point1 = random_int(1, \count($this->genotype) - 2);
+        $point2 = random_int(1, \count($this->genotype) - 2);
 
         $a = [];
         $b = [];
@@ -181,7 +182,7 @@ class Individual implements IndividualInterface
         $this->evaluated = false;
 
         //mutate a random gene
-        $mutationIndex = random_int(0, \count($this->genotype)-1);
+        $mutationIndex = random_int(0, \count($this->genotype) - 1);
 
         $this->genotype[$mutationIndex]->mutate();
 
@@ -256,6 +257,14 @@ class Individual implements IndividualInterface
     public function getGeneration(): GenerationInterface
     {
         return $this->generation;
+    }
+
+    /**
+     * @param GenerationInterface $generation
+     */
+    public function setGeneration(GenerationInterface $generation): void
+    {
+        $this->generation = $generation;
     }
 
     /**

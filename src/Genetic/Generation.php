@@ -12,10 +12,10 @@ use Config\Config;
 class Generation implements GenerationInterface
 {
     /** @var int */
-    private $id;
+    protected $id;
 
     /** @var IndividualInterface[] */
-    private $individuals;
+    protected $individuals;
 
     /**
      * Generation constructor.
@@ -75,11 +75,10 @@ class Generation implements GenerationInterface
     public function createNewGeneration(): GenerationInterface
     {
         //create a new generation
-        $newGeneration = new Generation($this->id + 1, []);
+        $newGeneration = new self($this->id + 1, []);
 
-        //end tmp
         /** @var IndividualInterface[] $matingPool */
-        $matingPool = [];
+        $matingPool = $this->createMatingPool(\count($this->individuals));
 
         $bestIndividual = $this->getBestIndividual()->copy();
         $bestIndividualMutant = $bestIndividual->copy();
@@ -87,37 +86,11 @@ class Generation implements GenerationInterface
         $newGeneration->addIndividual($bestIndividual);
         $newGeneration->addIndividual($bestIndividualMutant);
 
-        //create the mating pool
-        for ($i = 0; $i < \count($this->individuals); $i++) {
-            $randomPick = [];
-            //select the k individuals
-            for ($j = 0; $j < Config::$tournamentSize; $j++) {
-                //randomly pick a individual
-                $randomPick[] = $this->individuals[random_int(0, \count($this->individuals) - 1)];
-            }
-
-            $matingPool[] = $this->getBestIndividualFromTournament($randomPick);
-        }
-
         //create the individuals for the new generation
-        for ($i = 0; $i < \count($matingPool) / 2 - 1; $i++) { //1 -> we choose the best one and insert it to the new generation, as well as it's mutant
-            //randomly choose 2 individuals
-            $individual1 = $matingPool[random_int(0, \count($matingPool) - 1)];
-            $individual2 = $matingPool[random_int(0, \count($matingPool) - 1)];
+        //2 -> we choose the best one and insert it to the new generation, as well as it's mutant
+        $newIndividuals = $this->createNewPopulation(\count($matingPool) - 2, $matingPool);
 
-            //either do crossover, or direct copy of the individuals
-            if (random_int(0, 99) < Config::getCrossoverRate()) {
-                $newOnes = $this->createNewOffsprings($individual1, $individual2, true);
-
-                $newGeneration->individuals[] = $newOnes[0];
-                $newGeneration->individuals[] = $newOnes[1];
-            } else {
-                $newOnes = $this->createNewOffsprings($individual1, $individual2, false);
-
-                $newGeneration->individuals[] = $newOnes[0];
-                $newGeneration->individuals[] = $newOnes[1];
-            }
-        }
+        $newGeneration->addIndividuals($newIndividuals);
 
         //reset the id's
         $newGeneration->resetIndividualsId();
@@ -136,17 +109,13 @@ class Generation implements GenerationInterface
     }
 
     /**
-     * Performs the selection and returns the selected elements
-     *
-     * 50% elitism will do for now
-     *
-     * It MUST return a number which is divisible by 2
-     *
-     * @return IndividualInterface[]
+     * @param IndividualInterface[] $individuals
      */
-    private function performSelection(): array
+    public function addIndividuals(array $individuals): void
     {
-        return \array_slice($this->individuals, 0, 10);
+        foreach ($individuals as $individual) {
+            $this->addIndividual($individual);
+        }
     }
 
     /**
@@ -196,6 +165,65 @@ class Generation implements GenerationInterface
     }
 
     /**
+     * @param int $count Count of the new individuals.
+     * @param IndividualInterface[] $matingPool
+     * @return IndividualInterface[]
+     *
+     * @throws \Exception
+     */
+    protected function createNewPopulation(int $count, array $matingPool): array
+    {
+        $newPopulation = [];
+        //create the individuals for the new generation
+        for ($i = 0; $i < $count / 2 + 1; $i++) {//if the number is odd, we would generate one less individal, so generate more and then slice the array
+            //randomly choose 2 individuals
+            $individual1 = $matingPool[random_int(0, \count($matingPool) - 1)];
+            $individual2 = $matingPool[random_int(0, \count($matingPool) - 1)];
+
+            //either do crossover, or direct copy of the individuals
+            if (random_int(0, 99) < Config::getCrossoverRate()) {
+                $newOnes = $this->createNewOffsprings($individual1, $individual2, true);
+
+                $newPopulation[] = $newOnes[0];
+                $newPopulation[] = $newOnes[1];
+            } else {
+                $newOnes = $this->createNewOffsprings($individual1, $individual2, false);
+
+                $newPopulation[] = $newOnes[0];
+                $newPopulation[] = $newOnes[1];
+            }
+        }
+
+        //remove the unneeded individuals
+        return \array_slice($newPopulation, 0, $count);
+    }
+
+
+    /**
+     * @param int $size
+     * @return IndividualInterface[]
+     *
+     * @throws \Exception
+     */
+    protected function createMatingPool(int $size): array
+    {
+        $matingPool = [];
+
+        for ($i = 0; $i < $size; $i++) {
+            $randomPick = [];
+            //select the k individuals
+            for ($j = 0; $j < Config::$tournamentSize; $j++) {
+                //randomly pick a individual
+                $randomPick[] = $this->individuals[random_int(0, \count($this->individuals) - 1)];
+            }
+
+            $matingPool[] = $this->getBestIndividualFromTournament($randomPick);
+        }
+
+        return $matingPool;
+    }
+
+    /**
      * @param IndividualInterface[] $individuals
      *
      * @return IndividualInterface
@@ -211,5 +239,23 @@ class Generation implements GenerationInterface
         }
 
         return $best;
+    }
+
+    /**
+     * @return IndividualInterface[]
+     */
+    public function getIndividualsSorted(): array
+    {
+        $individuals = $this->individuals;
+
+        usort($individuals, function (IndividualInterface $a, IndividualInterface $b) {
+            if ($a->getFitness() > $b->getFitness()) {
+                return -1;
+            } else {
+                return 1;
+            }
+        });
+
+        return $individuals;
     }
 }

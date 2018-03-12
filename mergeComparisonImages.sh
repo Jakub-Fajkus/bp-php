@@ -3,4 +3,4 @@ FILENAME='graphs_merged.png'
 
 rm ${FILENAME}
 
-convert `find -name "fitnessHistogram*.png" | sort` -append ${FILENAME}
+convert `ls fitnessHistogram*.png | sort` -append ${FILENAME}

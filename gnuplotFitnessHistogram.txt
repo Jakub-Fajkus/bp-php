@@ -19,7 +19,7 @@ set title "Individuals of fitness in generation number #".generationNumber
 set grid ytics
 set yrange [0:]
 
-set key
+set key right center
 
 set style histogram clustered
 set xlabel "Fitness"

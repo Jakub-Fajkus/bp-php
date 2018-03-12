@@ -28,6 +28,12 @@ $experiments = [
     'norec1000t10' => $threeLegLinearFactory->create1000IndividualsExperiment10Tournament(),
     'norec1000t7-200gen' => $threeLegLinearFactory->create1000IndividualsExperiment7Tournament200Gen(),
     'norecANT1000t7-120gen' => $antLinearFactory->create1000IndividualsExperiment7Tournament(),
+    'norec1000t2ss' => $threeLegLinearFactory->create1000IndividualsExperiment2TournamentSS(),
+    'norec1000t3ss' => $threeLegLinearFactory->create1000IndividualsExperiment3TournamentSS(),
+    'norec1000t4ss' => $threeLegLinearFactory->create1000IndividualsExperiment4TournamentSS(),
+    'norec1000t5ss' => $threeLegLinearFactory->create1000IndividualsExperiment5TournamentSS(),
+    'norec1000t6ss' => $threeLegLinearFactory->create1000IndividualsExperiment6TournamentSS(),
+    'norec1000t7ss' => $threeLegLinearFactory->create1000IndividualsExperiment7TournamentSS(),
 ];
 
 if ($argc === 1) {
@@ -44,5 +50,3 @@ if (array_key_exists($experimentName, $experiments)) {
     echo "ERROR: unknown experiment $experimentName, try one of those: " . implode(', ', array_keys($experiments)) . PHP_EOL;
     exit(1);
 }
-
-

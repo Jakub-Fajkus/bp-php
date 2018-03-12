@@ -5,12 +5,18 @@ namespace Experiment\Factory;
 use Experiment\ExperimentInterface;
 use Experiment\ThreeLegLinearExperiment1000Individuals10Tournament;
 use Experiment\ThreeLegLinearExperiment1000Individuals2Tournament;
+use Experiment\ThreeLegLinearExperiment1000Individuals2TournamentSS;
 use Experiment\ThreeLegLinearExperiment1000Individuals3Tournament;
+use Experiment\ThreeLegLinearExperiment1000Individuals3TournamentSS;
 use Experiment\ThreeLegLinearExperiment1000Individuals4Tournament;
+use Experiment\ThreeLegLinearExperiment1000Individuals4TournamentSS;
 use Experiment\ThreeLegLinearExperiment1000Individuals5Tournament;
+use Experiment\ThreeLegLinearExperiment1000Individuals5TournamentSS;
 use Experiment\ThreeLegLinearExperiment1000Individuals6Tournament;
+use Experiment\ThreeLegLinearExperiment1000Individuals6TournamentSS;
 use Experiment\ThreeLegLinearExperiment1000Individuals7Tournament;
 use Experiment\ThreeLegLinearExperiment1000Individuals7Tournament200Gen;
+use Experiment\ThreeLegLinearExperiment1000Individuals7TournamentSS;
 use Experiment\ThreeLegLinearExperiment1000Individuals8Tournament;
 use Experiment\ThreeLegLinearExperiment1000Individuals9Tournament;
 use Experiment\ThreeLegLinearExperiment60Individuals2Tournament;
@@ -18,6 +24,7 @@ use Experiment\ThreeLegLinearExperiment60Individuals3Tournament;
 use Experiment\ThreeLegLinearExperiment60Individuals3Tournament1Point;
 use Filesystem\Filesystem;
 use Genetic\Generator\GenerationGenerator;
+use Genetic\Generator\SteadyStateGenerationGenerator;
 use Simulator\Model\ThreeLegLinearModelXml;
 use Simulator\Serializer\Instruction\InstructionSerializer;
 use Simulator\Simulator;
@@ -374,6 +381,168 @@ class ThreeLegLinearExperimentFactory
         $filesystem = new Filesystem();
 
         $experiment = new ThreeLegLinearExperiment60Individuals3Tournament1Point(
+            $generationGenerator,
+            $simulator,
+            $individualStats,
+            $generationStats,
+            $allIndividualStats,
+            $cacheStats,
+            $filesystem,
+            new ThreeLegLinearModelXml(),
+            $executableName
+        );
+
+        return $experiment;
+    }
+
+    public function create1000IndividualsExperiment2TournamentSS(): ExperimentInterface
+    {
+        //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_2_ss';
+        $generationGenerator = new SteadyStateGenerationGenerator();
+        $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
+        $individualStats = new IndividualStatistics();
+        $allIndividualStats = new AllIndividualsStatistics();
+        $generationStats = new GenerationStatistics();
+        $cacheStats = new CacheStatistics();
+        $filesystem = new Filesystem();
+
+        $experiment = new ThreeLegLinearExperiment1000Individuals2TournamentSS(
+            $generationGenerator,
+            $simulator,
+            $individualStats,
+            $generationStats,
+            $allIndividualStats,
+            $cacheStats,
+            $filesystem,
+            new ThreeLegLinearModelXml(),
+            $executableName
+        );
+
+        return $experiment;
+    }
+
+    public function create1000IndividualsExperiment3TournamentSS(): ExperimentInterface
+    {
+        //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_3_ss';
+        $generationGenerator = new SteadyStateGenerationGenerator();
+        $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
+        $individualStats = new IndividualStatistics();
+        $allIndividualStats = new AllIndividualsStatistics();
+        $generationStats = new GenerationStatistics();
+        $cacheStats = new CacheStatistics();
+        $filesystem = new Filesystem();
+
+        $experiment = new ThreeLegLinearExperiment1000Individuals3TournamentSS(
+            $generationGenerator,
+            $simulator,
+            $individualStats,
+            $generationStats,
+            $allIndividualStats,
+            $cacheStats,
+            $filesystem,
+            new ThreeLegLinearModelXml(),
+            $executableName
+        );
+
+        return $experiment;
+    }
+
+    public function create1000IndividualsExperiment4TournamentSS(): ExperimentInterface
+    {
+        //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_4_ss';
+        $generationGenerator = new SteadyStateGenerationGenerator();
+        $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
+        $individualStats = new IndividualStatistics();
+        $allIndividualStats = new AllIndividualsStatistics();
+        $generationStats = new GenerationStatistics();
+        $cacheStats = new CacheStatistics();
+        $filesystem = new Filesystem();
+
+        $experiment = new ThreeLegLinearExperiment1000Individuals4TournamentSS(
+            $generationGenerator,
+            $simulator,
+            $individualStats,
+            $generationStats,
+            $allIndividualStats,
+            $cacheStats,
+            $filesystem,
+            new ThreeLegLinearModelXml(),
+            $executableName
+        );
+
+        return $experiment;
+    }
+
+    public function create1000IndividualsExperiment5TournamentSS(): ExperimentInterface
+    {
+        //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_5_ss';
+        $generationGenerator = new SteadyStateGenerationGenerator();
+        $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
+        $individualStats = new IndividualStatistics();
+        $allIndividualStats = new AllIndividualsStatistics();
+        $generationStats = new GenerationStatistics();
+        $cacheStats = new CacheStatistics();
+        $filesystem = new Filesystem();
+
+        $experiment = new ThreeLegLinearExperiment1000Individuals5TournamentSS(
+            $generationGenerator,
+            $simulator,
+            $individualStats,
+            $generationStats,
+            $allIndividualStats,
+            $cacheStats,
+            $filesystem,
+            new ThreeLegLinearModelXml(),
+            $executableName
+        );
+
+        return $experiment;
+    }
+
+    public function create1000IndividualsExperiment6TournamentSS(): ExperimentInterface
+    {
+        //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_6_ss';
+        $generationGenerator = new SteadyStateGenerationGenerator();
+        $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
+        $individualStats = new IndividualStatistics();
+        $allIndividualStats = new AllIndividualsStatistics();
+        $generationStats = new GenerationStatistics();
+        $cacheStats = new CacheStatistics();
+        $filesystem = new Filesystem();
+
+        $experiment = new ThreeLegLinearExperiment1000Individuals6TournamentSS(
+            $generationGenerator,
+            $simulator,
+            $individualStats,
+            $generationStats,
+            $allIndividualStats,
+            $cacheStats,
+            $filesystem,
+            new ThreeLegLinearModelXml(),
+            $executableName
+        );
+
+        return $experiment;
+    }
+
+    public function create1000IndividualsExperiment7TournamentSS(): ExperimentInterface
+    {
+        //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_7_ss';
+        $generationGenerator = new SteadyStateGenerationGenerator();
+        $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
+        $individualStats = new IndividualStatistics();
+        $allIndividualStats = new AllIndividualsStatistics();
+        $generationStats = new GenerationStatistics();
+        $cacheStats = new CacheStatistics();
+        $filesystem = new Filesystem();
+
+        $experiment = new ThreeLegLinearExperiment1000Individuals7TournamentSS(
             $generationGenerator,
             $simulator,
             $individualStats,
