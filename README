@@ -24,13 +24,13 @@ screen -d -m -S JMENO_SCREENU ./runExperiments.sh 10 variation
 
 
 
-../../renderMultiple.sh && ../../mergeRunFitnessImages.sh
+../../renderMultiple.sh && ../../mergeRunFitnessImages.sh && ../../mergeComparisonImages.sh
 
-php ../../generateGenerationsHistograms.php 1 && php ../../generateGenerationsHistograms.php 5 && php ../../generateGenerationsHistograms.php 10 && php ../../generateGenerationsHistograms.php 15 && php ../../generateGenerationsHistograms.php 20 && php ../../generateGenerationsHistograms.php 25 && php ../../generateGenerationsHistograms.php 30 && php ../../generateGenerationsHistograms.php 35 && php ../../generateGenerationsHistograms.php 40 && php ../../generateGenerationsHistograms.php 45 && php ../../generateGenerationsHistograms.php 50 && php ../../generateGenerationsHistograms.php 55 && php ../../generateGenerationsHistograms.php 60 && ../../mergeComparisonImages.sh
+
+php ../../generateGenerationsHistograms.php 1 && php ../../generateGenerationsHistograms.php 5 && php ../../generateGenerationsHistograms.php 10 && php ../../generateGenerationsHistograms.php 15 && php ../../generateGenerationsHistograms.php 20 && php ../../generateGenerationsHistograms.php 25 && php ../../generateGenerationsHistograms.php 30 && php ../../generateGenerationsHistograms.php 35 && php ../../generateGenerationsHistograms.php 40 && php ../../generateGenerationsHistograms.php 45 && php ../../generateGenerationsHistograms.php 50 && php ../../generateGenerationsHistograms.php 55 && php ../../generateGenerationsHistograms.php 60 && php ../../generateGenerationsHistograms.php 120 && ../../mergeComparisonImages.sh
 
 
 php ../../generateGenerationsHistogramsForFolders.php 1 && php ../../generateGenerationsHistogramsForFolders.php 10 && php ../../generateGenerationsHistogramsForFolders.php 25 && php ../../generateGenerationsHistogramsForFolders.php 50 && php ../../generateGenerationsHistogramsForFolders.php 75 && php ../../generateGenerationsHistogramsForFolders.php 100 && php ../../generateGenerationsHistogramsForFolders.php 150 && php ../../generateGenerationsHistogramsForFolders.php 200 && php ../../generateGenerationsHistogramsForFolders.php 400 && php ../../generateGenerationsHistogramsForFolders.php 600 && php ../../generateGenerationsHistogramsForFolders.php 1000 && ../../mergeComparisonImages.sh
-
 
 
 GENEROVANI SPOJENEHO HISTOGRAMU PRO VYBRANE KONFIGURACE - SPOUSTET ZE SLOZKY DATA
@@ -38,3 +38,29 @@ php ../generateGenerationsHistogramsForFolders.php 1 && php ../generateGeneratio
 
 
 for DIR in `ls  | grep bp_compute`; do cd $DIR ; ../../createRunStatistics.sh ; cd ..; done
+
+
+for FILE in `find bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_7 -name 'individuals.txt'`; do tr -cd '*' < $FILE | wc -c ; done | awk '{s+=$1} END {printf "%.0f", s}'
+
+
+
+
+find bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_7 -name 'individuals.txt'
+
+tur2 :  1,409,692
+tur3 :  1,386,498
+tur4 :  1,341,244
+tur5 :  1,184,581
+tur6 :    958,528
+tur7 :    756,802
+tur8 :    619,060
+tur9 :    534,849
+tur10:    460,524
+
+          60 gen.  120 gen.
+tur2ss:   560,339  769,927
+tur3ss:   467,643  557,819
+tur4ss:   376,363  409,845
+tur5ss:   346,170  343,261
+tur6ss:   307,285  293,538
+tur7ss:   332,947  303,047

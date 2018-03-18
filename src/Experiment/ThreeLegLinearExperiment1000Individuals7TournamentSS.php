@@ -22,7 +22,7 @@ class ThreeLegLinearExperiment1000Individuals7TournamentSS extends BaseExperimen
 {
     public function prepare()
     {
-        Config::setIndividualCount(60);
+        Config::setIndividualCount(1000);
         Config::setMutationRate(3); //does not make sense anymore
         Config::setCrossoverRate(0);
         Config::setMotorCount(3);
@@ -31,6 +31,6 @@ class ThreeLegLinearExperiment1000Individuals7TournamentSS extends BaseExperimen
         Config::setInstructionValueMaximum(5);
         Config::$tournamentSize=7;
         Config::$simulationDuration = 130;
-        Config::$generationCount=60;
+        Config::$generationCount=120;
     }
 }

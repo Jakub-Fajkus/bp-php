@@ -31,6 +31,6 @@ class ThreeLegLinearExperiment1000Individuals2TournamentSS extends BaseExperimen
         Config::setInstructionValueMaximum(5);
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 130;
-        Config::$generationCount = 60;
+        Config::$generationCount = 120;
     }
 }

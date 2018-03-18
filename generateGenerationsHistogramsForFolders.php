@@ -15,17 +15,23 @@ $step = 10;
 
 $selectFolders = [
     'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_7',
+    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_2_ss',
+    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_3_ss',
     'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_4_ss',
-//    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_5_ss',
-//    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_6_ss',
-//    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_7_ss',
+    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_5_ss',
+    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_6_ss',
+    'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_7_ss',
 ];
 
 $histogramBounds = range($lowValue, $highValue, $step);
 
 $foldersData = [];
 foreach ($selectFolders as $selectFolder) {
-    $histogramData = getHistogramData($histogramBounds, $generationNumber, $selectFolder);
+    if ($selectFolder == 'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_7') {
+        $histogramData = getHistogramData($histogramBounds, 60, $selectFolder);
+    } else {
+        $histogramData = getHistogramData($histogramBounds, $generationNumber, $selectFolder);
+    }
 
     $foldersData[$selectFolder] = $histogramData;
 }
