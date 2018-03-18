@@ -32,6 +32,13 @@ class ThreeLegLinearModelXml implements ModelXmlInterface
     <visual>
         <global offwidth="1920" offheight="1080"/>
     </visual>
+    
+    <sensor>
+        <jointpos name="sensor_jointpos_0" joint="motor_0"/>
+        <jointpos name="sensor_jointpos_1" joint="motor_1"/>
+        <jointpos name="sensor_jointpos_2" joint="motor_2"/>
+    </sensor>
+    
     <worldbody>
         <camera name='targeting' pos='1 1 2' mode='targetbodycom' target='body_0'/>
 
