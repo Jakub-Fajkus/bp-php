@@ -139,6 +139,8 @@ class Generation implements GenerationInterface
             if ($doCrossover) {
                 if (Config::$useUniform) {
                     $offsprings = $individual1->uniformCrossover($individual2);
+                } elseif (Config::$useSubprogramUniform) {
+                    $offsprings = $individual1->subprogramUniformCrossover($individual2);
                 } else {
                     $offsprings = $individual1->onePointCrossover($individual2);
                 }

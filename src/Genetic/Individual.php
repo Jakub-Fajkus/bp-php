@@ -162,6 +162,68 @@ class Individual implements IndividualInterface
     }
 
     /**
+     * Performs a crossover, which is similar to uniform crossover.
+     * But this one operates on subprograms instead of instructions.
+     *
+     * @param IndividualInterface $individual
+     * @return array
+     */
+    public function subprogramUniformCrossover(IndividualInterface $individual): array
+    {
+        $a = [];
+        $b = [];
+
+        $aInit = array_slice($this->genotype, 0, Config::$initProgramLength);
+        $bInit = array_slice($individual->getGenotype(), 0, Config::$initProgramLength);
+
+        $aEvent = array_slice($this->genotype, Config::$initProgramLength, Config::$eventProgramLength);
+        $bEvent = array_slice($individual->getGenotype(), Config::$initProgramLength, Config::$eventProgramLength);
+
+        $aMain = array_slice($this->genotype, Config::$eventProgramLength + Config::$initProgramLength);
+        $bMain = array_slice($individual->getGenotype(), Config::$eventProgramLength + Config::$initProgramLength);
+
+
+        //0 zustanou stejne
+        //1 vymeni se
+        if (random_int(0, 1) == 0) {
+            $a = array_merge($a, $aInit);
+            $b = array_merge($b, $bInit);
+        } else {
+            $a = array_merge($a, $bInit);
+            $b = array_merge($b, $aInit);
+        }
+
+        //0 zustanou stejne
+        //1 vymeni se
+        if (random_int(0, 1) == 0) {
+            $a = array_merge($a, $aEvent);
+            $b = array_merge($b, $bEvent);
+        } else {
+            $a = array_merge($a, $bEvent);
+            $b = array_merge($b, $aEvent);
+        }
+
+        //0 zustanou stejne
+        //1 vymeni se
+        if (random_int(0, 1) == 0) {
+            $a = array_merge($a, $aMain);
+            $b = array_merge($b, $bMain);
+        } else {
+            $a = array_merge($a, $bMain);
+            $b = array_merge($b, $aMain);
+        }
+
+        $individualFactory = new IndividualFactory();
+
+        $individuals = [
+            $individualFactory->createIndividual($this->generation, $a),
+            $individualFactory->createIndividual($this->generation, $b),
+        ];
+
+        return $individuals;
+    }
+
+    /**
      * @return InstructionInterface[]
      */
     public function getGenotype(): array
@@ -184,24 +246,16 @@ class Individual implements IndividualInterface
         //mutate a random gene
         $mutationIndex = random_int(0, \count($this->genotype) - 1);
 
-        $this->genotype[$mutationIndex]->mutate();
-
-//        tood: az bude vice instrukci, pouzit toto!
-        /*
-         *  //mutate a random gene
-        $mutationIndex = random_int(0, \count($this->genotype)-1);
-
         $random = random_int(0, 99);
 
-        //29% to change instruction type, 80% to change the parameters
-        if ($random < 10) {
+        //20% to change instruction type, 80% to change the parameters
+        if ($random < 20) {
             $factory = new LGPInstructionFactory();
             $this->genotype[$mutationIndex] = $factory->createRandomInstruction($mutationIndex);
 
         } else {
             $this->genotype[$mutationIndex]->mutate();
         }
-         */
     }
 
     /**

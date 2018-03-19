@@ -6,10 +6,10 @@ namespace Genetic\Instruction\LGP;
 use Config\Config;
 
 /**
- * Class DecInstruction
+ * Class AddcInstruction
  * @package Genetic\Instruction\LGP
  */
-class DecInstruction extends LGPInstruction
+class AddcInstruction extends LGPInstruction
 {
     /** @var int */
     protected $register;
@@ -18,7 +18,7 @@ class DecInstruction extends LGPInstruction
     protected $value;
 
     /**
-     * DecInstruction constructor.
+     * AddcInstruction constructor.
      * @param int $register
      * @param int $value
      */
@@ -38,9 +38,9 @@ class DecInstruction extends LGPInstruction
 
     /**
      * @param int $register
-     * @return DecInstruction
+     * @return AddcInstruction
      */
-    public function setRegister(int $register): DecInstruction
+    public function setRegister(int $register): AddcInstruction
     {
         $this->register = $register;
         return $this;
@@ -56,9 +56,9 @@ class DecInstruction extends LGPInstruction
 
     /**
      * @param int $value
-     * @return DecInstruction
+     * @return AddcInstruction
      */
-    public function setValue(int $value): DecInstruction
+    public function setValue(int $value): AddcInstruction
     {
         $this->value = $value;
         return $this;
@@ -87,6 +87,6 @@ class DecInstruction extends LGPInstruction
      */
     public function serialize(): string
     {
-        return "DEC {$this->register} {$this->value}";
+        return "ADDC {$this->register} {$this->value}";
     }
 }

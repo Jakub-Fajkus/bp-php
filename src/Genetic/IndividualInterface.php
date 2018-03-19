@@ -47,6 +47,16 @@ interface IndividualInterface
     public function uniformCrossover(IndividualInterface $individual):array;
 
     /**
+     * Performs a crossover, which is similar to uniform crossover.
+     * But this one operates on subprograms instead of instructions.
+     *
+     * @param IndividualInterface $individual
+     *
+     * @return IndividualInterface[]
+     */
+    public function subprogramUniformCrossover(IndividualInterface $individual): array;
+
+    /**
      * Perform a mutation
      *
      * @param bool $forced

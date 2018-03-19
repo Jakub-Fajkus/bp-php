@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Genetic\Instruction\LGP;
 
-
 use Config\Config;
 use Genetic\Instruction\InstructionFactoryInterface;
 use Genetic\Instruction\InstructionInterface;
@@ -22,27 +21,18 @@ class LGPInstructionFactory implements InstructionFactoryInterface
      */
     public function createRandomInstruction(int $index): InstructionInterface
     {
-//        if ($index >= 0 && $index < 10) {
-//            //init
-//            $instruction = new SreInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
-//        } else if ($index >= 10 && $index < 15) {
-//            //event
-//            $random = random_int(0, 1);
-//            switch ($random) {
-//                case 0:
-//                    $instruction = new DecInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
-//                    break;
-//                case 1:
-//                    $instruction = new IncInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
-//                    break;
-//            }
-//        } else {
-//            $instruction = new SouInstruction(Config::getRandomRegisterIndex(), (int)Config::getRandomMotorId());
-//        }
+        $random = random_int(0, 100);
 
-        $instruction = new SovInstruction(Config::getRandomMotorValue(), (int)Config::getRandomMotorId());
-
-
-        return $instruction;
+        if ($random < 10) {
+            return new IfscInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue(), IfscInstruction::getRandomOperator());
+        } elseif ($random < 20) {
+            return new IfsrInstruction(Config::getRandomRegisterIndex(), Config::getRandomRegisterIndex(), IfscInstruction::getRandomOperator());
+        } elseif ($random < 40) {
+            return new AddcInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
+        } elseif ($random < 75) {
+            return new AddrInstruction(Config::getRandomRegisterIndex(), Config::getRandomRegisterIndex());
+        } else {
+            return new SreInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
+        }
     }
 }

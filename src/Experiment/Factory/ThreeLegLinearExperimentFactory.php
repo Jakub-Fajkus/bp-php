@@ -22,6 +22,7 @@ use Experiment\ThreeLegLinearExperiment1000Individuals9Tournament;
 use Experiment\ThreeLegLinearExperiment60Individuals2Tournament;
 use Experiment\ThreeLegLinearExperiment60Individuals3Tournament;
 use Experiment\ThreeLegLinearExperiment60Individuals3Tournament1Point;
+use Experiment\ThreeLegLinearSubprogramsInputsExperiment;
 use Filesystem\Filesystem;
 use Genetic\Generator\GenerationGenerator;
 use Genetic\Generator\SteadyStateGenerationGenerator;
@@ -543,6 +544,33 @@ class ThreeLegLinearExperimentFactory
         $filesystem = new Filesystem();
 
         $experiment = new ThreeLegLinearExperiment1000Individuals7TournamentSS(
+            $generationGenerator,
+            $simulator,
+            $individualStats,
+            $generationStats,
+            $allIndividualStats,
+            $cacheStats,
+            $filesystem,
+            new ThreeLegLinearModelXml(),
+            $executableName
+        );
+
+        return $experiment;
+    }
+
+    public function createThreeLegLinearSubprogramsInputsExperiment(): ExperimentInterface
+    {
+        //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_primka_7_referenci_vstupy_podprogramy_7';
+        $generationGenerator = new GenerationGenerator();
+        $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
+        $individualStats = new IndividualStatistics();
+        $allIndividualStats = new AllIndividualsStatistics();
+        $generationStats = new GenerationStatistics();
+        $cacheStats = new CacheStatistics();
+        $filesystem = new Filesystem();
+
+        $experiment = new ThreeLegLinearSubprogramsInputsExperiment(
             $generationGenerator,
             $simulator,
             $individualStats,

@@ -34,6 +34,7 @@ $experiments = [
     'norec1000t5ss' => $threeLegLinearFactory->create1000IndividualsExperiment5TournamentSS(),
     'norec1000t6ss' => $threeLegLinearFactory->create1000IndividualsExperiment6TournamentSS(),
     'norec1000t7ss' => $threeLegLinearFactory->create1000IndividualsExperiment7TournamentSS(),
+    '3nozka_lin' => $threeLegLinearFactory->createThreeLegLinearSubprogramsInputsExperiment(),
 ];
 
 if ($argc === 1) {
