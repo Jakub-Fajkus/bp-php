@@ -561,8 +561,8 @@ class ThreeLegLinearExperimentFactory
     public function createThreeLegLinearSubprogramsInputsExperiment(): ExperimentInterface
     {
         //bez pocatecniho lomitka!
-        $executableName = 'bp_compute_primka_7_referenci_vstupy_podprogramy_7';
-        $generationGenerator = new GenerationGenerator();
+        $executableName = 'bp_compute_primka_7_referenci_vstupy_podprogramy_bezaritmetiky_2_ss';
+        $generationGenerator = new SteadyStateGenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
         $allIndividualStats = new AllIndividualsStatistics();

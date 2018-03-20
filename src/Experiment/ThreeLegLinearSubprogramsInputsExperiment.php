@@ -22,15 +22,15 @@ class ThreeLegLinearSubprogramsInputsExperiment extends BaseExperiment
 {
     public function prepare()
     {
-        Config::setIndividualCount(10);
+        Config::setIndividualCount(1000);
         Config::setMutationRate(3); //does not make sense anymore
         Config::setCrossoverRate(80);
         Config::setMotorCount(3);
         Config::setGenotypeSize(50); //bulharska konstanta
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
-        Config::setRegisterCount(1 + Config::getMotorCount() + 10);
-        Config::$tournamentSize = 7;
+        Config::setRegisterCount(4 + Config::getMotorCount(), + 5); //4 jsou 4 vstupy, 5 jsou "introny"
+        Config::$tournamentSize = 2;
         Config::$simulationDuration = 130;
         Config::$generationCount = 300;
         COnfig::$useSubprogramUniform = true;
