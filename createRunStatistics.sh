@@ -14,7 +14,7 @@ do
 done
 
 #sort best individuals
-sort bestIndividuals.txt > bestIndividualsSorted.txt
+sort -n bestIndividuals.txt > bestIndividualsSorted.txt
 
 #average of the best fitnesses
 awk '{ total += $1 } END { print total/NR }' bestIndividuals.txt > avg.txt

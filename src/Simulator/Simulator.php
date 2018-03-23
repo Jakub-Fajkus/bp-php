@@ -90,7 +90,7 @@ class Simulator implements SimulatorInterface
 
         $filesystem->writeToFile($generationDirectory . '/individuals.txt', $instructionsString);
 
-        $command = Config::getBinDir() . "{$this->executable} 16 $modelFilePath $generationDirectory $duration";
+        $command = Config::getBinDir() . "{$this->executable} 32 $modelFilePath $generationDirectory $duration";
 //        echo $command;
         shell_exec($command);
 

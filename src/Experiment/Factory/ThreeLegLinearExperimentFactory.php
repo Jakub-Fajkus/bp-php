@@ -24,10 +24,12 @@ use Experiment\ThreeLegLinearExperiment60Individuals3Tournament;
 use Experiment\ThreeLegLinearExperiment60Individuals3Tournament1Point;
 use Experiment\ThreeLegLinearSubprogramsInputsExperiment;
 use Experiment\ThreeLegLinearSubprogramsWithoutInputsExperiment;
+use Experiment\ThreeLegSpiralSubprogramsWithoutInputsExperiment;
 use Filesystem\Filesystem;
 use Genetic\Generator\GenerationGenerator;
 use Genetic\Generator\SteadyStateGenerationGenerator;
 use Simulator\Model\ThreeLegLinearModelXml;
+use Simulator\Model\ThreeLegSpiralModelXml;
 use Simulator\Serializer\Instruction\InstructionSerializer;
 use Simulator\Simulator;
 use Statistics\AllIndividualsStatistics;
@@ -607,6 +609,33 @@ class ThreeLegLinearExperimentFactory
             $cacheStats,
             $filesystem,
             new ThreeLegLinearModelXml(),
+            $executableName
+        );
+
+        return $experiment;
+    }
+
+    public function createThreeLegSpiralSubprogramsWithoutInputsExperiment(): ExperimentInterface
+    {
+        //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_spirala_9_referenci_vstupy_podprogramy_2_ss';
+        $generationGenerator = new SteadyStateGenerationGenerator();
+        $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
+        $individualStats = new IndividualStatistics();
+        $allIndividualStats = new AllIndividualsStatistics();
+        $generationStats = new GenerationStatistics();
+        $cacheStats = new CacheStatistics();
+        $filesystem = new Filesystem();
+
+        $experiment = new ThreeLegSpiralSubprogramsWithoutInputsExperiment(
+            $generationGenerator,
+            $simulator,
+            $individualStats,
+            $generationStats,
+            $allIndividualStats,
+            $cacheStats,
+            $filesystem,
+            new ThreeLegSpiralModelXml(),
             $executableName
         );
 

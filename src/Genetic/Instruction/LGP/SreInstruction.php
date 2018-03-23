@@ -88,6 +88,7 @@ class SreInstruction extends LGPInstruction
      */
     public function serialize(): string
     {
-        return "SRE {$this->register} {$this->value}";
+        $register = $this->register + 2; //todo: temporary, just hack for two input registers
+        return "SRE {$register} {$this->value}";
     }
 }
