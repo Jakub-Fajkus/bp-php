@@ -183,6 +183,7 @@ It contains predefined set of registers.
 There are 11 immutable constant registers containing all possible constants(-5 to 5).
 Next, there are two immutable input registers containing information about the direction to the next reference point.
 One of them contains the inverse value of the other.
+
 %todo: image placement
 \begin{figure}[t]
 	\centering
@@ -223,14 +224,49 @@ Period of 0.3 seconds is used.
 %--------------------------------------------------------
 \section{Experiements}
 \label{sec:Experiments}
-Zde popiseme jednitlive experimenty a nastaveni EA, ktere bylo pouzito.
+Here we will describe the instance of Evolutionary Algorithm used.
+\todo{mluvit o populaci? nebo generaci kvuli ss?}
+
+
+ - 1000 indiv
+ - genotype size
+ - force 1 mutation
+ - zminit se o porovnani variaci?
+ - steady state of 500
+ - subprogram uniform crossover
+ - 300 generations
+ - tournament 2
+
+%todo: image placement
+\begin{figure}[t]
+	\centering
+	{\includegraphics[height=10em]{crossover.png}}
+	\caption{
+	A custom genetic crossover is used.
+	It is based on uniform crossover, but it operates on the subprograms level.
+	The genome of parents is divided into the subprograms and then there is a 1:1 chance to to inherit the subprogram from parent A or B.
+	Here, the crossover of parents A and B resulted into offsprings C and D.
+	In this case, only the init subprograms were swapped.
+	}
+	\label{fig:Crossover}
+\end{figure}
+
 
 \subsection{Experiment overview}
 \todo{Zde bude popis experimentu - mravenec na primce? a na spirale}
 \todo{Vsechny informace k experiemntu: tj. konfigurace GA, delka programu, rozdeleni na podprogramy(kolik kam), delka simulace}
 
-\subsection{Results}
+
+
+%--------------------------------------------------------
+%--------------------------------------------------------
+%--------------------------------------------------------
+%--------------------------------------------------------
+
+\section{Results}
 \todo{Zde budou prehledne vysledky experimentu - grafy, cisla, tabulky, obrazky, vsechno}
+
+
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
