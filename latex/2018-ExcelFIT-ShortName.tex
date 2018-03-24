@@ -50,16 +50,12 @@
 %--------------------------------------------------------
 
 \Abstract{
-Tato prace se zabyva navrhem a pouzitim frameworku vyuzivajici Evolucni Algoritmy, ktery bude pouzit pro hledani zpusobu rizeni pocitacoveho
-modelu jednoducheho autonomniho robota. Tento model bude v pocitacove simulaci vykonavat netrivialni pohyb.
-Pro řízení modelu robota jsou použity dva rozdílné přístupy.
-První přístup je založen na instrukcích, odpovidajici Linearnimu Genetickemu Programovani.
-Druhý přístup využívá feedforward neuronové sítě.
-Oba pristupy jsou podrobeny nekolika experimentum, ktere overuji jejich vhodnost pro dany typ problemu.
-Pro dany problem je provedeno experimentalni srovani ruznych instanci EA.
-Nasledne jsou pristupy vyhodnoceny a diskutovany vysledky s durazem na porovnani obou pristupu.
-Vysledky prace potrvzuji, ze komplexnejsi chovani vyzaduje jistou miru samoadaptace(environment awarness) a ze je toto
-mozne dosahnout obema zvolenymi pristupy.
+Tato prace se zabyva navrhem a pouzitim frameworku vyuzivajici Evolucni Algoritmy, ktery je pouzit pro hledani zpusobu rizeni pocitacoveho
+modelu jednoducheho robota.
+Tento robot v pocitacove simulaci vykonava pohyb po stirale tam, ze se pohybuje k danym referencnim bodum.
+Pro řízení modelu robota je pouzit přístup, ktery je založeny na instrukcích, inspirovany Linearnim Genetickym Programovanim.
+Program, ktery ridi robota, ma k dispozici informaci o tom, kterym smerem lezi dalsi referencni bod.
+Diky informaci o smeru, kterym lezi dalsi referencni bod jsou nalezena reseni schopna pohybu i po trajektorii, na ktere nebyly uceny.
 }
 
 \Teaser{
@@ -90,7 +86,6 @@ mozne dosahnout obema zvolenymi pristupy.
 %--------------------------------------------------------
 \section{Introduction}
 
-\todo{asi bych prevzal uvod do nejake robotiky}
 V oblasti robotiky je velmi dulezita schopnost rychle a levne prototypovat mozna reseni.
 K tomuto ucelu je velmi vhodne pouziti pocitacove modelovani a simulace.
 V situaci, kdy mame navrzenou fyzickou stranku robota, nastava otazka, jak rychle prototypovat jeho rizeni.
@@ -101,32 +96,30 @@ Pro prototypovani je vyhodne mit nastroj, ktery je schopny hledat vyhodne zpusob
 Evolutionary algorithms are good for this purpose, because they are applicable for a wide range of problems.
 
 Hledame reseni pro problem, ktery je definovan takto.
-Mame model jednoducheho robota, ktery je castecne inspirovany prirodou(mravenec). \todo{viz obr.}
-Cilem je nalezt program(posloupnost instrukci) nebo konfiguraci neuronove site tak, aby model robota vykonaval dany netrivialni pohyb(po primce a spirale).
-Hledame tedy jiste reseni.
+Mame model jednoducheho robota, pro ktereho hledame model rizeni.
+Cilem je nalezt program(posloupnost instrukci) ktery bude model robota ritit tak, ze bude vykonavat pohyb po dane trajektorii..
 Hledani reseni probiha automatizovane s vyuzitim evolucnich algoritmu.
-Algoritmy pomoci evoluce vyvijeji program, nebo neuronovou sit tak, aby se robot pohyboval po pozadovane trajektorii.
 K vyhodnoceni uspesnosti reseni je pouzit fyzikalni simulator specializovany na simulaci robotu Mujoco\cite{Todorov2012}.
 
 There is many works focused on evolutionary robotics.
 The ones that were focusing robot control were using many techniques, including finite state machines\cite{Hodgins1996}, classical control theory\cite{Mita1984} and neural networks \cite{Reil2002}\cite{Lewis1996}.
-There is also a number of works using Evolutionary Algorithms to evolve controllers, particularly neural networks\cite{Randall1992}\cite{Farooq2013}.
-There are also works that are using Genetic Programming\cite{Macedo2017}. The most similar work to ours is the work of Wollf and Mattias\cite{Wolff2007}. They are using Linear Genetic Programming to evolve a bipedal motion of a humanoid model.
+There is also a number of works using Evolutionary Algorithms to evolve controllers, particularly artificial neural networks\cite{Randall1992}\cite{Farooq2013}.
+There are also works that are using Genetic Programming\cite{Macedo2017}.
+The most similar work to ours is the work of Wollf and Mattias\cite{Wolff2007}.
+They are using Linear Genetic Programming to evolve a bipedal motion of a humanoid model.
 
-Our work, as well as work of Wollf and Mattias, is using LGP, with similar interpret structure, but with different approach to program structure.
+Our work, as well as work of Wollf and Mattias, uses LGP with similar interpret structure.
+But the program structure is a bit different.
 Our approach splits the program into smaller subprograms, as opposed to one program.
-Our instruction set is also reduced and the arithmetic of the interpret are different.
+Our instruction set is reduced to only one instruction and we use only natural numbers ranging from -5 to 5.
 Both the works use some sort of a environmental awareness.
-Our work implements that by introducing an event subprogram, which is executed when an event occurs in the environment(coming closer to a reference point).
-No sensory information is used.
+Our work implements that by introducing an event subprogram as well as an information about direction to the next reference point.
+The subprogram is executed when an event occurs in the environment(coming closer to a reference point).
 Wollf and Mattias used a set of sensors, that are measuring current joint angles of the model.
 
-This work offers an approach using the subprograms and reduced instruction set.
-This approach is simple both to implement and evolve.
-Cost for that is a reduced environment awareness, as the program does not have a knowledge about its environment but it is rather controlled from the outside.
-This could be used with a combination of some kind of "brain" having a better environment awareness.
-The "brain" would decide, which program will be run.
-
+Evolved programs showed expected behaviour in the simulation.
+A few best solutions were evaluated for a different trajectory and exhibited good results.
+This shows that even a relatively small information about the environment and simple computational model can lead to some degree of universality of the program.
 
 %--------------------------------------------------------
 %--------------------------------------------------------
@@ -140,17 +133,16 @@ LGP is a special variant of the Genetic Programming.
 Genetic Programming (GP) solves a modelling problem.
 That means we know a set of inputs to a system and the outputs it should produce.
 But we do not have the system that will compute the inputs and tell us the output.
-The system may be an Artificial Neural Network or a program in the case of Genetic Programming.
 
 In GP we are evolving computer program $P$ that represents a function: $f : I^n \to O^m$, where $I^n$ denotes the input data of $n$ dimensions and $O^m$ denotes the output data in $m$ dimensions.
 When solving a control problem, we are looking for a such function, that will lead to the desired behavior.
 
 The genotype space $G$ in GP includes all programs that can be composed of elements of a programming language $L$.
 Programming language $L$ is defined by a instruction set and a terminal set.
-The interpreter translates the genotype representation into the phenotype.
+An interpreter translates the genotype representation into the phenotype.
 The phenotype is then executed and it's fitness is measured.
 
-The original GP is using trees that correspond to expressions from a functional programming language.
+The original GP uses trees that correspond to expressions from a functional programming language.
 The nodes of the tree represent functions, while leaves represent input values or constants.
 
 The Linear Genetic Programming is a variant where programs are composed of a list of instructions from an imperative language or a machine code.
@@ -165,18 +157,24 @@ As the program is being executed it modifies the values of the registers, reads 
 %--------------------------------------------------------
 %--------------------------------------------------------
 
-\section{Framework architecture and implementation}
-\label{sec:ArchitectureAndImplementation}
-{\includegraphics[height=5.8em]{top_level_architecture.pdf}
-\todo{misto fitness psat o objective function?}
-System je rozdelen na dve aplikace.
-Hlavni aplikaci je EA framework, ktery zajistuje vsechnu praci s evoluci.
-Druhou casti systemu je simulator Mujoco, ktery je doplnen vlastnim kodem, ktery zajistuje prevod instrukci na vstupy simulatoru a pocita objective function.
-Propojeni techto dvou aplikaci je realizovano pres systemova volani pro spousteni procesu pres shell.
+\section{Experiments setup}
+\label{sec:ExperimentsSetup}
 
-V simulatoru je pripravena scena, ve ktere je umisten model robota a mnozina referencnich bodu, ktere jsou umisteny na spirale.
+\todo{misto fitness psat o objective function?}
+V simulatoru je pripravena scena, ve ktere je umisten model robota a mnozina referencnich bodu, ktere jsou umisteny na spirale(Figure~\ref{fig:SpiralTop}) .
 Robot ma za ukol se pohybovat ve scene tak, ze se ke vsem referencnim bodum priblizi co nejvice.
 Timto robot vykonava pohyb po dane trajektorii.
+
+%todo: image placement
+\begin{figure}[t]
+\centering
+{\includegraphics[height=19em]{spiral_top_v2.png}}
+\caption{Top view at the scene in the simulator.
+We can see a spiral on which are placed the reference points(yellow spheres).
+The small brown thing is the robot model.}
+\label{fig:SpiralTop}
+\end{figure}
+
 
 \subsection{Realizace rizeni robota}
 Rizeni robota je realizovano pomoci jednoduchych instrukci.
