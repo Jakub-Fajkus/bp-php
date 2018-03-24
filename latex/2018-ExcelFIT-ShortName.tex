@@ -159,11 +159,9 @@ As the program is being executed it modifies the values of the registers, reads 
 
 \section{Experiments setup}
 \label{sec:ExperimentsSetup}
-
-\todo{misto fitness psat o objective function?}
-V simulatoru je pripravena scena, ve ktere je umisten model robota a mnozina referencnich bodu, ktere jsou umisteny na spirale(Figure~\ref{fig:SpiralTop}) .
-Robot ma za ukol se pohybovat ve scene tak, ze se ke vsem referencnim bodum priblizi co nejvice.
-Timto robot vykonava pohyb po dane trajektorii.
+There is a prepared scene in the simulator containing a set of reference points placed on a spiral(Figure~\ref{fig:SpiralTop}).
+The robot model is given a task to move from point to point at given order and to get as close as possible to each of them.
+This way the robot moves on a predefined trajectory.
 
 %todo: image placement
 \begin{figure}[t]
@@ -176,58 +174,37 @@ The small brown thing is the robot model.}
 \end{figure}
 
 
-\subsection{Realizace rizeni robota}
-Rizeni robota je realizovano pomoci jednoduchych instrukci.
-V simulatoru je zabudovat interpret, ktery je schopny tyto instrukce prevadet na signaly, ktere zpracovava simulator.
-Tyto signaly rikaji, jaka sila se bude aplikovat v jednotlivych kloubech modelu robota.
-Interpret pracuje pouze s celymi cisly, a to od -5 do 5 vcetne.
+\subsection{Robot control}
+The robot is controlled by a program that is composed of instructions.
+The simulator contains an interpret which executes the instructions and controls the robot actuated joints.
 
-Interpret obsahuje predem dany pocet vnitrnich pametovych mist(vnitrni registry), ktere je mozne modifikovat za pouziti instrukci.
-Interpret take obsahuje vystupni pametova mista(vystupni registry).
-Kazdy vystupni registr je prirazen k jednomu kloubu robota.
-Hodnoty v techto registrech jsou prevadeny na intenzitu sily, ktera bude v techto kloubech pusobit.
+The interpret works only with natural numbers ranging from -5 to 5.
+It contains predefined set of registers.
+There are 11 immutable constant registers containing all possible constants(-5 to 5).
+Next, there are two immutable input registers containing information about the direction to the next reference point. \todo{see image}
+One of them contains the inverse value of the other.
 
-Program se sklada z instrukci, ktere meni stav vnitrnich registru a stav vnejsich registru.
-Tyto instrukce jsou vypsany v Table~\ref{tab:Instructions}.
+There are write only registers, each of them is directly mapped to one of the robot's joints.
+The value in the output register is then converted into a force applied at the joint.
 
-Program je rozdelen do tri podprogramu - init, event a main.
-Init program je proveden v nulovem case a to pouze po spusteni simulace.
-Slouzi k nastaveni pocatecniho stavu vnitrnich registru. Jsou zde povoleny jen instrukce SRE a SOV\@.
+There is only one type of instruction.
+This instruction copies a value from the input or constant register into the output register.
+The instruction is composed of two values.
+The first is the identification of the input or constant register.
+The other is the identification of the output register.
 
-Dalsim podprogramem je event.
-Ten je spousten pokazde, kdyz se model robota dostatecne priblizi k nekteremu z referencnich bodu(pro kazdy bod ale pouze jednou).
-Vsechny instrukce jsou provedeny v nulovem case, stejne jako v init podprogramu.
-Tento podprogram slouzi ke zmene vnitrich registru.
-Jsou zde povoleny instrukce SRE, SOV, INC, DEC
+The program itself is split into 3 smaller subprograms - init, event and main.
+The init subprogram is executed at the start of the simulation and its purpose is to set the initial "pose" of the robot.
+All instructions of the init program are executed in a single time.
+After that there is a small, one second waiting time to give the robot time to establish the "pose".
 
-Hlavnim podprogramem je main.
-Tento podprogram je provaden v nekonecne smycce.
-Zde probiha kopirovani hodnot z vnitrnich registru do vystupnich registru.
-Instrukce zde nejsou provadeny v nulovem case, ale casovy rozestup mezi nimi je 0.5 sekundy.
-Jsou zde povoleny instrukce SOU, SOV.
+The event subprogram is run each time the robot gets close enough to some of the reference points(but only once for each point).
+It's purpose is to change the robot's "pose" as a preparation to move to the next reference point.
+The event subprogram is executed in a single time and the waiting time is used as in the init subprogram.
 
-
-\begin{table}[h]
-	\caption{Instructions of the interpret}
-	\vspace{1em}
-\caption*{
-INC increments an internal register by a given constant.
-DEC decrements an internal register by a given constant.
-SOU copies an internal register value to a output register.
-SOV copies a constant value to a output register.
-SRE copies a constant to an internal register.
-}
-	\begin{tabular}{l|{c}|r}
-		\textbf{Instruction}    & \textbf{Parameter 1} & \textbf{Parameter 2}    \\
-		\hline
-		INC                     & Internal register    & Constant        \\
-		DEC                     & Internal register    & Constant        \\
-		SOU                     & Internal register    & Output register \\
-		SOV                     & Constant             & Output register \\
-		SRE                     & Internal register    & Constant        \\
-	\end{tabular}
-	\label{tab:Instructions}
-\end{table}
+The main subprogram is being run in an endless loop during the simulation.
+Only one instruction is executed at a time.
+Period of 0.3 seconds is used.
 
 
 %--------------------------------------------------------
