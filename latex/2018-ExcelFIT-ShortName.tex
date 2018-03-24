@@ -181,8 +181,18 @@ The simulator contains an interpret which executes the instructions and controls
 The interpret works only with natural numbers ranging from -5 to 5.
 It contains predefined set of registers.
 There are 11 immutable constant registers containing all possible constants(-5 to 5).
-Next, there are two immutable input registers containing information about the direction to the next reference point. \todo{see image}
+Next, there are two immutable input registers containing information about the direction to the next reference point.
 One of them contains the inverse value of the other.
+%todo: image placement
+\begin{figure}[t]
+	\centering
+	{\includegraphics[height=19em]{reference_direction_v2.png}}
+	\caption{
+		The angle between the robot's heading vector(red arrow) and the vector to the next reference point(green arrow) is mapped to interpret inputs(-5 to 5).
+		The reference point showed there(blue circle) would result in input value of 2.
+	}
+	\label{fig:ReferenceDirection}
+\end{figure}
 
 There are write only registers, each of them is directly mapped to one of the robot's joints.
 The value in the output register is then converted into a force applied at the joint.
