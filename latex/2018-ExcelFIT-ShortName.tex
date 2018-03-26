@@ -3,6 +3,7 @@
 %\documentclass[czech]{ExcelAtFIT} % when writing in CZECH
 %\documentclass[slovak]{ExcelAtFIT} % when writing in SLOVAK
 
+%\todo{opravit citaci pro [3]}
 
 %--------------------------------------------------------
 %--------------------------------------------------------
@@ -20,9 +21,9 @@
 %--------------------------------------------------------
 
 \hypersetup{
-	pdftitle={Paper Title},
+	pdftitle={Evolution of programs controlling simple robot model},
 	pdfauthor={Jakub Fajkus},
-	pdfkeywords={Keyword1, Keyword2, Keyword3}
+	pdfkeywords={Evolutionary computation, Linear Genetic Programming, Robotics}
 }
 
 %--------------------------------------------------------
@@ -32,14 +33,14 @@
 
 \ExcelYear{2018}
 
-\PaperTitle{How to Write an Excellent Excel@FIT Paper}
+\PaperTitle{Evolution of programs controlling simple robot model}
 
-\Authors{Adam Herout*}
+\Authors{Jakub Fajkus*}
 \affiliation{*%
-  \href{mailto:herout@fit.vutbr.cz}{herout@fit.vutbr.cz},
+  \href{mailto:xfajku06@stud.fit.vutbr.cz}{xfajku06@stud.fit.vutbr.cz},
   \textit{Faculty of Information Technology, Brno University of Technology}}
 
-\Keywords{Evolutionary computation --- Neural Networks --- Linear Genetic Programming --- Robotics}
+\Keywords{Evolutionary computation  --- Linear Genetic Programming --- Robotics}
 
 \Supplementary{\href{http://youtu.be/S3msCdn3fNM}{Demonstration Video} --- \href{http://excel.fit.vutbr.cz/}{Downloadable Code}}
 
@@ -50,12 +51,11 @@
 %--------------------------------------------------------
 
 \Abstract{
-Tato prace se zabyva navrhem a pouzitim frameworku vyuzivajici Evolucni Algoritmy, ktery je pouzit pro hledani zpusobu rizeni pocitacoveho
-modelu jednoducheho robota.
-Tento robot v pocitacove simulaci vykonava pohyb po stirale tam, ze se pohybuje k danym referencnim bodum.
-Pro řízení modelu robota je pouzit přístup, ktery je založeny na instrukcích, inspirovany Linearnim Genetickym Programovanim.
-Program, ktery ridi robota, ma k dispozici informaci o tom, kterym smerem lezi dalsi referencni bod.
-Diky informaci o smeru, kterym lezi dalsi referencni bod jsou nalezena reseni schopna pohybu i po trajektorii, na ktere nebyly uceny.
+The aim of this work to utilize Evolutionary Algorithms for finding a computer program that will control a simple robot model.
+The model is placed in the physical simulation where it is supposed to move to specified reference points.
+The program that controls the model is based on instructions and is inspired by Linear Genetic Programming.
+The program has an information about a direction to the next reference point.
+Because of that programs exhibit some degree of expected behavior in environments that they were not exposed before.
 }
 
 \Teaser{
@@ -85,57 +85,66 @@ Diky informaci o smeru, kterym lezi dalsi referencni bod jsou nalezena reseni sc
 %--------------------------------------------------------
 %--------------------------------------------------------
 \section{Introduction}
+In the area of robotics it is very important to be able to create prototypes fast and cheap.
+For this purpose it is beneficial to use computer models and simulation when designing the physical aspect of the robot.
+There is many ways to control the robot depending on the requirements we have.
+It can be for example controlled by instructions of a imperative language~\cite{Wollf2007}, finite state machines~\cite{Hodgins1996}, classical control theory~\cite{Mita1984} or artificial neural networks~\cite{Reil2002}~\cite{Lewis1996}.
+For fast prototyping we can use Evolutionary Algorithms to evolve the robot control.
 
-V oblasti robotiky je velmi dulezita schopnost rychle a levne prototypovat mozna reseni.
-K tomuto ucelu je velmi vhodne pouziti pocitacove modelovani a simulace.
-V situaci, kdy mame navrzenou fyzickou stranku robota, nastava otazka, jak rychle prototypovat jeho rizeni.
-Existuje mnoho moznosti realizace rizeni robota, lisici se v zavislosti na pozadavcich a povaze cinosti robota.
-Rizeni robota muze byt zalozeno na instrukcich nejakeho imperativniho jazyka nebo na neuronovych sitich.
-Dalsi z moznosti jsou ruzne planovaci algoritmy a systemy. \todo{citace, zdroje, terminologie}
-Pro prototypovani je vyhodne mit nastroj, ktery je schopny hledat vyhodne zpusoby rizeni robota.
-Evolutionary algorithms are good for this purpose, because they are applicable for a wide range of problems.
+%V oblasti robotiky je velmi dulezita schopnost rychle a levne prototypovat mozna reseni.
+%K tomuto ucelu je velmi vhodne pouziti pocitacove modelovani a simulace.
+%PRIDAT? V situaci, kdy mame navrzenou fyzickou stranku robota, nastava otazka, jak rychle prototypovat jeho rizeni.
+%Existuje mnoho moznosti realizace rizeni robota, lisici se v zavislosti na pozadavcich a povaze cinosti robota.
+%Rizeni robota muze byt zalozeno na instrukcich nejakeho imperativniho jazyka nebo na neuronovych sitich.
+%Dalsi z moznosti jsou ruzne planovaci algoritmy a systemy. \todo{citace, zdroje, terminologie}
+%Pro prototypovani je vyhodne mit nastroj, ktery je schopny hledat vyhodne zpusoby rizeni robota.
+%Evolutionary algorithms are good for this purpose, because they are applicable for a wide range of problems.
 
-Hledame reseni pro problem, ktery je definovan takto.
-Mame model jednoducheho robota, pro ktereho hledame model rizeni.
-Cilem je nalezt program(posloupnost instrukci) ktery bude model robota ritit tak, ze bude vykonavat pohyb po dane trajektorii..
-Hledani reseni probiha automatizovane s vyuzitim evolucnich algoritmu.
-K vyhodnoceni uspesnosti reseni je pouzit fyzikalni simulator specializovany na simulaci robotu Mujoco\cite{Todorov2012}.
+The problem to solve is defined as follows.
+We have a model of a simple robot and we want to evolve a program that is based on instructions of an imperative language.
+The robot is supposed to move in the simulated environment and visit the predefined reference points.
+This way we can define a trajectory that the robot should follow.
+The program that controls the model is being evolved using Evolutionary Algorithms and then evaluated in the Mujoco simulator~\cite{Todorov2012}.
 
-There is many works focused on evolutionary robotics.
-The ones that were focusing robot control were using many techniques, including finite state machines\cite{Hodgins1996}, classical control theory\cite{Mita1984} and neural networks \cite{Reil2002}\cite{Lewis1996}.
-There is also a number of works using Evolutionary Algorithms to evolve controllers, particularly artificial neural networks\cite{Randall1992}\cite{Farooq2013}.
-There are also works that are using Genetic Programming\cite{Macedo2017}.
-The most similar work to ours is the work of Wollf and Mattias\cite{Wolff2007}.
-They are using Linear Genetic Programming to evolve a bipedal motion of a humanoid model.
+%Hledame reseni pro problem, ktery je definovan takto.
+%Mame model jednoducheho robota, pro ktereho hledame model rizeni.
+%Cilem je nalezt program(posloupnost instrukci) ktery bude model robota ritit tak, ze bude vykonavat pohyb po dane trajektorii..
+%Hledani reseni probiha automatizovane s vyuzitim evolucnich algoritmu.
+%K vyhodnoceni uspesnosti reseni je pouzit fyzikalni simulator specializovany na simulaci robotu Mujoco~\cite{Todorov2012}.
 
-Our work, as well as work of Wollf and Mattias, uses LGP with similar interpret structure.
-But the program structure is a bit different.
-Our approach splits the program into smaller subprograms, as opposed to one program.
-Our instruction set is reduced to only one instruction and we use only natural numbers ranging from -5 to 5.
+There are many works focused on evolutionary robotics.
+The ones that were focusing robot control used techniques including finite state machines~\cite{Hodgins1996}, classical control theory~\cite{Mita1984} and artificial neural networks~\cite{Reil2002}~\cite{Lewis1996}.
+There is also a number of works using Evolutionary Algorithms to evolve controllers, particularly artificial neural networks~\cite{Randall1992}~\cite{Farooq2013}.
+There are also works that are using Genetic Programming~\cite{Macedo2017}.
+The most similar work to to this one is the work of Wollf and Mattias~\cite{Wolff2007}.
+They are using Linear Genetic Programming to evolve a bipedal locomotion of a humanoid model.
+
+The work of Wollf and Mattias uses Linear Genetic Programming with various arithmetic instructions and branching.
+The instruction set in this work is reduced to only one instruction and only natural numbers ranging from -5 to 5 are used for possible values.
+The program in this work is split into smaller subprograms, as opposed to one program.
 Both the works use some sort of a environmental awareness.
-Our work implements that by introducing an event subprogram as well as an information about direction to the next reference point.
+This work implements that by introducing an event subprogram as well as an information about direction to the next reference point.
 The subprogram is executed when an event occurs in the environment(coming closer to a reference point).
 Wollf and Mattias used a set of sensors, that are measuring current joint angles of the model.
 
-Evolved programs showed expected behaviour in the simulation.
-A few best solutions were evaluated for a different trajectory and exhibited good results.
-This shows that even a relatively small information about the environment and simple computational model can lead to some degree of universality of the program.
+As results of the experiments the programs exhibited the behaviour that was expected.
+Additionally, a few best solutions were evaluated for a different trajectory and they exhibited tendency to move along them.
 
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
-\section{Teoreticky uvod}
+\section{Theoretical background}
 \label{sec:theory}
-Here we will discuss a brief introduction to Linear Genetic Programming, based on \cite{Brameier2010}.
+Here we will discuss a brief introduction to Linear Genetic Programming, based on~\cite{Brameier2010}.
 LGP is a special variant of the Genetic Programming.
 
 Genetic Programming (GP) solves a modelling problem.
 That means we know a set of inputs to a system and the outputs it should produce.
 But we do not have the system that will compute the inputs and tell us the output.
+When solving a control problem, we are looking for a such function, that will lead to the desired behavior.
 
 In GP we are evolving computer program $P$ that represents a function: $f : I^n \to O^m$, where $I^n$ denotes the input data of $n$ dimensions and $O^m$ denotes the output data in $m$ dimensions.
-When solving a control problem, we are looking for a such function, that will lead to the desired behavior.
 
 The genotype space $G$ in GP includes all programs that can be composed of elements of a programming language $L$.
 Programming language $L$ is defined by a instruction set and a terminal set.
@@ -164,12 +173,14 @@ The robot model is given a task to move from point to point at given order and t
 This way the robot moves on a predefined trajectory.
 
 %todo: image placement
+%todo: change the image to containt he 3 leg thingy and where the reference points are not all over the place
 \begin{figure}[t]
 \centering
 {\includegraphics[height=19em]{spiral_top_v2.png}}
 \caption{Top view at the scene in the simulator.
 We can see a spiral on which are placed the reference points(yellow spheres).
-The small brown thing is the robot model.}
+The robot's model is brown.
+The robot's task is to navigate through the scene and get as close as possible to each one of the reference points.}
 \label{fig:SpiralTop}
 \end{figure}
 
@@ -181,13 +192,13 @@ The simulator contains an interpret which executes the instructions and controls
 The interpret works only with natural numbers ranging from -5 to 5.
 It contains predefined set of registers.
 There are 11 immutable constant registers containing all possible constants(-5 to 5).
-Next, there are two immutable input registers containing information about the direction to the next reference point.
+Next, there are two immutable input registers containing information about the direction to the next reference point(Figure~\ref{fig:ReferenceDirection}).
 One of them contains the inverse value of the other.
 
 %todo: image placement
 \begin{figure}[t]
 	\centering
-	{\includegraphics[height=19em]{reference_direction_v2.png}}
+	{\includegraphics[height=19em]{reference_direction_angles.png}}
 	\caption{
 		The angle between the robot's heading vector(red arrow) and the vector to the next reference point(green arrow) is mapped to interpret inputs(-5 to 5).
 		The reference point showed there(blue circle) would result in input value of 2.
@@ -211,31 +222,30 @@ After that there is a small, one second waiting time to give the robot time to e
 
 The event subprogram is run each time the robot gets close enough to some of the reference points(but only once for each point).
 It's purpose is to change the robot's "pose" as a preparation to move to the next reference point.
-The event subprogram is executed in a single time and the waiting time is used as in the init subprogram.
+The event subprogram is executed in a single time and the waiting time is used as well as in the init subprogram.
 
 The main subprogram is being run in an endless loop during the simulation.
 Only one instruction is executed at a time.
 Period of 0.3 seconds is used.
 
-
+%todo: nakreslit obrazek interpretu -> registry s konstantami, registry se vstupy, registry pro vystup,...
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
-\section{Experiements}
-\label{sec:Experiments}
+\subsection{EA instance}
+\label{sec:Experiment}
 Here we will describe the instance of Evolutionary Algorithm used.
-\todo{mluvit o populaci? nebo generaci kvuli ss?}
-
-
- - 1000 indiv
- - genotype size
- - force 1 mutation
- - zminit se o porovnani variaci?
- - steady state of 500
- - subprogram uniform crossover
- - 300 generations
- - tournament 2
+%todo keep the list in one column
+\begin{itemize}
+	\item Population size is set to 1000
+	\item Steady-state population model is used(the better half of the population is kept, the other one replaced).
+	\item The genotype length is fixed to 36 instructions.
+	\item A custom genetic crossover based on uniform crossover is used(Figure~\ref{fig:Crossover}).
+	\item The probability of crossover is 80\%.
+	\item The mutation is set with 100\% probability and changes only one gene.
+	\item Parent selection is implemented by tournament of size 2.
+\end{itemize}
 
 %todo: image placement
 \begin{figure}[t]
@@ -252,11 +262,6 @@ Here we will describe the instance of Evolutionary Algorithm used.
 \end{figure}
 
 
-\subsection{Experiment overview}
-\todo{Zde bude popis experimentu - mravenec na primce? a na spirale}
-\todo{Vsechny informace k experiemntu: tj. konfigurace GA, delka programu, rozdeleni na podprogramy(kolik kam), delka simulace}
-
-
 
 %--------------------------------------------------------
 %--------------------------------------------------------
@@ -264,8 +269,33 @@ Here we will describe the instance of Evolutionary Algorithm used.
 %--------------------------------------------------------
 
 \section{Results}
-\todo{Zde budou prehledne vysledky experimentu - grafy, cisla, tabulky, obrazky, vsechno}
+The evolution was run 20 times.
+The typical progress of fitness values can be seen in Figure~\ref{fig:FitnessGraph}
+The maximum fitness possible in the given amount of time is around 250 and the best solution found had 233.7(\todo{i po 20 experiemntech stale plati?}).
 
+Some of the best results were evaluated for a different trajectories(Figure~\ref{fig:PostExperimentTests}).
+
+This shows that even a relatively small information about the environment and simple computational model can lead to some degree of universality of the program.
+
+%todo: image placement
+\begin{figure}[t]
+	\centering
+	{\includegraphics[height=17em]{runFitnessGraph.png}}
+	\caption{
+	A typical progress of fitness values in a evolutionary run.
+	}
+	\label{fig:FitnessGraph}
+\end{figure}
+
+%todo: image placement
+\begin{figure}[t]
+	\centering
+	{\includegraphics[height=16em]{postExperimentTests.png}}
+	\caption{
+	Trajectories used to evaluate the ability of the found solutions to navigate in unknown conditions.
+	}
+	\label{fig:PostExperimentTests}
+\end{figure}
 
 %--------------------------------------------------------
 %--------------------------------------------------------
