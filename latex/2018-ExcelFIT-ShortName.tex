@@ -84,50 +84,29 @@ The program has an information about a direction to the next reference point.
 %--------------------------------------------------------
 %--------------------------------------------------------
 \section{Introduction}
-In the area of robotics it is very important to be able to create prototypes fast and cheap.
-For this purpose it is beneficial to use computer models and simulation when designing the physical aspect of the robot.
-There is many ways to control the robot depending on the requirements we have.
-It can be for example controlled by instructions of a imperative language~\cite{Wolff2007}, finite state machines~\cite{Hodgins1996}, classical control theory~\cite{Mita1984} or artificial neural networks~\cite{Reil2002}~\cite{Lewis1996}.
-For fast prototyping we can use Evolutionary Algorithms to evolve the robot control.
+In the area of robotics it is very important to be able to create prototypes quickly and cheaply.
+For this purpose it is beneficial to use computer models and simulation when designing the \todo{structure?} of the robot.
+There are many ways to control the robot depending on the given requirements.
+It can be, for example, controlled by instructions of an imperative language~\cite{Wolff2007}, finite state machines~\cite{Hodgins1996}, classical control theory~\cite{Mita1984} or artificial neural networks~\cite{Reil2002}~\cite{Lewis1996}.
+For a fast prototyping we can use Evolutionary Algorithms to evolve the robot control.
 
-%V oblasti robotiky je velmi dulezita schopnost rychle a levne prototypovat mozna reseni.
-%K tomuto ucelu je velmi vhodne pouziti pocitacove modelovani a simulace.
-%PRIDAT? V situaci, kdy mame navrzenou fyzickou stranku robota, nastava otazka, jak rychle prototypovat jeho rizeni.
-%Existuje mnoho moznosti realizace rizeni robota, lisici se v zavislosti na pozadavcich a povaze cinosti robota.
-%Rizeni robota muze byt zalozeno na instrukcich nejakeho imperativniho jazyka nebo na neuronovych sitich.
-%Dalsi z moznosti jsou ruzne planovaci algoritmy a systemy. \todo{citace, zdroje, terminologie}
-%Pro prototypovani je vyhodne mit nastroj, ktery je schopny hledat vyhodne zpusoby rizeni robota.
-%Evolutionary algorithms are good for this purpose, because they are applicable for a wide range of problems.
-
-The problem to solve is defined as follows.
+The problem to solve in this work is defined as follows.
 We have a model of a simple robot and we want to evolve a program that is based on instructions of an imperative language.
-The robot is supposed to move in the simulated environment and visit the predefined reference points.
-This way we can define a trajectory that the robot should follow.
+The robot is supposed to move in a simulated environment and visit the predefined reference points.
+The reference points, specified by the designer, define a trajectory the robot should follow.
 The program that controls the model is being evolved using Evolutionary Algorithms and then evaluated in the Mujoco simulator~\cite{Todorov2012}.
 
-%Hledame reseni pro problem, ktery je definovan takto.
-%Mame model jednoducheho robota, pro ktereho hledame model rizeni.
-%Cilem je nalezt program(posloupnost instrukci) ktery bude model robota ritit tak, ze bude vykonavat pohyb po dane trajektorii..
-%Hledani reseni probiha automatizovane s vyuzitim evolucnich algoritmu.
-%K vyhodnoceni uspesnosti reseni je pouzit fyzikalni simulator specializovany na simulaci robotu Mujoco~\cite{Todorov2012}.
-
-There are many works focused on evolutionary robotics.
-The ones that were focusing robot control used techniques including finite state machines~\cite{Hodgins1996}, classical control theory~\cite{Mita1984} and artificial neural networks~\cite{Reil2002}~\cite{Lewis1996}.
-There is also a number of works using Evolutionary Algorithms to evolve controllers, particularly artificial neural networks~\cite{Randall1992}~\cite{Farooq2013}.
+There is a number of works using Evolutionary Algorithms to evolve controllers based on artificial neural networks~\cite{Randall1992}~\cite{Farooq2013}.
 There are also works that are using Genetic Programming~\cite{Macedo2017}.
-The most similar work to to this one is the work of Wollf and Mattias~\cite{Wolff2007}.
+The most similar work to to this one is the work of Wolff and Wahde~\cite{Wolff2007}.
 They are using Linear Genetic Programming to evolve a bipedal locomotion of a humanoid model.
 
-The work of Wollf and Mattias uses Linear Genetic Programming with various arithmetic instructions and branching.
-The instruction set in this work is reduced to only one instruction and only natural numbers ranging from -5 to 5 are used for possible values.
-The program in this work is split into smaller subprograms, as opposed to one program.
-Both the works use some sort of a environmental awareness.
-This work implements that by introducing an event subprogram as well as an information about direction to the next reference point.
-The subprogram is executed when an event occurs in the environment(coming closer to a reference point).
-Wollf and Mattias used a set of sensors, that are measuring current joint angles of the model.
-
-As results of the experiments the programs exhibited the behaviour that was expected.
-Additionally, a few best solutions were evaluated for a different trajectory and they exhibited tendency to move along them.
+The research conducted in this paper is primarily motivated by~\cite{Wolff2007} where a successful evolution of
+control algorithms was proposed for a specific humanoid model. In this paper we present an extended concept which allows evolutionary
+design of controllers for various creatures with different number of legs. The goal is to evolve a program using a very reduced intruction
+set in which several sub-programs can be evolved automatically and simultaneously in order to perform specific motions of the model.
+Our approach will be evaluated using several trajectories the model should follow in a simulated environment. The detail of the proposed
+system will be described in Section \todo{ref na vysvetleni v sekci}
 
 %--------------------------------------------------------
 %--------------------------------------------------------
