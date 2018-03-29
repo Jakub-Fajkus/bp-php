@@ -112,28 +112,29 @@ system will be described in Section \todo{ref na vysvetleni v sekci}
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
-\section{Theoretical background}
+\section{Linear Genetic Programming}
 \label{sec:theory}
-Here we will discuss a brief introduction to Linear Genetic Programming, based on~\cite{Brameier2010}.
-LGP is a special variant of the Genetic Programming.
+Here we will discuss a brief introduction to Linear Genetic Programming(LGP), based on~\cite{Brameier2010}.
+LGP is a special variant of the Genetic Programming\todo{Jon Koza}.
 
 Genetic Programming (GP) solves a modelling problem.
 That means we know a set of inputs to a system and the outputs it should produce.
 But we do not have the system that will compute the inputs and tell us the output.
-When solving a control problem, we are looking for a such function, that will lead to the desired behavior.
+When solving a control problem, we are looking for such a function, that will lead to the desired behavior.
 
-In GP we are evolving computer program $P$ that represents a function: $f : I^n \to O^m$, where $I^n$ denotes the input data of $n$ dimensions and $O^m$ denotes the output data in $m$ dimensions.
+In GP we are evolving computer program $P$ that represents a function: $f : I^n \to O^m$, where $I^n$ denotes the n-dimensional input data and $O^m$ denotes the m-dimensional output data.
 
-The genotype space $G$ in GP includes all programs that can be composed of elements of a programming language $L$.
-Programming language $L$ is defined by a instruction set and a terminal set.
-An interpreter translates the genotype representation into the phenotype.
-The phenotype is then executed and it's fitness is measured.
+The genotype space $G$ in GP includes all programs that can be composed of elements of a given programming language $L$.
+The programming language $L$ is defined by an instruction set and a terminal set.
+An interpreter translates the genotype representation into the phenotype, i.e.\ the behavior of the robot.
+The phenotype is then executed and it's fitness is evaluated using a software physical simulator.
+\todo{fitness se meri metodou nejmensich ctvercu! - nekam s tim :D}
 
 The original GP uses trees that correspond to expressions from a functional programming language.
 The nodes of the tree represent functions, while leaves represent input values or constants.
 
-The Linear Genetic Programming is a variant where programs are composed of a list of instructions from an imperative language or a machine code.
-Each program has available predefined set of registers that can hold constants as well as results of instructions.
+The Linear Genetic Programming is a variant where the programs are composed of a sequence of instructions from an imperative language or a machine code.
+Each program has available a predefined set of registers that can hold constants as well as results of instructions.
 Those registers are often divided into groups: input registers, output registers and calculation registers.
 The instructions are composed of an operation and one or more operands.
 The operands may be registers or constants.
