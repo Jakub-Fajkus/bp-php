@@ -55,7 +55,6 @@ The aim of this work to utilize Evolutionary Algorithms for finding a computer p
 The model is placed in the physical simulation where it is supposed to move to specified reference points.
 The program that controls the model is based on instructions and is inspired by Linear Genetic Programming.
 The program has an information about a direction to the next reference point.
-Because of that programs exhibit some degree of expected behavior in environments that they were not exposed before.
 }
 
 \Teaser{
@@ -88,7 +87,7 @@ Because of that programs exhibit some degree of expected behavior in environment
 In the area of robotics it is very important to be able to create prototypes fast and cheap.
 For this purpose it is beneficial to use computer models and simulation when designing the physical aspect of the robot.
 There is many ways to control the robot depending on the requirements we have.
-It can be for example controlled by instructions of a imperative language~\cite{Wollf2007}, finite state machines~\cite{Hodgins1996}, classical control theory~\cite{Mita1984} or artificial neural networks~\cite{Reil2002}~\cite{Lewis1996}.
+It can be for example controlled by instructions of a imperative language~\cite{Wolff2007}, finite state machines~\cite{Hodgins1996}, classical control theory~\cite{Mita1984} or artificial neural networks~\cite{Reil2002}~\cite{Lewis1996}.
 For fast prototyping we can use Evolutionary Algorithms to evolve the robot control.
 
 %V oblasti robotiky je velmi dulezita schopnost rychle a levne prototypovat mozna reseni.
@@ -187,21 +186,40 @@ The robot's task is to navigate through the scene and get as close as possible t
 
 \subsection{Robot control}
 The robot is controlled by a program that is composed of instructions.
-The simulator contains an interpret which executes the instructions and controls the robot actuated joints.
+The simulator contains an interpret which executes the instructions and controls the robot actuated joints(Figure~\ref{fig:Interpret}).
+
+%todo: image placement
+\begin{figure}[t]
+	\centering
+	{\includegraphics[width=20em]{interpret.png}}
+	\caption{
+	Schematic view of the interpret.
+	The only instruction type is the SRE instruction.
+	The first argument is a input register index and the second is the output register index.
+	The interpret has 11 constant registers(indices 0--10), 2 input registers(indices 11--12) and 3 output registers(indices 13--15).
+	The input registers values depend on the direction to the next reference point(Figure~\ref{fig:ReferenceDirection}).
+	Every 0.3 seconds a instruction is fetched and its arguments are used as register indices.
+	A value from constant or input register is then copied into the output register.
+	The situation depicted there is as follows.
+	The instructions is fetched with values of 11 and 14.
+	A value from input register with index 11 is copied into the output register with index 14.
+	}
+	\label{fig:Interpret}
+\end{figure}
 
 The interpret works only with natural numbers ranging from -5 to 5.
 It contains predefined set of registers.
 There are 11 immutable constant registers containing all possible constants(-5 to 5).
 Next, there are two immutable input registers containing information about the direction to the next reference point(Figure~\ref{fig:ReferenceDirection}).
-One of them contains the inverse value of the other.
+One of them contains the opposite value of the other.
 
 %todo: image placement
 \begin{figure}[t]
 	\centering
-	{\includegraphics[height=19em]{reference_direction_angles.png}}
+	{\includegraphics[width=18em]{reference_direction_angles.png}}
 	\caption{
 		The angle between the robot's heading vector(red arrow) and the vector to the next reference point(green arrow) is mapped to interpret inputs(-5 to 5).
-		The reference point showed there(blue circle) would result in input value of 2.
+		The reference point showed there(blue circle) would result in input value of 2 in one input register and -2 in the other input register.
 	}
 	\label{fig:ReferenceDirection}
 \end{figure}
@@ -228,7 +246,7 @@ The main subprogram is being run in an endless loop during the simulation.
 Only one instruction is executed at a time.
 Period of 0.3 seconds is used.
 
-%todo: nakreslit obrazek interpretu -> registry s konstantami, registry se vstupy, registry pro vystup,...
+
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
@@ -250,7 +268,7 @@ Here we will describe the instance of Evolutionary Algorithm used.
 %todo: image placement
 \begin{figure}[t]
 	\centering
-	{\includegraphics[height=10em]{crossover.png}}
+	{\includegraphics[width=18em]{crossover.png}}
 	\caption{
 	A custom genetic crossover is used.
 	It is based on uniform crossover, but it operates on the subprograms level.
@@ -270,12 +288,15 @@ Here we will describe the instance of Evolutionary Algorithm used.
 
 \section{Results}
 The evolution was run 20 times.
-The typical progress of fitness values can be seen in Figure~\ref{fig:FitnessGraph}
-The maximum fitness possible in the given amount of time is around 250 and the best solution found had 233.7(\todo{i po 20 experiemntech stale plati?}).
+The typical progress of fitness values can be seen in Figure~\ref{fig:FitnessGraph}.
+The maximum fitness possible in the given amount of time is around 280 and the best solution found had 255.9.
 
-Some of the best results were evaluated for a different trajectories(Figure~\ref{fig:PostExperimentTests}).
+Some of the best results were evaluated for a different trajectories(Figure~\ref{fig:PostExperimentTests}), however the behaviour was not satisfying.
+They definitely exhibited some degree of movement towards the reference points, but the locomotion pattern encoded in the program was not flexible enough to cope with different environment.
+This is mainly because the locomotion pattern is expressed as a list of hardcoded instructions with constant values.
+So, if the training environment had the reference points placed on a spiral, the program itself is evolved to move generally in a spiral.
 
-This shows that even a relatively small information about the environment and simple computational model can lead to some degree of universality of the program.
+If a different approach was used, for example using more input values coming either from oscillators with different frequencies or some sensory information(rotation of joints), the programs could then evolve a universal locomotion pattern that would be only adjusted with the information about direction to the next reference point.
 
 %todo: image placement
 \begin{figure}[t]
@@ -305,20 +326,26 @@ This shows that even a relatively small information about the environment and si
 \section{Conclusions}
 \label{sec:Conclusions}
 
-\textbf{[Paper Summary]} What was the paper about, then? What the reader needs to remember about it?
-Tato prace ukazala pouziti evolucnich algoritmu pro hledani programu pro rizeni robota. \todo{neco dalsiho}
+%\textbf{[Paper Summary]} What was the paper about, then? What the reader needs to remember about it?
+This work showed an usage of Evolutionary Algorithms for finding a program for a robot control.
+The results show that the programs evolved successfully to meet the given criteria, although failed to adapt to a new behaviour.
+However, the original question behind this work was that whether a very simple program could control the robot in a way that it will move on a non trivial trajectory.
 
-\textbf{[Highlights of Results]} Exact numbers. Remind the reader that the paper matters.
-\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus fermentum ipsum at venenatis. Curabitur ultricies, mauris eu ullamcorper mattis, ligula purus dapibus mi, vel dapibus odio nulla et ex. Sed viverra cursus mattis. Suspendisse ornare semper condimentum. Interdum et malesuada fames ac ante ipsum.}
+Providing the program with more sensory information as well as some oscillators could lead to better universality.
+This thought will be put under test in the future experiments.
 
-\textbf{[Paper Contributions]} What is the original contribution of this work? Two or three thoughts that one should definitely take home.
-\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent posuere mattis ante at imperdiet. Cras id tincidunt purus. Aliquam erat volutpat. Morbi non gravida nisi, non iaculis tortor. Quisque at fringilla neque.}
+%\textbf{[Highlights of Results]} Exact numbers. Remind the reader that the paper matters.
+%\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempus fermentum ipsum at venenatis. Curabitur ultricies, mauris eu ullamcorper mattis, ligula purus dapibus mi, vel dapibus odio nulla et ex. Sed viverra cursus mattis. Suspendisse ornare semper condimentum. Interdum et malesuada fames ac ante ipsum.}
+%
+%\textbf{[Paper Contributions]} What is the original contribution of this work? Two or three thoughts that one should definitely take home.
+%\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent posuere mattis ante at imperdiet. Cras id tincidunt purus. Aliquam erat volutpat. Morbi non gravida nisi, non iaculis tortor. Quisque at fringilla neque.}
+%
+%\textbf{[Future Work]} How can other researchers / developers make use of the results of this work?  Do you have further plans with this work? Or anybody else?
+%\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin posuere massa, non convallis purus ultricies sit amet. Duis at nisl tincidunt, maximus risus a, aliquet massa. Vestibulum libero odio, condimentum ut ex non, eleifend.}
 
-\textbf{[Future Work]} How can other researchers / developers make use of the results of this work?  Do you have further plans with this work? Or anybody else?
-\phony{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin posuere massa, non convallis purus ultricies sit amet. Duis at nisl tincidunt, maximus risus a, aliquet massa. Vestibulum libero odio, condimentum ut ex non, eleifend.}
-
-\section*{Acknowledgements}
-I would like to thank my supervisor X. Y. for his help.
+%todo: podekovani!
+%\section*{Acknowledgements}
+%I would like to thank my supervisor X. Y. for his help.
 
 %--------------------------------------------------------
 %--------------------------------------------------------
