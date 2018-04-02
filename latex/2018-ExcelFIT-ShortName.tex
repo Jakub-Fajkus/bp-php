@@ -114,7 +114,7 @@ system will be described in Section \todo{ref na vysvetleni v sekci}
 %--------------------------------------------------------
 \section{Linear Genetic Programming}
 \label{sec:theory}
-Here we will discuss a brief introduction to Linear Genetic Programming(LGP), based on~\cite{Brameier2010}.
+Here we will discuss a brief introduction to Linear Genetic Programming (LGP), based on~\cite{Brameier2010}.
 LGP is a special variant of the Genetic Programming\todo{Jon Koza}.
 
 Genetic Programming (GP) solves a modelling problem.
@@ -149,7 +149,7 @@ As the program is being executed it modifies the values of the registers, reads 
 \label{sec:ExperimentsSetup}
 In order to evolve a robot controller, the LGP concept was combined with an evolutionary algorithm and the Mujoco simulator\cite{Todorov2012} was used to evaluate the candidate programs using a built-in interpreter.
 There is a prepared scene in the simulator containing a set of reference points defining a spiral (Figure~\ref{fig:SpiralTop}).
-The robot model is given a task(ising the evolved LGP programs) to move from point to point at given order and to get as close as possible to each of them.
+The robot model is given a task (using the evolved LGP programs) to move from point to point at given order and to get as close as possible to each of them.
 This way the robot moves on a predefined trajectory.
 
 %todo: image placement
@@ -158,9 +158,9 @@ This way the robot moves on a predefined trajectory.
 \centering
 {\includegraphics[height=19em]{spiral_top_v2.png}}
 \caption{Top view at the scene in the simulator.
-We can see a spiral on which are placed the reference points(yellow spheres).
+We can see a spiral on which are placed the reference points (yellow spheres).
 The robot's model is brown.
-The robot's task is to navigate through the scene and get as close as possible to each one of the reference points.}
+}
 \label{fig:SpiralTop}
 \end{figure}
 
@@ -168,40 +168,40 @@ The robot's task is to navigate through the scene and get as close as possible t
 
 \subsection{LGP-Based Robot Controller}
 \label{subsec:lgp-basedRobotController}
-The programs (which are the subject of evolution using LGP) are composed of application-specific instruction of the form \texttt{COPY ARG1 ARG2}, where COPY is the instruction name, ARG1 is source register and ARG2 is the destination register.
-Each register has it's unique identification called \texttt{index} which is used in a instruction's argument.
+The programs (which are the subject of evolution using LGP) are composed of application-specific instruction of the form \texttt{COPY ARG1 ARG2}, where \texttt{COPY} is the instruction name, \texttt{ARG1} is source register and \texttt{ARG2} is the destination register.
+Each register has it's unique identification called \textit{index} which is used in a instruction's argument.
 As the program is being executed, it copies values from input or constant registers into the output registers.
 
-The interpreter has 11 constant registers(indices 0–10) holding integer values from -5 to 5, 2 input registers(indices 11–12) and 3 output registers(indices 13–15).
+The interpreter has 11 constant registers (indices 0–10) holding integer values from -5 to 5, 2 input registers (indices 11–12) and 3 output registers (indices 13–15).
 The values of the input registers depend on the direction to the next reference point.
 Each output register is connected with exactly one robot's joint and it's value is converted into a force that is applied in the joint.
 
 For the purposes of this work a concept of subprograms has been introduced which works as follows.
 
-The individual's genotype(representing the whole program) is \todo{split or splitted?} into 3 smaller subprograms - \texttt{init}, \texttt{event} and \texttt{main}.
+The individual's genotype (representing the whole program) is split into 3 smaller subprograms - \textit{init}, \textit{event} and \textit{main}.
 
-The \texttt{main} subprogram is being run in an endless loop during the simulation.
+The \textit{main} subprogram is being run in an endless loop during the simulation.
 Only one instruction is executed at a time.
 Period of 0.3 seconds between instructions is used.
 
-The \texttt{init} subprogram is executed at the start of the simulation and its purpose is to set the initial rotation of all robot's joints.
+The \textit{init} subprogram is executed at the start of the simulation and its purpose is to set the initial rotation of all robot's joints.
 All instructions of the init program are executed in a single time.
 After that, the main subprogram is paused for one second to give the robot's joints time to finish the rotation.
 
-The \texttt{event} subprogram is run each time the robot gets close enough to some of the reference points(but only once for each point).
+The \textit{event} subprogram is run each time the robot gets close enough to some of the reference points (but only once for each point).
 It's purpose is to change the robot's joints rotation as a preparation to move to the next reference point.
-The event subprogram is executed in a single time and the main subprogram is paused as well as in the \texttt{init} subprogram.
+The event subprogram is executed in a single time and the main subprogram is paused as well as in the \textit{init} subprogram.
 
 A schema of the interpreter is at Figure~\ref{fig:Interpret}.
-Each 0.3 seconds a instruction from the \texttt{main} subprogram is executed.
+Each 0.3 seconds a instruction from the \textit{main} subprogram is executed.
 The first argument is an input or constant register index, the other one is the output register index.
 A value from constant or input register is then copied into the output register.
 
 Each of the interpret's output registers is mapped to exactly one robot's joint.
 Each time an instruction is executed, the values from the output registers are read.
 The values are then used as a control signal to the simulator for each joint in the model.
-A value(control signal) holds two pieces of information.
-The sign of the value is used to determine the direction of the force applied(clockwise, counterclockwise).
+A value (control signal) holds two pieces of information.
+The sign of the value is used to determine the direction of the force applied (clockwise, counterclockwise).
 The absolute value of the number is used to determine the \todo{magnitude} of the force.
 Based on those signals and the model parameters the simulator calculates a force that will be applied in the joint.
 
@@ -225,19 +225,48 @@ Based on those signals and the model parameters the simulator calculates a force
 %--------------------------------------------------------
 %--------------------------------------------------------
 %--------------------------------------------------------
-\subsection{EA instance}
-\label{sec:Experiment}
-Here we will describe the instance of Evolutionary Algorithm used.
-%todo keep the list in one column
+\subsection{Evolution of robot controllers}
+\label{sec:EvolutionOfRobotControllers}
+In order to design the LGP-based programs to control the robot, a simple steady-state Genetic Algorithm (GA) was applied -- see Figure XXX
+\todo{(pseudokod jednoducheho steady-state GA - viz moje DP)}.
+
+The parameters of the GA are as follows.
 \begin{itemize}
 	\item Population size is set to 1000
-	\item Steady-state population model is used(the better half of the population is kept, the other one replaced).
+	\item Steady-state population model is used (the better half of the population is kept, the other one replaced).
 	\item The genotype length is fixed to 36 instructions.
 	\item A custom genetic crossover based on uniform crossover is used (Figure~\ref{fig:Crossover}).
 	\item The probability of crossover is 80\%.
 	\item The mutation is set with 100\% probability and changes only one gene.
 	\item Parent selection is implemented by tournament of size 2.
 \end{itemize}
+
+
+Each chromosome in the GA represents a single program (a candidate controller for the robot).
+The structure of the chromosome is illustrated in Figure XXX
+The chromosome has fixed length (36 genes).
+It is split into three smaller subprograms(init, event, main) that have fixed lengths, too.
+Each gene represents a single instruction.
+The instruction is a triplet and consists of the instruction name and two numbers.
+
+The GA applies both the crossover and mutation operators which work as follows.
+The crossover operates on the level of subprograms.
+It is based on the uniform crossover with $p = 0.5$ but instead of swapping the genes, it swaps the whole subprograms (Figure~\ref{fig:Crossover}).
+
+The mutation operates on the level of genes~(instructions).
+There is a 80\% chance of mutating the instruction values.
+There is a 20\% chance of replacing the instruction with a new, randomly generated one.
+When mutating the instruction values, there is en equal chance to mutate the first or the second argument.
+The mutation of the values is implemented as a generating a random value from the specified range of values.
+
+The fitness evaluation of the candidate programs is performed as follows.
+For each program a new simulation is run.
+During the simulation, the program is being executed and it controls the robot's model (as explained in the previous section).
+Every second of the simulation, the distance between the robot and each of the reference points is recorded.
+The program fitness is then calculated as the \todo{nejmensi ctverce}.
+This way, the evolution minimizes the minimal distance between the robot and each of the reference points.
+\todo{napr. zkusit naimplementovat metodu nejmensich ctvercu, at jsme presni a nevymyslime si vysledky}
+
 
 %todo: image placement
 \begin{figure}[t]
@@ -270,7 +299,7 @@ They definitely exhibited some degree of movement towards the reference points, 
 This is mainly because the locomotion pattern is expressed as a list of hardcoded instructions with constant values.
 So, if the training environment had the reference points placed on a spiral, the program itself is evolved to move generally in a spiral.
 
-If a different approach was used, for example using more input values coming either from oscillators with different frequencies or some sensory information(rotation of joints), the programs could then evolve a universal locomotion pattern that would be only adjusted with the information about direction to the next reference point.
+If a different approach was used, for example using more input values coming either from oscillators with different frequencies or some sensory information (rotation of joints), the programs could then evolve a universal locomotion pattern that would be only adjusted with the information about direction to the next reference point.
 
 %todo: image placement
 \begin{figure}[t]
