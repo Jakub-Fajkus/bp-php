@@ -145,10 +145,11 @@ As the program is being executed it modifies the values of the registers, reads 
 %--------------------------------------------------------
 %--------------------------------------------------------
 
-\section{Experiments setup}
+\section{Evolution of Robot Controller using LGP}
 \label{sec:ExperimentsSetup}
-There is a prepared scene in the simulator containing a set of reference points placed on a spiral(Figure~\ref{fig:SpiralTop}).
-The robot model is given a task to move from point to point at given order and to get as close as possible to each of them.
+In order to evolve a robot controller, the LGP concept was combined with an evolutionary algorithm and the Mujoco simulator\cite{Todorov2012} was used to evaluate the candidate programs using a built-in interpreter.
+There is a prepared scene in the simulator containing a set of reference points defining a spiral (Figure~\ref{fig:SpiralTop}).
+The robot model is given a task(ising the evolved LGP programs) to move from point to point at given order and to get as close as possible to each of them.
 This way the robot moves on a predefined trajectory.
 
 %todo: image placement
@@ -163,68 +164,61 @@ The robot's task is to navigate through the scene and get as close as possible t
 \label{fig:SpiralTop}
 \end{figure}
 
+\todo{vlozit obrazek detailu robota a popsat jej}
 
-\subsection{Robot control}
-The robot is controlled by a program that is composed of instructions.
-The simulator contains an interpret which executes the instructions and controls the robot actuated joints(Figure~\ref{fig:Interpret}).
+\subsection{LGP-Based Robot Controller}
+\label{subsec:lgp-basedRobotController}
+The programs (which are the subject of evolution using LGP) are composed of application-specific instruction of the form \texttt{COPY ARG1 ARG2}, where COPY is the instruction name, ARG1 is source register and ARG2 is the destination register.
+Each register has it's unique identification called \texttt{index} which is used in a instruction's argument.
+As the program is being executed, it copies values from input or constant registers into the output registers.
+
+The interpreter has 11 constant registers(indices 0–10) holding integer values from -5 to 5, 2 input registers(indices 11–12) and 3 output registers(indices 13–15).
+The values of the input registers depend on the direction to the next reference point.
+Each output register is connected with exactly one robot's joint and it's value is converted into a force that is applied in the joint.
+
+For the purposes of this work a concept of subprograms has been introduced which works as follows.
+
+The individual's genotype(representing the whole program) is \todo{split or splitted?} into 3 smaller subprograms - \texttt{init}, \texttt{event} and \texttt{main}.
+
+The \texttt{main} subprogram is being run in an endless loop during the simulation.
+Only one instruction is executed at a time.
+Period of 0.3 seconds between instructions is used.
+
+The \texttt{init} subprogram is executed at the start of the simulation and its purpose is to set the initial rotation of all robot's joints.
+All instructions of the init program are executed in a single time.
+After that, the main subprogram is paused for one second to give the robot's joints time to finish the rotation.
+
+The \texttt{event} subprogram is run each time the robot gets close enough to some of the reference points(but only once for each point).
+It's purpose is to change the robot's joints rotation as a preparation to move to the next reference point.
+The event subprogram is executed in a single time and the main subprogram is paused as well as in the \texttt{init} subprogram.
+
+A schema of the interpreter is at Figure~\ref{fig:Interpret}.
+Each 0.3 seconds a instruction from the \texttt{main} subprogram is executed.
+The first argument is an input or constant register index, the other one is the output register index.
+A value from constant or input register is then copied into the output register.
+
+Each of the interpret's output registers is mapped to exactly one robot's joint.
+Each time an instruction is executed, the values from the output registers are read.
+The values are then used as a control signal to the simulator for each joint in the model.
+A value(control signal) holds two pieces of information.
+The sign of the value is used to determine the direction of the force applied(clockwise, counterclockwise).
+The absolute value of the number is used to determine the \todo{magnitude} of the force.
+Based on those signals and the model parameters the simulator calculates a force that will be applied in the joint.
+
 
 %todo: image placement
 \begin{figure}[t]
 	\centering
 	{\includegraphics[width=20em]{interpret.png}}
 	\caption{
-	Schematic view of the interpret.
-	The only instruction type is the SRE instruction.
-	The first argument is a input register index and the second is the output register index.
-	The interpret has 11 constant registers(indices 0--10), 2 input registers(indices 11--12) and 3 output registers(indices 13--15).
-	The input registers values depend on the direction to the next reference point(Figure~\ref{fig:ReferenceDirection}).
-	Every 0.3 seconds a instruction is fetched and its arguments are used as register indices.
-	A value from constant or input register is then copied into the output register.
+	Schematic view of the interpreter.
 	The situation depicted there is as follows.
-	The instructions is fetched with values of 11 and 14.
+	The instruction to be executed has arguments with values of 11 and 14.
 	A value from input register with index 11 is copied into the output register with index 14.
 	}
 	\label{fig:Interpret}
 \end{figure}
 
-The interpret works only with natural numbers ranging from -5 to 5.
-It contains predefined set of registers.
-There are 11 immutable constant registers containing all possible constants(-5 to 5).
-Next, there are two immutable input registers containing information about the direction to the next reference point(Figure~\ref{fig:ReferenceDirection}).
-One of them contains the opposite value of the other.
-
-%todo: image placement
-\begin{figure}[t]
-	\centering
-	{\includegraphics[width=18em]{reference_direction_angles.png}}
-	\caption{
-		The angle between the robot's heading vector(red arrow) and the vector to the next reference point(green arrow) is mapped to interpret inputs(-5 to 5).
-		The reference point showed there(blue circle) would result in input value of 2 in one input register and -2 in the other input register.
-	}
-	\label{fig:ReferenceDirection}
-\end{figure}
-
-There are write only registers, each of them is directly mapped to one of the robot's joints.
-The value in the output register is then converted into a force applied at the joint.
-
-There is only one type of instruction.
-This instruction copies a value from the input or constant register into the output register.
-The instruction is composed of two values.
-The first is the identification of the input or constant register.
-The other is the identification of the output register.
-
-The program itself is split into 3 smaller subprograms - init, event and main.
-The init subprogram is executed at the start of the simulation and its purpose is to set the initial "pose" of the robot.
-All instructions of the init program are executed in a single time.
-After that there is a small, one second waiting time to give the robot time to establish the "pose".
-
-The event subprogram is run each time the robot gets close enough to some of the reference points(but only once for each point).
-It's purpose is to change the robot's "pose" as a preparation to move to the next reference point.
-The event subprogram is executed in a single time and the waiting time is used as well as in the init subprogram.
-
-The main subprogram is being run in an endless loop during the simulation.
-Only one instruction is executed at a time.
-Period of 0.3 seconds is used.
 
 
 %--------------------------------------------------------
@@ -239,7 +233,7 @@ Here we will describe the instance of Evolutionary Algorithm used.
 	\item Population size is set to 1000
 	\item Steady-state population model is used(the better half of the population is kept, the other one replaced).
 	\item The genotype length is fixed to 36 instructions.
-	\item A custom genetic crossover based on uniform crossover is used(Figure~\ref{fig:Crossover}).
+	\item A custom genetic crossover based on uniform crossover is used (Figure~\ref{fig:Crossover}).
 	\item The probability of crossover is 80\%.
 	\item The mutation is set with 100\% probability and changes only one gene.
 	\item Parent selection is implemented by tournament of size 2.
@@ -271,7 +265,7 @@ The evolution was run 20 times.
 The typical progress of fitness values can be seen in Figure~\ref{fig:FitnessGraph}.
 The maximum fitness possible in the given amount of time is around 280 and the best solution found had 255.9.
 
-Some of the best results were evaluated for a different trajectories(Figure~\ref{fig:PostExperimentTests}), however the behaviour was not satisfying.
+Some of the best results were evaluated for a different trajectories (Figure~\ref{fig:PostExperimentTests}), however the behaviour was not satisfying.
 They definitely exhibited some degree of movement towards the reference points, but the locomotion pattern encoded in the program was not flexible enough to cope with different environment.
 This is mainly because the locomotion pattern is expressed as a list of hardcoded instructions with constant values.
 So, if the training environment had the reference points placed on a spiral, the program itself is evolved to move generally in a spiral.
