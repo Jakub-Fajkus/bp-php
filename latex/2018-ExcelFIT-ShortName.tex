@@ -1,9 +1,8 @@
 \documentclass{ExcelAtFIT}
 \usepackage[T1]{fontenc}
+\usepackage{siunitx}
 %\documentclass[czech]{ExcelAtFIT} % when writing in CZECH
 %\documentclass[slovak]{ExcelAtFIT} % when writing in SLOVAK
-
-%\todo{opravit citaci pro [3]}
 
 %--------------------------------------------------------
 %--------------------------------------------------------
@@ -51,15 +50,15 @@
 %--------------------------------------------------------
 
 \Abstract{
-The aim of this work is to utilize Evolutionary Algorithms for finding a computer programs in order to control simple robot models.
+The aim of this work is to utilize Evolutionary Algorithms for finding computer programs in order to control simple robot models.
 A model is placed in the physical simulation where it is supposed to move along given specified reference points.
 The program that controls the model consists of application specific instructions and its design is inspired by Linear Genetic Programming.
 The program has an information about a direction to the next reference point.
 }
 
 \Teaser{
-	\TeaserImage{placeholder.pdf}
-	\TeaserImage{placeholder.pdf}
+	\TeaserImage{3leg_detail.png}
+	\TeaserImage{3leg_top_view.png}
 	\TeaserImage{placeholder.pdf}
 }
 
@@ -84,11 +83,11 @@ The program has an information about a direction to the next reference point.
 %--------------------------------------------------------
 %--------------------------------------------------------
 \section{Introduction}
-In the area of robotics it is very important to be able to create prototypes quickly and cheaply.
-For this purpose it is beneficial to use computer models and simulation when designing the \todo{structure?} of the robot.
+In the area of robotics, it is very important to be able to create prototypes quickly and cheaply.
+For this purpose, it is beneficial to use computer models and simulation when designing the structure of the robot.
 There are many ways to control the robot depending on the given requirements.
 It can be, for example, controlled by instructions of an imperative language~\cite{Wolff2007}, finite state machines~\cite{Hodgins1996}, classical control theory~\cite{Mita1984} or artificial neural networks~\cite{Reil2002}~\cite{Lewis1996}.
-For a fast prototyping we can use Evolutionary Algorithms to evolve the robot control.
+For a fast prototyping, we can use Evolutionary Algorithms to evolve the robot control.
 
 The problem to solve in this work is defined as follows.
 We have a model of a simple robot and we want to evolve a program that is based on instructions of an imperative language.
@@ -98,15 +97,33 @@ The program that controls the model is being evolved using Evolutionary Algorith
 
 There is a number of works using Evolutionary Algorithms to evolve controllers based on artificial neural networks~\cite{Randall1992}~\cite{Farooq2013}.
 There are also works that are using Genetic Programming~\cite{Macedo2017}.
-The most similar work to to this one is the work of Wolff and Wahde~\cite{Wolff2007}.
+The most similar work to this one is the work of Wolff and Wahde~\cite{Wolff2007}.
 They are using Linear Genetic Programming to evolve a bipedal locomotion of a humanoid model.
 
 The research conducted in this paper is primarily motivated by~\cite{Wolff2007} where a successful evolution of
-control algorithms was proposed for a specific humanoid model. In this paper we present an extended concept which allows evolutionary
-design of controllers for various creatures with different number of legs. The goal is to evolve a program using a very reduced intruction
+control algorithms was proposed for a specific humanoid model.
+In this paper, we present an extended concept which allows evolutionary design of controllers for various creatures with a different number of legs.
+The goal is to evolve a program using a very reduced introduction.
 set in which several sub-programs can be evolved automatically and simultaneously in order to perform specific motions of the model.
-Our approach will be evaluated using several trajectories the model should follow in a simulated environment. The detail of the proposed
-system will be described in Section \todo{ref na vysvetleni v sekci}
+Our approach will be evaluated using several trajectories the model should follow in a simulated environment.
+The detail of the proposed system will be described in Section~\ref{sec:EvolutionOfRobotControllers}.
+
+Here, we will describe the robot's model structure~(Figure~\ref{fig:ThreeLegDetail}).
+
+The robot model has three legs(brown), all connected via joints with the core(blue) of the robot.
+The joints are located under the purple spheres.
+All of the joints are actuated and their range is limited within \ang{50}.
+The core of the robot contains a head(red), that is used for calculating the distance between the robot and the reference points.
+The purple spheres are used for collision detection~--~if they collide with the ground, the simulation is terminated.
+
+\begin{figure}[h]
+	\centering
+	{\includegraphics[height=19em]{3leg_detail.png}}
+	\caption{
+	Detail of the three leg robot.
+	}
+	\label{fig:ThreeLegDetail}
+\end{figure}
 
 %--------------------------------------------------------
 %--------------------------------------------------------
@@ -114,10 +131,10 @@ system will be described in Section \todo{ref na vysvetleni v sekci}
 %--------------------------------------------------------
 \section{Linear Genetic Programming}
 \label{sec:theory}
-Here we will discuss a brief introduction to Linear Genetic Programming (LGP), based on~\cite{Brameier2010}.
-LGP is a special variant of the Genetic Programming\todo{Jon Koza}.
+Here we will discuss a brief introduction to Linear Genetic Programming~(LGP), based on~\cite{Brameier2010}.
+LGP is a special variant of the Genetic Programming~\cite{Koza1992}.
 
-Genetic Programming (GP) solves a modelling problem.
+Genetic Programming~(GP) solves a modelling problem.
 That means we know a set of inputs to a system and the outputs it should produce.
 But we do not have the system that will compute the inputs and tell us the output.
 When solving a control problem, we are looking for such a function, that will lead to the desired behavior.
@@ -127,15 +144,14 @@ In GP we are evolving computer program $P$ that represents a function: $f : I^n 
 The genotype space $G$ in GP includes all programs that can be composed of elements of a given programming language $L$.
 The programming language $L$ is defined by an instruction set and a terminal set.
 An interpreter translates the genotype representation into the phenotype, i.e.\ the behavior of the robot.
-The phenotype is then executed and it's fitness is evaluated using a software physical simulator.
-\todo{fitness se meri metodou nejmensich ctvercu! - nekam s tim :D}
+The phenotype is then executed and its fitness is evaluated using a software physical simulator.
 
 The original GP uses trees that correspond to expressions from a functional programming language.
 The nodes of the tree represent functions, while leaves represent input values or constants.
 
 The Linear Genetic Programming is a variant where the programs are composed of a sequence of instructions from an imperative language or a machine code.
 Each program has available a predefined set of registers that can hold constants as well as results of instructions.
-Those registers are often divided into groups: input registers, output registers and calculation registers.
+Those registers are often divided into groups: input registers, output registers, and calculation registers.
 The instructions are composed of an operation and one or more operands.
 The operands may be registers or constants.
 As the program is being executed it modifies the values of the registers, reads the inputs and writes the outputs.
@@ -148,37 +164,35 @@ As the program is being executed it modifies the values of the registers, reads 
 \section{Evolution of Robot Controller using LGP}
 \label{sec:ExperimentsSetup}
 In order to evolve a robot controller, the LGP concept was combined with an evolutionary algorithm and the Mujoco simulator\cite{Todorov2012} was used to evaluate the candidate programs using a built-in interpreter.
-There is a prepared scene in the simulator containing a set of reference points defining a spiral (Figure~\ref{fig:SpiralTop}).
-The robot model is given a task (using the evolved LGP programs) to move from point to point at given order and to get as close as possible to each of them.
+There is a prepared scene in the simulator containing a set of reference points defining a spiral~(Figure~\ref{fig:SpiralTop}).
+The robot model is given a task~(using the evolved LGP programs) to move from point to point at given order and to get as close as possible to each of them.
 This way the robot moves on a predefined trajectory.
 
 %todo: image placement
 %todo: change the image to containt he 3 leg thingy and where the reference points are not all over the place
-\begin{figure}[t]
+\begin{figure}[h]
 \centering
-{\includegraphics[height=19em]{spiral_top_v2.png}}
+{\includegraphics[height=19em]{3leg_top_view.png}}
 \caption{Top view at the scene in the simulator.
-We can see a spiral on which are placed the reference points (yellow spheres).
+We can see a spiral on which are placed the reference points~(yellow spheres).
 The robot's model is brown.
 }
 \label{fig:SpiralTop}
 \end{figure}
 
-\todo{vlozit obrazek detailu robota a popsat jej}
-
 \subsection{LGP-Based Robot Controller}
 \label{subsec:lgp-basedRobotController}
-The programs (which are the subject of evolution using LGP) are composed of application-specific instruction of the form \texttt{COPY ARG1 ARG2}, where \texttt{COPY} is the instruction name, \texttt{ARG1} is source register and \texttt{ARG2} is the destination register.
-Each register has it's unique identification called \textit{index} which is used in a instruction's argument.
+The programs~(which are the subject of evolution using LGP) are composed of an application-specific instruction of the form \texttt{COPY ARG1 ARG2}, where \texttt{COPY} is the instruction name, \texttt{ARG1} is source register and \texttt{ARG2} is the destination register.
+Each register has it's unique identification called \textit{index} which is used in an instruction's argument.
 As the program is being executed, it copies values from input or constant registers into the output registers.
 
-The interpreter has 11 constant registers (indices 0–10) holding integer values from -5 to 5, 2 input registers (indices 11–12) and 3 output registers (indices 13–15).
+The interpreter has 11 constant registers~(indices 0–10) holding integer values from -5 to 5, 2 input registers~(indices 11–12) and 3 output registers~(indices 13–15).
 The values of the input registers depend on the direction to the next reference point.
-Each output register is connected with exactly one robot's joint and it's value is converted into a force that is applied in the joint.
+Each output register is connected with exactly one robot's joint and its value is converted into a force that is applied in the joint.
 
-For the purposes of this work a concept of subprograms has been introduced which works as follows.
+For the purposes of this work, a concept of subprograms has been introduced which works as follows.
 
-The individual's genotype (representing the whole program) is split into 3 smaller subprograms - \textit{init}, \textit{event} and \textit{main}.
+The individual's genotype~(representing the whole program) is split into 3 smaller subprograms - \textit{init}, \textit{event} and \textit{main}.
 
 The \textit{main} subprogram is being run in an endless loop during the simulation.
 Only one instruction is executed at a time.
@@ -188,37 +202,41 @@ The \textit{init} subprogram is executed at the start of the simulation and its 
 All instructions of the init program are executed in a single time.
 After that, the main subprogram is paused for one second to give the robot's joints time to finish the rotation.
 
-The \textit{event} subprogram is run each time the robot gets close enough to some of the reference points (but only once for each point).
-It's purpose is to change the robot's joints rotation as a preparation to move to the next reference point.
+The \textit{event} subprogram is run each time the robot gets close enough to some of the reference points~(but only once for each point).
+Its purpose is to change the robot's joints rotation as a preparation to move to the next reference point.
 The event subprogram is executed in a single time and the main subprogram is paused as well as in the \textit{init} subprogram.
 
-A schema of the interpreter is at Figure~\ref{fig:Interpret}.
-Each 0.3 seconds a instruction from the \textit{main} subprogram is executed.
+A schema of the interpreter is in Figure~\ref{fig:Interpret}.
+Each 0.3 seconds an instruction from the \textit{main} subprogram is executed.
 The first argument is an input or constant register index, the other one is the output register index.
 A value from constant or input register is then copied into the output register.
 
-Each of the interpret's output registers is mapped to exactly one robot's joint.
+Each of the interpreter's output registers is mapped to exactly one robot's joint.
 Each time an instruction is executed, the values from the output registers are read.
 The values are then used as a control signal to the simulator for each joint in the model.
-A value (control signal) holds two pieces of information.
-The sign of the value is used to determine the direction of the force applied (clockwise, counterclockwise).
-The absolute value of the number is used to determine the \todo{magnitude} of the force.
+A value~(control signal) holds two pieces of information.
+The sign of the value is used to determine the direction of the force applied~(clockwise, counterclockwise).
+The absolute value of the number is used to determine the magnitude of the force.
 Based on those signals and the model parameters the simulator calculates a force that will be applied in the joint.
 
 
 %todo: image placement
-\begin{figure}[t]
+\begin{figure}[h]
 	\centering
 	{\includegraphics[width=20em]{interpret.png}}
 	\caption{
 	Schematic view of the interpreter.
-	The situation depicted there is as follows.
+	The situation depicted here is as follows.
 	The instruction to be executed has arguments with values of 11 and 14.
-	A value from input register with index 11 is copied into the output register with index 14.
+	A value from the input register with index 11 is copied into the output register with index 14.
 	}
 	\label{fig:Interpret}
 \end{figure}
 
+%--------------------------------------------------------
+%--------------------------------------------------------
+%--------------------------------------------------------
+%--------------------------------------------------------
 
 
 %--------------------------------------------------------
@@ -227,61 +245,78 @@ Based on those signals and the model parameters the simulator calculates a force
 %--------------------------------------------------------
 \subsection{Evolution of robot controllers}
 \label{sec:EvolutionOfRobotControllers}
-In order to design the LGP-based programs to control the robot, a simple steady-state Genetic Algorithm (GA) was applied -- see Figure XXX
-\todo{(pseudokod jednoducheho steady-state GA - viz moje DP)}.
+In order to design the LGP-based programs to control the robot, a simple steady-state Genetic Algorithm~(GA) was applied -- see Figure~\ref{fig:SteadyStateAlgorithm}.
 
 The parameters of the GA are as follows.
 \begin{itemize}
 	\item Population size is set to 1000
-	\item Steady-state population model is used (the better half of the population is kept, the other one replaced).
+	\item A steady-state population model is used~(the better half of the population is kept, the other one is replaced).
 	\item The genotype length is fixed to 36 instructions.
-	\item A custom genetic crossover based on uniform crossover is used (Figure~\ref{fig:Crossover}).
+	\item A custom genetic crossover based on the uniform crossover is used~(Figure~\ref{fig:Crossover}).
 	\item The probability of crossover is 80\%.
 	\item The mutation is set with 100\% probability and changes only one gene.
-	\item Parent selection is implemented by tournament of size 2.
+	\item Parent selection is implemented by a tournament of size 2.
 \end{itemize}
 
+\begin{figure}[h]
+	\centering
+	{\includegraphics[width=21em]{ss_algo.png}}
+	\caption{
+	Steady-state algorithm
+	}
+	\label{fig:SteadyStateAlgorithm}
+\end{figure}
 
-Each chromosome in the GA represents a single program (a candidate controller for the robot).
-The structure of the chromosome is illustrated in Figure XXX
-The chromosome has fixed length (36 genes).
+Each chromosome in the GA represents a single program~(a candidate controller for the robot).
+The structure of the chromosome is illustrated in Figure~\ref{fig:Genotype}.
+The chromosome has fixed length~(36 genes).
 It is split into three smaller subprograms(init, event, main) that have fixed lengths, too.
 Each gene represents a single instruction.
 The instruction is a triplet and consists of the instruction name and two numbers.
 
+\begin{figure}[h]
+	\centering
+	{\includegraphics[width=21em]{genotype.png}}
+	\caption{
+		The structure of the genotype.
+	}
+	\label{fig:Genotype}
+\end{figure}
+
 The GA applies both the crossover and mutation operators which work as follows.
+
 The crossover operates on the level of subprograms.
-It is based on the uniform crossover with $p = 0.5$ but instead of swapping the genes, it swaps the whole subprograms (Figure~\ref{fig:Crossover}).
+It is based on the uniform crossover with $p = 0.5$ but instead of swapping the genes, it swaps the whole subprograms~(Figure~\ref{fig:Crossover}).
 
 The mutation operates on the level of genes~(instructions).
-There is a 80\% chance of mutating the instruction values.
+There is an 80\% chance of mutating the instruction values.
 There is a 20\% chance of replacing the instruction with a new, randomly generated one.
-When mutating the instruction values, there is en equal chance to mutate the first or the second argument.
-The mutation of the values is implemented as a generating a random value from the specified range of values.
+When mutating the instruction values, there is an equal chance to mutate the first or the second argument.
+When a value is mutated, it is replaced by a new value from the specified range of values.
 
 The fitness evaluation of the candidate programs is performed as follows.
-For each program a new simulation is run.
-During the simulation, the program is being executed and it controls the robot's model (as explained in the previous section).
+For each program, a new simulation is run.
+During the simulation, the program is being executed and it controls the robot's model~(as explained in the previous section).
 Every second of the simulation, the distance between the robot and each of the reference points is recorded.
 The program fitness is then calculated as a sum of scores for all reference points.
-A score $S$ is calculated as $S = 40 - D$, where $D$ is a distance between the robot and a reference point.
-Given 9 reference points on the spiral, the maximum fitness is set to 360.
+A score $S$ is calculated as $S = 40 - D_{min}$, where $D_{min}$ is the minimal distance recorded between the robot and a reference point.
 The minimal value of the score for each point is set to 0.
-This way, the evolution maximises the score and thus minimises the distance between the robot and each of the reference points.
+Given 9 reference points on the spiral, the maximum fitness is set to 360.
+This way, the evolution maximizes the score and thus minimizes the distance between the robot and each of the reference points.
 
-%todo: image placement
-\begin{figure}[t]
+\begin{figure}[h]
 	\centering
 	{\includegraphics[width=18em]{crossover.png}}
 	\caption{
-	A custom genetic crossover is used.
-	It is based on uniform crossover, but it operates on the subprograms level.
-	The genome of parents is divided into the subprograms and then there is a 1:1 chance to to inherit the subprogram from parent A or B.
-	Here, the crossover of parents A and B resulted into offsprings C and D.
+	Here, the crossover of parents A and B resulted in offsprings C and D.
 	In this case, only the init subprograms were swapped.
 	}
 	\label{fig:Crossover}
 \end{figure}
+
+Instead of the scoring system, one could use the method of Least squares.
+But the scoring system provides a way to add another flexibility into the fitness value calculation.
+This way we can, for example, assign a higher fitness value to reference points that are more distant from the center of the spiral.
 
 
 
@@ -293,16 +328,16 @@ This way, the evolution maximises the score and thus minimises the distance betw
 \section{Results}
 The evolution was run 20 times.
 The typical progress of fitness values can be seen in Figure~\ref{fig:FitnessGraph}.
+
 The maximum fitness possible in the simulation was set to 360, although the simulation time was not enough to gain the maximum fitness value.
 The best solution found had fitness recorded during the simulation equal to 255.9.
 After all the evolutionary runs, the best solution was evaluated over longer simulation time and its fitness was equal to 330.9, which is 92\% of the maximum fitness value possible.
 
-%todo: image placement
-\begin{figure}[t]
+\begin{figure}[h]
 	\centering
 	{\includegraphics[height=17em]{runFitnessGraph.png}}
 	\caption{
-	A typical progress of fitness values in a evolutionary run.
+		A typical progress of fitness values in an evolutionary run.
 	}
 	\label{fig:FitnessGraph}
 \end{figure}
@@ -318,8 +353,15 @@ After all the evolutionary runs, the best solution was evaluated over longer sim
 %\textbf{[Paper Summary]} What was the paper about, then? What the reader needs to remember about it?
 This work showed an usage of Evolutionary Algorithms for finding a program for a robot control.
 
-%\section*{Acknowledgements}
-%I would like to thank my supervisor X. Y. for his help.
+The results show that the evolution successfully found a relatively good solution to the problem.
+Even though the time during the simulation was limited and the robot could not finish it in given amount of time, when given enough time the best solution was able to finish the simulation successfully.
+That is, in other words, the robot continued following the part of the spiral trajectory that it never saw before.
+
+
+
+
+\section*{Acknowledgements}
+I would like to thank my supervisor Michal Bidlo for his time and valuable advices.
 
 %--------------------------------------------------------
 %--------------------------------------------------------
