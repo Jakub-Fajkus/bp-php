@@ -41,7 +41,7 @@
 
 \Keywords{Evolutionary computation  --- Linear Genetic Programming --- Robotics}
 
-\Supplementary{\href{http://youtu.be/S3msCdn3fNM}{Demonstration Video} --- \href{http://excel.fit.vutbr.cz/}{Downloadable Code}}
+%\Supplementary{\href{http://youtu.be/S3msCdn3fNM}{Demonstration Video} --- \href{http://excel.fit.vutbr.cz/}{Downloadable Code}}
 
 
 %--------------------------------------------------------
@@ -59,7 +59,6 @@ The program has an information about a direction to the next reference point.
 \Teaser{
 	\TeaserImage{3leg_detail.png}
 	\TeaserImage{3leg_top_view.png}
-	\TeaserImage{placeholder.pdf}
 }
 
 
@@ -110,10 +109,10 @@ The detail of the proposed system will be described in Section~\ref{sec:Evolutio
 
 Here, we will describe the robot's model structure~(Figure~\ref{fig:ThreeLegDetail}).
 
-The robot model has three legs(brown), all connected via joints with the core(blue) of the robot.
+The robot model has three legs~(brown), all connected via joints with the core~(blue).
 The joints are located under the purple spheres.
 All of the joints are actuated and their range is limited within \ang{50}.
-The core of the robot contains a head(red), that is used for calculating the distance between the robot and the reference points.
+The core of the robot contains a head~(red), that is used for calculating the distance between the robot and the reference points.
 The purple spheres are used for collision detection~--~if they collide with the ground, the simulation is terminated.
 
 \begin{figure}[h]
@@ -168,14 +167,11 @@ There is a prepared scene in the simulator containing a set of reference points 
 The robot model is given a task~(using the evolved LGP programs) to move from point to point at given order and to get as close as possible to each of them.
 This way the robot moves on a predefined trajectory.
 
-%todo: image placement
-%todo: change the image to containt he 3 leg thingy and where the reference points are not all over the place
 \begin{figure}[h]
 \centering
 {\includegraphics[height=19em]{3leg_top_view.png}}
 \caption{Top view at the scene in the simulator.
-We can see a spiral on which are placed the reference points~(yellow spheres).
-The robot's model is brown.
+We can see a spiral on which are placed the reference points~(yellow circles).
 }
 \label{fig:SpiralTop}
 \end{figure}
@@ -183,7 +179,7 @@ The robot's model is brown.
 \subsection{LGP-Based Robot Controller}
 \label{subsec:lgp-basedRobotController}
 The programs~(which are the subject of evolution using LGP) are composed of an application-specific instruction of the form \texttt{COPY ARG1 ARG2}, where \texttt{COPY} is the instruction name, \texttt{ARG1} is source register and \texttt{ARG2} is the destination register.
-Each register has it's unique identification called \textit{index} which is used in an instruction's argument.
+Each register has its unique identification called \textit{index} which is used in an instruction's argument.
 As the program is being executed, it copies values from input or constant registers into the output registers.
 
 The interpreter has 11 constant registers~(indices 0–10) holding integer values from -5 to 5, 2 input registers~(indices 11–12) and 3 output registers~(indices 13–15).
@@ -246,8 +242,8 @@ Based on those signals and the model parameters the simulator calculates a force
 \subsection{Evolution of robot controllers}
 \label{sec:EvolutionOfRobotControllers}
 In order to design the LGP-based programs to control the robot, a simple steady-state Genetic Algorithm~(GA) was applied -- see Figure~\ref{fig:SteadyStateAlgorithm}.
-
 The parameters of the GA are as follows.
+
 \begin{itemize}
 	\item Population size is set to 1000
 	\item A steady-state population model is used~(the better half of the population is kept, the other one is replaced).
@@ -357,7 +353,7 @@ The results show that the evolution successfully found a relatively good solutio
 Even though the time during the simulation was limited and the robot could not finish it in given amount of time, when given enough time the best solution was able to finish the simulation successfully.
 That is, in other words, the robot continued following the part of the spiral trajectory that it never saw before.
 
-
+The future work will aim to evolve programs with emphasis on ability to follow before unseen trajectories.
 
 
 \section*{Acknowledgements}
