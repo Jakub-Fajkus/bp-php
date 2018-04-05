@@ -215,8 +215,6 @@ The sign of the value is used to determine the direction of the force applied~(c
 The absolute value of the number is used to determine the magnitude of the force.
 Based on those signals and the model parameters the simulator calculates a force that will be applied in the joint.
 
-
-%todo: image placement
 \begin{figure}[h]
 	\centering
 	{\includegraphics[width=20em]{interpret.png}}
@@ -330,6 +328,7 @@ The best solution found had fitness recorded during the simulation equal to 255.
 After all the evolutionary runs, the best solution was evaluated over longer simulation time and its fitness was equal to 330.9, which is 92\% of the maximum fitness value possible.
 
 In the following paragraph, we will briefly discuss the best solution found.
+
 The best solution utilizes the subprograms.
 It uses the input registers containing the direction to the next reference point.
 Normally, the robot moves counterclockwise on a spiral trajectory.
@@ -337,7 +336,7 @@ But when the information about the direction is not present, the robot exhibits 
 Instead of following the spiral counterclockwise, it moves clockwise in an almost perfect circle.
 We can say that the information about the direction to the next reference point is acting as a counterforce against the clockwise movement.
 This way, the program found a balance between moving right(clockwise) and left(counterclockwise) to be able to follow the spiral trajectory.
-This can be supported with a fact that 1/6 of the instructions in the program were using the input registers.
+This can be supported by a fact that 1/6 of the instructions in the program were using the input registers.
 
 
 \begin{figure}[h]
@@ -361,11 +360,11 @@ This can be supported with a fact that 1/6 of the instructions in the program we
 This work showed an usage of Evolutionary Algorithms for finding a program for a robot control.
 
 The results show that the evolution successfully found a relatively good solution to the problem.
-The simulation time was limited and robot could not finish it in given amount of time.
+The simulation time was limited and the robot could not finish it in given amount of time.
 Despite that, when given enough time, the best solution was able to finish the simulation successfully.
 That is, in other words, the robot continued following the part of the spiral trajectory that it never saw before.
 
-The future work will aim to evolve programs with emphasis on ability to follow before unseen trajectories.
+The future work will aim to evolve programs with an emphasis on the ability to follow before unseen trajectories.
 
 
 \section*{Acknowledgements}
