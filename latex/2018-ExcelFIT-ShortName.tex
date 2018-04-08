@@ -35,7 +35,7 @@
 \PaperTitle{Evolution of programs controlling simple robot model}
 
 \Authors{Jakub Fajkus*}
-\affiliation{*%
+\affiliation{*%g
   \href{mailto:xfajku06@stud.fit.vutbr.cz}{xfajku06@stud.fit.vutbr.cz},
   \textit{Faculty of Information Technology, Brno University of Technology}}
 
@@ -52,6 +52,7 @@
 \Abstract{
 The aim of this work is to utilize Evolutionary Algorithms for finding computer programs in order to control simple robot models.
 A model is placed in the physical simulation where it is supposed to move along given specified reference points.
+The evolution is given a task to evolve a program that will result in a robot moving along a specified trajectory.
 The program that controls the model consists of application specific instructions and its design is inspired by Linear Genetic Programming.
 The program has an information about a direction to the next reference point.
 }
@@ -59,6 +60,7 @@ The program has an information about a direction to the next reference point.
 \Teaser{
 	\TeaserImage{3leg_detail.png}
 	\TeaserImage{3leg_top_view.png}
+	\TeaserImage{reference_direction_angles.png}
 }
 
 
@@ -109,6 +111,7 @@ The detail of the proposed system will be described in Section~\ref{sec:Evolutio
 
 Here, we will describe the robot's model structure~(Figure~\ref{fig:ThreeLegDetail}).
 
+A following robot model will be considered in the work.
 The robot model has three legs~(brown), all connected via joints with the core~(blue).
 The joints are located under the purple spheres.
 All of the joints are actuated and their range is limited within \ang{50}.
@@ -162,8 +165,8 @@ As the program is being executed it modifies the values of the registers, reads 
 
 \section{Evolution of Robot Controller using LGP}
 \label{sec:ExperimentsSetup}
-In order to evolve a robot controller, the LGP concept was combined with an evolutionary algorithm and the Mujoco simulator\cite{Todorov2012} was used to evaluate the candidate programs using a built-in interpreter.
-There is a prepared scene in the simulator containing a set of reference points defining a spiral~(Figure~\ref{fig:SpiralTop}).
+In order to evolve a robot controller, the LGP concept was combined with an evolutionary algorithm and the Mujoco simulator~\cite{Todorov2012} was used to evaluate the candidate programs using a built-in interpreter.
+A scene is prepared in the simulator consisting of a set of reference points defining a spiral~(Figure~\ref{fig:SpiralTop}).
 The robot model is given a task~(using the evolved LGP programs) to move from point to point at given order and to get as close as possible to each of them.
 This way the robot moves on a predefined trajectory.
 
@@ -183,7 +186,25 @@ Each register has its unique identification called \textit{index} which is used 
 As the program is being executed, it copies values from input or constant registers into the output registers.
 
 The interpreter has 11 constant registers~(indices 0–10) holding integer values from -5 to 5, 2 input registers~(indices 11–12) and 3 output registers~(indices 13–15).
-The values of the input registers depend on the direction to the next reference point.
+The values of the input registers depend on the direction to the next reference point as follows.
+
+The space around the robot is divided into circular sectors~(Figure \ref{fig:ReferenceDirection).
+The borders between the sectors are defined by an angle from the robot's heading vector.
+Each sector has a value of integer between -5 and 5.
+The value of the input registers depends on the value of the sector in which the next reference point is located.
+At the Figure~\ref{fig:ReferenceDirection} we can see a situation, where the robot(at the bottom) is heading to the top and the next reference(blue) is located in the sector with a value of 2.
+This number is inserted into the first input register.
+Next, the second register is filled with a value, that has an inverted sign(-2 in this case).
+
+\begin{figure}[h]
+	\centering
+	{\includegraphics[width=18em]{reference_direction_angles.png}}
+	\caption{
+		Calculation of the input register values.
+	}
+	\label{fig:ReferenceDirection}
+\end{figure}
+
 Each output register is connected with exactly one robot's joint and its value is converted into a force that is applied in the joint.
 
 For the purposes of this work, a concept of subprograms has been introduced which works as follows.
@@ -239,11 +260,11 @@ Based on those signals and the model parameters the simulator calculates a force
 %--------------------------------------------------------
 \subsection{Evolution of robot controllers}
 \label{sec:EvolutionOfRobotControllers}
-In order to design the LGP-based programs to control the robot, a simple steady-state Genetic Algorithm~(GA) was applied -- see Figure~\ref{fig:SteadyStateAlgorithm}.
+In order to design the LGP-based programs to control the robot, a simple steady-state Genetic Algorithm~(GA) was implemented -- see Figure~\ref{fig:SteadyStateAlgorithm}.
 The parameters of the GA are as follows.
 
 \begin{itemize}
-	\item Population size is set to 1000
+	\item Population size is set to 1000.
 	\item A steady-state population model is used~(the better half of the population is kept, the other one is replaced).
 	\item The genotype length is fixed to 36 instructions.
 	\item A custom genetic crossover based on the uniform crossover is used~(Figure~\ref{fig:Crossover}).
@@ -291,10 +312,17 @@ When a value is mutated, it is replaced by a new value from the specified range 
 The fitness evaluation of the candidate programs is performed as follows.
 For each program, a new simulation is run.
 During the simulation, the program is being executed and it controls the robot's model~(as explained in the previous section).
-Every second of the simulation, the distance between the robot and each of the reference points is recorded.
-The program fitness is then calculated as a sum of scores for all reference points.
-A score $S$ is calculated as $S = 40 - D_{min}$, where $D_{min}$ is the minimal distance recorded between the robot and a reference point.
-The minimal value of the score for each point is set to 0.
+For each of the reference points, a minimal distance $D_i$ between the point and the robot is recorded.
+$D_i = \min{F(R, P_i)}$, where $F$ denotes the distance function, $R$ is the robot position, $P_i$ is a reference point position and $i=1, \cdots N$, where $N$ is the number of reference points.
+
+For each reference point a score is calculated as follows:
+$$S_i=\left\{\begin{matrix}t - D_i&\mbox{ if }D_{i}\leq t\\ 0 &\mbox{ else }\end{matrix}\right$$
+
+The parameter $t$ is a threshold -- value that determines the minimal distance, at which the score is calculated.
+The fitness $f$ is then calculated as a sum of scores for all reference points:
+$$f=\sum_{i=1}^{N}S_i$$
+
+The threshold parameter was set to 40, based on the dimensions of the simulation and the robot itself.
 Given 9 reference points on the spiral, the maximum fitness is set to 360.
 This way, the evolution maximizes the score and thus minimizes the distance between the robot and each of the reference points.
 
@@ -302,16 +330,11 @@ This way, the evolution maximizes the score and thus minimizes the distance betw
 	\centering
 	{\includegraphics[width=18em]{crossover.png}}
 	\caption{
-	Here, the crossover of parents A and B resulted in offsprings C and D.
+	Here, the crossover of parents A and B resulted in offspring C and D\@.
 	In this case, only the init subprograms were swapped.
 	}
 	\label{fig:Crossover}
 \end{figure}
-
-Instead of the scoring system, one could use the method of Least squares.
-But the scoring system provides a way to add another flexibility into the fitness value calculation.
-This way we can, for example, assign a higher fitness value to reference points that are more distant from the center of the spiral.
-
 
 
 %--------------------------------------------------------
@@ -324,19 +347,19 @@ The evolution was run 20 times.
 The typical progress of fitness values can be seen in Figure~\ref{fig:FitnessGraph}.
 
 The maximum fitness possible in the simulation was set to 360, although the simulation time was not enough to gain the maximum fitness value.
-The best solution found had fitness recorded during the simulation equal to 255.9.
+The fitness of the best solution the GA was able to find was equal to 255.9.
 After all the evolutionary runs, the best solution was evaluated over longer simulation time and its fitness was equal to 330.9, which is 92\% of the maximum fitness value possible.
 
-In the following paragraph, we will briefly discuss the best solution found.
+The trajectory of the best solution can be seen in Figure~\ref{fig:FitnessGraph}.
 
-The best solution utilizes the subprograms.
-It uses the input registers containing the direction to the next reference point.
-Normally, the robot moves counterclockwise on a spiral trajectory.
-But when the information about the direction is not present, the robot exhibits a completely different behaviour.
-Instead of following the spiral counterclockwise, it moves clockwise in an almost perfect circle.
-We can say that the information about the direction to the next reference point is acting as a counterforce against the clockwise movement.
-This way, the program found a balance between moving right(clockwise) and left(counterclockwise) to be able to follow the spiral trajectory.
-This can be supported by a fact that 1/6 of the instructions in the program were using the input registers.
+\begin{figure}[h]
+	\centering
+	{\includegraphics[height=17em]{final_trajectory.png}}
+	\caption{
+		Trajectory of the best solution
+	}
+	\label{fig:FitnessGraph}
+\end{figure}
 
 
 \begin{figure}[h]
