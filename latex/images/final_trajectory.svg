@@ -47,7 +47,7 @@
      inkscape:window-width="1920"
      inkscape:window-height="1016"
      inkscape:window-x="0"
-     inkscape:window-y="1110"
+     inkscape:window-y="30"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata254">
@@ -14075,6 +14075,8 @@ gZQ6Wox8EnIAAAAASUVORK5CYII=
        height="571.5"
        width="515.14374"
        clip-path="url(#clipPath272)"
-       transform="translate(-138.98015,-192.43406)" />
+       transform="translate(-138.98015,-192.43406)"
+       inkscape:export-xdpi="150.06743"
+       inkscape:export-ydpi="150.06743" />
   </g>
 </svg>
