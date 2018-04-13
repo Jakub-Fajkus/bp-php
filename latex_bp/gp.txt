@@ -1,0 +1,128 @@
+Program induction(=modelling problem) - problém, při kterém hledáme program, který produkuje požadované výstupy, když má na vstupu konkrétní hodnoty.
+Symbolic regression = function identification - hledáme tvar a koeficienty funkce
+
+Genetické Programování - todo: zkonzultovat se state of the art
+======================
+
+Hledání počítačových programů ve stromové reprezentaci (funkcionální jazyk), které splňují dané očekávání.
+Populace obsahují stovky, tisíců až [nová čísla] jedinců.
+
+GP začíná s úvodní populací náhodně generovaných programů složených z funkcí a terminálů.
+Fukce mohou být standardní aritmetické operátory, matematické funkce, logické funkce ne aplikačně specifické instrukce.
+Každý program je vyhodnocen a je měřeno, jak dobře si vede - toto se nazývá fitness measure.
+Fitness funkci můžeme počítat mnoha způsoby a také se můžeme snažit o její minimalizaci nebo maximalizaci podle přirozenosti u daného problému.
+Typicky je každý program v populaci spuštěn nad sadou vstupů - "fitness cases" a jeho fitness je suma nebo průměr výsledků z každého case.
+V první generaci bude mít většina programů velmi nízkou fitness, ale některé programy ji mohou mít vyšší, a tyto programy jsou dále "exploitovány".
+Darwinovské principy přežití nejsilnějšího a sexuální křížení jsou použity pro vytvoření potomků ze současné populace.
+Křížení dvou rodičovským programů má za následek vytvoření dvou nových potomků.
+Rodičovské programy se typicky liší ve tvaru a velikosti.
+Potomci (programy) jsou složeni z podvýrazů (podstromy, subprogramy) z jejich rodičů.
+Tito potomci mají typicky jiný tvar a velikost než-li jejich rodiče.
+
+Intuitivně můžeme říci, že pokud jsou rodičovské programy efektivní v řešení problému, tak některé jejich části mají pozitivní vliv.
+Tím, že z rodičů tyto části náhodně vybereme a spojíme, můžeme získat ještě lepší řešení(program).
+Poté, co jsou dokončeny repreodukce a křížení, populace potomků nahradí starou populaci rodičů.
+Každý jedinec v nové generaci je opět ohodnocen, je mu přidělena fitness a celý proces se znovu opakuje.
+
+Tento proces je paralelní, decentralizovaný, neřízený zvenčí, a stav tohoto procesu závisí pouze na stavu populace.
+Tento algoritmus(proces) [bude produktovat populace počítačových programů], které budou vykazovat s ubíhajíícm časem stále lepší hodnoty fitness.
+Typicky se jako nejlepší řesení označuje nejlepší jedinec v jakékoli generaci daného běhu.
+Hiearchická struktura počítačových programů je důležitá vlastnost GP.
+Dynamická struktura a velikost programů je také velmi důležitá, neboť neomezuje možná řešení problému.
+Další vlastností GP je absence nebo malá role předzpracování vstupů a dodatečné úpravy výstupů.
+Sktruktury v GP jsou ativní - reprezentují programy a je možné je spouštět v jejichaktuální formě.
+GP je peradigma (metoda), které je aplikačně nezávislé - poskytuje jednotný přístup k hledání počítačových programů.
+V GA, narozdíl od jiných metod, podléhá adaptaci celá populace jedinců (bodů v prostoru).
+Množina všech možných struktur v GP je množina všech možných kombinací fukncí, které mohou být uspořádány rekurzivně z množiny $N_func$ funkcí z F={f_1, f_2, ... f_{N_func}} a z množiny terminálů z T={a_1, a_2, ... a_{N_term}}.
+Každá fuknce f_i z množiny F bere specifický počet z(f_i) argumentů z(f_1), z(f_2), ..., z(f_{N_arg}), tj. funkce f_i má aritu z(f_i).
+Funkce v množině F mohou zahrnovat aritmetické operace, matematické funkce, booleovské operace, operátory větvení, fuknce způsobující iterace, rekurzi a další aplikačně specifické funkce.
+Terminály jsou buď proměnné, konstanty a nebo i funkce, které nemají parametry a jejich jediným účinkem je nějaký vedlejší efekt.
+
+Operátory modifikující struktury - primární
+===========================================
+Koza ve své knize představuje 2 primární operátory: reprodukce a křížení.
+Oba operátory používají k výběru rodičů zvolenou metodu zalozenou na fitness(turnaj, fitness-proportional).
+
+Reprodukce
+----------
+Reprodukce je asexuální opertor(z jednoho rodiče vytváří jednoho potomka).
+Sestává ze 2 kroků.
+Prvním krokem je výběr rodiče.
+Druhý krok je zkopírování jedince, který není modifikován, do nové populace.
+Můžeme tedy hovořit o klonování.
+
+Křížení
+-------
+Křížení je sexuální operátor(ze dvou rodičů vytváří dva potomky).
+Křížení slouží k vytváření nových jedinců(řešení) v populaci tím, že se noví potomci skládají z částí rodičů.
+Toto křžení se skládá z několika kroků:
+Prnvím krokem je výběr rodiče.
+Druhý krok je zvolení náhodného uzlu v každém z rodičů.
+-Tento uzel bude kořenový uzel pro podstromy, které se budou později mezi rodiči vyměňovat.
+Třetím krokem je vyjmutí podstromu z obou rodičů, jejichž kořenovým uzlem je uzel, který byl vybrán v předchozím kroku.
+Následuje vytvoření obou potomků.
+První potomek vznikne tak, že se do stromu prvního rodiče, do místa dříve vybraného uzlu, vloží podstrom z druhého rodiče(viz. draw.io bp_strom_crossover.xml).
+Na tomto obrázku je zachycena situace, kdy je v každém z rodičů A a B náhodně vybrán uzel(vyznačen dvojitě).
+Tyto uzly a jejich podstromy jsou poté zaměněny a vznikají tak potomci C a D.
+Velikost programu, definována jako výška stromu, je omezena aby se předoslo velmi velkým programům.
+Pokud by potomek po křížení přesáhl tuto velikost, nebude vložen do nové generace - místo něj se do nové generace reprodukuje jeden z jeho rodičů.
+
+
+Operátory modifikující struktury - sekundární
+===========================================
+Koza představuje 5 sekundárních operátorů - mutace, permutace, zjednodušení, zapouzdření a decimace.
+Všechny tyto operátory jsou asexuální a rodič, na kterém se budou aplikovat se vybírá stejně, jako u primárních operátorů.
+
+Mutace
+------
+Mutace provádí drobné změny struktur v populaci.
+Mutace sestává z několika kroků:
+První krok je zvolení náhodného uzlu ve struktuře.
+Tento uzel může být vnitřní (funkce) i vnější (terminál).
+Druhým krokem je odstranění tohoto uzlu is celým podstromem, který je k němu připojený.
+Posledním krokem je vygenerování náhodného podstromu, který se poté připojí na místo odstraněného uzlu.
+Tato operace je řízena parametrem který říká, jakou výšku bude mít vygenerovaný podstrom.
+Speciálním případem mutace je operace, která vloží 1 terminál do náhodně vybraného uzlu ve stromu.
+
+Permutace
+---------
+Permutace je generalizovaný operátor inverze, který se používá v GA nad řetězci.
+V GA funguje tento operátor následovně.
+Náhodně se v řetězci zvolí dva body a poradi alel mezi temito body je obráceno.
+Tímto se některé alely k sobě přiblíží a jiné se oddálí.
+
+V GP funguje permutace následovně.
+Náhodně se vybere uzel obsahující funkci $f$.
+Za předpokladu, že má funkce $f$ $k$ argumentů, pak je z množiny všech permutací techto argumentů $k!$ náhodně vybrána jedna permutace.
+Podle této permutace se provede záměna pořadí argumentů funkce $f$.
+
+
+Modifikace (editing)
+------------
+Modifikace provádí úpravy struktury na základě daných pravidel.
+Rekurzivně aplikuje množinu aplikačně specifických i univerzálních pravidel na každou strukturu v populaci.
+Univerzální aplikačně nezávislé pravidlo může být např. pokud má některá funkce, která nemá vedlejší efekty, všechny argumenty konstantní, je vyhodnocena a na její místo je vložen její výsledek.
+Operátor je řízen parametrem, který určuje frekvenci, se kterou se bude aplikovat.
+Tato frekvence se udává v generacích, tj. např. bude-li se aplikovat každou generaci, nebo méně často.
+
+
+Zapouzdření
+-------------
+Zapouzdření slouží k vytváření nových funkcí.
+Operátor vybere část struktury, která bude vyňata, bude z ní vytvořená funkce bez argumentů a na její původní místo bude vloženo její volání.
+Tento operátor slouží k dekompozici daného problému.
+
+
+Decimace
+--------
+Muze nastat situace, ze v pocatecni populaci bude mit vetsina jedincu velmi nizkou fitness.
+Diky toho par jedincu s vetsi fitness zacne dominovat populaci a rychle se ztraci diverzita.
+Decimace je kontrolovana dvemi parametry: procentem populace, ktera prezije decimaci a podminkou, kdy se decimace aplikuje.
+Selekce jedincu, kteri preziji, se provadi na zaklade fitness.
+Napr. pri nastaveni, kdy 10% procent populace prezije a tuto decimaci aplikujeme v 0. generaci, bude po 0. generaci smazano 90% jedincu.
+Pak by mela pocatecni populace obsahovat 10x vice jedincu, nez ty dalsi.
+Timto se zvysi pocet jedincu, kteri maji nezanedbatelnou fitness a tim se zlepsi i diverzita populace.
+
+
+
+
