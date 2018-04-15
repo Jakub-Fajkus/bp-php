@@ -1,0 +1,27 @@
+LGP
+---
+LGP je varianta GP, která vyvíjí programy složené z instrukcí imperativního jazyka nebo strojového kódu.
+Insturkce mají parametry, kterými mohou být buď proměnné, které se nazývají registry, a konstanty.
+Tyto registry dělíme na vstupní, výstupní, pracovní a registry, obsahující konstanty.
+
+V programu se mohou vyskytovat bloků kódu zvané introny, které nemají vliv na výsledek programu.
+Tyto bloky kódu jsou pak oddělené od diagramu datových toků celého programu a jsou jednoduše odstranitelné.
+Existence intronů vyplývá z použití imperativního jazyka.
+
+Program v LGP v průběhu svého vykonávání čte hodnoty z registrů a modofikuje je.
+Tímto provádí transformaci hodnot ve vstupních registrech do výstupních registrů.
+
+Fitness funkce se počítá z chybové funkce, na množine dvojic vstup-výstup.
+
+LGP algoritmus:
+1. Inicializuj populaci náhodnými programy a vyhodnoť je.
+2. Náhodně vyber $2 x n_ts$ jedinců z populace.
+3. Proveď dva fitness turnaje velikosti $n_ts$.
+4. Vytvoř dočasné kopie vítězů turnajů.
+5. Pozměň vítěte jedním nebo více variačními operátory.
+6. Vyhodnoť fitness potomků z předchozího kroku.
+7. Pokud je některý z potomků lepší, než aktuálně nejlepší jedinec, validuj jej použitím neznámých dat.
+8. S danou pravděpodobností reprodukuj dva vítěze turnaje do populace, nebo nahraď oba jedince, kteří v turnaji prohráli, dočasnými kopiemi vítězů z kroku 4.
+9. Opakuj kroky 2 až 8 dokud není dosažen maximální počet generací
+10.
+11.
