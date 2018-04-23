@@ -1,7 +1,7 @@
 LGP
 ---
-LGP je varianta GP, která vyvíjí programy složené z instrukcí imperativního jazyka nebo strojového kódu.
-Insturkce mají parametry, kterými mohou být buď proměnné, které se nazývají registry, a konstanty.
+LGP je varianta GP, která vyvíjí programy složené z instrukcí imperativního jazyka nebo strojového kódu, narozdíl.
+Instrukce mají parametry, kterými mohou být buď proměnné, které se nazývají registry, a konstanty.
 Tyto registry dělíme na vstupní, výstupní, pracovní a registry, obsahující konstanty.
 
 V programu se mohou vyskytovat bloků kódu zvané introny, které nemají vliv na výsledek programu.

@@ -18,3 +18,25 @@ Druhý z nich je operátor selekce, který vybírá pravděpodobněji lepší ř
 
 Činnost obecného EA můžeme vidět na algoritmu 1:
 todo: pridat algoritmus klasickeho EA
+
+V této práci se používá přístup inspirovaný LGP, které si stručně popíšeme dále.
+
+LGP je varianta GP, která vyvíjí programy složené z instrukcí imperativního jazyka nebo strojového kódu, narozdíl od výrazů funkcionálního jazyka.
+Insturkce mají parametry, kterými mohou být buď proměnné, které se nazývají registry, a konstanty.
+Tyto registry dělíme na vstupní, výstupní, pracovní a registry, obsahující konstanty.
+
+Program v LGP v průběhu svého vykonávání čte hodnoty z registrů a modofikuje je.
+Tímto provádí transformaci hodnot ve vstupních registrech do výstupních registrů.
+
+LGP zahrnuje koncepty pro větvení, iteraci a vytváření podprogramů.
+Tyto koncepty ale nejsou v této práci využity.
+Namísto toho se z LGP využívá základní myšlenka lineární struktury programu složeného z instrukci a práce s registry.
+
+
+
+todo: vypustit?
+V programu se mohou vyskytovat bloků kódu zvané introny, které nemají vliv na výsledek programu.
+Tyto bloky kódu jsou pak oddělené od diagramu datových toků celého programu a jsou jednoduše odstranitelné.
+Existence intronů vyplývá z použití imperativního jazyka.
+
+

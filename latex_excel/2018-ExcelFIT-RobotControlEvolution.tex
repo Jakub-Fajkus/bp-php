@@ -11,7 +11,7 @@
 
 %   LEAVE this line commented out for the REVIEW VERSIONS
 %   UNCOMMENT this line to get the FINAL VERSION
-%\ExcelFinalCopy
+\ExcelFinalCopy
 
 
 %--------------------------------------------------------
@@ -188,13 +188,13 @@ As the program is being executed, it copies values from input or constant regist
 The interpreter has 11 constant registers~(indices 0–10) holding integer values from -5 to 5, 2 input registers~(indices 11–12) and 3 output registers~(indices 13–15).
 The values of the input registers depend on the direction to the next reference point as follows.
 
-The space around the robot is divided into circular sectors~(Figure \ref{fig:ReferenceDirection).
+The space around the robot is divided into circular sectors~(Figure \ref{fig:ReferenceDirection}).
 The borders between the sectors are defined by an angle from the robot's heading vector.
 Each sector has a value of integer between -5 and 5.
 The value of the input registers depends on the value of the sector in which the next reference point is located.
-At the Figure~\ref{fig:ReferenceDirection} we can see a situation, where the robot(at the bottom) is heading to the top and the next reference(blue) is located in the sector with a value of 2.
+At the Figure~\ref{fig:ReferenceDirection} we can see a situation, where the robot (at the bottom) is heading to the top and the next reference (blue) is located in the sector with a value of 2.
 This number is inserted into the first input register.
-Next, the second register is filled with a value, that has an inverted sign(-2 in this case).
+Next, the second register is filled with a value, that has an inverted sign (-2 in this case).
 
 \begin{figure}[h]
 	\centering
@@ -271,6 +271,7 @@ The parameters of the GA are as follows.
 	\item The probability of crossover is 80\%.
 	\item The mutation is set with 100\% probability and changes only one gene.
 	\item Parent selection is implemented by a tournament of size 2.
+	\item The evolution is terminated after 300 generations.
 \end{itemize}
 
 \begin{figure}[h]
@@ -285,7 +286,7 @@ The parameters of the GA are as follows.
 Each chromosome in the GA represents a single program~(a candidate controller for the robot).
 The structure of the chromosome is illustrated in Figure~\ref{fig:Genotype}.
 The chromosome has fixed length~(36 genes).
-It is split into three smaller subprograms(init, event, main) that have fixed lengths, too.
+It is split into three smaller subprograms (init, event, main) that have fixed lengths, too.
 Each gene represents a single instruction.
 The instruction is a triplet and consists of the instruction name and two numbers.
 
@@ -297,6 +298,13 @@ The instruction is a triplet and consists of the instruction name and two number
 	}
 	\label{fig:Genotype}
 \end{figure}
+
+%//todo:
+%rev1:
+% - vysvetlit fitness
+%rev2:
+% - pridat trajektorii neoptimalniho genomu?
+
 
 The GA applies both the crossover and mutation operators which work as follows.
 
@@ -311,10 +319,10 @@ When a value is mutated, it is replaced by a new value from the specified range 
 
 The fitness evaluation of the candidate programs is performed as follows.
 For each program, a new simulation is run.
-During the simulation, the program is being executed and it controls the robot's model~(as explained in the previous section).
-For each of the reference points, a minimal distance $D_i$ between the point and the robot is recorded.
+During the simulation, the program is being executed and it controls the robot's model~(as explained in the previous section) as well as the minimal distance $D_i$ between each of the reference points and the robot is being recorded.
 $D_i = \min{F(R, P_i)}$, where $F$ denotes the distance function, $R$ is the robot position, $P_i$ is a reference point position and $i=1, \cdots N$, where $N$ is the number of reference points.
 
+When the simulation run is finished, the fitness value is calculated.
 For each reference point a score is calculated as follows:
 $$S_i=\left\{\begin{matrix}t - D_i&\mbox{ if }D_{i}\leq t\\ 0 &\mbox{ else }\end{matrix}\right$$
 
@@ -323,7 +331,9 @@ The fitness $f$ is then calculated as a sum of scores for all reference points:
 $$f=\sum_{i=1}^{N}S_i$$
 
 The threshold parameter was set to 40, based on the dimensions of the simulation and the robot itself.
-Given 9 reference points on the spiral, the maximum fitness is set to 360.
+The maximum fitness in the simulation can be calculated as follows:
+$$f_{max} = t \cdot N$$
+Given 9 reference points on the spiral and the threshold parameter set to 40, the maximum fitness is equal to 360.
 This way, the evolution maximizes the score and thus minimizes the distance between the robot and each of the reference points.
 
 \begin{figure}[h]
@@ -346,7 +356,7 @@ This way, the evolution maximizes the score and thus minimizes the distance betw
 The evolution was run 20 times.
 The typical progress of fitness values can be seen in Figure~\ref{fig:FitnessGraph}.
 
-The maximum fitness possible in the simulation was set to 360, although the simulation time was not enough to gain the maximum fitness value.
+The maximum fitness possible in the simulation was set to 360, although the simulation time (600s) was not enough to gain the maximum fitness value.
 The fitness of the best solution the GA was able to find was equal to 255.9.
 After all the evolutionary runs, the best solution was evaluated over longer simulation time and its fitness was equal to 330.9, which is 92\% of the maximum fitness value possible.
 
