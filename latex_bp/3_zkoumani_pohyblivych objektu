@@ -2,14 +2,28 @@
 clancich G. Hornbyho. ~3 strany. Zamerte se v zaverecne podsekci na
 popis objektu, ktere budete mit v BP.
 
+todo: precist clanek o evolucni robotice, hlavni myslenky prenest zde a vymezit tuto praci, ze tam uplne napatri, ale patri spise do AI - cca 1 strana?
+
+
+
+Tato práce a pohyblivé struktury, se kterými se pracuje, je inspirována dizertací G. Hornbyho.
+G. Hornby ve své práci využíval generativné reprezentace pro development struktury i kontroléru robotů.
+[todo obrazky nekterych robotu hornbyho ]
+Kotroléry byly realizovány pomocí oscilátorů nebo neuronových sítí.
+
+Wolff a Wahde použili LGP pro návrh kontroléru modelu humanoidního robota, který měl v simulovaném prostředí chodit a následovat zvukové signály.
+
+[todo: overit ] Wolff a Wahle použili LGP s čísly s plovoucí řádovou čárkou, aritmetické, matematický instrukce a větvení.
+[todo: overit ] Jejich kontrolér měl informace o natočení všech kloubů modelu a na základě těchto informací programy řídily model robota.
+
 
 
 
 Níže si popíšeme da modely robotů, se kterými byly provedeny experimenty.
 První model, zvaný trojnožka, je vidět na obrázku XXX.
 Robot má 3 nohy, každá z nich je spojena s jádrem robota kloubem, který se otáčí v jedné ose.
-Rozsah pohybu těchto kloubů je omezen na 50 stupnu.
-Model robota má v horní části, v místě kloubů, umístěny kontaktní body.
+Rozsah pohybu těchto kloubů je omezen na 50 stupňů.
+Model robota má v horní části v místě kloubů umístěny kontaktní body.
 Tyto body slouží k detekci převrácení robota (kolizi ze zemí).
 
 \caption{
@@ -22,8 +36,8 @@ Tyto body slouží k detekci převrácení robota (kolizi ze zemí).
 
 Druhý robot, zvaný mravenec, je vidět na obrázku XXX.
 Robot má 3 páry nohou, které jsou všechny připojeny k tělu robota.
-Rozsah pohybu kloubů, které rotují kolem horizontální osy, je omezen na 100 stupnu.
-Rozsah kloubů, rotujících kolem svislé osy, je omezen na 65 stupnu.
+Rozsah pohybu kloubů, které rotují kolem horizontální osy a spojují tělo robota s jeho nohou, je omezen na 100 stupňů.
+Rozsah kloubů, které rotují kolem svislé osy a spojují dvě části nohy, je omezen na 65 stupňů.
 Robot má v přední části kontaktní bod, taktéž pro zjišťování kolizí se zemí.
 
 \caption{

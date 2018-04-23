@@ -9,23 +9,11 @@ Je výhodné mít i možnost rychle prototypovat řízení robota.
 Řízení robota je ovšem možné realizovat mnoha způsoby, např. umělými neuronovými sítěmi, konenčnými automaty nebo i programy v nějakém imperativním jazyce.
 V závislosti na vybrané metodě řízení robota jsou k dispozici různé alogritmy a automatizované nástroje pro automatické nalezení konfigurace zvoleného způsobu řízení, která bude mít za následek požadované chování robota.
 Touto konfigurací může být např. váhy neuronové sítě, definice konečného automatu nebo sekvence příkazů imperativního jazyka.
-Právě řízením robota programy napsanými v imperativním jazyce (byť velmi zjednodušeném) se zabývá tato práce, ve které jsou použity evoluční algoritmy pro automatizované hledání vhodného řízení robota.
+Právě řízením robota programy napsanými v imperativním jazyce (byť jednoduchém) se zabývá tato práce, ve které jsou použity evoluční algoritmy pro automatizované hledání vhodného řízení robota.
 
-Problém k řešení můžeme definovat následovně.
-Máme vytvořenou počítačovou simulaci, ve které máme umístěný model jednoduchuhého robota a množinu referenčních bodů.
-Cílem tohoto robota je pohybovat se autonomně v simulovaném prostředí tak, aby v daném pořadí navštívil co nejvíce referenčních bodů.
-Tímto způsobem se robot pohybuje po předem dané trajektorii.
-
-Cílem této práce je vyvinout nástroj, který bude sloužit k automatizovanému hledání programů řídících model robota v simulaci tak, že se tento model bude pohybovat po určené trajektorii.
-K tomuto bude využit způsob inspirovaný lineárním genetickým programováním.
-
-
-
-
-
-
-
-
-
+Tato práce se zabvývá návrhem a implementací nástroje pro automatizované hledání vhodného kontroléru robotického modelu pro průchod prostorem po dané trajektorii.
+Pro návrh vhodného programu je použita technika zjednodušeného Lineárního Genetického Programování.
+Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco.
+Účinnost softwarového řízení je experimentálně doložena.
 
 
