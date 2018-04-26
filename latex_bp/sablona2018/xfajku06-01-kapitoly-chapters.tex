@@ -2,95 +2,205 @@
 % (c) Michal Bidlo, Bohuslav Křena, 2008
 
 \chapter{Úvod}
-Abychom mohli napsat odborný text jasně a~srozumitelně, musíme splnit několik základních předpokladů:
-\begin{itemize}
-\item Musíme mít co říci,
-\item musíme vědět, komu to chceme říci,
-\item musíme si dokonale promyslet obsah,
-\item musíme psát strukturovaně. 
-\end{itemize}
+V oblasti robotiky je velmi důležíté mít možnost vytvářet rychle a levně prototypy.
+K tomuto účelu je při návrhu fyzické struktury robota výhodné použít počítačové modely a simulace.
+Je výhodné mít i možnost rychle prototypovat řízení robota.
+Řízení robota je ovšem možné realizovat mnoha způsoby, např. umělými neuronovými sítěmi, konenčnými automaty nebo i programy v nějakém imperativním jazyce.
+V závislosti na vybrané metodě řízení robota jsou k dispozici různé alogritmy a automatizované nástroje pro nalezení konfigurace zvoleného způsobu řízení, která bude mít za následek požadované chování robota.
+Touto konfigurací může být např. váhy neuronové sítě, definice konečného automatu nebo sekvence příkazů imperativního jazyka.
+Právě řízením robota programy napsanými v imperativním jazyce (byť jednoduchém) se zabývá tato práce, ve které jsou použity evoluční algoritmy pro automatizované hledání vhodného řízení robota.
 
-Tyto a další pokyny jsou dostupné též na školních internetových stránkách \cite{fitWeb}.
+Cílem této práce je návrh a implementace nástroje pro automatizované hledání vhodného kontroléru robotického modelu pro průchod prostorem po dané trajektorii.
+Pro návrh vhodného programu je použita technika zjednodušeného Lineárního Genetického Programování.
+Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco.
+Účinnost softwarového řízení je experimentálně doložena.
 
-Přehled základů typografie a tvorby dokumentů s využitím systému \LaTeX je 
-uveden v~\cite{Rybicka}.
+\chapter{Evoluční algoritmy}
+Evoluční algoritmy (EA) jsou inspirovány přírodními evolučními procesy a Darwinovou teorií evoluce.
+EA se využívají ke stochastickému prohledávání stavového prostoru.
+EA, narozdíl od jiných metod, pracují s celou populací kandidátních řešení (jedinců), které se vyvíjí paralelně.
+Každý jedinec v populaci v sobě nese zakódovanou informaci o konktrétním řešení, kterou nazýváme genotyp.
+Tato informace se pomocí růstové funkce převádí na fenotyp, který už reprezentuje řešení daného problému.
 
-\section{Musíme mít co říci}
-Dalším důležitým předpokladem dobrého psaní je {\it psát pro někoho}. Píšeme-li si poznámky sami pro sebe, píšeme je jinak než výzkumnou zprávu, článek, diplomovou práci, knihu nebo dopis. Podle předpokládaného čtenáře se rozhodneme pro způsob psaní, rozsah informace a~míru detailů.
+Myšlenku EA můžeme popsat následovně.
+Máme populaci jedinců, kteří jsou všichni umístěni ve společném prostředí, ve kterém soutěží o zdroje.
+To má za následek přirozený výběr jedinců, který se projevuje tak, že horší jedinci mají menší pravděpodobnost reprodukce, než-li ti lepší.
+Tímto se přirozeně zvyšuje kvalita populace.
+Reprodukce probíhá dvojím způsobem, a to křížením a mutací.
+Křížení pracuje se dvěmi rodiči a má za následek vytvoření dvou potomků, kteří vznikají kombinací genotypu obou rodičů.
+Mutace pracuje nad jedním rodičem a produkuje jednoho potomka, který má narozdíl od svého ročiče lehce pozměněný genotyp.
 
-\section{Musíme vědět, komu to chceme říci}
-Dalším důležitým předpokladem dobrého psaní je psát pro někoho. Píšeme-li si poznámky sami pro sebe, píšeme je jinak než výzkumnou zprávu, článek, diplomovou práci, knihu nebo dopis. Podle předpokládaného čtenáře se rozhodneme pro způsob psaní, rozsah informace a~míru detailů.
+EA v sobě zahrnují dva procesy.
+Prvním z nich jsou variační operátory (rekombinace, mutace), které do populace přináší potřebnou různorodost a tak zajišťují prohledávání nových možných řešení.
+Druhý z nich je operátor selekce, který vybírá častěji lepší řešení a tak zlepšuje průměrnou kvalitu populace.
 
-\section{Musíme si dokonale promyslet obsah}
-Musíme si dokonale promyslet a~sestavit obsah sdělení a~vytvořit pořadí, v~jakém chceme čtenáři své myšlenky prezentovat. 
-Jakmile víme, co chceme říci a~komu, musíme si rozvrhnout látku. Ideální je takové rozvržení, které tvoří logicky přesný a~psychologicky stravitelný celek, ve kterém je pro všechno místo a~jehož jednotlivé části do sebe přesně zapadají. Jsou jasné všechny souvislosti a~je zřejmé, co kam patří.
+Činnost obecného EA můžeme vidět na algoritmu 1:
+todo: pridat algoritmus klasickeho EA
 
-Abychom tohoto cíle dosáhli, musíme pečlivě organizovat látku. Rozhodneme, co budou hlavní kapitoly, co podkapitoly a~jaké jsou mezi nimi vztahy. Diagramem takové organizace je graf, který je velmi podobný stromu, ale ne řetězci. Při organizaci látky je stejně důležitá otázka, co do osnovy zahrnout, jako otázka, co z~ní vypustit. Příliš mnoho podrobností může čtenáře právě tak odradit jako žádné detaily.
+V této práci se používá přístup inspirovaný LGP, které si stručně popíšeme dále.
 
-Výsledkem této etapy je osnova textu, kterou tvoří sled hlavních myšlenek a~mezi ně zařazené detaily.
+LGP je varianta GP, která vyvíjí programy složené z instrukcí imperativního jazyka nebo strojového kódu, narozdíl od výrazů funkcionálního jazyka.
+Instrukce mají parametry, kterými mohou být buď konstanty nebo proměnné, které se nazývají registry.
+Tyto registry dělíme na vstupní, výstupní, pracovní a registry, obsahující konstanty.
 
-\section{Musíme psát strukturovaně} 
-Musíme začít psát strukturovaně a~současně pracujeme na co nejsrozumitelnější formě, včetně dobrého slohu a~dokonalého značení. 
-Máme-li tedy myšlenku, představu o~budoucím čtenáři, cíl a~osnovu textu, můžeme začít psát. Při psaní prvního konceptu se snažíme zaznamenat všechny své myšlenky a~názory vztahující se k~jednotlivým kapitolám a~podkapitolám. Každou myšlenku musíme vysvětlit, popsat a~prokázat. Hlavní myšlenku má vždy vyjadřovat hlavní věta a~nikoliv věta vedlejší.
+Program v LGP v průběhu svého vykonávání čte hodnoty z registrů a modifikuje je za použití instrukcí.
+Tímto provádí transformaci hodnot ze vstupních registrů do výstupních registrů.
 
-I k~procesu psaní textu přistupujeme strukturovaně. Současně s~tím, jak si ujasňujeme strukturu písemné práce, vytváříme kostru textu, kterou postupně doplňujeme. Využíváme ty prostředky DTP programu, které podporují strukturovanou stavbu textu (předdefinované typy pro nadpisy a~bloky textu). 
-
-
-\chapter{Několik formálních pravidel}
-Naším cílem je vytvořit jasný a~srozumitelný text. Vyjadřujeme se proto přesně, píšeme dobrou češtinou (nebo zpravidla angličtinou) a~dobrým slohem podle obecně přijatých zvyklostí. Text má upravit čtenáři cestu k~rychlému pochopení problému, předvídat jeho obtíže a~předcházet jim. Dobrý sloh předpokládá bezvadnou gramatiku, správnou interpunkci a~vhodnou volbu slov. Snažíme se, aby náš text nepůsobil příliš jednotvárně používáním malého výběru slov a~tím, že některá zvlášť oblíbená slova používáme příliš často. Pokud používáme cizích slov, je samozřejmým předpokladem, že známe jejich přesný význam. Ale i~českých slov musíme používat ve správném smyslu. Např. platí jistá pravidla při používání slova {\it zřejmě}. Je {\it zřejmé} opravdu zřejmé? A~přesvědčili jsme se, zda to, co je {\it zřejmé} opravdu platí? Pozor bychom si měli dát i~na příliš časté používání zvratného se. Například obratu {\it dokázalo se}, že\ldots{} zásadně nepoužíváme. Není špatné používat autorského {\it my}, tím předpokládáme, že něco řešíme, nebo například zobecňujeme spolu se čtenářem. V~kvalifikačních pracích použijeme autorského {\it já} (například když vymezujeme podíl vlastní práce vůči převzatému textu), ale v~běžném textu se nadměrné používání první osoby jednotného čísla nedoporučuje.
-
-Za pečlivý výběr stojí i~symbolika, kterou používáme ke {\it značení}. Máme tím na mysli volbu zkratek a~symbolů používaných například pro vyjádření typů součástek, pro označení hlavních činností programu, pro pojmenování ovládacích kláves na klávesnici, pro pojmenování proměnných v~matematických formulích a~podobně. Výstižné a~důsledné značení může čtenáři při četbě textu velmi pomoci. Je vhodné uvést seznam značení na začátku textu. Nejen ve značení, ale i~v~odkazech a~v~celkové tiskové úpravě je důležitá důslednost.
-
-S tím souvisí i~pojem z~typografie nazývaný {\it vyznačování}. Zde máme na mysli způsob sazby textu pro jeho zvýraznění. Pro zvolené značení by měl být zvolen i~způsob vyznačování v~textu. Tak například klávesy mohou být umístěny do obdélníčku, identifikátory ze~zdrojového textu mohou být vypisovány {\tt písmem typu psací stroj} a~podobně.
-
-Uvádíme-li některá fakta, neskrýváme jejich původ a~náš vztah k~nim. Když něco tvrdíme, vždycky výslovně uvedeme, co z~toho bylo dokázáno, co teprve bude dokázáno v~našem textu a~co přebíráme z~literatury s~uvedením odkazu na příslušný zdroj. V~tomto směru nenecháváme čtenáře nikdy na pochybách, zda jde o~myšlenku naši nebo převzatou z~literatury.
-
-Nikdy neplýtváme čtenářovým časem výkladem triviálních a~nepodstatných informací. Neuvádíme rovněž několikrát totéž jen jinými slovy. Při pozdějších úpravách textu se nám může některá dříve napsaná pasáž jevit jako zbytečně podrobná nebo dokonce zcela zbytečná. Vypuštění takové pasáže nebo alespoň její zestručnění přispěje k~lepší čitelnosti práce! Tento krok ale vyžaduje odvahu zahodit čas, který jsme jejímu vytvoření věnovali. 
-
-
-\chapter{Nikdy to nebude naprosto dokonalé}
-Když jsme už napsali vše, o~čem jsme přemýšleli, uděláme si den nebo dva dny volna a~pak si přečteme sami rukopis znovu. Uděláme ještě poslední úpravy a~skončíme. Jsme si vědomi toho, že vždy zůstane něco nedokončeno, vždy existuje lepší způsob, jak něco vysvětlit, ale každá etapa úprav musí být konečná.
-
-
-\chapter{Typografické a~jazykové zásady}
-Při tisku odborného textu typu {\it technická zpráva} (anglicky {\it technical report}), ke kterému patří například i~text kvalifikačních prací, se často volí formát A4 a~často se tiskne pouze po~jedné straně papíru. V~takovém případě volte levý okraj všech stránek o~něco větší než pravý -- v~tomto místě budou papíry svázány a~technologie vazby si tento požadavek vynucuje. Při vazbě s~pevným hřbetem by se levý okraj měl dělat o~něco širší pro tlusté svazky, protože se stránky budou hůře rozevírat a~levý okraj se tak bude oku méně odhalovat.
-
-Horní a~spodní okraj volte stejně veliký, případně potištěnou část posuňte mírně nahoru (horní okraj menší než dolní). Počítejte s~tím, že při vazbě budou okraje mírně oříznuty.
-
-Pro sazbu na stránku formátu A4 je vhodné používat pro základní text písmo stupně (velikosti) 11 bodů. Volte šířku sazby 15 až 16 centimetrů a~výšku 22 až 23 centimetrů (včetně případných hlaviček a~patiček). Proklad mezi řádky se volí 120 procent stupně použitého základního písma, což je optimální hodnota pro rychlost čtení souvislého textu. V~případě použití systému LaTeX ponecháme implicitní nastavení. Při psaní kvalifikační práce se řiďte příslušnými závaznými požadavky.
-
-Stupeň písma u~nadpisů různé úrovně volíme podle standardních typografických pravidel. 
-Pro všechny uvedené druhy nadpisů se obvykle používá polotučné nebo tučné písmo (jednotně buď všude polotučné nebo všude tučné). Proklad se volí tak, aby se následující text běžných odstavců sázel pokud možno na {\it pevný rejstřík}, to znamená jakoby na linky s~předem definovanou a~pevnou roztečí.
-
-Uspořádání jednotlivých částí textu musí být přehledné a~logické. Je třeba odlišit názvy kapitol a~podkapitol -- píšeme je malými písmeny kromě velkých začátečních písmen. U~jednotlivých odstavců textu odsazujeme první řádek odstavce asi o~jeden až dva čtverčíky (vždy o~stejnou, předem zvolenou hodnotu), tedy přibližně o~dvě šířky velkého písmene M základního textu. Poslední řádek předchozího odstavce a~první řádek následujícího odstavce se v~takovém případě neoddělují svislou mezerou. Proklad mezi těmito řádky je stejný jako proklad mezi řádky uvnitř odstavce.
-
-Při vkládání obrázků volte jejich rozměry tak, aby nepřesáhly oblast, do které se tiskne text (tj. okraje textu ze všech stran). Pro velké obrázky vyčleňte samostatnou stránku. Obrázky nebo tabulky o~rozměrech větších než A4 umístěte do písemné zprávy formou skládanky všité do přílohy nebo vložené do záložek na zadní desce.
-
-Obrázky i~tabulky musí být pořadově očíslovány. Číslování se volí buď průběžné v~rámci celého textu, nebo -- což bývá praktičtější -- průběžné v~rámci kapitoly. V~druhém případě se číslo tabulky nebo obrázku skládá z~čísla kapitoly a~čísla obrázku/tabulky v~rámci kapitoly -- čísla jsou oddělena tečkou. Čísla podkapitol nemají na číslování obrázků a~tabulek žádný vliv.
-
-Tabulky a~obrázky používají své vlastní, nezávislé číselné řady. Z toho vyplývá, že v~odkazech uvnitř textu musíme kromě čísla udat i~informaci o~tom, zda se jedná o~obrázek či tabulku (například \uv{\ldots {\it viz tabulka 2.7} \ldots}). Dodržování této zásady je ostatně velmi přirozené.
-
-Pro odkazy na stránky, na čísla kapitol a~podkapitol, na čísla obrázků a~tabulek a~v~dalších podobných příkladech využíváme speciálních prostředků DTP programu, které zajistí vygenerování správného čísla i~v~případě, že se text posune díky změnám samotného textu nebo díky úpravě parametrů sazby. Příkladem takového prostředku v~systému LaTeX je odkaz na číslo odpovídající umístění značky v~textu, například návěští ($\backslash${\tt ref\{navesti\}} -- podle umístění návěští se bude jednat o~číslo kapitoly, podkapitoly, obrázku, tabulky nebo podobného číslovaného prvku), na stránku, která obsahuje danou značku ($\backslash${\tt pageref\{navesti\}}), nebo na literární odkaz ($\backslash${\tt cite\{identifikator\}}).
-
-Rovnice, na které se budeme v~textu odvolávat, opatříme pořadovými čísly při pravém okraji příslušného řádku. Tato pořadová čísla se píší v~kulatých závorkách. Číslování rovnic může být průběžné v~textu nebo v~jednotlivých kapitolách.
-
-Jste-li na pochybách při sazbě matematického textu, snažte se dodržet způsob sazby definovaný systémem LaTeX. Obsahuje-li vaše práce velké množství matematických formulí, doporučujeme dát přednost použití systému LaTeX.
-
-Mezeru neděláme tam, kde se spojují číslice s~písmeny v~jedno slovo nebo v~jeden znak -- například {\it 25krát}.
-
-Členicí (interpunkční) znaménka tečka, čárka, středník, dvojtečka, otazník a~vykřičník, jakož i~uzavírací závorky a~uvozovky se přimykají k~předcházejícímu slovu bez mezery. Mezera se dělá až za nimi. To se ovšem netýká desetinné čárky (nebo desetinné tečky). Otevírací závorka a~přední uvozovky se přimykají k~následujícímu slovu a~mezera se vynechává před nimi -- (takto) a~\uv{takto}.
-
-Pro spojovací a~rozdělovací čárku a~pomlčku nepoužíváme stejný znak. Pro pomlčku je vyhrazen jiný znak (delší). V~systému TeX (LaTeX) se spojovací čárka zapisuje jako jeden znak \uv{pomlčka} (například \uv{Brno-město}), pro sázení textu ve smyslu intervalu nebo dvojic, soupeřů a~podobně se ve zdrojovém textu používá dvojice znaků \uv{pomlčka} (například \uv{zápas Sparta -- Slavie}; \uv{cena 23--25 korun}), pro výrazné oddělení části věty, pro výrazné oddělení vložené věty, pro vyjádření nevyslovené myšlenky a~v~dalších situacích (viz Pravidla českého pravopisu) se používá nejdelší typ pomlčky, která se ve zdrojovém textu zapisuje jako trojice znaků \uv{pomlčka} (například \uv{Další pojem --- jakkoliv se může zdát nevýznamný --- bude neformálně definován v~následujícím odstavci.}). Při sazbě matematického mínus se při sazbě používá rovněž odlišný znak. V~systému TeX je ve zdrojovém textu zapsán jako normální mínus (tj. znak \uv{pomlčka}). Sazba v~matematickém prostředí, kdy se vzoreček uzavírá mezi dolary, zajistí vygenerování správného výstupu.
-
-Lomítko se píše bez mezer. Například školní rok 2008/2009.
-
-Pravidla pro psaní zkratek jsou uvedena v~Pravidlech českého pravopisu \cite{Pravidla}. I~z~jiných důvodů je vhodné, abyste tuto knihu měli po ruce. 
+LGP zahrnuje koncepty pro větvení, iteraci a vytváření podprogramů.
+Tyto koncepty ale nejsou v této práci využity.
+Namísto toho se z LGP využívá základní myšlenka lineární struktury programu složeného z instrukci a práce s registry.
 
 
-\section{Co to je normovaná stránka?}
-Pojem {\it normovaná stránka} se vztahuje k~posuzování objemu práce, nikoliv k~počtu vytištěných listů. Z historického hlediska jde o~počet stránek rukopisu, který se psal psacím strojem na speciální předtištěné formuláře při dodržení průměrné délky řádku 60 znaků a~při 30 řádcích na stránku rukopisu. Vzhledem k~zápisu korekturních značek se používalo řádkování 2 (ob jeden řádek). Tyto údaje (počet znaků na řádek, počet řádků a~proklad mezi nimi) se nijak nevztahují ke konečnému vytištěnému výsledku. Používají se pouze pro posouzení rozsahu. Jednou normovanou stránkou se tedy rozumí 60*30 = 1800 znaků. Obrázky zařazené do textu se započítávají do rozsahu písemné práce odhadem jako množství textu, které by ve výsledném dokumentu potisklo stejně velkou plochu.
 
-Orientační rozsah práce v~normostranách lze v~programu Microsoft Word zjistit pomocí funkce {\it Počet slov} v~menu {\it Nástroje}, když hodnotu {\it Znaky (včetně mezer)} vydělíte konstantou 1800. Do rozsahu práce se započítává pouze text uvedený v~jádru práce. Části jako abstrakt, klíčová slova, prohlášení, obsah, literatura nebo přílohy se do rozsahu práce nepočítají. Je proto nutné nejdříve označit jádro práce a~teprve pak si nechat spočítat počet znaků. Přibližný rozsah obrázků odhadnete ručně. Podobně lze postupovat i~při použití OpenOffice. Při použití systému LaTeX pro sazbu je situace trochu složitější. Pro hrubý odhad počtu normostran lze využít součet velikostí zdrojových souborů práce podělený konstantou cca 2000 (normálně bychom dělili konstantou 1800, jenže ve zdrojových souborech jsou i~vyznačovací příkazy, které se do rozsahu nepočítají). Pro přesnější odhad lze pak vyextrahovat holý text z~PDF (např. metodou cut-and-paste nebo {\it Save as Text\ldots}) a~jeho velikost podělit konstantou 1800. 
+
+\chapter{Zkoumání pohyblivých objektů}
+\todo{3. Zkoumani pohyblivych objektu (zakladni myslenky shrnte s inspiraci v
+clancich G. Hornbyho. ~3 strany. Zamerte se v zaverecne podsekci na
+popis objektu, ktere budete mit v BP.}
+\todo{precist clanek o evolucni robotice, hlavni myslenky prenest zde a vymezit tuto praci, ze tam uplne napatri, ale patri spise do AI - cca 1 strana?}
+
+
+
+Tato práce a pohyblivé struktury, se kterými se pracuje, je inspirována dizertací G. Hornbyho.
+G. Hornby ve své práci využíval generativné reprezentace pro development struktury i kontroléru robotů.
+[todo obrazky nekterych robotu hornbyho ]
+Kotroléry byly realizovány pomocí oscilátorů nebo neuronových sítí.
+
+Wolff a Wahde použili LGP pro návrh kontroléru modelu humanoidního robota, který měl v simulovaném prostředí chodit a následovat zvukové signály.
+
+[todo: overit ] Wolff a Wahle použili LGP s čísly s plovoucí řádovou čárkou, aritmetické, matematický instrukce a větvení.
+[todo: overit ] Jejich kontrolér měl informace o natočení všech kloubů modelu a na základě těchto informací programy řídily model robota.
+
+
+
+
+Níže si popíšeme dva modely robotů, se kterými byly provedeny experimenty.
+První model, zvaný trojnožka, je vidět na obrázku XXX.
+Robot má 3 nohy, každá z nich je spojena s jádrem robota kloubem, který se otáčí v jedné ose.
+Rozsah pohybu těchto kloubů je omezen na 50 stupňů.
+Model robota má v horní části v místě kloubů umístěny kontaktní body.
+Tyto body slouží k detekci převrácení robota (kolizi ze zemí).
+
+%\caption{
+Model robota zvaný trojnožka.
+Tento model je složen z jádra robota (modře) a 3 nohou (hnědě).
+Každá z nohou je s jádrem spojena kloubem, který se otáčí pouze v jedné ose a je umístěn pod fialovou koulí.
+Tyto fialové koule slouží k detekci převrácení robota.
+Ve středu robota je bod zvaný hlava (červeně).
+%}
+
+Druhý robot, zvaný mravenec, je vidět na obrázku XXX.
+Robot má 3 páry nohou, které jsou všechny připojeny k tělu robota.
+Rozsah pohybu kloubů, které rotují kolem horizontální osy a spojují tělo robota s jeho nohou, je omezen na 100 stupňů.
+Rozsah kloubů, které rotují kolem svislé osy a spojují dvě části nohy, je omezen na 65 stupňů.
+Robot má v přední části kontaktní bod, taktéž pro zjišťování kolizí se zemí.
+
+%\caption{
+Model robota zvaný mravenec.
+Tento model je složen z těla robota (modře) a 6-ti nohou (hnědě).
+V přední části robota je bod zvaný hlava (červeně).
+Každá noha je složena ze dvou pevných částí a jedoho kloubu.
+Tento kloub se pohybuje pouze ve svislé ose, tj. může zvedat a snižovat robota.
+Celá noha je připojena k tělu robota kloubem, který se pohybuje horizontálně, tj. slouží k odrážení.
+%}
+
+\chapter{Evoluční návrh pohyblivých objektů}
+\todo{4. Evolucni navrh pohyblivych objektu - HLAVNI KAPITOLA BP - zde
+popisteje podrobne vlastni techniky, ktere pro EVOLUCI pouzivate. Fakta
+o EA budou vychazet k kapitoly 2.}
+
+
+Cpp cast
+- popis interpretu
+- popis jazyka
+- podprogramy
+- input hodnoty (koste)
+- prevod outputu na silu v kloubech ??
+- spojeni interpretu a simulatoru
+- pocitani fitness!
+
+php cast
+- popis evoluce
+- algoritmus
+- genotyp
+- instance EA - populace, delka, selekce, crossover, mutace
+
+spojeni php a cpp
+
+\section{Simulace}
+
+V simulátoru Mujoco je vytvořena scéna, která obsahuje model robota a množinu referenčních bodů, které svým pořadím a umístěním ve scéně definují trajektorii, kterou má robot následovat.
+
+
+\section{Interpret}
+
+Program, který řídí model robota, je vykonáván v interpretu.
+Interpret obsahuje paměťová místa, kterým se říká registry, které se dělí na: vstupní, výstupní a konstantní.
+Každý registr je indetifikovaný unikátním číslem, které se navýzá index, a může obsahovat celočíselné hodnoty v rozsahu od -5 do 5.
+Počty registrů jsou následující: 11 konstatních registrů s hodnotami od -5 do 5, 2 vstupní registry, a 3 nebo 12 výstupních registrů (pro každý kloub modelu jeden registr).
+Interpret vykonává program, který je složen z instrukcí.
+
+Je zde použit jen jeden druh instrukce, a to instukce s názvem COPY.
+Tato instrukce má 2 parametry: zdrojový registr a cílový registr.
+Výsledkem této instrukce je zkopírování hodnoty ze vstupního, nebo konstatního, registru do výstupního registru.
+
+\section{Vykonávání programu}
+
+V průběhu simulace je vykonáván program, který čte hodnoty ze vstupních registrů, které obsahují informaci o směru k dalšímu referenčnímu bodu, a zapisuje hodnoty do výstupních registrů, které se převádí na sílu, která je aplikována v jednotlivých kloubech.
+
+\section{Podprogramy}
+
+Každý program, který reprezentuje kandidátní řešení, je pro vykonávání v průběhu simulace rozdělen na 3 podprogramy.
+Tyto podprogramy se nazývají init, main a event.
+
+Podprogram init se vykoná pouze na začátku simulace a všechny instrukce jsou provedeny v nulovém čase a poté je po 1 sekundě spuštěn podprogram main.
+Účelem podprogramu init je nastavení počátečního natočení kloubů modelu.
+
+Podprogram main je v průběhu simulace vykonáván v nekonečné smyčce.
+Instrukce v tomto podprogramu se nevykonají všechny v nulovém čase, ale vyonávají se s periodou 0.3 sekundy.
+Jedná se o nejdelší a nejdůležitější podprogram.
+
+Podprogram event se vykoná v situaci, kdy se model přiblíží do určené vzdálenosti od referenčního bodu, avšak pro každý referenční bod pouze jednou.
+Stejně jako u podprogramu init jsou instrukce provedeny v nulovém čase a poté je po 1 sekundě spuštěn podprogram main.
+Účelem podprogramu event je změna natočení kloubů modelu jako příprava k pohybu k následujícímu referečnímu bodu.
+
+\section{Input hodnoty}
+
+Hodnoty, které se ukládájí do vstupních registrů, vychází z informace o směru k následujícímu referenčnímu bodu.
+Informace o směru je opět vyjádřena číslem od -5 do 5 a vypočítává se následujícím mechanismem.
+
+Prostor kolem modelu je rozdělen na několik kruhových výsečí, kde každá výseč je ohodnocena číslem od -5 do 5, viz obr. KOŠTĚ.
+Informace o směru je rovna ohodnocení výseče, ve které se nachází další referenční bod.
+Tato informace je v nezměněné podobě vložena do prvního vstupního registru.
+Do druhého registru je vložena hodnota s převráceným znaménkem.
+
+Na obrázku KOŠTĚ můžeme vidět situaci, kdy model (na obrázku dole) směřuje směrem nahoru a další referenční bod (modře) se nachází ve výseči ohodnocené číslem 2.
+Hodnoty vstupních registrů budou tedy čísla 2 a -2.
+
+\section{Výstupní registry}
+
+Každý z výstupních registrů interpretu odpovídá jednomu kloubu modelu.
+Hodnoty z výstupního registru jsou z interpretu čteny a převádí se na ovládací signály, které se předávají simulátoru.
+Hodnota (ovládací signál) v sobě obsahuje dvě informace.
+První z nich je dána znaménkem a určuje, kterým směrem bude aplikována síla v kloubu.
+Druhá informace je dána velikostí hodnoty a určuje velikost této síly.
+
+\section{Simulátor}
+Simulátor Mujoco funguje jako TODOOOO dynamicky linkovana knihovna napsana v jazyce C.
+Tato knihovna poskytuje řadu funkcí, které umožňují řídít běh simulace.
+V uživatelkém programu je tedy nutné z poskytnutých funkcí sestavit algoritmus spojité simulace (ukázkové uživtelské programy jsou součástí distribuce).
+Uživatel má plnou kontrolu nad během simulace, a to tím, že volá knihovní funkci TODOO mj\_step(), která v simulaci pokročí definovaným časem.
+Ve smyčce algoritmu spojité simulace jsou vloženy funkce, které ze simulátory čtou pozice jendotlivých obejktů, běh interpretu, výpočet fitness funkce a mapování výstupních hodnot z interpretu na ovládací signály.
+Ve zjednodušené formě je program znázorněn na OBRÁZKU.
+
+
+
+
+
+
+4.1 Evoluce programu
+Pro vyse uvedene case studies doporucuji provest experimenty vzdy s
+trojnozkou a mravencem na spirale.
 
 
 \chapter{Závěr}
