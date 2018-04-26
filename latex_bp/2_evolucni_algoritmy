@@ -6,13 +6,13 @@ Tato informace se pomocí růstové funkce převádí na fenotyp, který už rep
 
 Myšlenku EA můžeme popsat následovně.
 Máme populaci jedinců, kteří jsou všichni umístěni ve společném prostředí, ve kterém soutěží o zdroje.
-To má za následek přirozený výběr jedinců, který se projevuje tak, že horší jedinci mají menší pravděpodobnost reprodukce než-li ti lepší.
+To má za následek přirozený výběr jedinců, který se projevuje tak, že horší jedinci mají menší pravděpodobnost reprodukce, než-li ti lepší.
 Tímto se přirozeně zvyšuje kvalita populace.
 Reprodukce probíhá dvojím způsobem, a to křížením a mutací.
 Křížení pracuje se dvěmi rodiči a má za následek vytvoření dvou potomků, kteří vznikají kombinací genotypu obou rodičů.
 Mutace pracuje nad jedním rodičem a produkuje jednoho potomka, který má narozdíl od svého ročiče lehce pozměněný genotyp.
 
-EA v sobě zahrnuje dva procesy.
+EA v sobě zahrnují dva procesy.
 Prvním z nich jsou variační operátory (rekombinace, mutace), které do populace přináší potřebnou různorodost a tak zajišťují prohledávání nových možných řešení.
 Druhý z nich je operátor selekce, který vybírá častěji lepší řešení a tak zlepšuje průměrnou kvalitu populace.
 
@@ -26,7 +26,7 @@ Instrukce mají parametry, kterými mohou být buď konstanty nebo proměnné, k
 Tyto registry dělíme na vstupní, výstupní, pracovní a registry, obsahující konstanty.
 
 Program v LGP v průběhu svého vykonávání čte hodnoty z registrů a modifikuje je za použití instrukcí.
-Tímto provádí transformaci hodnot ve vstupních registrech do výstupních registrů.
+Tímto provádí transformaci hodnot ze vstupních registrů do výstupních registrů.
 
 LGP zahrnuje koncepty pro větvení, iteraci a vytváření podprogramů.
 Tyto koncepty ale nejsou v této práci využity.

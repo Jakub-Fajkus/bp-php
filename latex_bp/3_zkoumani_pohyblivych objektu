@@ -19,7 +19,7 @@ Wolff a Wahde použili LGP pro návrh kontroléru modelu humanoidního robota, k
 
 
 
-Níže si popíšeme da modely robotů, se kterými byly provedeny experimenty.
+Níže si popíšeme dva modely robotů, se kterými byly provedeny experimenty.
 První model, zvaný trojnožka, je vidět na obrázku XXX.
 Robot má 3 nohy, každá z nich je spojena s jádrem robota kloubem, který se otáčí v jedné ose.
 Rozsah pohybu těchto kloubů je omezen na 50 stupňů.

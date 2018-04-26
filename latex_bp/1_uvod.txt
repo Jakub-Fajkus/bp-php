@@ -3,11 +3,11 @@ informaci o soucasnych realnych (praktickych) problemech - napr.
 napasulte to na optimalizaci chovani autonomnich robotu. Povinne zahrnte
 odstavec typu: Cilem teto prace je......(CO DELAM< PORC TO DELAM) Rozsah uvodu max. 1 strana.
 
-V oblasti robitiky je velmi důležíté mít možnost vytvářet rychle a levně prototypy.
+V oblasti robotiky je velmi důležíté mít možnost vytvářet rychle a levně prototypy.
 K tomuto účelu je při návrhu fyzické struktury robota výhodné použít počítačové modely a simulace.
 Je výhodné mít i možnost rychle prototypovat řízení robota.
 Řízení robota je ovšem možné realizovat mnoha způsoby, např. umělými neuronovými sítěmi, konenčnými automaty nebo i programy v nějakém imperativním jazyce.
-V závislosti na vybrané metodě řízení robota jsou k dispozici různé alogritmy a automatizované nástroje pro automatické nalezení konfigurace zvoleného způsobu řízení, která bude mít za následek požadované chování robota.
+V závislosti na vybrané metodě řízení robota jsou k dispozici různé alogritmy a automatizované nástroje pro nalezení konfigurace zvoleného způsobu řízení, která bude mít za následek požadované chování robota.
 Touto konfigurací může být např. váhy neuronové sítě, definice konečného automatu nebo sekvence příkazů imperativního jazyka.
 Právě řízením robota programy napsanými v imperativním jazyce (byť jednoduchém) se zabývá tato práce, ve které jsou použity evoluční algoritmy pro automatizované hledání vhodného řízení robota.
 
