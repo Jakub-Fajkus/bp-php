@@ -4,10 +4,13 @@ declare(strict_types=1);
 namespace Experiment\Factory;
 
 use Experiment\Ant\AntLinearExperiment1000Individuals7Tournament120Gen;
+use Experiment\Ant\AntSpiralExperimentSubprogramsInput;
 use Experiment\ExperimentInterface;
 use Filesystem\Filesystem;
 use Genetic\Generator\GenerationGenerator;
+use Genetic\Generator\SteadyStateGenerationGenerator;
 use Simulator\Model\AntLinearModelXml;
+use Simulator\Model\AntSpiralModelXml;
 use Simulator\Serializer\Instruction\InstructionSerializer;
 use Simulator\Simulator;
 use Statistics\AllIndividualsStatistics;
@@ -42,6 +45,33 @@ class AntLinearExperimentFactory
             $cacheStats,
             $filesystem,
             new AntLinearModelXml(),
+            $executableName
+        );
+
+        return $experiment;
+    }
+
+    public function createAntSpiralSubprogramsInputsExperiment(): ExperimentInterface
+    {
+        //bez pocatecniho lomitka!
+        $executableName = 'bp_compute_spirala_9_referenci_mravenec_vstupy_podprogramy_2_ss';
+        $generationGenerator = new SteadyStateGenerationGenerator();
+        $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
+        $individualStats = new IndividualStatistics();
+        $allIndividualStats = new AllIndividualsStatistics();
+        $generationStats = new GenerationStatistics();
+        $cacheStats = new CacheStatistics();
+        $filesystem = new Filesystem();
+
+        $experiment = new AntSpiralExperimentSubprogramsInput(
+            $generationGenerator,
+            $simulator,
+            $individualStats,
+            $generationStats,
+            $allIndividualStats,
+            $cacheStats,
+            $filesystem,
+            new AntSpiralModelXml(),
             $executableName
         );
 

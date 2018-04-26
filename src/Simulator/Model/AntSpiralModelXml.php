@@ -17,7 +17,7 @@ class AntSpiralModelXml implements ModelXmlInterface
     public function getAsString(): string
     {
         $model = <<<MODEL
-        <mujoco>
+<mujoco>
     <option timestep="0.02" viscosity="0" density="0" gravity="0 0 -9.81" collision="dynamic"/>
     <compiler coordinate="global" angle="degree"/>
     <default>
@@ -32,23 +32,7 @@ class AntSpiralModelXml implements ModelXmlInterface
     <visual>
         <global offwidth="1920" offheight="1080"/>
     </visual>
-    
-    <sensor>
-        <jointpos name="sensor_jointpos_0" joint="motor_0"/>
-        <jointpos name="sensor_jointpos_1" joint="motor_1"/>
-        <jointpos name="sensor_jointpos_2" joint="motor_2"/>
-        <jointpos name="sensor_jointpos_3" joint="motor_3"/>
-        <jointpos name="sensor_jointpos_4" joint="motor_4"/>
-        <jointpos name="sensor_jointpos_5" joint="motor_5"/>
-        <jointpos name="sensor_jointpos_6" joint="motor_6"/>
-        <jointpos name="sensor_jointpos_7" joint="motor_7"/>
-        <jointpos name="sensor_jointpos_8" joint="motor_8"/>
-        <jointpos name="sensor_jointpos_9" joint="motor_9"/>
-        <jointpos name="sensor_jointpos_10" joint="motor_10"/>
-        <jointpos name="sensor_jointpos_11" joint="motor_11"/>
-        <jointpos name="sensor_jointpos_12" joint="motor_12"/>
-    </sensor>
-    
+
     <worldbody>
         <camera name='targeting' pos='1 1 2' mode='targetbodycom' target='body_0'/>
 
@@ -77,6 +61,9 @@ class AntSpiralModelXml implements ModelXmlInterface
                 <geom name="geom_2" type="capsule" fromto="0.00 0.00 0.00 0.00 -10.0 10.0" size="01.00000"/>
                 <!--spine-->
                 <geom name="geom_3" type="capsule" fromto="0.00 0.00 0.00 80.0 0.00 0.00" size="01.00000"/>
+                <!--contact point which is used to create heading vector-->
+                <geom name="contact_1" type="sphere" pos="0.00 0.00 0.00" size="0.01" rgba="1 0 1 0.5" density="1"/>
+
                 <!--2nd arms-->
                 <geom name="geom_4" type="capsule" fromto="40.0 0.00 0.00 40.0 10.0 10.0" size="01.00000"/>
                 <geom name="geom_5" type="capsule" fromto="40.0 0.00 0.00 40.0 -10.0 10.0" size="01.00000"/>

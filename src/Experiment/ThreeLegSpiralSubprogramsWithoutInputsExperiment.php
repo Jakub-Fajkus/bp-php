@@ -33,6 +33,6 @@ class ThreeLegSpiralSubprogramsWithoutInputsExperiment extends BaseExperiment
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 600;
         Config::$generationCount = 300;
-        COnfig::$useSubprogramUniform = true;
+        Config::$useSubprogramUniform = true;
     }
 }

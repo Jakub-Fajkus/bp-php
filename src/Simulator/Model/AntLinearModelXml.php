@@ -69,22 +69,24 @@ class AntLinearModelXml implements ModelXmlInterface
 
         <body name="body_0">
             <freejoint/>
-            <site name="head" size="2 2 2" rgba="1 0 0 0.5" pos="80 0 10"/>
-            <geom name="contact_0" type="sphere" pos="80.00 0.00 10.00" size="4" rgba="1 0 1 0.5"/>
-            <geom name="geom_0" type="sphere" pos="0.00 0.00 10.00" size="0.3"/>
+            <site name="head" size="2 2 2" rgba="1 0 0 0.5" pos="80 0 0"/>
+            <geom name="geom_0" type="sphere" pos="0.00 0.00 0.20" size="0.3"/>
             <body name="body_1">
                 <!--1st arms-->
-                <geom name="geom_1" type="capsule" fromto="0.00 0.00 10.00 0.00 10.0 10.0" size="01.00000"/>
-                <geom name="geom_2" type="capsule" fromto="0.00 0.00 10.00 0.00 -10.0 10.0" size="01.00000"/>
+                <geom name="geom_1" type="capsule" fromto="0.00 0.00 0.00 0.00 10.0 10.0" size="01.00000"/>
+                <geom name="geom_2" type="capsule" fromto="0.00 0.00 0.00 0.00 -10.0 10.0" size="01.00000"/>
                 <!--spine-->
-                <geom name="geom_3" type="capsule" fromto="0.00 0.00 10.00 80.0 0.00 10.00" size="01.00000"/>
+                <geom name="geom_3" type="capsule" fromto="0.00 0.00 0.00 80.0 0.00 0.00" size="01.00000"/>
+                <!--contact point which is used to create heading vector-->
+
+
                 <!--2nd arms-->
-                <geom name="geom_4" type="capsule" fromto="40.0 0.00 10.00 40.0 10.0 10.0" size="01.00000"/>
-                <geom name="geom_5" type="capsule" fromto="40.0 0.00 10.00 40.0 -10.0 10.0" size="01.00000"/>
+                <geom name="geom_4" type="capsule" fromto="40.0 0.00 0.00 40.0 10.0 10.0" size="01.00000"/>
+                <geom name="geom_5" type="capsule" fromto="40.0 0.00 0.00 40.0 -10.0 10.0" size="01.00000"/>
 
                 <!--3rd arms-->
-                <geom name="geom_18" type="capsule" fromto="80.0 0.00 10.00 80.0 10.0 10.0" size="01.00000"/>
-                <geom name="geom_19" type="capsule" fromto="80.0 0.00 10.00 80.0 -10.0 10.0" size="01.00000"/>
+                <geom name="geom_18" type="capsule" fromto="80.0 0.00 0.00 80.0 10.0 10.0" size="01.00000"/>
+                <geom name="geom_19" type="capsule" fromto="80.0 0.00 0.00 80.0 -10.0 10.0" size="01.00000"/>
 
                 <!--first leg pair-->
                 <!--upper leg-->
@@ -93,7 +95,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_6" type="capsule" fromto="0.00 -10.0 10.0 0.00 -20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_3">
-                        <joint type="hinge" pos="0 -20 10" axis="1 0 0" limited="true" range="-55 45" name="motor_1"/>
+                        <joint type="hinge" pos="0 -20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_1"/>
                         <geom name="geom_7" type="capsule" fromto="0.00 -20.0 10.0 0.00 -30.0 -5.0" size="01.00000"/>
                     </body>
                 </body>
@@ -103,7 +105,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_8" type="capsule" fromto="0.00 10.0 10.0 0.00 20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_5">
-                        <joint type="hinge" pos="0 20 10" axis="1 0 0" limited="true" range="-45 45" name="motor_3"/>
+                        <joint type="hinge" pos="0 20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_3"/>
                         <geom name="geom_9" type="capsule" fromto="0.00 20.0 10.0 0.00 30.0 -5" size="01.00000"/>
                     </body>
                 </body>
@@ -115,7 +117,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_10" type="capsule" fromto="40.0 -10.0 10.0 40.0 -20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_7">
-                        <joint type="hinge" pos="40 -20 10" axis="1 0 0" limited="true" range="-55 45" name="motor_5"/>
+                        <joint type="hinge" pos="40 -20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_5"/>
                         <geom name="geom_11" type="capsule" fromto="40.0 -20.0 10.0 40.0 -30.0 -5.0" size="01.00000"/>
                     </body>
                 </body>
@@ -125,7 +127,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_12" type="capsule" fromto="40.0 10.0 10.0 40.0 20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_9">
-                        <joint type="hinge" pos="40 20 10" axis="1 0 0" limited="true" range="-45 45" name="motor_7"/>
+                        <joint type="hinge" pos="40 20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_7"/>
                         <geom name="geom_13" type="capsule" fromto="40.0 20.0 10.0 40.0 30.0 -0.5" size="01.00000"/>
                     </body>
                 </body>
@@ -137,7 +139,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_14" type="capsule" fromto="80 -10.0 10.0 80 -20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_11">
-                        <joint type="hinge" pos="80 -20 10" axis="1 0 0" limited="true" range="-55 45" name="motor_9"/>
+                        <joint type="hinge" pos="80 -20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_9"/>
                         <geom name="geom_15" type="capsule" fromto="80 -20.0 10.0 80 -30.0 -5.0" size="01.00000"/>
                     </body>
                 </body>
@@ -147,7 +149,7 @@ class AntLinearModelXml implements ModelXmlInterface
                     <geom name="geom_16" type="capsule" fromto="80 10.0 10.0 80 20.0 10.0" size="01.00000"/>
                     <!--lower leg-->
                     <body name="body_13">
-                        <joint type="hinge" pos="80 20 10" axis="1 0 0" limited="true" range="-45 45" name="motor_11"/>
+                        <joint type="hinge" pos="80 20 10" axis="1 0 0" limited="true" range="-20 45" name="motor_11"/>
                         <geom name="geom_17" type="capsule" fromto="80 20.0 10.0 80 30.0 -0.5" size="01.00000"/>
                     </body>
                 </body>

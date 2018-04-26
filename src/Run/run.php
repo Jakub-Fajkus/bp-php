@@ -37,6 +37,7 @@ $experiments = [
     '3nozka_lin' => $threeLegLinearFactory->createThreeLegLinearSubprogramsInputsExperiment(),
     '3nozka_lin_noinput' => $threeLegLinearFactory->createThreeLegLinearSubprogramsWithoutInputsExperiment(),
     '3nozka_spiral_noinput' => $threeLegLinearFactory->createThreeLegSpiralSubprogramsWithoutInputsExperiment(),
+    'ant_spiral_inputs' => $antLinearFactory->createAntSpiralSubprogramsInputsExperiment(),
 ];
 
 if ($argc === 1) {
