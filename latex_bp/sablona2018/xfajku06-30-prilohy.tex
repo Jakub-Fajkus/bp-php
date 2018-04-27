@@ -16,20 +16,20 @@
 \chapter{Jak pracovat s touto šablonou}
 \label{jak}
 
-V této kapitole je uveden popis jednotlivých částí šablony, po kterém následuje stručný návod, jak s touto šablonou pracovat. 
+V této kapitole je uveden popis jednotlivých částí šablony, po kterém následuje stručný návod, jak s touto šablonou pracovat.
 
-Jedná se o přechodnou verzi šablony. Nová verze bude zveřejněna do~konce roku 2017 a~bude navíc obsahovat nové pokyny ke správnému využití šablony, závazné pokyny k~vypracování bakalářských a diplomových prací (rekapitulace pokynů, které jsou dostupné na~webu) a nezávazná doporučení od vybraných vedoucích, která již teď najdete na~webu (viz odkazy v souboru s literaturou). Jediné soubory, které se v nové verzi změní, budou \texttt{projekt-01-kapitoly-chapters.tex} a \texttt{projekt-30-prilohy-appendices.tex}, jejichž obsah každý student vymaže a nahradí vlastním. Šablonu lze tedy bez problémů využít i~v~současné verzi.
+Jedná se o přechodnou verzi šablony. Nová verze bude zveřejněna do~konce roku 2017 a~bude navíc obsahovat nové pokyny ke správnému využití šablony, závazné pokyny k~vypracování bakalářských a diplomových prací (rekapitulace pokynů, které jsou dostupné na~webu) a nezávazná doporučení od vybraných vedoucích, která již teď najdete na~webu (viz odkazy v souboru s literaturou). Jediné soubory, které se v nové verzi změní, budou \texttt{projekt-01-kapitoly.tex} a \texttt{projekt-30-prilohy-appendices.tex}, jejichž obsah každý student vymaže a nahradí vlastním. Šablonu lze tedy bez problémů využít i~v~současné verzi.
 
 \section*{Popis částí šablony}
 
 Po rozbalení šablony naleznete následující soubory a adresáře:
 \begin{DESCRIPTION}
-  \item [bib-styles] Styly literatury (viz níže). 
+  \item [bib-styles] Styly literatury (viz níže).
   \item [obrazky-figures] Adresář pro Vaše obrázky. Nyní obsahuje placeholder.pdf (tzv. TODO obrázek, který lze použít jako pomůcku při tvorbě technické zprávy), který se s prací neodevzdává. Název adresáře je vhodné zkrátit, aby byl jen ve zvoleném jazyce.
   \item [template-fig] Obrázky šablony (znak VUT).
   \item [fitthesis.cls] Šablona (definice vzhledu).
   \item [Makefile] Makefile pro překlad, počítání normostran, sbalení apod. (viz níže).
-  \item [projekt-01-kapitoly-chapters.tex] Soubor pro Váš text (obsah nahraďte).
+  \item [projekt-01-kapitoly.tex] Soubor pro Váš text (obsah nahraďte).
   \item [projekt-20-literatura-bibliography.bib] Seznam literatury (viz níže).
   \item [projekt-30-prilohy-appendices.tex] Soubor pro přílohy (obsah nahraďte).
   \item [projekt.tex] Hlavní soubor práce -- definice formálních částí.
@@ -60,7 +60,7 @@ Nezapomeňte, že vlna neřeší všechny nezlomitelné mezery. Vždy je třeba 
 make rename NAME=xlogin00-Cisteni-a-extrakce-textu
 \end{verbatim}
   \item Vyplňte požadované položky v souboru, který byl původně pojmenován \texttt{projekt.tex}, tedy typ, rok (odevzdání), název práce, svoje jméno, ústav (dle zadání), tituly a~jméno vedoucího, abstrakt, klíčová slova a další formální náležitosti.
-  \item Nahraďte obsah souborů s kapitolami práce, literaturou a přílohami obsahem svojí technické zprávy. Jednotlivé přílohy či kapitoly práce může být výhodné uložit do~samostatných souborů -- rozhodnete-li se pro toto řešení, je doporučeno zachovat konvenci pro názvy souborů, přičemž za číslem bude následovat název kapitoly. 
+  \item Nahraďte obsah souborů s kapitolami práce, literaturou a přílohami obsahem svojí technické zprávy. Jednotlivé přílohy či kapitoly práce může být výhodné uložit do~samostatných souborů -- rozhodnete-li se pro toto řešení, je doporučeno zachovat konvenci pro názvy souborů, přičemž za číslem bude následovat název kapitoly.
   \item Nepotřebujete-li přílohy, zakomentujte příslušnou část v \texttt{projekt.tex} a příslušný soubor vyprázdněte či smažte. Nesnažte se prosím vymyslet nějakou neúčelnou přílohu jen proto, aby daný soubor bylo čím naplnit. Vhodnou přílohou může být obsah přiloženého paměťového média.
   \item Nascanované zadání uložte do souboru \texttt{zadani.pdf} a povolte jeho vložení do práce parametrem šablony v projekt.tex (\verb|documentclass[zadani]{fitthesis}|).
   \item Nechcete-li odkazy tisknout barevně (tedy červený obsah -- bez konzultace s vedoucím nedoporučuji), budete pro tisk vytvářet druhé PDF s tím, že nastavíte parametr šablony pro tisk: (\verb|documentclass[zadani,print]{fitthesis}|).  Barevné logo se nesmí tisknout černobíle!
@@ -94,8 +94,8 @@ Následující seznam není výčtem všech využitelných nástrojů. Máte-li 
 \begin{description}
 	\item[\href{http://miktex.org/download}{MikTeX}] \LaTeX{} pro Windows -- distribuce s jednoduchou instalací a vynikající automatizací stahování balíčků.
 	\item[\href{http://texstudio.sourceforge.net/}{TeXstudio}] Přenositelné opensource GUI pro \LaTeX{}.  Ctrl+klik umožňuje přepínat mezi zdrojovým textem a PDF. Má integrovanou kontrolu pravopisu, zvýraznění syntaxe apod. Pro jeho využití je nejprve potřeba nainstalovat MikTeX.
-	\item[\href{http://www.winedt.com/}{WinEdt}] Ve Windows je dobrá kombinace WinEdt + MiKTeX. WinEdt je GUI pro Windows, pro jehož využití je nejprve potřeba nainstalovat \href{http://miktex.org/download}{MikTeX} či \href{http://www.tug.org/texlive/}{TeX Live}. 
-	\item[\href{http://kile.sourceforge.net/}{Kile}] Editor pro desktopové prostředí KDE (Linux). Umožňuje živé zobrazení náhledu. Pro jeho využití je potřeba mít nainstalovaný \href{http://www.tug.org/texlive/}{TeX Live} a Okular. 
+	\item[\href{http://www.winedt.com/}{WinEdt}] Ve Windows je dobrá kombinace WinEdt + MiKTeX. WinEdt je GUI pro Windows, pro jehož využití je nejprve potřeba nainstalovat \href{http://miktex.org/download}{MikTeX} či \href{http://www.tug.org/texlive/}{TeX Live}.
+	\item[\href{http://kile.sourceforge.net/}{Kile}] Editor pro desktopové prostředí KDE (Linux). Umožňuje živé zobrazení náhledu. Pro jeho využití je potřeba mít nainstalovaný \href{http://www.tug.org/texlive/}{TeX Live} a Okular.
 	\item[\href{http://jabref.sourceforge.net/download.php}{JabRef}] Pěkný a jednoduchý program v Javě pro správu souborů s bibliografií (literaturou). Není potřeba se nic učit -- poskytuje jednoduché okno a formulář pro editaci položek.
 	\item[\href{https://inkscape.org/en/download/}{InkScape}] Přenositelný opensource editor vektorové grafiky (SVG i PDF). Vynikající nástroj pro tvorbu obrázků do odborného textu. Jeho ovládnutí je obtížnější, ale výsledky stojí za to.
 	\item[\href{https://git-scm.com/}{GIT}] Vynikající pro týmovou spolupráci na projektech, ale může výrazně pomoci i jednomu autorovi. Umožňuje jednoduché verzování, zálohování a přenášení mezi více počítači.
@@ -112,7 +112,7 @@ Studenti při sazbě textu často řeší stejné problémy. Některé z nich lz
 \begin{itemize}
   \item \verb|amsmath| -- rozšířené možnosti sazby rovnic,
   \item \verb|float, afterpage, placeins| -- úprava umístění obrázků,
-  \item \verb|fancyvrb, alltt| -- úpravy vlastností prostředí Verbatim, 
+  \item \verb|fancyvrb, alltt| -- úpravy vlastností prostředí Verbatim,
   \item \verb|makecell| -- rozšíření možností tabulek,
   \item \verb|pdflscape, rotating| -- natočení stránky o 90 stupňů (pro obrázek či tabulku),
   \item \verb|hyphenat| -- úpravy dělení slov,

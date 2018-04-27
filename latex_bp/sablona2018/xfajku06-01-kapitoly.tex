@@ -15,11 +15,18 @@ Pro návrh vhodného programu je použita technika zjednodušeného Lineárního
 Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco.
 Účinnost softwarového řízení je experimentálně doložena.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \chapter{Evoluční algoritmy}
+\todo{informace o tom, ze jsem to cele opsal z knizky!}
 Evoluční algoritmy (EA) jsou inspirovány přírodními evolučními procesy a Darwinovou teorií evoluce.
 EA se využívají ke stochastickému prohledávání stavového prostoru.
 EA, narozdíl od jiných metod, pracují s celou populací kandidátních řešení (jedinců), které se vyvíjí paralelně.
 Každý jedinec v populaci v sobě nese zakódovanou informaci o konktrétním řešení, kterou nazýváme genotyp.
+\todo{rustova funkce?}
 Tato informace se pomocí růstové funkce převádí na fenotyp, který už reprezentuje řešení daného problému.
 
 Myšlenku EA můžeme popsat následovně.
@@ -30,13 +37,80 @@ Reprodukce probíhá dvojím způsobem, a to křížením a mutací.
 Křížení pracuje se dvěmi rodiči a má za následek vytvoření dvou potomků, kteří vznikají kombinací genotypu obou rodičů.
 Mutace pracuje nad jedním rodičem a produkuje jednoho potomka, který má narozdíl od svého ročiče lehce pozměněný genotyp.
 
-EA v sobě zahrnují dva procesy.
-Prvním z nich jsou variační operátory (rekombinace, mutace), které do populace přináší potřebnou různorodost a tak zajišťují prohledávání nových možných řešení.
-Druhý z nich je operátor selekce, který vybírá častěji lepší řešení a tak zlepšuje průměrnou kvalitu populace.
+Činnost obecného EA můžeme vidět na algoritmu \ref{alg:EA_alg}:
 
-Činnost obecného EA můžeme vidět na algoritmu 1:
-todo: pridat algoritmus klasickeho EA
 
+\begin{algorithm}[H]
+    inicializuj populaci náhodnými kandidátními řešeními\;
+    vyhodnoť všechny jedince\;
+    \While{(není splněna ukončující podmínka)}{
+        vyber rodiče\;
+        aplikuj křížení na dvojice rodičů\;
+        mutuj potomky\;
+        vyhodnoť nové kandidátní řešení\;
+        vyber jedince do další generace\;
+    }
+    \caption{Obecný evoluční algoritmus}
+    \label{alg:EA_alg}
+\end{algorithm}
+
+\section{Reprezentace}
+Při návrhu řešení problému je často nutné abstrahovat reálný svět tak, aby jsme vytvořili prostředí, ve terém budou existovat kandidátní řešení a ve kterém budou tato řešení vyhodnocována.
+Kandidátní řešení problému nazýváme fenotypy.
+Zakódované fenotypy nazýváme genotypy.
+Termín reprezentace se používá ve dvou kontextech.
+V prvním kontextu specifikuje mapování z fenotypu na genotyp a je synonymem pro kódování.
+V druhé kontextu označuje spíše strukturu prostoru genotypů.
+
+\section{Fitness funkce}
+Úlohou fitnes funkce je reprezentování požadavků, které by populace měla splňovat.
+Tvoří základ pro funkci selekčních operátorů.
+Můžeme mluvit o zobrazení z jedince v prostoru genotypů na reálné (nebo celé) číslo.
+Z technického hlediska se jedná o funkci, která měří míru kvality genotypu a přiřazuje mu tzv. fitness.
+Výpočet fitness funkce zahrnuje dekódování genotypu na fenotyp a následné vyhodnocení fenotypu, jako kandidátního řešení pro daný problém.
+
+\section{Populace}
+Úlohou populace je obsahovat kandidátní řešení --- jedná se o multimnožinu gneotypů.
+Populace je struktura, která podléhá evoluci, zatímco jedinci jsou statické struktury.
+Definice populace se může omezit pouze na její velikost, ale existují i specializované evoluční algoritmy, které pracují i s rozložením jedinců v prostoru.
+
+
+\section{Selekce}
+Operátor selekce slouží v výběru rodičů pro křížení na základě jejich kvality.
+Tento operátor je nejšastěji založen na náhodě a to tak, že kvalitnější řešení jsou vybárána s větší pravděpodností.
+Operátor je většinou aplikován pouze s určitou pravděpodobností $p_m$ a jeho implementace je závislá na použité reprezentaci.
+Změnou parametrů selekce nastavujeme tzv. selekční tlak, který ovlivňuje, do jaké míry jsou upřednostňováni lepší jedinci.
+%Pokud je selekční tlak velký, jsou nejlepší jedinci vybíráni častěji a tak může dojít ke ztrátě diverzity v populaci a k předčasné konvergenci algoritmu.
+%Dochází tedy k častějšímu uváznutí v lokálním minimu.
+%Naopak, pokud je selekční tlak malý, jsou často vybíráni i horší jedinci, a to může mít za následek velmi pomalou konvergenci algoritmu.
+
+Za typické představitele selekce můžeme považovat selekci turnajem a ruletová selekce.
+\todo{vytahnout z nejake ceske knizky}
+
+\section{Křížení}
+Operátor křížení slouží ke spojení částí genotypů rodičů a tím dochází k vytvoření nových jedinců.
+Operátor je většinou aplikován pouze s určitou pravděpodobností $p_r$.
+Nejčastěji se používá křížení pracující se dvěmi rodiči.
+Výběr, jeké části ze kterého rodiče budou vybrány, je založen na náhodě.
+Myšlenka za použitím křížení je následující.
+Zkombinováním rodičů, kteří mají odlišné, ale vhodné vlasnosti, může vzniknout jedinec, který tyto vlastnosti v sobě kombinuje a dosahuje tak vyšší kvality.
+
+Jako představitele si můžeme uvést jednobodové a uniformní křížení.
+
+Jednobodové křížení bylo původně představeno J. H. Hollandem v \todo{odkaz} a jeho funkce je následující.
+Vygeneruje se náhodné číslo $r$ z intervalu \todo{latex!} <1,l-1>, kde l je délka genomu.
+Poté se genomy rozdelí v tomto bodě $r$ na počáteční a koncovou část a noví jedinci vznikají záměnou těchto koncových částí, viz \todo{obrazek}.
+
+Uniformní křížení bylo představeno v \todo{422} a pracuje následovně.
+Pro každý gen se vygeneruje náhodné číslo $r$ z rovnoměrného rozložení na intervalu <0,1>.
+Číslo $r$ se poté porovná s parametrem $p$, který bývá obvykle roven 0.5, a pokud je $r < p$, tak se použije gen z prvního rodiče, jinak ze druhého.
+Druhý potomek je vytvořen z genů, které nebyly vybrány do prvního potomka, viz \todo{obrazek}.
+
+\section{Mutace}
+
+
+
+\section{Lineární genetické programování}
 V této práci se používá přístup inspirovaný LGP, které si stručně popíšeme dále.
 
 LGP je varianta GP, která vyvíjí programy složené z instrukcí imperativního jazyka nebo strojového kódu, narozdíl od výrazů funkcionálního jazyka.
@@ -51,7 +125,9 @@ Tyto koncepty ale nejsou v této práci využity.
 Namísto toho se z LGP využívá základní myšlenka lineární struktury programu složeného z instrukci a práce s registry.
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Zkoumání pohyblivých objektů}
 \todo{3. Zkoumani pohyblivych objektu (zakladni myslenky shrnte s inspiraci v
@@ -103,6 +179,10 @@ Každá noha je složena ze dvou pevných částí a jedoho kloubu.
 Tento kloub se pohybuje pouze ve svislé ose, tj. může zvedat a snižovat robota.
 Celá noha je připojena k tělu robota kloubem, který se pohybuje horizontálně, tj. slouží k odrážení.
 %}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Evoluční návrh pohyblivých objektů}
 \todo{4. Evolucni navrh pohyblivych objektu - HLAVNI KAPITOLA BP - zde
@@ -201,6 +281,10 @@ Ve zjednodušené formě je program znázorněn na OBRÁZKU.
 4.1 Evoluce programu
 Pro vyse uvedene case studies doporucuji provest experimenty vzdy s
 trojnozkou a mravencem na spirale.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \chapter{Závěr}
