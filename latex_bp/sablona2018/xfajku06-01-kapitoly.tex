@@ -1,5 +1,6 @@
 %=========================================================================
 % (c) Michal Bidlo, Bohuslav Křena, 2008
+\todo{shrnuti kazde kapitoly!}
 
 \chapter{Úvod}
 V oblasti robotiky je velmi důležíté mít možnost vytvářet rychle a levně prototypy.
@@ -114,13 +115,32 @@ Zkombinováním rodičů, kteří mají odlišné, ale vhodné vlasnosti, může
 Jako představitele si můžeme uvést jednobodové a uniformní křížení.
 
 Jednobodové křížení bylo původně představeno J. H. Hollandem v \todo{220} a jeho funkce je následující.
-Vygeneruje se náhodné číslo $r$ z intervalu \todo{latex!} <1,l-1>, kde l je délka genomu.
-Poté se genomy rozdelí v tomto bodě $r$ na počáteční a koncovou část a noví jedinci vznikají záměnou těchto koncových částí, viz \todo{obrazek}.
+Vygeneruje se náhodné číslo $r$ z intervalu $\langle 1, L-1\rangle$, kde L je délka genomu.
+Poté se genomy rozdelí v tomto bodě $r$ na počáteční a koncovou část a noví jedinci vznikají záměnou těchto koncových částí, viz obrázek \ref{fig:jednobodove_krizeni}.
+
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky-figures/jedobodove_krizeni.pdf}}
+    \caption{
+    Jednobodové křížení
+    }
+    \label{fig:jednobodove_krizeni}
+\end{figure}
 
 Uniformní křížení bylo představeno v \todo{422} a pracuje následovně.
 Pro každý gen se vygeneruje náhodné číslo $r$ z rovnoměrného rozložení na intervalu <0,1>.
 Číslo $r$ se poté porovná s parametrem $p$, který bývá obvykle roven 0.5, a pokud je $r < p$, tak se použije gen z prvního rodiče, jinak ze druhého.
-Druhý potomek je vytvořen z genů, které nebyly vybrány do prvního potomka, viz \todo{obrazek}.
+Druhý potomek je vytvořen z genů, které nebyly vybrány do prvního potomka, viz obrázek \ref{fig:uniformni_krizeni}
+
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky-figures/uniformni_krizeni.pdf}}
+    \caption{
+    Uniformní křížení
+    }
+    \label{fig:uniformni_krizeni}
+\end{figure}
+
 
 \subsection{Mutace}
 Operátor mutace se aplikuje na jendoho rodiče a jeho výsledkem je jeden potomek.
@@ -278,32 +298,45 @@ Celá noha je připojena k tělu robota kloubem, který se pohybuje horizontáln
 %spojeni php a cpp
 
 V této kapitole si nejdříve popíšeme způsob, jakým je realizováno řízení robota a poté instanci EA, která je v této práci použita.
-\section{Relizace řízení robota}
-V simulátoru Mujoco je vytvořena scéna, která obsahuje model robota a množinu referenčních bodů, které svým pořadím a umístěním ve scéně definují trajektorii, kterou má robot následovat.
 
-Simulátor Mujoco funguje jako TODOOOO dynamicky linkovana knihovna napsana v jazyce C.
+
+\section{Relizace řízení robota}
+Simulátor Mujoco funguje jako \todo{dynamicky linkovana knihovna} napsaná v jazyce C.
 Tato knihovna poskytuje řadu funkcí, které umožňují řídít běh simulace.
-Tato knihovna se poté používá v uživatelském programu, ve kterém nutné z poskytnutých funkcí sestavit algoritmus spojité simulace (ukázkové uživtelské programy jsou součástí distribuce simulátoru).
-Uživatel má plnou kontrolu nad během simulace, a to tím, že volá knihovní funkci TODOO mj\_step(), která v simulaci pokročí definovaným časem.
-Ve smyčce algoritmu spojité simulace jsou vloženy funkce, které ze simulátory čtou pozice jednotlivých obejktů, běh interpretu, výpočet fitness funkce a mapování výstupních hodnot z interpretu na ovládací signály.
+Tyto funkce se poté používají v uživatelském programu, ve kterém nutné z těchto funkcí sestavit algoritmus spojité simulace (ukázkové uživatelské programy jsou součástí distribuce simulátoru).
+Uživatel má plnou kontrolu nad během simulace, a to tím, že volá knihovní funkci \todo{mj\_step()}, která v simulaci pokročí definovaným časem.
+Ve smyčce algoritmu spojité simulace jsou vloženy funkce zajišťující běh interpretu, výpočet fitness funkce, mapování výstupních hodnot z interpretu na ovládací signály a získávání pozic objektů z dat simulace.
 Ve zjednodušené formě je program znázorněn na \todo{obrázek s algoritmem simulatoru}.
+
+V simulátoru Mujoco je vytvořena scéna, která obsahuje model robota a množinu referenčních bodů, které svým pořadím a umístěním ve scéně definují trajektorii, kterou má robot následovat.
 
 
 \subsection{Interpret}
 
 Program, který řídí model robota, je vykonáván v interpretu.
-Interpret obsahuje paměťová místa, kterým se říká registry, které se dělí na: vstupní, výstupní a konstantní.
-Každý registr je indetifikovaný unikátním číslem, které se navýzá index, a může obsahovat celočíselné hodnoty v rozsahu od -5 do 5.
-Počty registrů jsou následující: 11 konstatních registrů s hodnotami od -5 do 5, 2 vstupní registry, a 3 nebo 12 výstupních registrů (pro každý kloub modelu jeden registr).
+Interpret obsahuje vstupní, výstupní a konstantní registry.
+Každý registr je indetifikovaný unikátním číslem, které se navýzá index.
+Registry mohou obsahovat celočíselné hodnoty v rozsahu od -5 do 5.
+Počty registrů jsou následující: 11 konstatních registrů s hodnotami od -5 do 5, 2 vstupní registry, a 3, nebo 12, výstupních registrů (pro každý kloub modelu jeden registr).
 Interpret vykonává program, který je složen z instrukcí.
 
 Je zde použit jen jeden druh instrukce, a to instukce s názvem COPY.
 Tato instrukce má 2 parametry: zdrojový registr a cílový registr.
 Výsledkem této instrukce je zkopírování hodnoty ze vstupního, nebo konstatního, registru do výstupního registru.
+Interpret je schématikcy znázorněn na obrázku \ref{fig:interpret}
 
-\subsection{Vykonávání programu}
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky-figures/interpret.eps}}
+    \caption{
+    Schéma interpretu.
+    Je zde znázorněna situace, ve které interpret vykonává instrukci z podprogramu main.
+    Tato instrukce, s parametry 11 a 14 způsobí zkopírování hodnoty 3 ze vstupního registru s indexem 11 do výstupního registru s indexem 14.
+    }
+    \label{fig:interpret}
+\end{figure}
 
-V průběhu simulace je vykonáván program, který čte hodnoty ze vstupních registrů, které obsahují informaci o směru k dalšímu referenčnímu bodu, a zapisuje hodnoty do výstupních registrů, které se převádí na sílu, která je aplikována v jednotlivých kloubech.
+V průběhu simulace je vykonáván program, který čte hodnoty ze vstupních registrů, které obsahují informaci o směru k dalšímu referenčnímu bodu, nebo konstantních registrů a zapisuje hodnoty do výstupních registrů, které se převádí na sílu, která je aplikována v jednotlivých kloubech.
 
 \subsection{Podprogramy}
 
@@ -321,18 +354,26 @@ Podprogram event se vykoná v situaci, kdy se model přiblíží do určené vzd
 Stejně jako u podprogramu init jsou instrukce provedeny v nulovém čase a poté je po 1 sekundě spuštěn podprogram main.
 Účelem podprogramu event je změna natočení kloubů modelu jako příprava k pohybu k následujícímu referečnímu bodu.
 
-\subsection{Input hodnoty}
+\subsection{Hodnoty vstupních registrů}
 
 Hodnoty, které se ukládájí do vstupních registrů, vychází z informace o směru k následujícímu referenčnímu bodu.
 Informace o směru je opět vyjádřena číslem od -5 do 5 a vypočítává se následujícím mechanismem.
 
-Prostor kolem modelu je rozdělen na několik kruhových výsečí, kde každá výseč je ohodnocena číslem od -5 do 5, viz obr. KOŠTĚ.
+Prostor kolem modelu je rozdělen na několik kruhových výsečí, kde každá výseč je ohodnocena číslem od -5 do 5, viz obrázek \ref{fig:kruhove_vysece}.
 Informace o směru je rovna ohodnocení výseče, ve které se nachází další referenční bod.
 Tato informace je v nezměněné podobě vložena do prvního vstupního registru.
 Do druhého registru je vložena hodnota s převráceným znaménkem.
 
-Na obrázku KOŠTĚ můžeme vidět situaci, kdy model (na obrázku dole) směřuje směrem nahoru a další referenční bod (modře) se nachází ve výseči ohodnocené číslem 2.
-Hodnoty vstupních registrů budou tedy čísla 2 a -2.
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=20em]{obrazky-figures/reference_direction_angles.pdf}}
+    \caption{
+    Způsob výpočtu hodnot vstupních registrů.
+    Model (na obrázku dole) směřuje směrem nahoru a další referenční bod (modře) se nachází ve výseči ohodnocené číslem 2.
+    Hodnoty vstupních registrů budou tedy čísla 2 a -2.
+    }
+    \label{fig:kruhove_vysece}
+\end{figure}
 
 \subsection{Výstupní registry}
 

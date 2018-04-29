@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 2405546, 2018-03-11"
+   sodipodi:docname="ss_algo.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="168.36714"
+     inkscape:cy="617.28819"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="1110"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.8194437px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="1.5119004"
+       y="31.660715"
+       id="text12"
+       inkscape:export-xdpi="399.96399"
+       inkscape:export-ydpi="399.96399"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         x="1.5119004"
+         y="31.660715"
+         style="stroke-width:0.26458332">//the T has a size of k</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="42.68502"
+         style="stroke-width:0.26458332"
+         id="tspan14">set time t = 0;</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="53.709324"
+         style="stroke-width:0.26458332"
+         id="tspan16">initialize all chromosomes in P(t) with random alleles;</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="64.733627"
+         style="stroke-width:0.26458332"
+         id="tspan18">do {</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="75.757935"
+         style="stroke-width:0.26458332"
+         id="tspan20">   calculate fitness of individuals in P(t);</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="86.782242"
+         style="stroke-width:0.26458332"
+         id="tspan22">   do {</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="97.806541"
+         style="stroke-width:0.26458332"
+         id="tspan24">      select two individuals from the parent population P(t);</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="108.83085"
+         style="stroke-width:0.26458332"
+         id="tspan26">      create two offspring using a crossover operator;</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="119.85515"
+         style="stroke-width:0.26458332"
+         id="tspan28">      apply a random mutation to the offspring;</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="130.87946"
+         style="stroke-width:0.26458332"
+         id="tspan30">      insert the offsprings into temporary population T;</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="141.90376"
+         style="stroke-width:0.26458332"
+         id="tspan34">   } until(T has size of k);</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="152.92807"
+         style="stroke-width:0.26458332"
+         id="tspan36">   insert the individuals from T to P(t);</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="163.95238"
+         style="stroke-width:0.26458332"
+         id="tspan38">   remove k worst individuals from P(t);</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="174.97667"
+         style="stroke-width:0.26458332"
+         id="tspan40">   t = t + 1;</tspan><tspan
+         sodipodi:role="line"
+         x="1.5119004"
+         y="186.00098"
+         style="stroke-width:0.26458332"
+         id="tspan42">} until (termination criterion is met);</tspan></text>
+  </g>
+</svg>
