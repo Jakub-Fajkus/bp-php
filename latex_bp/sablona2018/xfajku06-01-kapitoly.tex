@@ -166,15 +166,24 @@ Druhý jedinec vzniká obdobným způsobem, viz. obrázek \ref{fig:GP_krizeni}.
     \label{fig:GP_krizeni}
 \end{figure}
 
-Velikost programu, definována jako výška stromu, je omezena aby se předoslo velmi velkým programům.
-Pokud by potomek po křížení přesáhl tuto velikost, nebude vložen do nové generace - místo něj se do nové generace reprodukuje jeden z jeho rodičů.
+Velikost programu, definována jako výška stromu, je omezena aby se předešlo velmi velkým programům.
+Pokud by potomek po křížení přesáhl tuto velikost, nebude vložen do nové generace - místo něj se do nové generace zkopíruje jeden z jeho rodičů.
 
-
+Mutace v GA hraje menší roli a provádí drobné změny struktur v populaci.
+Mutace sestává z několika kroků:
+První krok je zvolení náhodného uzlu ve struktuře.
+Tento uzel může být vnitřní (funkce) i vnější (terminál).
+Druhým krokem je odstranění tohoto uzlu is celým podstromem, který je k němu připojený.
+Posledním krokem je vygenerování náhodného podstromu, který se poté připojí na místo odstraněného uzlu.
+Tato operace je řízena parametrem který říká, jakou výšku bude mít vygenerovaný podstrom.
+Speciálním případem mutace je operace, která vloží jeden terminál do náhodně vybraného uzlu ve stromu.
 
 \section{Lineární genetické programování}
-V této práci se používá přístup inspirovaný LGP, které si stručně popíšeme dále.
+\todo{zalozeno na LGP}
+V této práci se používá přístup inspirovaný Lineárním genetickým programováním (LGP), které si stručně popíšeme dále.
 
 LGP je varianta GP, která vyvíjí programy složené z instrukcí imperativního jazyka nebo strojového kódu, narozdíl od výrazů funkcionálního jazyka.
+Tyto programy mají lineární strukturu.
 Instrukce mají parametry, kterými mohou být buď konstanty nebo proměnné, které se nazývají registry.
 Tyto registry dělíme na vstupní, výstupní, pracovní a registry, obsahující konstanty.
 
@@ -212,7 +221,7 @@ Wolff a Wahde použili LGP pro návrh kontroléru modelu humanoidního robota, k
 
 
 Níže si popíšeme dva modely robotů, se kterými byly provedeny experimenty.
-První model, zvaný trojnožka, je vidět na obrázku XXX.
+První model, zvaný trojnožka, je vidět na obrázku \todo{obrazek robota trojnozka}.
 Robot má 3 nohy, každá z nich je spojena s jádrem robota kloubem, který se otáčí v jedné ose.
 Rozsah pohybu těchto kloubů je omezen na 50 stupňů.
 Model robota má v horní části v místě kloubů umístěny kontaktní body.
@@ -226,7 +235,7 @@ Tyto fialové koule slouží k detekci převrácení robota.
 Ve středu robota je bod zvaný hlava (červeně).
 %}
 
-Druhý robot, zvaný mravenec, je vidět na obrázku XXX.
+Druhý robot, zvaný mravenec, je vidět na obrázku \todo{obrazek robota mravenec}.
 Robot má 3 páry nohou, které jsou všechny připojeny k tělu robota.
 Rozsah pohybu kloubů, které rotují kolem horizontální osy a spojují tělo robota s jeho nohou, je omezen na 100 stupňů.
 Rozsah kloubů, které rotují kolem svislé osy a spojují dvě části nohy, je omezen na 65 stupňů.
@@ -246,34 +255,41 @@ Celá noha je připojena k tělu robota kloubem, který se pohybuje horizontáln
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Evoluční návrh pohyblivých objektů}
-\todo{4. Evolucni navrh pohyblivych objektu - HLAVNI KAPITOLA BP - zde
-popisteje podrobne vlastni techniky, ktere pro EVOLUCI pouzivate. Fakta
-o EA budou vychazet k kapitoly 2.}
+%\todo{4. Evolucni navrh pohyblivych objektu - HLAVNI KAPITOLA BP - zde
+%popisteje podrobne vlastni techniky, ktere pro EVOLUCI pouzivate. Fakta
+%o EA budou vychazet k kapitoly 2.}
 
 
-Cpp cast
-- popis interpretu
-- popis jazyka
-- podprogramy
-- input hodnoty (koste)
-- prevod outputu na silu v kloubech ??
-- spojeni interpretu a simulatoru
-- pocitani fitness!
+%Cpp cast
+%- popis interpretu
+%- popis jazyka
+%- podprogramy
+%- input hodnoty (koste)
+%- prevod outputu na silu v kloubech ??
+%- spojeni interpretu a simulatoru
+%- pocitani fitness!
 
-php cast
-- popis evoluce
-- algoritmus
-- genotyp
-- instance EA - populace, delka, selekce, crossover, mutace
+%php cast
+%- popis evoluce
+%- algoritmus
+%- genotyp
+%- instance EA - populace, delka, selekce, crossover, mutace
 
-spojeni php a cpp
+%spojeni php a cpp
 
-\section{Simulace}
-
+V této kapitole si nejdříve popíšeme způsob, jakým je realizováno řízení robota a poté instanci EA, která je v této práci použita.
+\section{Relizace řízení robota}
 V simulátoru Mujoco je vytvořena scéna, která obsahuje model robota a množinu referenčních bodů, které svým pořadím a umístěním ve scéně definují trajektorii, kterou má robot následovat.
 
+Simulátor Mujoco funguje jako TODOOOO dynamicky linkovana knihovna napsana v jazyce C.
+Tato knihovna poskytuje řadu funkcí, které umožňují řídít běh simulace.
+Tato knihovna se poté používá v uživatelském programu, ve kterém nutné z poskytnutých funkcí sestavit algoritmus spojité simulace (ukázkové uživtelské programy jsou součástí distribuce simulátoru).
+Uživatel má plnou kontrolu nad během simulace, a to tím, že volá knihovní funkci TODOO mj\_step(), která v simulaci pokročí definovaným časem.
+Ve smyčce algoritmu spojité simulace jsou vloženy funkce, které ze simulátory čtou pozice jednotlivých obejktů, běh interpretu, výpočet fitness funkce a mapování výstupních hodnot z interpretu na ovládací signály.
+Ve zjednodušené formě je program znázorněn na \todo{obrázek s algoritmem simulatoru}.
 
-\section{Interpret}
+
+\subsection{Interpret}
 
 Program, který řídí model robota, je vykonáván v interpretu.
 Interpret obsahuje paměťová místa, kterým se říká registry, které se dělí na: vstupní, výstupní a konstantní.
@@ -285,11 +301,11 @@ Je zde použit jen jeden druh instrukce, a to instukce s názvem COPY.
 Tato instrukce má 2 parametry: zdrojový registr a cílový registr.
 Výsledkem této instrukce je zkopírování hodnoty ze vstupního, nebo konstatního, registru do výstupního registru.
 
-\section{Vykonávání programu}
+\subsection{Vykonávání programu}
 
 V průběhu simulace je vykonáván program, který čte hodnoty ze vstupních registrů, které obsahují informaci o směru k dalšímu referenčnímu bodu, a zapisuje hodnoty do výstupních registrů, které se převádí na sílu, která je aplikována v jednotlivých kloubech.
 
-\section{Podprogramy}
+\subsection{Podprogramy}
 
 Každý program, který reprezentuje kandidátní řešení, je pro vykonávání v průběhu simulace rozdělen na 3 podprogramy.
 Tyto podprogramy se nazývají init, main a event.
@@ -305,7 +321,7 @@ Podprogram event se vykoná v situaci, kdy se model přiblíží do určené vzd
 Stejně jako u podprogramu init jsou instrukce provedeny v nulovém čase a poté je po 1 sekundě spuštěn podprogram main.
 Účelem podprogramu event je změna natočení kloubů modelu jako příprava k pohybu k následujícímu referečnímu bodu.
 
-\section{Input hodnoty}
+\subsection{Input hodnoty}
 
 Hodnoty, které se ukládájí do vstupních registrů, vychází z informace o směru k následujícímu referenčnímu bodu.
 Informace o směru je opět vyjádřena číslem od -5 do 5 a vypočítává se následujícím mechanismem.
@@ -318,7 +334,7 @@ Do druhého registru je vložena hodnota s převráceným znaménkem.
 Na obrázku KOŠTĚ můžeme vidět situaci, kdy model (na obrázku dole) směřuje směrem nahoru a další referenční bod (modře) se nachází ve výseči ohodnocené číslem 2.
 Hodnoty vstupních registrů budou tedy čísla 2 a -2.
 
-\section{Výstupní registry}
+\subsection{Výstupní registry}
 
 Každý z výstupních registrů interpretu odpovídá jednomu kloubu modelu.
 Hodnoty z výstupního registru jsou z interpretu čteny a převádí se na ovládací signály, které se předávají simulátoru.
@@ -326,13 +342,6 @@ Hodnota (ovládací signál) v sobě obsahuje dvě informace.
 První z nich je dána znaménkem a určuje, kterým směrem bude aplikována síla v kloubu.
 Druhá informace je dána velikostí hodnoty a určuje velikost této síly.
 
-\section{Simulátor}
-Simulátor Mujoco funguje jako TODOOOO dynamicky linkovana knihovna napsana v jazyce C.
-Tato knihovna poskytuje řadu funkcí, které umožňují řídít běh simulace.
-V uživatelkém programu je tedy nutné z poskytnutých funkcí sestavit algoritmus spojité simulace (ukázkové uživtelské programy jsou součástí distribuce).
-Uživatel má plnou kontrolu nad během simulace, a to tím, že volá knihovní funkci TODOO mj\_step(), která v simulaci pokročí definovaným časem.
-Ve smyčce algoritmu spojité simulace jsou vloženy funkce, které ze simulátory čtou pozice jendotlivých obejktů, běh interpretu, výpočet fitness funkce a mapování výstupních hodnot z interpretu na ovládací signály.
-Ve zjednodušené formě je program znázorněn na OBRÁZKU.
 
 
 
