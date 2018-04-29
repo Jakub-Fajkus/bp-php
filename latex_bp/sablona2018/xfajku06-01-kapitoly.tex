@@ -22,12 +22,14 @@ Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco.
 
 \chapter{Evoluční algoritmy}
 \todo{informace o tom, ze jsem to cele opsal z knizky!}
+
+\section{Koncept evolunčích algoritmů}
+
 Evoluční algoritmy (EA) jsou inspirovány přírodními evolučními procesy a Darwinovou teorií evoluce.
 EA se využívají ke stochastickému prohledávání stavového prostoru.
 EA, narozdíl od jiných metod, pracují s celou populací kandidátních řešení (jedinců), které se vyvíjí paralelně.
 Každý jedinec v populaci v sobě nese zakódovanou informaci o konktrétním řešení, kterou nazýváme genotyp.
-\todo{rustova funkce?}
-Tato informace se pomocí růstové funkce převádí na fenotyp, který už reprezentuje řešení daného problému.
+Genotyp se poté dekóduje na fenotyp, který už reprezentuje řešení daného problému.
 
 Myšlenku EA můžeme popsat následovně.
 Máme populaci jedinců, kteří jsou všichni umístěni ve společném prostředí, ve kterém soutěží o zdroje.
@@ -41,20 +43,20 @@ Mutace pracuje nad jedním rodičem a produkuje jednoho potomka, který má naro
 
 
 \begin{algorithm}[H]
-    inicializuj populaci náhodnými kandidátními řešeními\;
+    inicializuj populaci náhodně vygenerovanými jedinci\;
     vyhodnoť všechny jedince\;
     \While{(není splněna ukončující podmínka)}{
         vyber rodiče\;
         aplikuj křížení na dvojice rodičů\;
         mutuj potomky\;
-        vyhodnoť nové kandidátní řešení\;
+        vyhodnoť kvalitu potomků\;
         vyber jedince do další generace\;
     }
     \caption{Obecný evoluční algoritmus}
     \label{alg:EA_alg}
 \end{algorithm}
 
-\section{Reprezentace}
+\subsection{Reprezentace}
 Při návrhu řešení problému je často nutné abstrahovat reálný svět tak, aby jsme vytvořili prostředí, ve terém budou existovat kandidátní řešení a ve kterém budou tato řešení vyhodnocována.
 Kandidátní řešení problému nazýváme fenotypy.
 Zakódované fenotypy nazýváme genotypy.
@@ -62,32 +64,46 @@ Termín reprezentace se používá ve dvou kontextech.
 V prvním kontextu specifikuje mapování z fenotypu na genotyp a je synonymem pro kódování.
 V druhé kontextu označuje spíše strukturu prostoru genotypů.
 
-\section{Fitness funkce}
+\subsection{Fitness funkce}
 Úlohou fitnes funkce je reprezentování požadavků, které by populace měla splňovat.
 Tvoří základ pro funkci selekčních operátorů.
-Můžeme mluvit o zobrazení z jedince v prostoru genotypů na reálné (nebo celé) číslo.
+Můžeme mluvit o zobrazení z jedince v prostoru genotypů na reálné, nebo celé, číslo.
 Z technického hlediska se jedná o funkci, která měří míru kvality genotypu a přiřazuje mu tzv. fitness.
 Výpočet fitness funkce zahrnuje dekódování genotypu na fenotyp a následné vyhodnocení fenotypu, jako kandidátního řešení pro daný problém.
 
-\section{Populace}
-Úlohou populace je obsahovat kandidátní řešení --- jedná se o multimnožinu gneotypů.
+\subsection{Populace}
+Úlohou populace je obsahovat množinu kandidátních řešení --- jedná se o multimnožinu jedinců.
 Populace je struktura, která podléhá evoluci, zatímco jedinci jsou statické struktury.
 Definice populace se může omezit pouze na její velikost, ale existují i specializované evoluční algoritmy, které pracují i s rozložením jedinců v prostoru.
 
 
-\section{Selekce}
-Operátor selekce slouží v výběru rodičů pro křížení na základě jejich kvality.
+\subsection{Selekce}
+Operátor selekce slouží k výběru rodičů pro křížení na základě jejich kvality.
 Tento operátor je nejšastěji založen na náhodě a to tak, že kvalitnější řešení jsou vybárána s větší pravděpodností.
-Operátor je většinou aplikován pouze s určitou pravděpodobností $p_m$ a jeho implementace je závislá na použité reprezentaci.
 Změnou parametrů selekce nastavujeme tzv. selekční tlak, který ovlivňuje, do jaké míry jsou upřednostňováni lepší jedinci.
-%Pokud je selekční tlak velký, jsou nejlepší jedinci vybíráni častěji a tak může dojít ke ztrátě diverzity v populaci a k předčasné konvergenci algoritmu.
-%Dochází tedy k častějšímu uváznutí v lokálním minimu.
-%Naopak, pokud je selekční tlak malý, jsou často vybíráni i horší jedinci, a to může mít za následek velmi pomalou konvergenci algoritmu.
 
-Za typické představitele selekce můžeme považovat selekci turnajem a ruletová selekce.
+Za typické představitele selekce můžeme považovat selekci turnajem a ruletovou selekci.
 \todo{vytahnout z nejake ceske knizky}
 
-\section{Křížení}
+Selekce turnajem, narozdíl od ruletové selekce nevyžaduje znalost celé populace a přepočítávání fitness hodnot.
+Selekce turnajem ani nevyžaduje, aby vyhodnocení fitness funkcí bylo kvantifikované, ale pro jeho funkci stačí, aby byla mezi jedinci definována operace uspořádání.
+Díky toho je tato metoda nenáročná na implementaci a na výpočetní čas.
+Základní alogoritmus selekce turnajem můžeme vidět na algoritmu \ref{alg:EA_turnaj}.
+
+\begin{algorithm}[H]
+    // Chceme vytvořit mating pool velikosti $\lambda$ jedinců\;
+    \While{(dokud mating pool neobsahuje $\lambda$ jedinců)}{
+        Náhodně vyber $k$ jedinců\;
+        Porovnej mezi sebou těchto $k$ jedinců a vyber z nich nejlepšího jedince $i$\;
+        Vlož jedince $i$ do mating pool
+    }
+    \caption{Selekce turnajem}
+    \label{alg:EA_turnaj}
+\end{algorithm}
+
+Úpravou parametru $k$ se nastavuje selekční tlak --- čím větší je parametr, tím více jedinců je vybráno pro porovnání a to má za následek vyšší selekční tlak.
+
+\subsection{Křížení}
 Operátor křížení slouží ke spojení částí genotypů rodičů a tím dochází k vytvoření nových jedinců.
 Operátor je většinou aplikován pouze s určitou pravděpodobností $p_r$.
 Nejčastěji se používá křížení pracující se dvěmi rodiči.
@@ -97,7 +113,7 @@ Zkombinováním rodičů, kteří mají odlišné, ale vhodné vlasnosti, může
 
 Jako představitele si můžeme uvést jednobodové a uniformní křížení.
 
-Jednobodové křížení bylo původně představeno J. H. Hollandem v \todo{odkaz} a jeho funkce je následující.
+Jednobodové křížení bylo původně představeno J. H. Hollandem v \todo{220} a jeho funkce je následující.
 Vygeneruje se náhodné číslo $r$ z intervalu \todo{latex!} <1,l-1>, kde l je délka genomu.
 Poté se genomy rozdelí v tomto bodě $r$ na počáteční a koncovou část a noví jedinci vznikají záměnou těchto koncových částí, viz \todo{obrazek}.
 
@@ -106,7 +122,52 @@ Pro každý gen se vygeneruje náhodné číslo $r$ z rovnoměrného rozložení
 Číslo $r$ se poté porovná s parametrem $p$, který bývá obvykle roven 0.5, a pokud je $r < p$, tak se použije gen z prvního rodiče, jinak ze druhého.
 Druhý potomek je vytvořen z genů, které nebyly vybrány do prvního potomka, viz \todo{obrazek}.
 
-\section{Mutace}
+\subsection{Mutace}
+Operátor mutace se aplikuje na jendoho rodiče a jeho výsledkem je jeden potomek.
+Cílem mutace je provést malou změnu genotypu.
+Operátor je většinou aplikován pouze s určitou pravděpodobností $p_m$ a jeho implementace je závislá na použité reprezentaci.
+
+
+Např. pro reprezentace využívající celá čísla, existují 2 záladní přístupy, které mutují každý gen s pravděpodobností $p_m$.
+\todo{Random resetting} je způsob, při kterém je pro gen náhodně vygenerována nová hodnota z množiny všech možných hodnot.
+Tato varianta je vhodná, pokud mezi hodnotami neexistuje relace uspořádání.
+\todo{Creep mutation} je způsob, při kterém se k hodnotě genu přičte nebo odečte náhodně vygenerované malé číslo.
+Tato varianta je vhodná, jsou-li hodnoty genomu např. parametry nějakého systému.
+
+\todo{ukoncovaci podminka!}
+
+\section{Genetické programování}
+\todo{zalozeno na koze}
+Genetické programování (GP) se zabývá evolucí programu, který je reprezenotván stromovou strukturou.
+Programy v GP jsou složeny z funkcí, které ve stromové struktuře odpovídají uzlům, a terminálů, které odpovídají listům.
+
+Vyvíjené programy jsou typicky vyhodnocovány nad sadou vstupů, tzv. fitness cases, u kterých jsou známy požadované výstupy programu.
+Výsledná fitness programu se pak může počítat jako suma nebo průměr výsledků z každého "fitness case".
+
+V GA je nejdůležitějším operátorem křížení.
+Křížení pracuje na základě výměny náhodně vybraných podstromů z rodičů.
+Toto křžení se skládá z několika kroků.
+Prvním krokem je výběr rodičů.
+Druhý krok je zvolení náhodného uzlu v každém z rodičů.
+Tento uzel bude kořenový uzel pro podstromy, které se budou později mezi rodiči vyměňovat.
+Třetím krokem je vyjmutí podstromu z obou rodičů, jejichž kořenovým uzlem je uzel, který byl vybrán v předchozím kroku.
+Následuje vytvoření obou potomků.
+První potomek vznikne tak, že se do stromu prvního rodiče, do místa dříve vybraného uzlu, vloží podstrom z druhého rodiče.
+Druhý jedinec vzniká obdobným způsobem, viz. obrázek \ref{fig:GP_krizeni}.
+
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky-figures/gp_krizeni.pdf}}
+    \caption{
+    Křížení v GP.
+    Na tomto obrázku je zachycena situace, kdy je v každém z rodičů A a B náhodně vybrán uzel(vyznačen dvojitě).
+    Tyto uzly a jejich podstromy jsou poté zaměněny a vznikají tak potomci C a D.
+    }
+    \label{fig:GP_krizeni}
+\end{figure}
+
+Velikost programu, definována jako výška stromu, je omezena aby se předoslo velmi velkým programům.
+Pokud by potomek po křížení přesáhl tuto velikost, nebude vložen do nové generace - místo něj se do nové generace reprodukuje jeden z jeho rodičů.
 
 
 

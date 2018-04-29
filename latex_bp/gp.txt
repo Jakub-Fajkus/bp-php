@@ -30,7 +30,7 @@ Typicky se jako nejlepší řesení označuje nejlepší jedinec v jakékoli gen
 Hiearchická struktura počítačových programů je důležitá vlastnost GP.
 Dynamická struktura a velikost programů je také velmi důležitá, neboť neomezuje možná řešení problému.
 Další vlastností GP je absence nebo malá role předzpracování vstupů a dodatečné úpravy výstupů.
-Sktruktury v GP jsou ativní - reprezentují programy a je možné je spouštět v jejichaktuální formě.
+Sktruktury v GP jsou ativní - reprezentují programy a je možné je spouštět v jejich aktuální formě.
 GP je peradigma (metoda), které je aplikačně nezávislé - poskytuje jednotný přístup k hledání počítačových programů.
 V GA, narozdíl od jiných metod, podléhá adaptaci celá populace jedinců (bodů v prostoru).
 Množina všech možných struktur v GP je množina všech možných kombinací fukncí, které mohou být uspořádány rekurzivně z množiny $N_func$ funkcí z F={f_1, f_2, ... f_{N_func}} a z množiny terminálů z T={a_1, a_2, ... a_{N_term}}.
