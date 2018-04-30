@@ -1,6 +1,7 @@
 %=========================================================================
 % (c) Michal Bidlo, Bohuslav Křena, 2008
 \todo{shrnuti kazde kapitoly!}
+\todo{ukazka trajektorie spatneho genomu}
 
 \chapter{Úvod}
 V oblasti robotiky je velmi důležíté mít možnost vytvářet rychle a levně prototypy.
@@ -301,18 +302,9 @@ V této kapitole si nejdříve popíšeme způsob, jakým je realizováno říze
 
 
 \section{Relizace řízení robota}
-Simulátor Mujoco funguje jako \todo{dynamicky linkovana knihovna} napsaná v jazyce C.
-Tato knihovna poskytuje řadu funkcí, které umožňují řídít běh simulace.
-Tyto funkce se poté používají v uživatelském programu, ve kterém nutné z těchto funkcí sestavit algoritmus spojité simulace (ukázkové uživatelské programy jsou součástí distribuce simulátoru).
-Uživatel má plnou kontrolu nad během simulace, a to tím, že volá knihovní funkci \todo{mj\_step()}, která v simulaci pokročí definovaným časem.
-Ve smyčce algoritmu spojité simulace jsou vloženy funkce zajišťující běh interpretu, výpočet fitness funkce, mapování výstupních hodnot z interpretu na ovládací signály a získávání pozic objektů z dat simulace.
-Ve zjednodušené formě je program znázorněn na \todo{obrázek s algoritmem simulatoru}.
-
 V simulátoru Mujoco je vytvořena scéna, která obsahuje model robota a množinu referenčních bodů, které svým pořadím a umístěním ve scéně definují trajektorii, kterou má robot následovat.
 
-
 \subsection{Interpret}
-
 Program, který řídí model robota, je vykonáván v interpretu.
 Interpret obsahuje vstupní, výstupní a konstantní registry.
 Každý registr je indetifikovaný unikátním číslem, které se navýzá index.
@@ -339,7 +331,6 @@ Interpret je schématikcy znázorněn na obrázku \ref{fig:interpret}
 V průběhu simulace je vykonáván program, který čte hodnoty ze vstupních registrů, které obsahují informaci o směru k dalšímu referenčnímu bodu, nebo konstantních registrů a zapisuje hodnoty do výstupních registrů, které se převádí na sílu, která je aplikována v jednotlivých kloubech.
 
 \subsection{Podprogramy}
-
 Každý program, který reprezentuje kandidátní řešení, je pro vykonávání v průběhu simulace rozdělen na 3 podprogramy.
 Tyto podprogramy se nazývají init, main a event.
 
@@ -355,11 +346,10 @@ Stejně jako u podprogramu init jsou instrukce provedeny v nulovém čase a pot�
 Účelem podprogramu event je změna natočení kloubů modelu jako příprava k pohybu k následujícímu referečnímu bodu.
 
 \subsection{Hodnoty vstupních registrů}
-
 Hodnoty, které se ukládájí do vstupních registrů, vychází z informace o směru k následujícímu referenčnímu bodu.
 Informace o směru je opět vyjádřena číslem od -5 do 5 a vypočítává se následujícím mechanismem.
 
-Prostor kolem modelu je rozdělen na několik kruhových výsečí, kde každá výseč je ohodnocena číslem od -5 do 5, viz obrázek \ref{fig:kruhove_vysece}.
+Prostor kolem modelu je rozdělen na 11 kruhových výsečí, kde každá výseč je ohodnocena číslem od -5 do 5, viz obrázek \ref{fig:kruhove_vysece}.
 Informace o směru je rovna ohodnocení výseče, ve které se nachází další referenční bod.
 Tato informace je v nezměněné podobě vložena do prvního vstupního registru.
 Do druhého registru je vložena hodnota s převráceným znaménkem.
@@ -384,8 +374,40 @@ První z nich je dána znaménkem a určuje, kterým směrem bude aplikována s�
 Druhá informace je dána velikostí hodnoty a určuje velikost této síly.
 
 
+\subsection{Simulátor}
+Simulátor Mujoco je dynamická knihovna napsaná v jazyce C.
+Tato knihovna poskytuje řadu funkcí, které umožňují řídít běh simulace.
+Tyto funkce se poté používají v uživatelském programu, ve kterém nutné z těchto funkcí sestavit algoritmus spojité simulace (ukázkové uživatelské programy jsou součástí distribuce simulátoru).
+Uživatel má plnou kontrolu nad během simulace, a to tím, že volá knihovní funkci mj\_step(), která v simulaci pokročí definovaným krokem.
+Ve smyčce algoritmu spojité simulace jsou vloženy funkce zajišťující běh interpretu, výpočet fitness funkce, mapování výstupních hodnot z interpretu na ovládací signály a získávání pozic objektů z dat simulace.
+Ve zjednodušené formě je program znázorněn na algoritmu \ref{alg:algoritmus_simulatoru}.
 
+\todo{popsat, jak se tvori modely v xml jazyce?}
 
+\begin{algorithm}[H]
+    Načti model ze souboru\;
+    Nastav čas simulace $t = 0$\;
+    Vykonej celý program init\;
+    \While{($t$ < délka simulace)}{
+        Proveď další kroku simulace - mj\_step()\;
+        \If{(došlo ke kolizi se zemí)}{
+            Ukonči simulaci\;
+        }
+        Vypočti vstupní hodnoty interpretu\;
+        Vykonej instrukci z programu main\;
+        Použij výstupní hodnoty interpretu pro řízení modelu\;
+        Zaznamenej vzdálenosti od jednotlivých referenčních bodů\;
+        \If{(došlo k přiblížení k následujícímu referenčnímu bodu)} {
+            Vykonej celý program event\;
+        }
+        Přičti k času $t$ časový krok simulace\;
+    }
+    Vypočti fitness hodnotu\;
+    \caption{Algoritmus simulátoru}
+    \label{alg:algoritmus_simulatoru}
+\end{algorithm}
+
+\section{Instance Evolučního algoritmu}
 
 
 
