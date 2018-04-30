@@ -41,7 +41,7 @@ class ThreeLegLinearExperimentRecombination2Point extends BaseExperiment
         Config::setGenotypeSize(6*Config::getMotorCount()); //bulharska konstanta
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
-        Config::setRegisterCount(15);
+        Config::setOutputRegisterCount(15);
         Config::$useUniform = false;
 
         $executableDir = $filesystem->createDirectory(Config::getDataDir(), $executableName);

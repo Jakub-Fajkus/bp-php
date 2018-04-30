@@ -29,7 +29,7 @@ class ThreeLegLinearSubprogramsWithoutInputsExperiment extends BaseExperiment
         Config::setGenotypeSize(28); //bulharska konstanta
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
-        Config::setRegisterCount(Config::getMotorCount());
+        Config::setOutputRegisterCount(Config::getMotorCount());
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 130;
         Config::$generationCount = 300;

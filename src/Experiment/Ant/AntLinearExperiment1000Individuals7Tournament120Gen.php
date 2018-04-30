@@ -28,7 +28,7 @@ class AntLinearExperiment1000Individuals7Tournament120Gen extends BaseExperiment
         Config::setCrossoverRate(0);
         Config::setMotorCount(12);
         Config::setGenotypeSize(6*Config::getMotorCount()); //bulharska konstanta
-        Config::setRegisterCount(30);
+        Config::setOutputRegisterCount(30);
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
         Config::$tournamentSize=7;

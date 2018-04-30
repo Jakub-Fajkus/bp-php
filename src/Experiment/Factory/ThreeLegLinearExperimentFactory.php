@@ -618,7 +618,7 @@ class ThreeLegLinearExperimentFactory
     public function createThreeLegSpiralSubprogramsWithoutInputsExperiment(): ExperimentInterface
     {
         //bez pocatecniho lomitka!
-        $executableName = 'bp_compute_trojnozka_oscilatory';
+        $executableName = 'bp_compute_spirala_9_referenci_vstupy_podprogramy_2_ss_v2';
         $generationGenerator = new SteadyStateGenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();

@@ -21,7 +21,7 @@ class AntSpiralExperimentSubprogramsInput extends BaseExperiment
         Config::setGenotypeSize(100);
         Config::setInstructionValueMinimum(0);
         Config::setInstructionValueMaximum(12);
-        Config::setRegisterCount(Config::getMotorCount());
+        Config::setOutputRegisterCount(Config::getMotorCount());
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 600;
         Config::$generationCount = 300;

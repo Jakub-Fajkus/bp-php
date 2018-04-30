@@ -111,7 +111,7 @@ abstract class BaseExperiment implements ExperimentInterface
         Config::setGenotypeSize(6 * Config::getMotorCount()); //bulharska konstanta
         Config::setInstructionValueMinimum(-5);
         Config::setInstructionValueMaximum(5);
-        Config::setRegisterCount(15);
+        Config::setOutputRegisterCount(15);
         Config::$tournamentSize = 3;
     }
 

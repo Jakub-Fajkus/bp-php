@@ -35,36 +35,21 @@ class AntLinearModelXml implements ModelXmlInterface
         <global offwidth="1920" offheight="1080"/>
         <map stiffness="10" stiffnessrot="20"/>
     </visual>
-    
-    <sensor>
-        <jointpos name="sensor_jointpos_0" joint="motor_0"/>
-        <jointpos name="sensor_jointpos_1" joint="motor_1"/>
-        <jointpos name="sensor_jointpos_2" joint="motor_2"/>
-        <jointpos name="sensor_jointpos_3" joint="motor_3"/>
-        <jointpos name="sensor_jointpos_4" joint="motor_4"/>
-        <jointpos name="sensor_jointpos_5" joint="motor_5"/>
-        <jointpos name="sensor_jointpos_6" joint="motor_6"/>
-        <jointpos name="sensor_jointpos_7" joint="motor_7"/>
-        <jointpos name="sensor_jointpos_8" joint="motor_8"/>
-        <jointpos name="sensor_jointpos_9" joint="motor_9"/>
-        <jointpos name="sensor_jointpos_10" joint="motor_10"/>
-        <jointpos name="sensor_jointpos_11" joint="motor_11"/>
-        <jointpos name="sensor_jointpos_12" joint="motor_12"/>
-    </sensor>
-    
+
+
     <worldbody>
         <camera name='targeting' pos='1 1 2' mode='targetbodycom' target='body_0'/>
 
         <geom name="floor" material="checker_mat" pos="30 50 -20" size="420 420 .125" rgba="1 1 1 1" type="plane"
               condim="6" friction="5 0.5 0.1"/>
 
-       <site name="reference_0"  pos="100 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_1" pos="150 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_2" pos="200 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_3" pos="250 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_4" pos="300 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_5" pos="350 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_6" pos="400 0 5" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_0"  pos="130 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_1" pos="1180 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_2" pos="2130 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_3" pos="2180 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_4" pos="3130 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_5" pos="3180 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_6" pos="4130 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
 
 
         <body name="body_0">
@@ -78,7 +63,7 @@ class AntLinearModelXml implements ModelXmlInterface
                 <!--spine-->
                 <geom name="geom_3" type="capsule" fromto="0.00 0.00 0.00 80.0 0.00 0.00" size="01.00000"/>
                 <!--contact point which is used to create heading vector-->
-
+                <geom name="contact_1" type="sphere" pos="0.00 0.00 0.00" size="0.01" rgba="1 0 1 0.5" density="1"/>
 
                 <!--2nd arms-->
                 <geom name="geom_4" type="capsule" fromto="40.0 0.00 0.00 40.0 10.0 10.0" size="01.00000"/>

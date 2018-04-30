@@ -29,7 +29,10 @@ class ThreeLegSpiralSubprogramsWithoutInputsExperiment extends BaseExperiment
         Config::setGenotypeSize(36); //bulharska konstanta + 3 + 3 subprogramy + 30 motory
         Config::setInstructionValueMinimum(0);
         Config::setInstructionValueMaximum(12);
-        Config::setRegisterCount(Config::getMotorCount());
+        Config::setOutputRegisterCount(Config::getMotorCount());
+
+        Config::$initProgramLength = Config::getMotorCount();
+        Config::$eventProgramLength = Config::getMotorCount();
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 600;
         Config::$generationCount = 300;

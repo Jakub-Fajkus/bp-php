@@ -24,7 +24,7 @@ class Config
     /** @internal */
     public const DEFAULT_INSTRUCTION_VALUE_MAXIMUM = 5;
     /** @internal */
-    public const DEFAULT_REGISTER_COUNT = 10;
+    public const DEFAULT_OUTPUT_REGISTER_COUNT = 10;
 
     public static $useUniform = false;
     public static $useSubprogramUniform = false;
@@ -41,7 +41,7 @@ class Config
     private static $motorCount = self::DEFAULT_MOTOR_COUNT;
     private static $instructionValueMinimum = self::DEFAULT_INSTRUCTION_VALUE_MINIMUM;
     private static $instructionValueMaximum = self::DEFAULT_INSTRUCTION_VALUE_MAXIMUM;
-    private static $registerCount = self::DEFAULT_REGISTER_COUNT;
+    private static $outputRegisterCount = self::DEFAULT_OUTPUT_REGISTER_COUNT;
 
     /**
      * @return int
@@ -168,7 +168,7 @@ class Config
      */
     public static function getRandomRegisterIndex(): int
     {
-        return random_int(0, Config::getRegisterCount() - 1);
+        return random_int(0, Config::getOutputRegisterCount() - 1);
     }
 
     /**
@@ -182,17 +182,17 @@ class Config
     /**
      * @return int
      */
-    public static function getRegisterCount(): int
+    public static function getOutputRegisterCount(): int
     {
-        return self::$registerCount;
+        return self::$outputRegisterCount;
     }
 
     /**
-     * @param int $registerCount
+     * @param int $outputRegisterCount
      */
-    public static function setRegisterCount(int $registerCount): void
+    public static function setOutputRegisterCount(int $outputRegisterCount): void
     {
-        self::$registerCount = $registerCount;
+        self::$outputRegisterCount = $outputRegisterCount;
     }
 
     /**
