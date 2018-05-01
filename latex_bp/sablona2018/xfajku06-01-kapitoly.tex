@@ -2,6 +2,7 @@
 % (c) Michal Bidlo, Bohuslav Křena, 2008
 \todo{shrnuti kazde kapitoly!}
 \todo{ukazka trajektorie spatneho genomu}
+\todo{vlna!}
 
 \chapter{Úvod}
 V oblasti robotiky je velmi důležíté mít možnost vytvářet rychle a levně prototypy.
@@ -15,10 +16,7 @@ Právě řízením robota programy napsanými v imperativním jazyce (byť jedno
 Cílem této práce je návrh a implementace nástroje pro automatizované hledání vhodného kontroléru robotického modelu pro průchod prostorem po dané trajektorii.
 Pro návrh vhodného programu je použita technika zjednodušeného Lineárního Genetického Programování.
 Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco.
-Účinnost softwarového řízení je experimentálně doložena.
-
-
-\todo{zminit se o experimentech 2 roboti na primce a spirale!!!!!}
+Účinnost softwarového řízení je experimentálně doložena s použitím dvou robotických modelů na dvou trajektoriích.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,11 +49,11 @@ Mutace pracuje nad jedním rodičem a produkuje jednoho potomka, který má naro
     inicializuj populaci náhodně vygenerovanými jedinci\;
     vyhodnoť všechny jedince\;
     \While{(není splněna ukončující podmínka)}{
-        vyber rodiče\;
-        aplikuj křížení na dvojice rodičů\;
-        mutuj potomky\;
-        vyhodnoť kvalitu potomků\;
-        vyber jedince do další generace\;
+    vyber rodiče\;
+    aplikuj křížení na dvojice rodičů\;
+    mutuj potomky\;
+    vyhodnoť kvalitu potomků\;
+    vyber jedince do další generace\;
     }
     \caption{Obecný evoluční algoritmus}
     \label{alg:EA_alg}
@@ -98,9 +96,9 @@ Základní alogoritmus selekce turnajem můžeme vidět na algoritmu~\ref{alg:EA
 \begin{algorithm}[H]
     // Chceme vytvořit mating pool velikosti $\lambda$ jedinců\;
     \While{(dokud mating pool neobsahuje $\lambda$ jedinců)}{
-        Náhodně vyber $k$ jedinců\;
-        Porovnej mezi sebou těchto $k$ jedinců a vyber z nich nejlepšího jedince $i$\;
-        Vlož jedince $i$ do mating pool
+    Náhodně vyber $k$ jedinců\;
+    Porovnej mezi sebou těchto $k$ jedinců a vyber z nich nejlepšího jedince $i$\;
+    Vlož jedince $i$ do mating pool
     }
     \caption{Selekce turnajem}
     \label{alg:EA_turnaj}
@@ -229,7 +227,6 @@ Namísto toho se z LGP využívá základní myšlenka lineární struktury prog
 \todo{3. Zkoumani pohyblivych objektu (zakladni myslenky shrnte s inspiraci v
 clancich G. Hornbyho. ~3 strany. Zamerte se v zaverecne podsekci na
 popis objektu, ktere budete mit v BP.}
-\todo{precist clanek o evolucni robotice, hlavni myslenky prenest zde a vymezit tuto praci, ze tam uplne napatri, ale patri spise do AI - cca 1 strana?}
 
 
 
@@ -238,43 +235,53 @@ G. Hornby ve své práci využíval generativné reprezentace pro development st
 [todo obrazky nekterych robotu hornbyho ]
 Kotroléry byly realizovány pomocí oscilátorů nebo neuronových sítí.
 
-Wolff a Wahde použili LGP pro návrh kontroléru modelu humanoidního robota, který měl v simulovaném prostředí chodit a následovat zvukové signály.
+%Wolff a Wahde použili LGP pro návrh kontroléru modelu humanoidního robota, který měl v simulovaném prostředí chodit a následovat zvukové signály.
 
-[todo: overit ] Wolff a Wahle použili LGP s čísly s plovoucí řádovou čárkou, aritmetické, matematický instrukce a větvení.
-[todo: overit ] Jejich kontrolér měl informace o natočení všech kloubů modelu a na základě těchto informací programy řídily model robota.
+%[todo: overit ] Wolff a Wahle použili LGP s čísly s plovoucí řádovou čárkou, aritmetické, matematický instrukce a větvení.
+%[todo: overit ] Jejich kontrolér měl informace o natočení všech kloubů modelu a na základě těchto informací programy řídily model robota.
 
-
-
-
+\section{Použité modely}
 Níže si popíšeme dva modely robotů, se kterými byly provedeny experimenty.
-První model, zvaný trojnožka, je vidět na obrázku \todo{obrazek robota trojnozka}.
+
+První model, zvaný trojnožka, je vidět na obrázku~\ref{fig:trojnozka}
 Robot má 3 nohy, každá z nich je spojena s jádrem robota kloubem, který se otáčí v jedné ose.
 Rozsah pohybu těchto kloubů je omezen na 50 stupňů.
 Model robota má v horní části v místě kloubů umístěny kontaktní body.
 Tyto body slouží k detekci převrácení robota (kolizi ze zemí).
 
-%\caption{
-Model robota zvaný trojnožka.
-Tento model je složen z jádra robota (modře) a 3 nohou (hnědě).
-Každá z nohou je s jádrem spojena kloubem, který se otáčí pouze v jedné ose a je umístěn pod fialovou koulí.
-Tyto fialové koule slouží k detekci převrácení robota.
-Ve středu robota je bod zvaný hlava (červeně).
-%}
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=15em]{obrazky/trojnozka_detail.png}}
+    \caption{
+    Model robota zvaný trojnožka.
+    Tento model je složen z jádra robota (modře) a 3 nohou (hnědě).
+    Každá z nohou je s jádrem spojena kloubem, který se otáčí pouze v jedné ose a je umístěn pod fialovou koulí.
+    Tyto fialové koule slouží k detekci převrácení robota.
+    Ve středu robota je bod zvaný hlava (červeně).
+    }
+    \label{fig:trojnozka}
+\end{figure}
 
-Druhý robot, zvaný mravenec, je vidět na obrázku \todo{obrazek robota mravenec}.
+
+Druhý robot, zvaný mravenec, je vidět na obrázku~\ref{fig:mravenec}
 Robot má 3 páry nohou, které jsou všechny připojeny k tělu robota.
 Rozsah pohybu kloubů, které rotují kolem horizontální osy a spojují tělo robota s jeho nohou, je omezen na 100 stupňů.
 Rozsah kloubů, které rotují kolem svislé osy a spojují dvě části nohy, je omezen na 65 stupňů.
-Robot má v přední části kontaktní bod, taktéž pro zjišťování kolizí se zemí.
 
-%\caption{
-Model robota zvaný mravenec.
-Tento model je složen z těla robota (modře) a 6-ti nohou (hnědě).
-V přední části robota je bod zvaný hlava (červeně).
-Každá noha je složena ze dvou pevných částí a jedoho kloubu.
-Tento kloub se pohybuje pouze ve svislé ose, tj. může zvedat a snižovat robota.
-Celá noha je připojena k tělu robota kloubem, který se pohybuje horizontálně, tj. slouží k odrážení.
-%}
+
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky/mravenec_detail.png}}
+    \caption{
+    Model robota zvaný mravenec.
+    Tento model je složen z těla robota (modře) a 6-ti nohou (hnědě).
+    V přední části robota je bod zvaný hlava (červeně).
+    Každá noha je složena ze dvou pevných částí a jedoho kloubu.
+    Tento kloub se pohybuje pouze ve svislé ose, tj. může zvedat a snižovat robota.
+    Celá noha je připojena k tělu robota kloubem, který se pohybuje horizontálně, tj. slouží k odrážení.
+    }
+    \label{fig:mravenec}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -398,18 +405,18 @@ Ve zjednodušené formě je program znázorněn na algoritmu~\ref{alg:algoritmus
     Nastav čas simulace $t = 0$\;
     Vykonej celý program init\;
     \While{($t$ < délka simulace)}{
-        Proveď další kroku simulace - mj\_step()\;
-        \If{(došlo ke kolizi se zemí)}{
-            Ukonči simulaci\;
-        }
-        Vypočti vstupní hodnoty interpretu\;
-        Vykonej instrukci z programu main\;
-        Použij výstupní hodnoty interpretu pro řízení modelu\;
-        Zaznamenej vzdálenosti od jednotlivých referenčních bodů\;
-        \If{(došlo k přiblížení k následujícímu referenčnímu bodu)} {
-            Vykonej celý program event\;
-        }
-        Přičti k času $t$ časový krok simulace\;
+    Proveď další kroku simulace - mj\_step()\;
+    \If{(došlo ke kolizi se zemí)}{
+    Ukonči simulaci\;
+    }
+    Vypočti vstupní hodnoty interpretu\;
+    Vykonej instrukci z programu main\;
+    Použij výstupní hodnoty interpretu pro řízení modelu\;
+    Zaznamenej vzdálenosti od jednotlivých referenčních bodů\;
+    \If{(došlo k přiblížení k následujícímu referenčnímu bodu)} {
+    Vykonej celý program event\;
+    }
+    Přičti k času $t$ časový krok simulace\;
     }
     Vypočti fitness hodnotu\;
     \caption{Algoritmus simulátoru}
@@ -431,9 +438,9 @@ Pro experimenty se spirálovou trajektori je celý genotyp pro účely křížen
     \centering
     {\includegraphics[width=30em]{obrazky/genotyp.pdf}}
     \caption{
-        Rodzdělení genotypu na části pro podprogramy.
-        Je zde znázorněn genotyp délky 36 genů, který je rozdělen po 3 genech pro podprogram init a event a 30 genů pro podprogram main.
-        Je zde také znázorněna n-tice, která reprezentuje instrukci.
+    Rodzdělení genotypu na části pro podprogramy.
+    Je zde znázorněn genotyp délky 36 genů, který je rozdělen po 3 genech pro podprogram init a event a 30 genů pro podprogram main.
+    Je zde také znázorněna n-tice, která reprezentuje instrukci.
     }
     \label{fig:genotyp}
 \end{figure}
@@ -463,16 +470,16 @@ Operátor selekce je implementován jako turnaj velikosti $k = 2$.
     nastav čas t = 0\;
     inicializuj všechny chromozomy v P(t) náhodnými alelami\;
     \Do{(není splněna ukončující podmínka)}{
-        vypočítj fitness hodnoty v P(t)\;
-        \Do{(v populaci T je méně než k jedinců)}{
-            vyber dva jedince z rodičovské populace P(t)\;
-            vytvoř dva potomky použitím operátoru křížení\;
-            aplikuj operátor mutace na oba potomky\;
-            vlož tyto dva potomky do dočasné populace T\;
-        }
-        vlož jedince z T do P(t)\;
-        odstraň k nejhoršíh jedinců z P(t)\;
-        t = t + 1\;
+    vypočítj fitness hodnoty v P(t)\;
+    \Do{(v populaci T je méně než k jedinců)}{
+    vyber dva jedince z rodičovské populace P(t)\;
+    vytvoř dva potomky použitím operátoru křížení\;
+    aplikuj operátor mutace na oba potomky\;
+    vlož tyto dva potomky do dočasné populace T\;
+    }
+    vlož jedince z T do P(t)\;
+    odstraň k nejhoršíh jedinců z P(t)\;
+    t = t + 1\;
     }
 
     \caption{Steady state algoritmus}
@@ -536,7 +543,7 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:trojnozk
     \centering
     {\includegraphics[width=30em]{obrazky/trojnozka_primka_zhora.png}}
     \caption{
-        Scéna pro experiment s trojnožkou na přímce
+    Scéna pro experiment s trojnožkou na přímce
     }
     \label{fig:trojnozka_primka_zhora}
 \end{figure}
@@ -558,7 +565,7 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
     \centering
     {\includegraphics[width=30em]{obrazky/mravenec_primka_zhora.png}}
     \caption{
-        Scéna pro experiment s mravencem na přímce
+    Scéna pro experiment s mravencem na přímce
     }
     \label{fig:mravenec_primka_zhora}
 \end{figure}
@@ -587,7 +594,7 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:trojnozk
     \centering
     {\includegraphics[width=30em]{obrazky/trojnozka_spirala_zhora.png}}
     \caption{
-        Scéna pro experiment s trojnožkou na spirále
+    Scéna pro experiment s trojnožkou na spirále
     }
     \label{fig:trojnozka_spirala_zhora}
 \end{figure}
@@ -608,7 +615,7 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
     \centering
     {\includegraphics[width=30em]{obrazky/mravenec_spirala_zhora.png}}
     \caption{
-        Scéna pro experiment s mravencem na spirále
+    Scéna pro experiment s mravencem na spirále
     }
     \label{fig:mravenec_spirala_zhora}
 \end{figure}
@@ -620,33 +627,57 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
 
 
 \chapter{Výsledky experimentů}
-\todo{uvest delku pouziteho genomu pro kazdy experiment}
+
+\section{Přímka}
+
+\subsection{Model trojnožky}
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky/trojnozka_primka_fitness_prubeh.png}}
+    %/home/jakub/PhpstormProjects/bp/data/bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_2_ss/2018-03-12T23:07:24+00:00/runFitnessGraph.png
+    \caption{
+        Nejlepší běh pro experiment s trojnožkou na přímce
+    }
+    \label{fig:trojnozka_primka_fitness_prubeh}
+\end{figure}
+
+\subsection{Model mravence}
+
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky/mravenec_primka_fitness_prubeh.png}}
+    %/home/jakub/PhpstormProjects/bp/data/bp_compute_primka_7_referenci_mravenec_vstupy_2_ss/2018-05-01T01:19:54+00:00/runFitnessGraph.png
+    \caption{
+    Nejlepší běh pro experiment s mravencem na přímce
+    }
+    \label{fig:mravenec_primka_fitness_prubeh}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\section{Spirála}
 
+\subsection{Model trojnožky}
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky/trojnozka_spirala_fitness_prubeh.png}}
+    %/home/jakub/PhpstormProjects/bp/data/bp_compute_spirala_9_referenci_vstupy_podprogramy_2_ss/2018-03-25T17:58:49+00:00/runFitnessGraph.png
+    \caption{
+    Nejlepší běh pro experiment s mravencem na spirále
+    }
+    \label{fig:trojnozka_spirala_fitness_prubeh}
+\end{figure}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\subsection{Model mravence}
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky/mravenec_spirala_fitness_prubeh.png}}
+    %/home/jakub/PhpstormProjects/bp/data/bp_compute_spirala_9_referenci_mravenec_vstupy_podprogramy_2_ss/2018-03-24T13:08:39+00:00/runFitnessGraph.png
+    \caption{
+    Nejlepší běh pro experiment s mravencem na spirále
+    }
+    \label{fig:mravenec_spirala_fitness_prubeh}
+\end{figure}
 
 
 

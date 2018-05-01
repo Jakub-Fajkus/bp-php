@@ -42,6 +42,17 @@
          x="169.71614"
          y="201.3175" />
     </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath307">
+      <rect
+         style="opacity:1;fill:#dfe0e1;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.56499988;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect309"
+         width="286.5011"
+         height="93.036667"
+         x="169.71614"
+         y="201.3175" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -59,7 +70,7 @@
      inkscape:window-width="1920"
      inkscape:window-height="1016"
      inkscape:window-x="0"
-     inkscape:window-y="30"
+     inkscape:window-y="1110"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -2916,7 +2927,7 @@ VscAAAAASUVORK5CYII=
        preserveAspectRatio="none"
        height="285.75"
        width="508"
-       clip-path="url(#clipPath29)"
+       clip-path="url(#clipPath307)"
        transform="translate(-203.35119,-167.82143)"
        inkscape:export-xdpi="150.09"
        inkscape:export-ydpi="150.09" />

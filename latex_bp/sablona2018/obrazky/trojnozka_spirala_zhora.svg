@@ -16,7 +16,10 @@
    version="1.1"
    id="svg228"
    inkscape:version="0.92.2 2405546, 2018-03-11"
-   sodipodi:docname="trojnozka_spirala_zhora.svg">
+   sodipodi:docname="trojnozka_spirala_zhora.svg"
+   inkscape:export-filename="/home/jakub/PhpstormProjects/bp/latex_bp/sablona2018/obrazky-figures/trojnozka_spirala_zhora.png"
+   inkscape:export-xdpi="150.09"
+   inkscape:export-ydpi="150.09">
   <defs
      id="defs222">
     <clipPath
@@ -61,7 +64,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="1093.2776"
+     inkscape:cx="715.48057"
      inkscape:cy="102.50876"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -69,7 +72,7 @@
      inkscape:window-width="1920"
      inkscape:window-height="1016"
      inkscape:window-x="0"
-     inkscape:window-y="30"
+     inkscape:window-y="1110"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata225">
