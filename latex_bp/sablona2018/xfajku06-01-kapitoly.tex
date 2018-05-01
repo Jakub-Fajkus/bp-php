@@ -44,7 +44,7 @@ Reprodukce probíhá dvojím způsobem, a to křížením a mutací.
 Křížení pracuje se dvěmi rodiči a má za následek vytvoření dvou potomků, kteří vznikají kombinací genotypu obou rodičů.
 Mutace pracuje nad jedním rodičem a produkuje jednoho potomka, který má narozdíl od svého ročiče lehce pozměněný genotyp.
 
-Činnost obecného EA můžeme vidět na algoritmu \ref{alg:EA_alg}:
+Činnost obecného EA můžeme vidět na algoritmu~\ref{alg:EA_alg}:
 
 
 \begin{algorithm}[H]
@@ -93,7 +93,7 @@ Za typické představitele selekce můžeme považovat selekci turnajem a ruleto
 Selekce turnajem, narozdíl od ruletové selekce nevyžaduje znalost celé populace a přepočítávání fitness hodnot.
 Selekce turnajem ani nevyžaduje, aby vyhodnocení fitness funkcí bylo kvantifikované, ale pro jeho funkci stačí, aby byla mezi jedinci definována operace uspořádání.
 Díky toho je tato metoda nenáročná na implementaci a na výpočetní čas.
-Základní alogoritmus selekce turnajem můžeme vidět na algoritmu \ref{alg:EA_turnaj}.
+Základní alogoritmus selekce turnajem můžeme vidět na algoritmu~\ref{alg:EA_turnaj}.
 
 \begin{algorithm}[H]
     // Chceme vytvořit mating pool velikosti $\lambda$ jedinců\;
@@ -120,11 +120,11 @@ Jako představitele si můžeme uvést jednobodové a uniformní křížení.
 
 Jednobodové křížení bylo původně představeno J. H. Hollandem v \todo{220} a jeho funkce je následující.
 Vygeneruje se náhodné číslo $r$ z intervalu $\langle 1, L-1\rangle$, kde L je délka genomu.
-Poté se genomy rozdelí v tomto bodě $r$ na počáteční a koncovou část a noví jedinci vznikají záměnou těchto koncových částí, viz obrázek \ref{fig:jednobodove_krizeni}.
+Poté se genomy rozdelí v tomto bodě $r$ na počáteční a koncovou část a noví jedinci vznikají záměnou těchto koncových částí, viz obrázek~\ref{fig:jednobodove_krizeni}.
 
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky-figures/jedobodove_krizeni.pdf}}
+    {\includegraphics[width=30em]{obrazky/jedobodove_krizeni.pdf}}
     \caption{
     Jednobodové křížení
     }
@@ -134,11 +134,11 @@ Poté se genomy rozdelí v tomto bodě $r$ na počáteční a koncovou část a 
 Uniformní křížení bylo představeno v \todo{422} a pracuje následovně.
 Pro každý gen se vygeneruje náhodné číslo $r$ z rovnoměrného rozložení na intervalu $\langle 0, 1\rangle$.
 Číslo $r$ se poté porovná s parametrem $p$, který bývá obvykle roven 0.5, a pokud je $r < p$, tak se použije gen z prvního rodiče, jinak ze druhého.
-Druhý potomek je vytvořen z genů, které nebyly vybrány do prvního potomka, viz obrázek \ref{fig:uniformni_krizeni}
+Druhý potomek je vytvořen z genů, které nebyly vybrány do prvního potomka, viz obrázek~\ref{fig:uniformni_krizeni}
 
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky-figures/uniformni_krizeni.pdf}}
+    {\includegraphics[width=30em]{obrazky/uniformni_krizeni.pdf}}
     \caption{
     Uniformní křížení
     }
@@ -179,11 +179,11 @@ Tento uzel bude kořenový uzel pro podstromy, které se budou později mezi rod
 Třetím krokem je vyjmutí podstromu z obou rodičů, jejichž kořenovým uzlem je uzel, který byl vybrán v předchozím kroku.
 Následuje vytvoření obou potomků.
 První potomek vznikne tak, že se do stromu prvního rodiče, do místa dříve vybraného uzlu, vloží podstrom z druhého rodiče.
-Druhý jedinec vzniká obdobným způsobem, viz. obrázek \ref{fig:GP_krizeni}.
+Druhý jedinec vzniká obdobným způsobem, viz. obrázek~\ref{fig:GP_krizeni}.
 
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky-figures/gp_krizeni.pdf}}
+    {\includegraphics[width=30em]{obrazky/gp_krizeni.pdf}}
     \caption{
     Křížení v GP.
     Na tomto obrázku je zachycena situace, kdy je v každém z rodičů A a B náhodně vybrán uzel(vyznačen dvojitě).
@@ -306,8 +306,8 @@ Celá noha je připojena k tělu robota kloubem, který se pohybuje horizontáln
 V této kapitole si nejdříve popíšeme způsob, jakým je realizováno řízení robota a poté instanci EA, která je v této práci použita.
 
 
-\section{Relizace řízení robota}
-V simulátoru Mujoco je vytvořena scéna, která obsahuje model robota a množinu referenčních bodů, které svým pořadím a umístěním ve scéně definují trajektorii, kterou má robot následovat.
+\section{Relizace řízení modelu}
+V simulátoru Mujoco je vytvořena scéna, která obsahuje model a množinu referenčních bodů, které svým pořadím a umístěním ve scéně definují trajektorii, kterou má modelu následovat.
 
 \subsection{Interpret}
 Program, který řídí model robota, je vykonáván v interpretu.
@@ -320,11 +320,11 @@ Interpret vykonává program, který je složen z instrukcí.
 Je zde použit jen jeden druh instrukce, a to instukce s názvem COPY\@.
 Tato instrukce má 2 parametry: zdrojový registr a cílový registr.
 Výsledkem této instrukce je zkopírování hodnoty ze vstupního, nebo konstatního, registru do výstupního registru.
-Interpret je schématikcy znázorněn na obrázku \ref{fig:interpret}
+Interpret je schématikcy znázorněn na obrázku~\ref{fig:interpret}
 
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky-figures/interpret.eps}}
+    {\includegraphics[width=30em]{obrazky/interpret.eps}}
     \caption{
     Schéma interpretu.
     Je zde znázorněna situace, ve které interpret vykonává instrukci z podprogramu main.
@@ -358,14 +358,14 @@ Stejně jako u podprogramu init jsou instrukce provedeny v nulovém čase a pot�
 Hodnoty, které se ukládájí do vstupních registrů, vychází z informace o směru k následujícímu referenčnímu bodu.
 Informace o směru je opět vyjádřena číslem od -5 do 5 a vypočítává se následujícím mechanismem.
 
-Prostor kolem modelu je rozdělen na 11 kruhových výsečí, kde každá výseč je ohodnocena číslem od -5 do 5, viz obrázek \ref{fig:kruhove_vysece}.
+Prostor kolem modelu je rozdělen na 11 kruhových výsečí, kde každá výseč je ohodnocena číslem od -5 do 5, viz obrázek~\ref{fig:kruhove_vysece}.
 Informace o směru je rovna ohodnocení výseče, ve které se nachází další referenční bod.
 Tato informace je v nezměněné podobě vložena do prvního vstupního registru.
 Do druhého registru je vložena hodnota s převráceným znaménkem.
 
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=20em]{obrazky-figures/reference_direction_angles.pdf}}
+    {\includegraphics[width=20em]{obrazky/reference_direction_angles.pdf}}
     \caption{
     Způsob výpočtu hodnot vstupních registrů.
     Model (na obrázku dole) směřuje směrem nahoru a další referenční bod (modře) se nachází ve výseči ohodnocené číslem 2.
@@ -389,7 +389,7 @@ Tato knihovna poskytuje řadu funkcí, které umožňují řídít běh simulace
 Tyto funkce se poté používají v uživatelském programu, ve kterém nutné z těchto funkcí sestavit algoritmus spojité simulace (ukázkové uživatelské programy jsou součástí distribuce simulátoru).
 Uživatel má plnou kontrolu nad během simulace, a to tím, že volá knihovní funkci mj\_step(), která v simulaci pokročí definovaným krokem.
 Ve smyčce algoritmu spojité simulace jsou vloženy funkce zajišťující běh interpretu, výpočet fitness funkce, mapování výstupních hodnot z interpretu na ovládací signály a získávání pozic objektů z dat simulace.
-Ve zjednodušené formě je program znázorněn na algoritmu \ref{alg:algoritmus_simulatoru}.
+Ve zjednodušené formě je program znázorněn na algoritmu~\ref{alg:algoritmus_simulatoru}.
 
 \todo{popsat, jak se tvori modely v xml jazyce?}
 
@@ -416,7 +416,7 @@ Ve zjednodušené formě je program znázorněn na algoritmu \ref{alg:algoritmus
     \label{alg:algoritmus_simulatoru}
 \end{algorithm}
 
-\section{Instance Evolučního algoritmu}
+\section{Instance evolučního algoritmu}
 
 \subsection{Reprezentace}
 Použtá reprezentace pracuje s genomem fixní délky, která se liší pro každý model a experiment.
@@ -425,12 +425,11 @@ Tato reprezentace kóduje každou instrukci jako n-tici, ve které je prvním pr
 Aktuálně jediná použitá instrukce je složena ze svého názvu (COPY, nebo i starší název SRE) a dvou celých čísel, které označují zdrojový a cílový registr.
 
 Tato n-tice je použita jako hodnota jednoho genu \todo{alela?}.
-Pro experimenty se spirálovou trajektori je celý genotyp pro účely křížení rozdělen na 3 části, které korespondují s podprogramy, viz obrázek
-\ref{fig:genotyp}.
+Pro experimenty se spirálovou trajektori je celý genotyp pro účely křížení rozdělen na 3 části, které korespondují s podprogramy, viz obrázek~\ref{fig:genotyp}.
 
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky-figures/genotyp.pdf}}
+    {\includegraphics[width=30em]{obrazky/genotyp.pdf}}
     \caption{
         Rodzdělení genotypu na části pro podprogramy.
         Je zde znázorněn genotyp délky 36 genů, který je rozdělen po 3 genech pro podprogram init a event a 30 genů pro podprogram main.
@@ -455,7 +454,7 @@ $$f=\sum_{i=1}^{N}S_i$$
 Na základe rozměru modelu a celé scény v simulátoru byla zvolena hodnota parametru $t = 40$.
 
 \subsection{Populace a selekce}
-Pro evoluci programů byla vybrána varianta steady-state algoritmu (algoritmus \ref{alg:ss_algoritmus}) s velikostí populace 1000 nebo 400 jedinců.
+Pro evoluci programů byla vybrána varianta steady-state algoritmu (algoritmus~\ref{alg:ss_algoritmus}) s velikostí populace 1000 nebo 400 jedinců.
 Operátor selekce je implementován jako turnaj velikosti $k = 2$.
 
 \begin{algorithm}[H]
@@ -483,11 +482,11 @@ Operátor selekce je implementován jako turnaj velikosti $k = 2$.
 \subsection{Křížení}
 Pro účely této práce byl implementován vlastní operátor křížení, který je založen na uniformním křížením.
 Narozdíl od uniformního křížení, které pracuje na úrovni genů, křížení použité zde pracuje na úrovni podprogramů.
-V genomu jsou tedy 3 části, které se mohou mezi rodiči vyměňovat, viz obrázek. \ref{fig:krizeni_podprogramu}
+V genomu jsou tedy 3 části, které se mohou mezi rodiči vyměňovat, viz obrázek.~\ref{fig:krizeni_podprogramu}
 
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=35em]{obrazky-figures/krizeni_podprogramu.pdf}}
+    {\includegraphics[width=35em]{obrazky/krizeni_podprogramu.pdf}}
     \caption{
     Vlastní uniformní křížení.
     Zde, při křížení rodičů došlo k výměně podprogramu init.
@@ -499,23 +498,129 @@ Tento operátor se používá v experimentech se spirálovou trajektorií.
 Pro experimenty s přímkovou trajektorí se používá jednobodové křížení, které pracuje na úrovni jednotlivých instrukcí.
 
 \subsection{Mutace}
-moje mutace s pravdepodobnosti 1 a pravdepodobnostmi zmeny jednotlivych prvku - random resetting
+Operátor mutace je nastaven s $p_m = 1$ a vždy mutuje jen jeden gen.
+Tento operátor je implementován následovně.
+Náhodně se vybere jedna instrukce z genotypu.
+S 20~\% pravděpodobností je tato instrukce vymazána a je nahrazena novou, náhodně vygenerovanou.
+S 80~\% pravděpodobností je tato instrukce upravena a to tak, že je zde 50~\% pravděpodobnost na mutaci prvního, nebo druhého argumentu.
+Mutace argumentu je implementována jako \todo{random resetting}, tedy je hodnota zahozena a je vygenerována nová.
+
 
 \subsection{Ukončovací podmínka}
-- nastaveny pocet generaci = 300
+Jako ukončovací podmínka byla zvoleno ukončení evoluce po provedení daného počtu generací.
 
-4.1 Evoluce programu
-Pro vyse uvedene case studies doporucuji provest experimenty vzdy s
-trojnozkou a mravencem na spirale.
-
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Experimenty}
+Pro účely experimentálního ověření funkčnosti použitých postupů byly navrženy 2 experimenty, které byly provedeny s každým modelem.
+
+\section{Přímka}
+Tento experiment měl za cíl ověřit, zda-li je použitý způsob řízení modelu funkční.
+Cílem tohoto experimentu bylo vyvinout program, který byde řídit modely tak, aby se pohybovaly po přímce.
+V průběhu tohoto experimentu byl laďěn způsob řízení modelu a také parametry evolučního algoritmu.
+
+\subsection{Model trojnožky}
+V tomto experimentu byla použita následující nastavení:
+\begin{itemize}
+    \item 1000 jedinců v populaci
+    \item jednobodové křížení s pravděpodobností $p_r = 0.8$
+    \item ukončení běhu evoluce po 120 generacích
+    \item 18 genů v genotypu
+    \item pouze podprogram main
+\end{itemize}
+
+Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:trojnozka_primka_zhora}.
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky/trojnozka_primka_zhora.png}}
+    \caption{
+        Scéna pro experiment s trojnožkou na přímce
+    }
+    \label{fig:trojnozka_primka_zhora}
+\end{figure}
+
+
+
+\subsection{Model mravence}
+V tomto experimentu byla použita následující nastavení:
+\begin{itemize}
+    \item 400 jedinců v populaci
+    \item jednobodové křížení s pravděpodobností $p_r = 0.8$
+    \item ukončení běhu evoluce po 120 generacích
+    \item 72 genů v genotypu
+    \item pouze podprogram main
+\end{itemize}
+
+Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec_primka_zhora}.
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky/mravenec_primka_zhora.png}}
+    \caption{
+        Scéna pro experiment s mravencem na přímce
+    }
+    \label{fig:mravenec_primka_zhora}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Spirála}
+Tento experiment měl za cíl ověřit, zda-li je použitý způsob řízení modelu schopný pohybu i po netriviální trajektorii.
+Cílem tohoto experimentu bylo vyvinout program, který byde řídit modely tak, aby se pohybovaly po přímce.
+V průběhu tohoto experimentu byl laďěn systém podprogramů a vstupních informací pro program.
+
+\subsection{Model trojnožky}
+V tomto experimentu byla použita následující nastavení:
+\begin{itemize}
+    \item 1000 jedinců v populaci
+    \item podprogramové uniformní křížení s pravděpodobností $p_r = 0.8$
+    \item ukončení běhu evoluce po 300 generacích
+    \item 36 genů v genotypu
+\end{itemize}
+
+Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:trojnozka_spirala_zhora}.
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky/trojnozka_spirala_zhora.png}}
+    \caption{
+        Scéna pro experiment s trojnožkou na spirále
+    }
+    \label{fig:trojnozka_spirala_zhora}
+\end{figure}
+
+\subsection{Model mravence}
+
+V tomto experimentu byla použita následující nastavení:
+\begin{itemize}
+    \item 1000 jedinců v populaci
+    \item podprogramové uniformní křížení s pravděpodobností $p_r = 0.8$
+    \item ukončení běhu evoluce po 300 generacích
+    \item 100 genů v genotypu
+    \item délka podprogramů init a event je 12 instrukcí
+\end{itemize}
+
+Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec_spirala_zhora}.
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky/mravenec_spirala_zhora.png}}
+    \caption{
+        Scéna pro experiment s mravencem na spirále
+    }
+    \label{fig:mravenec_spirala_zhora}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Výsledky experimentů}
 \todo{uvest delku pouziteho genomu pro kazdy experiment}
-
-
 
 
 

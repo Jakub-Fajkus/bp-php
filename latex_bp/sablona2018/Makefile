@@ -38,7 +38,7 @@ pack:
 
 rename:
 	mv $(CO).tex $(NAME).tex
-	mv $(CO)-01-kapitoly.tex $(NAME)-01-kapitoly.tex
+	mv $(CO)-01-kapitoly.tex $(NAME)-01-kapitoly.texé
 	mv $(CO)-20-literatura-bibliography.bib $(NAME)-20-literatura-bibliography.bib
 	mv $(CO)-30-prilohy-appendices.tex $(NAME)-30-prilohy-appendices.tex
 	sed -i "s/$(CO)-01-kapitoly/$(NAME)-01-kapitoly/g" $(NAME).tex
