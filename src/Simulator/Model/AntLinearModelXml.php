@@ -43,13 +43,13 @@ class AntLinearModelXml implements ModelXmlInterface
         <geom name="floor" material="checker_mat" pos="30 50 -20" size="420 420 .125" rgba="1 1 1 1" type="plane"
               condim="6" friction="5 0.5 0.1"/>
 
-        <site name="reference_0"  pos="130 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_1" pos="1180 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_2" pos="2130 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_3" pos="2180 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_4" pos="3130 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_5" pos="3180 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
-        <site name="reference_6" pos="4130 0 -10" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_0" pos="130 0 -15" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_1" pos="180 0 -15" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_2" pos="230 0 -15" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_3" pos="280 0 -15" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_4" pos="330 0 -15" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_5" pos="380 0 -15" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
+        <site name="reference_6" pos="430 0 -15" size="5 5 5" type="sphere" rgba="255 255 0 1"/>
 
 
         <body name="body_0">
