@@ -17,6 +17,9 @@ Pro návrh vhodného programu je použita technika zjednodušeného Lineárního
 Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco.
 Účinnost softwarového řízení je experimentálně doložena.
 
+
+\todo{zminit se o experimentech 2 roboti na primce a spirale!!!!!}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,7 +132,7 @@ Poté se genomy rozdelí v tomto bodě $r$ na počáteční a koncovou část a 
 \end{figure}
 
 Uniformní křížení bylo představeno v \todo{422} a pracuje následovně.
-Pro každý gen se vygeneruje náhodné číslo $r$ z rovnoměrného rozložení na intervalu <0,1>.
+Pro každý gen se vygeneruje náhodné číslo $r$ z rovnoměrného rozložení na intervalu $\langle 0, 1\rangle$.
 Číslo $r$ se poté porovná s parametrem $p$, který bývá obvykle roven 0.5, a pokud je $r < p$, tak se použije gen z prvního rodiče, jinak ze druhého.
 Druhý potomek je vytvořen z genů, které nebyly vybrány do prvního potomka, viz obrázek \ref{fig:uniformni_krizeni}
 
@@ -155,7 +158,9 @@ Tato varianta je vhodná, pokud mezi hodnotami neexistuje relace uspořádání.
 \todo{Creep mutation} je způsob, při kterém se k hodnotě genu přičte nebo odečte náhodně vygenerované malé číslo.
 Tato varianta je vhodná, jsou-li hodnoty genomu např. parametry nějakého systému.
 
-\todo{ukoncovaci podminka!}
+\subsection{Ukončovací podmínka}
+Ukončovací podmínka určuje, kdy se zastaví evoluce aktuální populace.
+K tomuto je možné využít: dosažení předem dané fitness hodnoty, spotřebování určeného strojového času, provedení určeného počtu vyhodnocení fitness funkce, ukončení v případě, že se populace dostatečně rychle nezlepšuje nebo že pokud dojde ke snížení diverzity populace po daný limit.
 
 \section{Genetické programování}
 \todo{zalozeno na koze}
@@ -312,7 +317,7 @@ Registry mohou obsahovat celočíselné hodnoty v rozsahu od -5 do 5.
 Počty registrů jsou následující: 11 konstatních registrů s hodnotami od -5 do 5, 2 vstupní registry, a 3, nebo 12, výstupních registrů (pro každý kloub modelu jeden registr).
 Interpret vykonává program, který je složen z instrukcí.
 
-Je zde použit jen jeden druh instrukce, a to instukce s názvem COPY.
+Je zde použit jen jeden druh instrukce, a to instukce s názvem COPY\@.
 Tato instrukce má 2 parametry: zdrojový registr a cílový registr.
 Výsledkem této instrukce je zkopírování hodnoty ze vstupního, nebo konstatního, registru do výstupního registru.
 Interpret je schématikcy znázorněn na obrázku \ref{fig:interpret}
@@ -331,6 +336,10 @@ Interpret je schématikcy znázorněn na obrázku \ref{fig:interpret}
 V průběhu simulace je vykonáván program, který čte hodnoty ze vstupních registrů, které obsahují informaci o směru k dalšímu referenčnímu bodu, nebo konstantních registrů a zapisuje hodnoty do výstupních registrů, které se převádí na sílu, která je aplikována v jednotlivých kloubech.
 
 \subsection{Podprogramy}
+
+Pro účely experimentů se spirálovou trajektoríí byl navržen koncept podprogramů, který je popsán dále.
+V experimentech s přímkovou trajektorií je z těchto podprogramů použit jen podprogram main.
+
 Každý program, který reprezentuje kandidátní řešení, je pro vykonávání v průběhu simulace rozdělen na 3 podprogramy.
 Tyto podprogramy se nazývají init, main a event.
 
@@ -409,11 +418,143 @@ Ve zjednodušené formě je program znázorněn na algoritmu \ref{alg:algoritmus
 
 \section{Instance Evolučního algoritmu}
 
+\subsection{Reprezentace}
+Použtá reprezentace pracuje s genomem fixní délky, která se liší pro každý model a experiment.
+Tato délka bude uvedena u každého z experimentů v následující kapitole.
+Tato reprezentace kóduje každou instrukci jako n-tici, ve které je prvním prvkem název instrukce a poté následují její argumenty.
+Aktuálně jediná použitá instrukce je složena ze svého názvu (COPY, nebo i starší název SRE) a dvou celých čísel, které označují zdrojový a cílový registr.
 
+Tato n-tice je použita jako hodnota jednoho genu \todo{alela?}.
+Pro experimenty se spirálovou trajektori je celý genotyp pro účely křížení rozdělen na 3 části, které korespondují s podprogramy, viz obrázek
+\ref{fig:genotyp}.
+
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=30em]{obrazky-figures/genotyp.pdf}}
+    \caption{
+        Rodzdělení genotypu na části pro podprogramy.
+        Je zde znázorněn genotyp délky 36 genů, který je rozdělen po 3 genech pro podprogram init a event a 30 genů pro podprogram main.
+        Je zde také znázorněna n-tice, která reprezentuje instrukci.
+    }
+    \label{fig:genotyp}
+\end{figure}
+
+
+\subsection{Fitness funkce}
+Fitness hodnota programu se počítá následující způsobem.
+V průběhu simulace se pro každý referenční bod $i$ zaznamenává nejmenší vzdálenost $D_i$ mezi tímto bodem a modelem.
+$D_i = \min{F(R, P_i)}$, kde $F$ je funkce vypočítávající vzdálenost, $R$ je pozice modelu v prostoru, $P_i$ je pozice referenčního bodu v prostoru a $i=1, \cdots N$, kde $N$ je pocet referenčních bodů.
+
+Po dokončení simulace je pro každý referenční bod je vypočteno skóre následujícím způsobem:
+$$S_i=\left\{\begin{matrix}t - D_i&\mbox{ pokud }D_{i}\leq t\\ 0 &\mbox{ jinak }\end{matrix}\right.$$
+
+Parametr $t$ je minimální vzdálenost, ve které musí být model od referenčního bodu, aby se skóre pro tento bod počítalo.
+Výsledná fitness hodnota je poté vypočtena jako suma skóre pro všechny body:
+$$f=\sum_{i=1}^{N}S_i$$
+
+Na základe rozměru modelu a celé scény v simulátoru byla zvolena hodnota parametru $t = 40$.
+
+\subsection{Populace a selekce}
+Pro evoluci programů byla vybrána varianta steady-state algoritmu (algoritmus \ref{alg:ss_algoritmus}) s velikostí populace 1000 nebo 400 jedinců.
+Operátor selekce je implementován jako turnaj velikosti $k = 2$.
+
+\begin{algorithm}[H]
+    \SetKwRepeat{Do}{do}{while}
+
+    nastav čas t = 0\;
+    inicializuj všechny chromozomy v P(t) náhodnými alelami\;
+    \Do{(není splněna ukončující podmínka)}{
+        vypočítj fitness hodnoty v P(t)\;
+        \Do{(v populaci T je méně než k jedinců)}{
+            vyber dva jedince z rodičovské populace P(t)\;
+            vytvoř dva potomky použitím operátoru křížení\;
+            aplikuj operátor mutace na oba potomky\;
+            vlož tyto dva potomky do dočasné populace T\;
+        }
+        vlož jedince z T do P(t)\;
+        odstraň k nejhoršíh jedinců z P(t)\;
+        t = t + 1\;
+    }
+
+    \caption{Steady state algoritmus}
+    \label{alg:ss_algoritmus}
+\end{algorithm}
+
+\subsection{Křížení}
+Pro účely této práce byl implementován vlastní operátor křížení, který je založen na uniformním křížením.
+Narozdíl od uniformního křížení, které pracuje na úrovni genů, křížení použité zde pracuje na úrovni podprogramů.
+V genomu jsou tedy 3 části, které se mohou mezi rodiči vyměňovat, viz obrázek. \ref{fig:krizeni_podprogramu}
+
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=35em]{obrazky-figures/krizeni_podprogramu.pdf}}
+    \caption{
+    Vlastní uniformní křížení.
+    Zde, při křížení rodičů došlo k výměně podprogramu init.
+    }
+    \label{fig:krizeni_podprogramu}
+\end{figure}
+
+Tento operátor se používá v experimentech se spirálovou trajektorií.
+Pro experimenty s přímkovou trajektorí se používá jednobodové křížení, které pracuje na úrovni jednotlivých instrukcí.
+
+\subsection{Mutace}
+moje mutace s pravdepodobnosti 1 a pravdepodobnostmi zmeny jednotlivych prvku - random resetting
+
+\subsection{Ukončovací podmínka}
+- nastaveny pocet generaci = 300
 
 4.1 Evoluce programu
 Pro vyse uvedene case studies doporucuji provest experimenty vzdy s
 trojnozkou a mravencem na spirale.
+
+
+
+
+
+\chapter{Experimenty}
+\todo{uvest delku pouziteho genomu pro kazdy experiment}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
