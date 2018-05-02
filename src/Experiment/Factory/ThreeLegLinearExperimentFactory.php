@@ -402,7 +402,7 @@ class ThreeLegLinearExperimentFactory
     public function create1000IndividualsExperiment2TournamentSS(): ExperimentInterface
     {
         //bez pocatecniho lomitka!
-        $executableName = 'bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_2_ss';
+        $executableName = 'bp_compute_ThreeLegLinearExperiment1000Individuals2TournamentSS';
         $generationGenerator = new SteadyStateGenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
