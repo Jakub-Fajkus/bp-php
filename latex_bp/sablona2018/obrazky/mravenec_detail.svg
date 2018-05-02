@@ -56,9 +56,9 @@
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1046"
-     inkscape:window-x="27"
-     inkscape:window-y="0"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -6305,6 +6305,8 @@ NgshhBBCCCGEEEIIIYQQQgghhHDb/w/oiaXZsLWfrgAAAABJRU5ErkJggg==
        preserveAspectRatio="none"
        height="571.5"
        width="515.14374"
-       clip-path="url(#clipPath123)" />
+       clip-path="url(#clipPath123)"
+       inkscape:export-xdpi="150.09"
+       inkscape:export-ydpi="150.09" />
   </g>
 </svg>

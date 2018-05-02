@@ -85,7 +85,7 @@ Operátor selekce slouží k výběru rodičů pro křížení na základě jeji
 Tento operátor je nejšastěji založen na náhodě a to tak, že kvalitnější řešení jsou vybárána s větší pravděpodností.
 Změnou parametrů selekce nastavujeme tzv. selekční tlak, který ovlivňuje, do jaké míry jsou upřednostňováni lepší jedinci.
 
-Za typické představitele selekce můžeme považovat selekci turnajem a ruletovou selekci.
+Jako představitele selekce si můžeme uvést ruletovou selekci a selekci turnajem.
 \todo{vytahnout z nejake ceske knizky}
 
 Selekce turnajem, narozdíl od ruletové selekce nevyžaduje znalost celé populace a přepočítávání fitness hodnot.
@@ -463,6 +463,7 @@ Na základe rozměru modelu a celé scény v simulátoru byla zvolena hodnota pa
 \subsection{Populace a selekce}
 Pro evoluci programů byla vybrána varianta steady-state algoritmu (algoritmus~\ref{alg:ss_algoritmus}) s velikostí populace 1000 nebo 400 jedinců.
 Operátor selekce je implementován jako turnaj velikosti $k = 2$.
+Nejlepší jedinec v aktuální populaci a jeho mutant jsou zkopírováni do následující populace.
 
 \begin{algorithm}[H]
     \SetKwRepeat{Do}{do}{while}
@@ -521,11 +522,11 @@ Jako ukončovací podmínka byla zvoleno ukončení evoluce po provedení danéh
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Experimenty}
-Pro účely experimentálního ověření funkčnosti použitých postupů byly navrženy 2 experimenty, které byly provedeny s každým modelem.
+Pro účely experimentálního ověření funkčnosti použitých postupů byly navrženy 2 experimenty, které byly provedeny s každým modelem, tedy celkem 4 experimenty.
 
 \section{Přímka}
 Tento experiment měl za cíl ověřit, zda-li je použitý způsob řízení modelu funkční.
-Cílem tohoto experimentu bylo vyvinout program, který byde řídit modely tak, aby se pohybovaly po přímce.
+Cílem tohoto experimentu bylo vyvinout program, který byde řídit modely tak, aby se pohybovaly po přímce, na které leželo 7 referenčních bodů.
 V průběhu tohoto experimentu byl laďěn způsob řízení modelu a také parametry evolučního algoritmu.
 
 \subsection{Model trojnožky}
@@ -576,7 +577,7 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
 
 
 \section{Spirála}
-Tento experiment měl za cíl ověřit, zda-li je použitý způsob řízení modelu schopný pohybu i po netriviální trajektorii.
+Tento experiment měl za cíl ověřit, zda-li je použitý způsob řízení modelu schopný pohybu i po netriviální trajektorii, která byla definována pomocí 9 referenčních bodů.
 Cílem tohoto experimentu bylo vyvinout program, který byde řídit modely tak, aby se pohybovaly po přímce.
 V průběhu tohoto experimentu byl laďěn systém podprogramů a vstupních informací pro program.
 
@@ -627,13 +628,26 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
 
 
 \chapter{Výsledky experimentů}
+Pro každý experiment bylo provedeno 20 evolučních běhů, ze kterých byly zaznamenány fitness hodnoty všech jedinců.
+Pro každý evoluční běh byly z těchto hodnot vykresleny 2 typy grafů:
+
+\begin{itemize}
+    \item vývoj maximální a průměrné fitness hodnoty jedinců v závislosti na generaci
+    \item \todo{bar and whisker}
+\end{itemize}
+
+Pro každý experiment byla poté vykreslena sada histogramů, které ukazují rozložení fitness hodnot jedinců napříč všemi evolučními běhy.
+
+V této kapitole je pro každý experiment prezentován graf vývoje průměrné a maximální fitness hodnoty v populaci a také \todo{bar and whisker} pro nejlepší evoluční běh.
+Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílohách na přiloženém médiu.
+\todo{mozna dat k experimentum 3-4 historgramy rozlozeni fitness? zacatek, a pak po ctvrtinach?}
 
 \section{Přímka}
 
 \subsection{Model trojnožky}
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky/trojnozka_primka_fitness_prubeh.png}}
+    {\includegraphics[width=20em]{obrazky/trojnozka_primka_fitness_prubeh.png}}
     %/home/jakub/PhpstormProjects/bp/data/bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_2_ss/2018-03-12T23:07:24+00:00/runFitnessGraph.png
     \caption{
         Nejlepší běh pro experiment s trojnožkou na přímce
@@ -645,7 +659,7 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
 
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky/mravenec_primka_fitness_prubeh.png}}
+    {\includegraphics[width=20em]{obrazky/mravenec_primka_fitness_prubeh.png}}
     %/home/jakub/PhpstormProjects/bp/data/bp_compute_primka_7_referenci_mravenec_vstupy_2_ss/2018-05-01T01:19:54+00:00/runFitnessGraph.png
     \caption{
     Nejlepší běh pro experiment s mravencem na přímce
@@ -660,7 +674,7 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
 \subsection{Model trojnožky}
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky/trojnozka_spirala_fitness_prubeh.png}}
+    {\includegraphics[width=20em]{obrazky/trojnozka_spirala_fitness_prubeh.png}}
     %/home/jakub/PhpstormProjects/bp/data/bp_compute_spirala_9_referenci_vstupy_podprogramy_2_ss/2018-03-25T17:58:49+00:00/runFitnessGraph.png
     \caption{
     Nejlepší běh pro experiment s mravencem na spirále
@@ -671,7 +685,7 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
 \subsection{Model mravence}
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky/mravenec_spirala_fitness_prubeh.png}}
+    {\includegraphics[width=20em]{obrazky/mravenec_spirala_fitness_prubeh.png}}
     %/home/jakub/PhpstormProjects/bp/data/bp_compute_spirala_9_referenci_mravenec_vstupy_podprogramy_2_ss/2018-03-24T13:08:39+00:00/runFitnessGraph.png
     \caption{
     Nejlepší běh pro experiment s mravencem na spirále
