@@ -13,55 +13,56 @@ use Config\Config;
 class SreInstruction extends LGPInstruction
 {
     /** @var int */
-    protected $register;
+    protected $sourceRegister;
 
     /** @var int */
-    protected $value;
+    protected $destinationRegister;
 
     /**
      * SreInstruction constructor.
-     * @param int $register
-     * @param int $value
+     * @param int $sourceRegister
+     * @param int $destinationRegister
      */
-    public function __construct(int $register, int $value)
+    public function __construct(int $sourceRegister, int $destinationRegister)
     {
-        $this->register = $register;
-        $this->value = $value;
+        $this->sourceRegister = $sourceRegister;
+        $this->destinationRegister = $destinationRegister;
     }
+
 
     /**
      * @return int
      */
-    public function getRegister(): int
+    public function getSourceRegister(): int
     {
-        return $this->register;
+        return $this->sourceRegister;
     }
 
     /**
-     * @param int $register
+     * @param int $sourceRegister
      * @return SreInstruction
      */
-    public function setRegister(int $register): SreInstruction
+    public function setSourceRegister(int $sourceRegister): SreInstruction
     {
-        $this->register = $register;
+        $this->sourceRegister = $sourceRegister;
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getValue(): int
+    public function getDestinationRegister(): int
     {
-        return $this->value;
+        return $this->destinationRegister;
     }
 
     /**
-     * @param int $value
+     * @param int $destinationRegister
      * @return SreInstruction
      */
-    public function setValue(int $value): SreInstruction
+    public function setDestinationRegister(int $destinationRegister): SreInstruction
     {
-        $this->value = $value;
+        $this->destinationRegister = $destinationRegister;
         return $this;
     }
 
@@ -72,10 +73,10 @@ class SreInstruction extends LGPInstruction
     {
         if (random_int(0, 1) === 0) {
             //mutate register
-            $this->register = Config::getRandomRegisterIndex();
+            $this->sourceRegister = Config::getRandomSourceRegisterIndex();
         } else {
             //mutate value
-            $this->value = Config::getRandomMotorValue();
+            $this->destinationRegister = Config::getRandomDestinationIndex();
         }
     }
 
@@ -88,10 +89,10 @@ class SreInstruction extends LGPInstruction
      */
     public function serialize(): string
     {
-        $transValue = $this->transformValue($this->value);
-        $transRegister = $this->transformRegister($this->register);
+        $source = $this->sourceRegister;
+        $destination = $this->destinationRegister;
 
-        return "SRE $transValue $transRegister";
+        return "SRE $source $destination";
     }
 
     protected function transformValue(int $value) {
@@ -100,6 +101,7 @@ class SreInstruction extends LGPInstruction
 
     protected function transformRegister(int $register)
     {
+        return $register;
         $transform = [
             0 => 13,
             1 => 14,

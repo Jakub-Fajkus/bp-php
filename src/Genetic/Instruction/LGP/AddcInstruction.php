@@ -71,10 +71,10 @@ class AddcInstruction extends LGPInstruction
     {
         if (random_int(0, 1) === 0) {
             //mutate register
-            $this->register = Config::getRandomRegisterIndex();
+            $this->register = Config::getRandomSourceRegisterIndex();
         } else {
             //mutate value
-            $this->value = Config::getRandomMotorValue();
+            $this->value = Config::getRandomDestinationIndex();
         }
     }
 

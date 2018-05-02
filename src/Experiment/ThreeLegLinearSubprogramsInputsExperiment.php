@@ -27,9 +27,9 @@ class ThreeLegLinearSubprogramsInputsExperiment extends BaseExperiment
         Config::setCrossoverRate(80);
         Config::setMotorCount(3);
         Config::setGenotypeSize(50); //bulharska konstanta
-        Config::setInstructionValueMinimum(-5);
-        Config::setInstructionValueMaximum(5);
-        Config::setOutputRegisterCount(4 + Config::getMotorCount(), + 5); //4 jsou 4 vstupy, 5 jsou "introny"
+        Config::setMinimumDestinationIndex(-5);
+        Config::setMaximumDestinationIndex(5);
+        Config::setSourceRegisterCount(4 + Config::getMotorCount(), + 5); //4 jsou 4 vstupy, 5 jsou "introny"
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 130;
         Config::$generationCount = 300;

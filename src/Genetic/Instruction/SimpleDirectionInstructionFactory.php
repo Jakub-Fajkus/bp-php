@@ -18,6 +18,6 @@ class SimpleDirectionInstructionFactory implements InstructionFactoryInterface
      */
     public function createRandomInstruction(int $index): InstructionInterface
     {
-        return new SimpleDirectionInstruction(Config::getRandomMotorId(), Config::getRandomMotorValue());
+        return new SimpleDirectionInstruction(Config::getRandomMotorId(), Config::getRandomDestinationIndex());
     }
 }

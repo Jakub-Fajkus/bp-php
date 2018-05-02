@@ -21,7 +21,7 @@ class LGPInstructionFactory implements InstructionFactoryInterface
      */
     public function createRandomInstruction(int $index): InstructionInterface
     {
-        return new SreInstruction(Config::getRandomRegisterIndex(), Config::getRandomMotorValue());
+        return new SreInstruction(Config::getRandomSourceRegisterIndex(), Config::getRandomDestinationIndex());
 
 
 //        $random = random_int(0, 100);

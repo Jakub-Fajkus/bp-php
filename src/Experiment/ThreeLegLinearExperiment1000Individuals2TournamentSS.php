@@ -18,9 +18,9 @@ class ThreeLegLinearExperiment1000Individuals2TournamentSS extends BaseExperimen
         Config::setCrossoverRate(80);
         Config::setMotorCount(3);
         Config::setGenotypeSize(6 * Config::getMotorCount()); //bulharska konstanta
-        Config::setOutputRegisterCount(Config::getMotorCount());
-        Config::setInstructionValueMinimum(13);
-        Config::setInstructionValueMaximum(14);
+        Config::setMinimumDestinationIndex(13);
+        Config::setMaximumDestinationIndex(15);
+        Config::setSourceRegisterCount(13);
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 80;
         Config::$generationCount = 200;

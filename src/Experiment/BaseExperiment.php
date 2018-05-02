@@ -109,9 +109,9 @@ abstract class BaseExperiment implements ExperimentInterface
         Config::setCrossoverRate(0);
         Config::setMotorCount(3);
         Config::setGenotypeSize(6 * Config::getMotorCount()); //bulharska konstanta
-        Config::setInstructionValueMinimum(-5);
-        Config::setInstructionValueMaximum(5);
-        Config::setOutputRegisterCount(15);
+        Config::setMinimumDestinationIndex(-5);
+        Config::setMaximumDestinationIndex(5);
+        Config::setSourceRegisterCount(15);
         Config::$tournamentSize = 3;
     }
 

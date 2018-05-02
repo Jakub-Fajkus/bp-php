@@ -96,9 +96,9 @@ class IfsrInstruction extends LGPInstruction
         $random = random_int(0, 2);
         if ($random === 0) {
             //mutate register
-            $this->register1 = Config::getRandomRegisterIndex();
+            $this->register1 = Config::getRandomSourceRegisterIndex();
         } elseif ($random === 1) {
-            $this->register2 = Config::getRandomRegisterIndex();
+            $this->register2 = Config::getRandomSourceRegisterIndex();
         } else {
             //mutate operator
             $operators = ['<', '>', '=='];

@@ -75,10 +75,10 @@ class AddrInstruction extends LGPInstruction
     {
         if (random_int(0, 1) === 0) {
             //mutate register
-            $this->register1 = Config::getRandomRegisterIndex();
+            $this->register1 = Config::getRandomSourceRegisterIndex();
         } else {
             //mutate value
-            $this->register2 = Config::getRandomRegisterIndex();
+            $this->register2 = Config::getRandomSourceRegisterIndex();
         }
     }
 

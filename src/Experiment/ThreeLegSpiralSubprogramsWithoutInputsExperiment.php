@@ -27,9 +27,9 @@ class ThreeLegSpiralSubprogramsWithoutInputsExperiment extends BaseExperiment
         Config::setCrossoverRate(80);
         Config::setMotorCount(3);
         Config::setGenotypeSize(36); //bulharska konstanta + 3 + 3 subprogramy + 30 motory
-        Config::setInstructionValueMinimum(0);
-        Config::setInstructionValueMaximum(12);
-        Config::setOutputRegisterCount(Config::getMotorCount());
+        Config::setMinimumDestinationIndex(0);
+        Config::setMaximumDestinationIndex(12);
+        Config::setSourceRegisterCount(Config::getMotorCount());
 
         Config::$initProgramLength = Config::getMotorCount();
         Config::$eventProgramLength = Config::getMotorCount();

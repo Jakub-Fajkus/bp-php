@@ -19,9 +19,9 @@ class AntSpiralExperimentSubprogramsInput extends BaseExperiment
         Config::setCrossoverRate(80);
         Config::setMotorCount(12);
         Config::setGenotypeSize(100);
-        Config::setInstructionValueMinimum(0);
-        Config::setInstructionValueMaximum(12);
-        Config::setOutputRegisterCount(Config::getMotorCount());
+        Config::setMinimumDestinationIndex(0);
+        Config::setMaximumDestinationIndex(12);
+        Config::setSourceRegisterCount(Config::getMotorCount());
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 600;
         Config::$generationCount = 300;

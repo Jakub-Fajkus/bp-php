@@ -73,7 +73,7 @@ class ComposedInstruction extends SimpleInstruction
 
             //add motor value
         } elseif ($random < 10) {
-            $this->motorValues[] = new MotorValue(Config::getRandomMotorId(), Config::getRandomMotorValue());
+            $this->motorValues[] = new MotorValue(Config::getRandomMotorId(), Config::getRandomDestinationIndex());
         //change motor value
         } else {
             $this->mutateMotorValue($this->motorValues[$randomIndex]);

@@ -37,7 +37,7 @@ class ComposedInstructionFactory implements InstructionFactoryInterface
         $values = [];
 
         for ($i = 0; $i < $valueCount; $i++) {
-            $values[] = new MotorValue(Config::getRandomMotorId(), Config::getRandomMotorValue());
+            $values[] = new MotorValue(Config::getRandomMotorId(), Config::getRandomDestinationIndex());
         }
 
         return ComposedInstruction::createWithValues($values);

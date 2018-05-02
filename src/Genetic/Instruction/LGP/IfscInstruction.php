@@ -95,9 +95,9 @@ class IfscInstruction extends LGPInstruction
         $random = random_int(0, 2);
         if ($random === 0) {
             //mutate register
-            $this->register = Config::getRandomRegisterIndex();
+            $this->register = Config::getRandomSourceRegisterIndex();
         } elseif ($random === 1) {
-            $this->constant = Config::getRandomMotorValue();
+            $this->constant = Config::getRandomDestinationIndex();
         } else {
             //mutate operator
             $this->operator = self::getRandomOperator();

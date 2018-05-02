@@ -19,9 +19,9 @@ class AntLinearExperiment1000Individuals2SS extends BaseExperiment
         Config::setCrossoverRate(80);
         Config::setMotorCount(12);
         Config::setGenotypeSize(6 * Config::getMotorCount()); //bulharska konstanta
-        Config::setOutputRegisterCount(12);
-        Config::setInstructionValueMinimum(0);
-        Config::setInstructionValueMaximum(11);
+        Config::setSourceRegisterCount(12);
+        Config::setMinimumDestinationIndex(0);
+        Config::setMaximumDestinationIndex(11);
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 80;
         Config::$generationCount = 120;

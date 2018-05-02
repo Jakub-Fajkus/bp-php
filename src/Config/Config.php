@@ -20,11 +20,11 @@ class Config
     /** @internal */
     public const DEFAULT_MOTOR_COUNT = 4;
     /** @internal */
-    public const DEFAULT_INSTRUCTION_VALUE_MINIMUM = -5;
+    public const DEFAULT_MINIMUM_DESTINATION_INDEX = -5;
     /** @internal */
-    public const DEFAULT_INSTRUCTION_VALUE_MAXIMUM = 5;
+    public const DEFAULT_MAXIMUM_DESTINATION_INDEX = 5;
     /** @internal */
-    public const DEFAULT_OUTPUT_REGISTER_COUNT = 10;
+    public const DEFAULT_SOURCE_REGISTER_COUNT = 10;
 
     public static $useUniform = false;
     public static $useSubprogramUniform = false;
@@ -39,9 +39,9 @@ class Config
     private static $crossoverRate = self::DEFAULT_CROSSOVER_RATE;
     private static $individualCount = self::DEFAULT_INDIVIDUAL_COUNT;
     private static $motorCount = self::DEFAULT_MOTOR_COUNT;
-    private static $instructionValueMinimum = self::DEFAULT_INSTRUCTION_VALUE_MINIMUM;
-    private static $instructionValueMaximum = self::DEFAULT_INSTRUCTION_VALUE_MAXIMUM;
-    private static $outputRegisterCount = self::DEFAULT_OUTPUT_REGISTER_COUNT;
+    private static $minimumDestinationIndex = self::DEFAULT_MINIMUM_DESTINATION_INDEX;
+    private static $maximumDestinationIndex = self::DEFAULT_MAXIMUM_DESTINATION_INDEX;
+    private static $sourceRegisterCount = self::DEFAULT_SOURCE_REGISTER_COUNT;
 
     /**
      * @return int
@@ -126,49 +126,49 @@ class Config
     /**
      * @return int
      */
-    public static function getInstructionValueMinimum(): int
+    public static function getMinimumDestinationIndex(): int
     {
-        return self::$instructionValueMinimum;
+        return self::$minimumDestinationIndex;
     }
 
     /**
-     * @param int $instructionValueMinimum
+     * @param int $minimumDestinationIndex
      */
-    public static function setInstructionValueMinimum(int $instructionValueMinimum): void
+    public static function setMinimumDestinationIndex(int $minimumDestinationIndex): void
     {
-        self::$instructionValueMinimum = $instructionValueMinimum;
-    }
-
-    /**
-     * @return int
-     */
-    public static function getInstructionValueMaximum(): int
-    {
-        return self::$instructionValueMaximum;
-    }
-
-    /**
-     * @param int $instructionValueMaximum
-     */
-    public static function setInstructionValueMaximum(int $instructionValueMaximum): void
-    {
-        self::$instructionValueMaximum = $instructionValueMaximum;
+        self::$minimumDestinationIndex = $minimumDestinationIndex;
     }
 
     /**
      * @return int
      */
-    public static function getRandomMotorValue(): int
+    public static function getMaximumDestinationIndex(): int
     {
-        return random_int(Config::getInstructionValueMinimum(), Config::getInstructionValueMaximum());
+        return self::$maximumDestinationIndex;
+    }
+
+    /**
+     * @param int $maximumDestinationIndex
+     */
+    public static function setMaximumDestinationIndex(int $maximumDestinationIndex): void
+    {
+        self::$maximumDestinationIndex = $maximumDestinationIndex;
     }
 
     /**
      * @return int
      */
-    public static function getRandomRegisterIndex(): int
+    public static function getRandomDestinationIndex(): int
     {
-        return random_int(0, Config::getOutputRegisterCount() - 1);
+        return random_int(Config::getMinimumDestinationIndex(), Config::getMaximumDestinationIndex());
+    }
+
+    /**
+     * @return int
+     */
+    public static function getRandomSourceRegisterIndex(): int
+    {
+        return random_int(0, Config::getSourceRegisterCount() - 1);
     }
 
     /**
@@ -182,17 +182,17 @@ class Config
     /**
      * @return int
      */
-    public static function getOutputRegisterCount(): int
+    public static function getSourceRegisterCount(): int
     {
-        return self::$outputRegisterCount;
+        return self::$sourceRegisterCount;
     }
 
     /**
-     * @param int $outputRegisterCount
+     * @param int $sourceRegisterCount
      */
-    public static function setOutputRegisterCount(int $outputRegisterCount): void
+    public static function setSourceRegisterCount(int $sourceRegisterCount): void
     {
-        self::$outputRegisterCount = $outputRegisterCount;
+        self::$sourceRegisterCount = $sourceRegisterCount;
     }
 
     /**
