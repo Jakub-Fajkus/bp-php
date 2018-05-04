@@ -15,22 +15,10 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.2 2405546, 2018-03-11"
-   sodipodi:docname="pavouk_spirala_zhora_nejlepsi_reseni_trajektorie.svg">
+   sodipodi:docname="pavouk_spirala_zhora_nejlepsi_reseni_trajektorie.svg"
+   inkscape:version="0.92.2 2405546, 2018-03-11">
   <defs
-     id="defs2">
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath27">
-      <rect
-         style="opacity:1;fill:#dfe0e1;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.56499988;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         id="rect29"
-         width="424.08923"
-         height="64.255951"
-         x="-69.547623"
-         y="158.66071" />
-    </clipPath>
-  </defs>
+     id="defs2" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -38,16 +26,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="512.91254"
-     inkscape:cy="491.24768"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="530.41809"
+     inkscape:cy="211.92497"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1016"
      inkscape:window-x="0"
-     inkscape:window-y="30"
+     inkscape:window-y="1110"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -57,7 +45,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -66,8 +53,8 @@
      inkscape:groupmode="layer"
      id="layer1">
     <image
-       y="21.833332"
-       x="-100.91964"
+       y="127.13753"
+       x="-103.05779"
        id="image18"
        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAQ4CAYAAADo08FDAAAABHNCSVQICAgIfAhkiAAAABl0RVh0
 U29mdHdhcmUAZ25vbWUtc2NyZWVuc2hvdO8Dvz4AACAASURBVHic7N13mFTl2Qbwe2YrS1mQDksV
@@ -2647,6 +2634,14 @@ xUzdYeawAnaJn6O+xf4P5mb/VIVdPQkAAAAASUVORK5CYII=
        preserveAspectRatio="none"
        height="285.75"
        width="508"
-       clip-path="url(#clipPath27)" />
+       inkscape:export-xdpi="150.09"
+       inkscape:export-ydpi="150.09" />
+    <rect
+       style="opacity:1;fill:#dfe0e1;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.56499994;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect21"
+       width="424.08923"
+       height="64.255951"
+       x="-69.547623"
+       y="258.61954" />
   </g>
 </svg>

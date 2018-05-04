@@ -5,8 +5,11 @@
 \todo{vlna!}
 
 \chapter{Úvod}
+Vygenerovano: \DTMnow
+
 V oblasti robotiky je velmi důležíté mít možnost vytvářet rychle a levně prototypy.
 K tomuto účelu je při návrhu fyzické struktury robota výhodné použít počítačové modely a simulace.
+
 Je výhodné mít i možnost rychle prototypovat řízení robota.
 Řízení robota je ovšem možné realizovat mnoha způsoby, např. umělými neuronovými sítěmi, konenčnými automaty nebo i programy v nějakém imperativním jazyce.
 V závislosti na vybrané metodě řízení robota jsou k dispozici různé alogritmy a automatizované nástroje pro nalezení konfigurace zvoleného způsobu řízení, která bude mít za následek požadované chování robota.
@@ -24,7 +27,7 @@ Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco.
 
 
 \chapter{Evoluční algoritmy}
-\todo{informace o tom, ze jsem to cele opsal z knizky!}
+\todo{zalozeno na introduction!}
 
 \section{Koncept evolunčích algoritmů}
 
@@ -86,7 +89,7 @@ Tento operátor je nejšastěji založen na náhodě a to tak, že kvalitnějš�
 Změnou parametrů selekce nastavujeme tzv. selekční tlak, který ovlivňuje, do jaké míry jsou upřednostňováni lepší jedinci.
 
 Jako představitele selekce si můžeme uvést ruletovou selekci a selekci turnajem.
-\todo{vytahnout z nejake ceske knizky}
+\todo{ruleta}
 
 Selekce turnajem, narozdíl od ruletové selekce nevyžaduje znalost celé populace a přepočítávání fitness hodnot.
 Selekce turnajem ani nevyžaduje, aby vyhodnocení fitness funkcí bylo kvantifikované, ale pro jeho funkci stačí, aby byla mezi jedinci definována operace uspořádání.
@@ -288,28 +291,6 @@ Rozsah kloubů, které rotují kolem svislé osy a spojují dvě části nohy, j
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Evoluční návrh pohyblivých objektů}
-%\todo{4. Evolucni navrh pohyblivych objektu - HLAVNI KAPITOLA BP - zde
-%popisteje podrobne vlastni techniky, ktere pro EVOLUCI pouzivate. Fakta
-%o EA budou vychazet k kapitoly 2.}
-
-
-%Cpp cast
-%- popis interpretu
-%- popis jazyka
-%- podprogramy
-%- input hodnoty (koste)
-%- prevod outputu na silu v kloubech ??
-%- spojeni interpretu a simulatoru
-%- pocitani fitness!
-
-%php cast
-%- popis evoluce
-%- algoritmus
-%- genotyp
-%- instance EA - populace, delka, selekce, crossover, mutace
-
-%spojeni php a cpp
-
 V této kapitole si nejdříve popíšeme způsob, jakým je realizováno řízení robota a poté instanci EA, která je v této práci použita.
 
 
@@ -517,6 +498,9 @@ Mutace argumentu je implementována jako \todo{random resetting}, tedy je hodnot
 \subsection{Ukončovací podmínka}
 Jako ukončovací podmínka byla zvoleno ukončení evoluce po provedení daného počtu generací.
 
+
+\todo{zminka o implementaci programu?}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -526,7 +510,7 @@ Pro účely experimentálního ověření funkčnosti použitých postupů byly 
 
 \section{Přímka}
 Tento experiment měl za cíl ověřit, zda-li je použitý způsob řízení modelu funkční.
-Cílem tohoto experimentu bylo vyvinout program, který byde řídit modely tak, aby se pohybovaly po přímce, na které leželo 7 referenčních bodů.
+Úlohou modelu bylo pohybovat se po přímce, na které leželo 7 referenčních bodů.
 V průběhu tohoto experimentu byl laďěn způsob řízení modelu a také parametry evolučního algoritmu.
 
 \subsection{Model trojnožky}
@@ -534,9 +518,10 @@ V tomto experimentu byla použita následující nastavení:
 \begin{itemize}
     \item 1000 jedinců v populaci
     \item jednobodové křížení s pravděpodobností $p_r = 0.8$
-    \item ukončení běhu evoluce po 120 generacích
+    \item ukončení běhu evoluce po 200 generacích
     \item 18 genů v genotypu
     \item pouze podprogram main
+    \item délka simulace 80s
 \end{itemize}
 
 Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:trojnozka_primka_zhora}.
@@ -559,6 +544,7 @@ V tomto experimentu byla použita následující nastavení:
     \item ukončení běhu evoluce po 120 generacích
     \item 72 genů v genotypu
     \item pouze podprogram main
+    \item délka simulace 80s
 \end{itemize}
 
 Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec_primka_zhora}.
@@ -578,7 +564,7 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
 
 \section{Spirála}
 Tento experiment měl za cíl ověřit, zda-li je použitý způsob řízení modelu schopný pohybu i po netriviální trajektorii, která byla definována pomocí 9 referenčních bodů.
-Cílem tohoto experimentu bylo vyvinout program, který byde řídit modely tak, aby se pohybovaly po přímce.
+Úlohou modelu bylo pohybovat se po spirále, na které leželo 9 referenčních bodů.
 V průběhu tohoto experimentu byl laďěn systém podprogramů a vstupních informací pro program.
 
 \subsection{Model trojnožky}
@@ -588,6 +574,7 @@ V tomto experimentu byla použita následující nastavení:
     \item podprogramové uniformní křížení s pravděpodobností $p_r = 0.8$
     \item ukončení běhu evoluce po 300 generacích
     \item 36 genů v genotypu
+    \item délka simulace 600s
 \end{itemize}
 
 Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:trojnozka_spirala_zhora}.
@@ -609,6 +596,7 @@ V tomto experimentu byla použita následující nastavení:
     \item ukončení běhu evoluce po 300 generacích
     \item 100 genů v genotypu
     \item délka podprogramů init a event je 12 instrukcí
+    \item délka simulace 600s
 \end{itemize}
 
 Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec_spirala_zhora}.
@@ -633,27 +621,82 @@ Pro každý evoluční běh byly z těchto hodnot vykresleny 2 typy grafů:
 
 \begin{itemize}
     \item vývoj maximální a průměrné fitness hodnoty jedinců v závislosti na generaci
-    \item \todo{bar and whisker}
+    \item krabicový graf fitness hodnot pro vybrané generace
 \end{itemize}
 
 Pro každý experiment byla poté vykreslena sada histogramů, které ukazují rozložení fitness hodnot jedinců napříč všemi evolučními běhy.
 
-V této kapitole je pro každý experiment prezentován graf vývoje průměrné a maximální fitness hodnoty v populaci a také \todo{bar and whisker} pro nejlepší evoluční běh.
+V této kapitole je pro každý experiment prezentován graf vývoje průměrné a maximální fitness hodnoty v populaci a také krabicový graf fitness hodnot pro vybrané generace pro nejlepší evoluční běh.
 Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílohách na přiloženém médiu.
-\todo{mozna dat k experimentum 3-4 historgramy rozlozeni fitness? zacatek, a pak po ctvrtinach?}
 
 \section{Přímka}
 
 \subsection{Model trojnožky}
+\todo{mozna vypsat do tabulky pro kazdy beh: nejlepsi, prumernou fitness?}
+\begin{figure}[h]
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_primka_top50.png}
+        \caption{krabicový graf fitness hodnot lepší poloviny populace pro vybrané generace}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_primka.png}
+        \caption{krabicový graf fitness hodnot populace pro vybrané generace}
+    \end{minipage}%
+\end{figure}
+
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=20em]{obrazky/trojnozka_primka_fitness_prubeh.png}}
-    %/home/jakub/PhpstormProjects/bp/data/bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_2_ss/2018-03-12T23:07:24+00:00/runFitnessGraph.png
+    {\includegraphics[width=20em]{obrazky/trojnozka_primka_zhora_nejlepsi_reseni_trajektorie.png}}
     \caption{
-        Nejlepší běh pro experiment s trojnožkou na přímce
+    Trajektorie nejlepšího rešení trojnožky na přímce
     }
-    \label{fig:trojnozka_primka_fitness_prubeh}
+    \label{fig:trojnozka_primka_zhora_nejlepsi_reseni_trajektorie}
 \end{figure}
+
+
+
+\begin{figure}[h]
+    \begin{minipage}[c]{0.48\linewidth}
+    {\includegraphics[width=20em]{obrazky/trojnozka_primka_fitness_prubeh.png}}
+        %/home/jakub/PhpstormProjects/bp/data/bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_2_ss/2018-03-12T23:07:24+00:00/runFitnessGraph.png
+        \caption{
+        Nejlepší běh pro experiment s trojnožkou na přímce
+        }
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram10.png}
+        \caption{...}
+    \end{minipage}%
+\end{figure}
+
+\begin{figure}[h]
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram50.png}
+        \caption{...}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram100.png}
+        \caption{...}
+    \end{minipage}%
+\end{figure}
+
+\begin{figure}[h]
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram150.png}
+        \caption{...}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram200.png}
+        \caption{...}
+    \end{minipage}%
+\end{figure}
+
+%donutime LaTeX vysazet vsechny obrazky, ktere dotez jeste nevysazel
+\clearpage
 
 \subsection{Model mravence}
 
@@ -666,6 +709,7 @@ Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílo
     }
     \label{fig:mravenec_primka_fitness_prubeh}
 \end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -712,6 +756,9 @@ Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílo
 
 
 \chapter{Závěr}
+\todo{obsah cd}
+\todo{dokumentace nebo manual}
+
 Závěrečná kapitola obsahuje zhodnocení dosažených výsledků se zvlášť vyznačeným vlastním přínosem studenta. Povinně se zde objeví i zhodnocení z pohledu dalšího vývoje projektu, student uvede náměty vycházející ze zkušeností s řešeným projektem a uvede rovněž návaznosti na právě dokončené projekty.
 
 %=========================================================================
