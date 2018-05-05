@@ -218,7 +218,7 @@ Tento uzel bude kořenový uzel pro podstromy, které se budou později mezi rod
 Třetím krokem je vyjmutí podstromu z obou rodičů, jejichž kořenovým uzlem je uzel, který byl vybrán v předchozím kroku.
 Následuje vytvoření obou potomků.
 První potomek vznikne tak, že se do stromu prvního rodiče, do místa dříve vybraného uzlu, vloží podstrom z druhého rodiče.
-Druhý jedinec vzniká obdobným způsobem, viz. obrázek~\ref{fig:GP_krizeni}.
+Druhý jedinec vzniká obdobným způsobem, viz obrázek~\ref{fig:GP_krizeni}.
 
 \begin{figure}[h]
     \centering
@@ -299,9 +299,64 @@ Tento pracovní registr je poté využit jako operand pro instrukci dělení, kt
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Zkoumání pohyblivých objektů}
-\todo{3. Zkoumani pohyblivych objektu (zakladni myslenky shrnte s inspiraci v
-clancich G. Hornbyho. ~3 strany. Zamerte se v zaverecne podsekci na
-popis objektu, ktere budete mit v BP.}
+Tato práce se zabývá evolučním návrhem řízení vybraných typů pohyblivých struktur (robotů) pomocí evolučních algoritmů.
+V této sekci shrneme myšlenky vycházející z relevantní literatury a představíme vlastní koncept evolučního návrhu řízení robotů.
+
+\todo{jak citovat obrazky?}
+
+\section{Návrh pohyblivých struktur pomocí L-systémů}
+G. Hornby ve své disertaci pomocí generativních reprezentací (L-systémů) mimo jiné vyvíjel fyzickou strukturu i řízení robotických modelů.
+Pro vývoj řízení byly použity 2 přístupy.
+První přístup byl založen na oscilujících poháněných kloubech, které měly 2 parametry -- rychlost oscilace a fázový posun.
+Druhý přístup byl založen na neuronových sítích, které se budovaly použitím instrukcí a které svým výstupem ovládaly jedotlivé poháněné klouby.
+
+V této práci byli roboti složeni ze 3 prvků -- tyče fixní délky, bloky pro spojení těchto tyčí a poháněné klouby, viz obrázek \ref{fig:hornby_stavebni_prvky}.
+
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=15em]{obrazky/hornby_stavebni_prvky.png}}
+    \caption{
+    Stavební prvky robotů v práci G. Hornbyho: tyče fixní délky, bloky pro spojení těchto tyčí a poháněné klouby.
+    }
+    \label{fig:hornby_stavebni_prvky}
+\end{figure}
+
+V programu, který konstruoval robota, se vyskytovaly instrukce pro budování fyzické struktury a také instukce pro konfiguraci kloubů a neuronové sítě.
+Tímto se struktura robota vytváří současně s vytvářením jeho řízení.
+
+G. Hornby touto metodou vyvinul množstí robotů, z nichž některé i skutečně vyrobil, viz obrázek
+
+
+
+\begin{figure}
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.7\linewidth]{obrazky/hornby_model_1_simulace.png}
+        \caption{Robot v simulátoru}
+        \label{fig:hornby_roboti_simulace}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=.7\linewidth]{obrazky/hornby_model_1_real.png}
+        \caption{Reálný robot}
+        \label{fig:hornby_roboti_real}
+    \end{subfigure}
+    \caption{Robot vyvinutý G. Hornbym}
+    \label{fig:hornby_roboti}
+\end{figure}
+
+
+
+
+%V odstavečcích cca 5-10 řádků uveďte v sekci 3.1:
+%- Hornby se zabýval využitím L-systémů jako generativní reprezentace pro řízení robotů, popovídat, jak to dělal s uvedením
+%jednoduché ilustrace, jak jeho řízení funguje a jaký použil EA.
+%- V dalším odstavci opět popsat, na jaké typy pohyblivých struktur se Hornby zaměřil, co se mu podařilo úspěšně navrhnout a opět
+%odkázat na obr. ukazující vybrané 2-3 výstupy (včetně náhledu na fyzickou realizaci - viz str. 108 hornbyho disertace).
+
+
+\section{Wolff a Wahde!!!!}
 
 
 
