@@ -7,18 +7,50 @@
 \chapter{Úvod}
 Vygenerovano: \DTMnow
 
-V oblasti robotiky je velmi důležíté mít možnost vytvářet rychle a levně prototypy.
-K tomuto účelu je při návrhu fyzické struktury robota výhodné použít počítačové modely a simulace.
+% vycistit kody
+% zautomatizovat dokonceni behu, tj. vygenerovat vsechny zajimave a potrebne veci
+% rucni skript jen po dokoneceni vsech behu a vyplivnuti nejakych statistik
 
-Je výhodné mít i možnost rychle prototypovat řízení robota.
-Řízení robota je ovšem možné realizovat mnoha způsoby, např. umělými neuronovými sítěmi, konenčnými automaty nebo i programy v nějakém imperativním jazyce.
-V závislosti na vybrané metodě řízení robota jsou k dispozici různé alogritmy a automatizované nástroje pro nalezení konfigurace zvoleného způsobu řízení, která bude mít za následek požadované chování robota.
+%roztahnout uvod
+
+%    - posledni odstavec zalozit na vysledcich a pridat odkaz na LGP knihu
+
+%krabicov7 graf = box plot
+%vysvetlit grafy
+
+%cd: zdrojaky, uzivatelsky manual, jak nainstalovat a spustit aplikaci!
+%po odevzdani se sejit s oponentem a zive mu to predvest.
+
+%k lGP pripsat vice a dat priklady
+
+%pro ucely teto rpace se vyzuiva koncept LGP, ktery je dale popsany v kapitole 4
+
+%o hornbym asi 2 strany - napsat stranu o praci hornbyho a popsat inspiraci + obrazky, ktere hornby vyvinul
+
+%pridat povidani k vysledkum
+%obrazky vysledku dat na jednu stranu aby zabraly co nejmin mista
+
+
+Robotika představuje v současné době velmi aktuální oblast aplikace výpočetní techniky, jejímž cílem je řízení nejrůznějších
+elektromechanických systémů.
+Uplatnění nacházejí roboti zejména v průmyslu, kde usnadňují a zefektivňují namáhavou a
+opakující se práci člověku, ale také je populární oblast autonomních robotů používaných např. pro operace v těžko přístupných
+nebo nebezpečných místech (např.ponorky, podpora záchranářům apod.).
+Jedním ze zásadních problémů konstrukce robotů obecně je návrh jejich efektivního řízení ve vztahu ke konkrétnímu typu robota a podmínkám jeho nasazení~\cite{Bongard2013}.
+
+Pro tyto potřeby je vhodné mít k dispozici prostředky, které nám umožní rychle a levně prototypovat různé koncepty řízení
+robotů.
+Jednou z možností, jak řadiče robotů navrhovat, je použití evolučních algoritmů.
+Využití evolučních algoritmů osvobozuje konstruktéry od řešení malých detailů při návrhu kontroléru robota a v mnoha případech může evoluce nalézt řešení, které by lidského konstruktéra nenapadlo.
+
+Řízení robota je ovšem možné realizovat mnoha způsoby, např. umělými neuronovými sítěmi~\cite{Reil2002}, konenčnými automaty~\cite{Hodgins1996} nebo i programy v imperativním jazyce~\cite{Wolff2007}.
+V závislosti na vybrané metodě řízení robota jsou k dispozici různé alogritmy a automatizované nástroje pro nalezení konfigurace zvoleného způsobu řízení, které bude mít za následek požadované chování robota.
 Touto konfigurací může být např. váhy neuronové sítě, definice konečného automatu nebo sekvence příkazů imperativního jazyka.
 Právě řízením robota programy napsanými v imperativním jazyce (byť jednoduchém) se zabývá tato práce, ve které jsou použity evoluční algoritmy pro automatizované hledání vhodného řízení robota.
 
 Cílem této práce je návrh a implementace nástroje pro automatizované hledání vhodného kontroléru robotického modelu pro průchod prostorem po dané trajektorii.
-Pro návrh vhodného programu je použita technika zjednodušeného Lineárního Genetického Programování.
-Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco.
+Pro návrh vhodného programu je použita technika zjednodušeného Lineárního Genetického Programování~\cite{Brameier2010}.
+Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco~\cite{Todorov2012}.
 Účinnost softwarového řízení je experimentálně doložena s použitím dvou robotických modelů na dvou trajektoriích.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,9 +59,12 @@ Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco.
 
 
 \chapter{Evoluční algoritmy}
-\todo{zalozeno na introduction!}
+V této kapitole si nejpreve v sekci~\ref{sec:koncept_ea} představíme základní koncept evolučních algoritmů.
+Poté následuje v sekci~\ref{sec:gp} stručný úvod ke Genetickému Programování (GP), na který naváže sekce~\ref{sec:lgp} o Lineárním Genetickém Programováním (LGP).
 
 \section{Koncept evolunčích algoritmů}
+\label{sec:koncept_ea}
+Informace v této sekci vycházejí z~\cite{Eiben2015}.
 
 Evoluční algoritmy (EA) jsou inspirovány přírodními evolučními procesy a Darwinovou teorií evoluce.
 EA se využívají ke stochastickému prohledávání stavového prostoru.
@@ -154,17 +189,20 @@ Operátor je většinou aplikován pouze s určitou pravděpodobností $p_m$ a j
 
 
 Např. pro reprezentace využívající celá čísla, existují 2 záladní přístupy, které mutují každý gen s pravděpodobností $p_m$.
-\todo{Random resetting} je způsob, při kterém je pro gen náhodně vygenerována nová hodnota z množiny všech možných hodnot.
+Prvním přístupem je úplné nahrazení aktuální hodnoty genu novou hodnotou.
 Tato varianta je vhodná, pokud mezi hodnotami neexistuje relace uspořádání.
-\todo{Creep mutation} je způsob, při kterém se k hodnotě genu přičte nebo odečte náhodně vygenerované malé číslo.
-Tato varianta je vhodná, jsou-li hodnoty genomu např. parametry nějakého systému.
+Druhým způsobem je malá změna aktuální hodnoty, při které se k hodnotě genu přičte nebo odečte náhodně vygenerované malé číslo.
+Tato varianta je vhodná, jsou-li hodnoty genomu např. parametry systému nebo funkce.
 
 \subsection{Ukončovací podmínka}
 Ukončovací podmínka určuje, kdy se zastaví evoluce aktuální populace.
 K tomuto je možné využít: dosažení předem dané fitness hodnoty, spotřebování určeného strojového času, provedení určeného počtu vyhodnocení fitness funkce, ukončení v případě, že se populace dostatečně rychle nezlepšuje nebo že pokud dojde ke snížení diverzity populace po daný limit.
 
 \section{Genetické programování}
-\todo{zalozeno na koze}
+\label{sec:gp}
+
+Informace v této sekci vycházejí z~\cite{Koza1992}.
+
 Genetické programování (GP) se zabývá evolucí programu, který je reprezenotván stromovou strukturou.
 Programy v GP jsou složeny z funkcí, které ve stromové struktuře odpovídají uzlům, a terminálů, které odpovídají listům.
 
@@ -206,21 +244,70 @@ Tato operace je řízena parametrem který říká, jakou výšku bude mít vyge
 Speciálním případem mutace je operace, která vloží jeden terminál do náhodně vybraného uzlu ve stromu.
 
 \section{Lineární genetické programování}
-\todo{zalozeno na LGP}
-V této práci se používá přístup inspirovaný Lineárním genetickým programováním (LGP), které si stručně popíšeme dále.
+\label{sec:lgp}
 
-LGP je varianta GP, která vyvíjí programy složené z instrukcí imperativního jazyka nebo strojového kódu, narozdíl od výrazů funkcionálního jazyka.
-Tyto programy mají lineární strukturu.
-Instrukce mají parametry, kterými mohou být buď konstanty nebo proměnné, které se nazývají registry.
-Tyto registry dělíme na vstupní, výstupní, pracovní a registry, obsahující konstanty.
+%Tato sekce o LGP by měla vycházet čistě z lit., na 1-2 strany popište základní myšlenky LGP a doplňte ilustracemi tak,
+%aby bylo zřejmé, jak se programy interpretují a jak je možné je navrhovat evolučně. Např. takto:
+%
+%Lineární genetické programování (LGP) je speciálním případem genetického programování, popsaného v sekci XX,
+%kdy jsou programy reprezentovány jako lineární struktury/seznamy příkazů (instrukcí) vhodného imperativního
+%programovacího jazyka. Příklad struktury programu v LGP ukazuje obrázek XX (zde uvést jednodychý program např.
+%realizující cyklus pro sečtení pole čísel).
+%Obecně jsou data, zpracovávaná pomocí programu LGP, uchovávána v registrech, které jsou součástí interpretu LGP.
+%Každý program zpracovává určitá vstupní data, využívá interní proměnné a konstanty a produkuje výstupní data.
+%Pro každou tuto kategorii dat je v interpretu LGP implementována sada registrů, které jsou podle účelu nazývány
+%vstupními registry, výstupními registry, konstantami či pracovními registry obsahující proměnné.
+%V dalším odstavci popište podrobně vykonání příkladu programu (krok za krokem), kde také vysvětlete, jak jsou
+%inicializovány a modifikovány jednotlivé registry a kde se potom vezme výsledek
 
-Program v LGP v průběhu svého vykonávání čte hodnoty z registrů a modifikuje je za použití instrukcí.
-Tímto provádí transformaci hodnot ze vstupních registrů do výstupních registrů.
 
-LGP zahrnuje koncepty pro větvení, iteraci a vytváření podprogramů.
-Tyto koncepty ale nejsou v této práci využity.
-Namísto toho se z LGP využívá základní myšlenka lineární struktury programu složeného z instrukci a práce s registry.
 
+V této práci se používá přístup inspirovaný Lineárním genetickým programováním (LGP), které si stručně popíšeme v této sekci, krerá vychází z~\cite{Brameier2010}.
+
+LGP je varianta GP, popsaného v kapitole~\ref{sec:gp}, ve které jsou programy reprezentovány jako posloupnost instrukcí strojového kódu nebo příkazů vhodného imperativního jazyka.
+Obecně jsou data, zpracovávaná pomocí programu LGP, uchovávána v registrech, které jsou součástí interpretu LGP.
+
+Interpret má k dispozici sadu registrů, jejichž počet je definován uživatelem.
+Tyto registry se dělí na vstupní, výstupní a pracovní registry.
+Vstupní registry obsahují vstupní data, se kterými je program spouštěn.
+Pracovní registry jsou určeny pro uložení mezivýsledků výpočtů a jsou před spuštěním programu inicializovány vhodnou konstantou, např. 1.
+Jeden nebo více vstupních nebo pracovních registrů může být označeno jako výstupní registr, ze kterého se poté po zkončení programu čte výsledek.
+
+Programy v LGP mohou být také vykonávány bez interpretu, a to tak, že se převedou do programu v jazyce C.
+Ukázkový program v jazyce C můžeme vidět na obrázku \todo{XXX}
+
+Imperativní instrukce obsahuje operaci, která pracuje nad zdrojovými registry, a přiřazení výsledku do cílového registru.
+
+Instrukční sada definuje programovací jazyk, ve kterém jsou vyvíjené programy napsány.
+LGP systém je založen na dvou základních typech instrukcí: operace a podmíněné větvení.
+Příklady operací mohou být: různé aritmetické operace, exponenciální funkce, trigonometrické funkce, nebo booleovské operace.
+
+V LGP je nutné zajistit, aby byly vytvářený pouze programy, které jsou validní.
+Gentické operátory mutace a křížení proto musí zachovat syntaktickou správnost nově vytvořených programů.
+Toho lze zajistit například tak, že bod křížení nemůže být určen urvnitř instrukce, nebo při aplikováni operátoru mutace zakážeme záměnu operátoru instrukce za registr.
+Pro zajištění sémantické správnosti je nutné ošetřit všechny operátory a funkce, které nejsou definovány pro všechny možné hodnoty, tak aby pro nedefinovaný výstup vracely konstantu, např. velké celé číslo.
+
+Schopnost genetického programování nalézt řešení velmi závisí na zvolené instrukční sadě.
+Kompletní instrukční sada je taková, která obsahuje všechny prvky, které jsou potřebné k vytvoření optimálního řešení za předpokladu, že je počet registrů a rozsah použitých konstant dostatečný.
+Na druhou starnu, rozměr stavového prostoru, který obsahuje všechny programy, které je možné sestavit z dostupných instrukcí, roste exponenciálně s počtem instrukcí a registrů.
+
+Na programu \ref{code:lgp_c} v jazyce C si ukážeme průběh vykonávání programu pro výpočet průměru 2 čísel.
+Tento program má k dispozici výstupní registr r[0], ve kterém bude uložen výsledek, dva vstupní registry r[1] a r[2], které obsahují vstupy programu a jeden pracovní registr r[3].
+První instrukcí programu je sečtení dvou vstupních registrů a uložení výsledku do pracovního registru.
+Tento pracovní registr je poté využit jako operand pro instrukci dělení, která uloží výsledek do výstupního registru r[0].
+
+
+\lstset{language=C,caption={LGP program v C pro sečtení 3 čísel},label=code:lgp_c}
+
+\begin{lstlisting}
+    double r[3];
+
+    void lgp(r)
+    {
+        r[3] = r[1] + r[2];
+        r[0] = r[3] / 2;
+    }
+\end{lstlisting}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -433,7 +520,9 @@ V průběhu simulace se pro každý referenční bod $i$ zaznamenává nejmenš�
 $D_i = \min{F(R, P_i)}$, kde $F$ je funkce vypočítávající vzdálenost, $R$ je pozice modelu v prostoru, $P_i$ je pozice referenčního bodu v prostoru a $i=1, \cdots N$, kde $N$ je pocet referenčních bodů.
 
 Po dokončení simulace je pro každý referenční bod je vypočteno skóre následujícím způsobem:
-$$S_i=\left\{\begin{matrix}t - D_i&\mbox{ pokud }D_{i}\leq t\\ 0 &\mbox{ jinak }\end{matrix}\right.$$
+$$S_i=\left\{\begin{matrix}
+                 t - D_i&\mbox{ pokud }D_{i}\leq t\\ 0 &\mbox{ jinak }
+\end{matrix}\right.$$
 
 Parametr $t$ je minimální vzdálenost, ve které musí být model od referenčního bodu, aby se skóre pro tento bod počítalo.
 Výsledná fitness hodnota je poté vypočtena jako suma skóre pro všechny body:
@@ -492,7 +581,7 @@ Tento operátor je implementován následovně.
 Náhodně se vybere jedna instrukce z genotypu.
 S 20~\% pravděpodobností je tato instrukce vymazána a je nahrazena novou, náhodně vygenerovanou.
 S 80~\% pravděpodobností je tato instrukce upravena a to tak, že je zde 50~\% pravděpodobnost na mutaci prvního, nebo druhého argumentu.
-Mutace argumentu je implementována jako \todo{random resetting}, tedy je hodnota zahozena a je vygenerována nová.
+Mutace argumentu je implementována tak, že je hodnota zahozena a je vygenerována nová.
 
 
 \subsection{Ukončovací podmínka}
@@ -621,12 +710,12 @@ Pro každý evoluční běh byly z těchto hodnot vykresleny 2 typy grafů:
 
 \begin{itemize}
     \item vývoj maximální a průměrné fitness hodnoty jedinců v závislosti na generaci
-    \item krabicový graf fitness hodnot pro vybrané generace
+    \item box plot fitness hodnot pro vybrané generace
 \end{itemize}
 
 Pro každý experiment byla poté vykreslena sada histogramů, které ukazují rozložení fitness hodnot jedinců napříč všemi evolučními běhy.
 
-V této kapitole je pro každý experiment prezentován graf vývoje průměrné a maximální fitness hodnoty v populaci a také krabicový graf fitness hodnot pro vybrané generace pro nejlepší evoluční běh.
+V této kapitole je pro každý experiment prezentován graf vývoje průměrné a maximální fitness hodnoty v populaci a také box plot fitness hodnot pro vybrané generace pro nejlepší evoluční běh.
 Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílohách na přiloženém médiu.
 
 \section{Přímka}
@@ -636,13 +725,14 @@ Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílo
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_primka_top50.png}
-        \caption{krabicový graf fitness hodnot lepší poloviny populace pro vybrané generace}
+        \caption{box plot fitness hodnot lepší poloviny populace pro vybrané generace}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_primka.png}
-        \caption{krabicový graf fitness hodnot populace pro vybrané generace}
-    \end{minipage}%
+        \caption{box plot fitness hodnot populace pro vybrané generace}
+    \end{minipage}
+    %
 \end{figure}
 
 \begin{figure}[h]
@@ -668,7 +758,8 @@ Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílo
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram10.png}
         \caption{...}
-    \end{minipage}%
+    \end{minipage}
+    %
 \end{figure}
 
 \begin{figure}[h]
@@ -680,7 +771,8 @@ Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílo
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram100.png}
         \caption{...}
-    \end{minipage}%
+    \end{minipage}
+    %
 \end{figure}
 
 \begin{figure}[h]
@@ -692,7 +784,8 @@ Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílo
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram200.png}
         \caption{...}
-    \end{minipage}%
+    \end{minipage}
+    %
 \end{figure}
 
 %donutime LaTeX vysazet vsechny obrazky, ktere dotez jeste nevysazel
