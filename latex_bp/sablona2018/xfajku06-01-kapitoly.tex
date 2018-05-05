@@ -246,22 +246,6 @@ Speciálním případem mutace je operace, která vloží jeden terminál do ná
 \section{Lineární genetické programování}
 \label{sec:lgp}
 
-%Tato sekce o LGP by měla vycházet čistě z lit., na 1-2 strany popište základní myšlenky LGP a doplňte ilustracemi tak,
-%aby bylo zřejmé, jak se programy interpretují a jak je možné je navrhovat evolučně. Např. takto:
-%
-%Lineární genetické programování (LGP) je speciálním případem genetického programování, popsaného v sekci XX,
-%kdy jsou programy reprezentovány jako lineární struktury/seznamy příkazů (instrukcí) vhodného imperativního
-%programovacího jazyka. Příklad struktury programu v LGP ukazuje obrázek XX (zde uvést jednodychý program např.
-%realizující cyklus pro sečtení pole čísel).
-%Obecně jsou data, zpracovávaná pomocí programu LGP, uchovávána v registrech, které jsou součástí interpretu LGP.
-%Každý program zpracovává určitá vstupní data, využívá interní proměnné a konstanty a produkuje výstupní data.
-%Pro každou tuto kategorii dat je v interpretu LGP implementována sada registrů, které jsou podle účelu nazývány
-%vstupními registry, výstupními registry, konstantami či pracovními registry obsahující proměnné.
-%V dalším odstavci popište podrobně vykonání příkladu programu (krok za krokem), kde také vysvětlete, jak jsou
-%inicializovány a modifikovány jednotlivé registry a kde se potom vezme výsledek
-
-
-
 V této práci se používá přístup inspirovaný Lineárním genetickým programováním (LGP), které si stručně popíšeme v této sekci, krerá vychází z~\cite{Brameier2010}.
 
 LGP je varianta GP, popsaného v kapitole~\ref{sec:gp}, ve které jsou programy reprezentovány jako posloupnost instrukcí strojového kódu nebo příkazů vhodného imperativního jazyka.
@@ -293,6 +277,7 @@ Na druhou starnu, rozměr stavového prostoru, který obsahuje všechny programy
 
 Na programu \ref{code:lgp_c} v jazyce C si ukážeme průběh vykonávání programu pro výpočet průměru 2 čísel.
 Tento program má k dispozici výstupní registr r[0], ve kterém bude uložen výsledek, dva vstupní registry r[1] a r[2], které obsahují vstupy programu a jeden pracovní registr r[3].
+Před spuštěním programu jsou do vstupních registrů nakopírovány hodnoty a pracovní registr je inicializován na hodnotu 1.
 První instrukcí programu je sečtení dvou vstupních registrů a uložení výsledku do pracovního registru.
 Tento pracovní registr je poté využit jako operand pro instrukci dělení, která uloží výsledek do výstupního registru r[0].
 
@@ -300,7 +285,7 @@ Tento pracovní registr je poté využit jako operand pro instrukci dělení, kt
 \lstset{language=C,caption={LGP program v C pro sečtení 3 čísel},label=code:lgp_c}
 
 \begin{lstlisting}
-    double r[3];
+    double r[4];
 
     void lgp(r)
     {
