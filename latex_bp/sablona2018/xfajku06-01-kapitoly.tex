@@ -3,6 +3,7 @@
 \todo{shrnuti kazde kapitoly!}
 \todo{ukazka trajektorie spatneho genomu}
 \todo{vlna!}
+\todo{dat obrazky vedle sebe, asy se usetrilo misto!}
 
 \chapter{Úvod}
 Vygenerovano: \DTMnow
@@ -324,27 +325,34 @@ V této práci byli roboti složeni ze 3 prvků -- tyče fixní délky, bloky pr
 V programu, který konstruoval robota, se vyskytovaly instrukce pro budování fyzické struktury a také instukce pro konfiguraci kloubů a neuronové sítě.
 Tímto se struktura robota vytváří současně s vytvářením jeho řízení.
 
-G. Hornby touto metodou vyvinul množstí robotů, z nichž některé i skutečně vyrobil, viz obrázek
-
-
+G. Hornby touto metodou vyvinul množstí robotů (obrázek ~\ref{fig:hornby_roboti_1}), z nichž některé i skutečně vyrobil, viz obrázek~\ref{fig:hornby_roboti}
 
 \begin{figure}
     \centering
-    \begin{subfigure}{.5\textwidth}
+    \begin{subfigure}{.33\textwidth}
         \centering
-        \includegraphics[width=.7\linewidth]{obrazky/hornby_model_1_simulace.png}
+        \includegraphics[width=.9\linewidth]{obrazky/hornby_model_2_simulace.png}
         \caption{Robot v simulátoru}
-        \label{fig:hornby_roboti_simulace}
-    \end{subfigure}%
-    \begin{subfigure}{.5\textwidth}
+        \label{fig:hornby_roboti_real}
+    \end{subfigure}
+    \begin{subfigure}{.33\textwidth}
         \centering
-        \includegraphics[width=.7\linewidth]{obrazky/hornby_model_1_real.png}
+        \includegraphics[width=.9\linewidth]{obrazky/hornby_model_1_simulace.png}
+        \caption{Robot v simulátoru}
+        \label{fig:hornby_roboti_1_simulace}
+    \end{subfigure}%
+    \begin{subfigure}{.33\textwidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{obrazky/hornby_model_1_real.png}
         \caption{Reálný robot}
         \label{fig:hornby_roboti_real}
     \end{subfigure}
     \caption{Robot vyvinutý G. Hornbym}
     \label{fig:hornby_roboti}
 \end{figure}
+
+
+
 
 
 
@@ -357,18 +365,17 @@ G. Hornby touto metodou vyvinul množstí robotů, z nichž některé i skutečn
 
 
 \section{Wolff a Wahde!!!!}
+Wolff a Wahde ve své práci využili koncept LGP pro vývoj kontroléru pro humanidního robota, který měl za úkol chodit v simulovaném porstředí.
+Použili zde 7 instrukcí: sčítání, odčítání, násobení, dělění, funkce sinus, a dvě varianty větvení.
+Programy měly k dispozici řadu hodnot ze senzorů, jako např. natočení jednotlivých kloubů modelu, aktuální zrychlení jednotlivých částí robota nebo relativní natočení částí těla k některé z os.
+
+Jejich řízení bylo navrženo tak, že se v definovaných časových okamžicích simulace spustil celý program, který na základě vstupních hodnot vypočetl výstupní hodnoty, které se použily pro řízení kloubů modelu.
+Pro evoluci programů zde použili steady state algoritmus, selekci turnajem velikosti 4, klasické 2 bodové křížení a mutaci, která náhodně vybranou instrukci nahradí novou, náhodně vygenerovanou.
+
+V této práci se podařilo vyvinout kontroléry, které byly schopny řídit robota tak, aby se pohyboval.
+Tento pohyb byl ovšem velmi pomalý (0.054~m/s), ačkoli trvalý (až 20 minut).
 
 
-
-Tato práce a pohyblivé struktury, se kterými se pracuje, je inspirována dizertací G. Hornbyho.
-G. Hornby ve své práci využíval generativné reprezentace pro development struktury i kontroléru robotů.
-[todo obrazky nekterych robotu hornbyho ]
-Kotroléry byly realizovány pomocí oscilátorů nebo neuronových sítí.
-
-%Wolff a Wahde použili LGP pro návrh kontroléru modelu humanoidního robota, který měl v simulovaném prostředí chodit a následovat zvukové signály.
-
-%[todo: overit ] Wolff a Wahle použili LGP s čísly s plovoucí řádovou čárkou, aritmetické, matematický instrukce a větvení.
-%[todo: overit ] Jejich kontrolér měl informace o natočení všech kloubů modelu a na základě těchto informací programy řídily model robota.
 
 \section{Použité modely}
 Níže si popíšeme dva modely robotů, se kterými byly provedeny experimenty.
@@ -401,7 +408,7 @@ Rozsah kloubů, které rotují kolem svislé osy a spojují dvě části nohy, j
 
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky/mravenec_detail.png}}
+    {\includegraphics[width=15em]{obrazky/mravenec_detail.png}}
     \caption{
     Model robota zvaný mravenec.
     Tento model je složen z těla robota (modře) a 6-ti nohou (hnědě).
