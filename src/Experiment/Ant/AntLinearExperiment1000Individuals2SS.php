@@ -23,7 +23,7 @@ class AntLinearExperiment1000Individuals2SS extends BaseExperiment
         Config::setMinimumDestinationIndex(13);
         Config::setMaximumDestinationIndex(13 + Config::getMotorCount()-1);
         Config::$tournamentSize = 2;
-        Config::$simulationDuration = 80;
+        Config::$simulationDuration = 120;
         Config::$generationCount = 200;
     }
 }
