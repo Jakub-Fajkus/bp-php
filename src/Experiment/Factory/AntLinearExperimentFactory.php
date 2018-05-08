@@ -83,7 +83,7 @@ class AntLinearExperimentFactory
     public function createAntLinearInputsExperiment(): ExperimentInterface
     {
         //bez pocatecniho lomitka!
-        $executableName = 'bp_compute_primka_7_referenci_mravenec_vstupy_2_ss';
+        $executableName = 'bp_compute_AntLinearExperiment1000Individuals2SS';
         $generationGenerator = new SteadyStateGenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
