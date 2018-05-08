@@ -4,6 +4,7 @@
 \todo{ukazka trajektorie spatneho genomu}
 \todo{vlna!}
 \todo{dat obrazky vedle sebe, asy se usetrilo misto!}
+\todo{zvyraznit terminy, jako napr. main, event, init}
 
 \chapter{Úvod}
 Vygenerovano: \DTMnow
@@ -14,8 +15,6 @@ Vygenerovano: \DTMnow
 
 %roztahnout uvod
 
-%    - posledni odstavec zalozit na vysledcich a pridat odkaz na LGP knihu
-
 %krabicov7 graf = box plot
 %vysvetlit grafy
 
@@ -23,10 +22,6 @@ Vygenerovano: \DTMnow
 %po odevzdani se sejit s oponentem a zive mu to predvest.
 
 %k lGP pripsat vice a dat priklady
-
-%pro ucely teto rpace se vyzuiva koncept LGP, ktery je dale popsany v kapitole 4
-
-%o hornbym asi 2 strany - napsat stranu o praci hornbyho a popsat inspiraci + obrazky, ktere hornby vyvinul
 
 %pridat povidani k vysledkum
 %obrazky vysledku dat na jednu stranu aby zabraly co nejmin mista
@@ -125,7 +120,9 @@ Tento operátor je nejšastěji založen na náhodě a to tak, že kvalitnějš�
 Změnou parametrů selekce nastavujeme tzv. selekční tlak, který ovlivňuje, do jaké míry jsou upřednostňováni lepší jedinci.
 
 Jako představitele selekce si můžeme uvést ruletovou selekci a selekci turnajem.
-\todo{ruleta}
+
+Při použití ruletové selekce pravděpodobnost, že jedinec $j$ bude vybrán závisí na poměru fitness tohoto jedince a fitness celé populace:
+$P_r(j) = \frac{f_j}{\sum_{i=1}^{N}f_i}$
 
 Selekce turnajem, narozdíl od ruletové selekce nevyžaduje znalost celé populace a přepočítávání fitness hodnot.
 Selekce turnajem ani nevyžaduje, aby vyhodnocení fitness funkcí bylo kvantifikované, ale pro jeho funkci stačí, aby byla mezi jedinci definována operace uspořádání.
@@ -171,7 +168,7 @@ Poté se genomy rozdelí v tomto bodě $r$ na počáteční a koncovou část a 
 Uniformní křížení bylo představeno v \todo{422} a pracuje následovně.
 Pro každý gen se vygeneruje náhodné číslo $r$ z rovnoměrného rozložení na intervalu $\langle 0, 1\rangle$.
 Číslo $r$ se poté porovná s parametrem $p$, který bývá obvykle roven 0.5, a pokud je $r < p$, tak se použije gen z prvního rodiče, jinak ze druhého.
-Druhý potomek je vytvořen z genů, které nebyly vybrány do prvního potomka, viz obrázek~\ref{fig:uniformni_krizeni}
+Druhý potomek je vytvořen z genů, které nebyly vybrány do prvního potomka, viz obrázek~\ref{fig:uniformni_krizeni}.
 
 \begin{figure}[h]
     \centering
@@ -249,32 +246,31 @@ Speciálním případem mutace je operace, která vloží jeden terminál do ná
 
 V této práci se používá přístup inspirovaný Lineárním genetickým programováním (LGP), které si stručně popíšeme v této sekci, krerá vychází z~\cite{Brameier2010}.
 
-LGP je varianta GP, popsaného v kapitole~\ref{sec:gp}, ve které jsou programy reprezentovány jako posloupnost instrukcí strojového kódu nebo příkazů vhodného imperativního jazyka.
+LGP je varianta GP, které býlo stručně popsáno v sekci~\ref{sec:gp}, ve které jsou programy reprezentovány jako posloupnost instrukcí strojového kódu nebo příkazů vhodného imperativního jazyka.
 Obecně jsou data, zpracovávaná pomocí programu LGP, uchovávána v registrech, které jsou součástí interpretu LGP.
 
 Interpret má k dispozici sadu registrů, jejichž počet je definován uživatelem.
 Tyto registry se dělí na vstupní, výstupní a pracovní registry.
 Vstupní registry obsahují vstupní data, se kterými je program spouštěn.
 Pracovní registry jsou určeny pro uložení mezivýsledků výpočtů a jsou před spuštěním programu inicializovány vhodnou konstantou, např. 1.
-Jeden nebo více vstupních nebo pracovních registrů může být označeno jako výstupní registr, ze kterého se poté po zkončení programu čte výsledek.
+Jeden nebo více vstupních nebo pracovních registrů může být označen jako výstupní registr, ze kterého se poté po zkončení programu čte výsledek.
 
 Programy v LGP mohou být také vykonávány bez interpretu, a to tak, že se převedou do programu v jazyce C.
-Ukázkový program v jazyce C můžeme vidět na obrázku \todo{XXX}
-
-Imperativní instrukce obsahuje operaci, která pracuje nad zdrojovými registry, a přiřazení výsledku do cílového registru.
+Ukázkový program v jazyce C můžeme vidět na obrázku~\ref{code:lgp_c}.
 
 Instrukční sada definuje programovací jazyk, ve kterém jsou vyvíjené programy napsány.
 LGP systém je založen na dvou základních typech instrukcí: operace a podmíněné větvení.
 Příklady operací mohou být: různé aritmetické operace, exponenciální funkce, trigonometrické funkce, nebo booleovské operace.
+Imperativní instrukce obsahuje operaci, která pracuje nad zdrojovými registry, a přiřazení výsledku do cílového registru.
 
-V LGP je nutné zajistit, aby byly vytvářený pouze programy, které jsou validní.
+V LGP je nutné zajistit, aby byly vytvářeny pouze programy, které jsou validní.
 Gentické operátory mutace a křížení proto musí zachovat syntaktickou správnost nově vytvořených programů.
-Toho lze zajistit například tak, že bod křížení nemůže být určen urvnitř instrukce, nebo při aplikováni operátoru mutace zakážeme záměnu operátoru instrukce za registr.
+To lze zajistit například tak, že bod křížení nemůže být určen urvnitř instrukce, nebo při aplikováni operátoru mutace zakážeme záměnu operátoru instrukce za registr.
 Pro zajištění sémantické správnosti je nutné ošetřit všechny operátory a funkce, které nejsou definovány pro všechny možné hodnoty, tak aby pro nedefinovaný výstup vracely konstantu, např. velké celé číslo.
 
 Schopnost genetického programování nalézt řešení velmi závisí na zvolené instrukční sadě.
 Kompletní instrukční sada je taková, která obsahuje všechny prvky, které jsou potřebné k vytvoření optimálního řešení za předpokladu, že je počet registrů a rozsah použitých konstant dostatečný.
-Na druhou starnu, rozměr stavového prostoru, který obsahuje všechny programy, které je možné sestavit z dostupných instrukcí, roste exponenciálně s počtem instrukcí a registrů.
+Na druhou stranu, rozměr stavového prostoru, který obsahuje všechny programy, které je možné sestavit z dostupných instrukcí, roste exponenciálně s počtem instrukcí a registrů.
 
 Na programu \ref{code:lgp_c} v jazyce C si ukážeme průběh vykonávání programu pro výpočet průměru 2 čísel.
 Tento program má k dispozici výstupní registr r[0], ve kterém bude uložen výsledek, dva vstupní registry r[1] a r[2], které obsahují vstupy programu a jeden pracovní registr r[3].
@@ -301,12 +297,10 @@ Tento pracovní registr je poté využit jako operand pro instrukci dělení, kt
 
 \chapter{Zkoumání pohyblivých objektů}
 Tato práce se zabývá evolučním návrhem řízení vybraných typů pohyblivých struktur (robotů) pomocí evolučních algoritmů.
-V této sekci shrneme myšlenky vycházející z relevantní literatury a představíme vlastní koncept evolučního návrhu řízení robotů.
-
-\todo{jak citovat obrazky?}
+V této kapitole shrneme myšlenky vycházející z relevantní literatury a představíme vlastní koncept evolučního návrhu řízení robotů.
 
 \section{Návrh pohyblivých struktur pomocí L-systémů}
-G. Hornby ve své disertaci pomocí generativních reprezentací (L-systémů) mimo jiné vyvíjel fyzickou strukturu i řízení robotických modelů.
+G. Hornby ve své disertaci~\cite{Hornby2003} pomocí generativních reprezentací (L-systémů) mimo jiné vyvíjel fyzickou strukturu i řízení robotických modelů.
 Pro vývoj řízení byly použity 2 přístupy.
 První přístup byl založen na oscilujících poháněných kloubech, které měly 2 parametry -- rychlost oscilace a fázový posun.
 Druhý přístup byl založen na neuronových sítích, které se budovaly použitím instrukcí a které svým výstupem ovládaly jedotlivé poháněné klouby.
@@ -325,7 +319,7 @@ V této práci byli roboti složeni ze 3 prvků -- tyče fixní délky, bloky pr
 V programu, který konstruoval robota, se vyskytovaly instrukce pro budování fyzické struktury a také instukce pro konfiguraci kloubů a neuronové sítě.
 Tímto se struktura robota vytváří současně s vytvářením jeho řízení.
 
-G. Hornby touto metodou vyvinul množstí robotů (obrázek ~\ref{fig:hornby_roboti_1}), z nichž některé i skutečně vyrobil, viz obrázek~\ref{fig:hornby_roboti}
+G. Hornby touto metodou vyvinul množstí robotů, z nichž některé i skutečně vyrobil, viz obrázek~\ref{fig:hornby_roboti}.
 
 \begin{figure}
     \centering
@@ -351,22 +345,9 @@ G. Hornby touto metodou vyvinul množstí robotů (obrázek ~\ref{fig:hornby_rob
     \label{fig:hornby_roboti}
 \end{figure}
 
-
-
-
-
-
-
-%V odstavečcích cca 5-10 řádků uveďte v sekci 3.1:
-%- Hornby se zabýval využitím L-systémů jako generativní reprezentace pro řízení robotů, popovídat, jak to dělal s uvedením
-%jednoduché ilustrace, jak jeho řízení funguje a jaký použil EA.
-%- V dalším odstavci opět popsat, na jaké typy pohyblivých struktur se Hornby zaměřil, co se mu podařilo úspěšně navrhnout a opět
-%odkázat na obr. ukazující vybrané 2-3 výstupy (včetně náhledu na fyzickou realizaci - viz str. 108 hornbyho disertace).
-
-
-\section{Wolff a Wahde!!!!}
-Wolff a Wahde ve své práci využili koncept LGP pro vývoj kontroléru pro humanidního robota, který měl za úkol chodit v simulovaném porstředí.
-Použili zde 7 instrukcí: sčítání, odčítání, násobení, dělění, funkce sinus, a dvě varianty větvení.
+\section{Evoluce bipedie s použitím LGP}
+Wolff a Wahde ve své práci~\cite{Wolff2007} využili koncept LGP pro vývoj kontroléru pro humanidního robota, který měl za úkol chodit v simulovaném prostředí.
+Použili zde 7 typů instrukcí: sčítání, odčítání, násobení, dělění, funkce sinus, a dvě varianty větvení.
 Programy měly k dispozici řadu hodnot ze senzorů, jako např. natočení jednotlivých kloubů modelu, aktuální zrychlení jednotlivých částí robota nebo relativní natočení částí těla k některé z os.
 
 Jejich řízení bylo navrženo tak, že se v definovaných časových okamžicích simulace spustil celý program, který na základě vstupních hodnot vypočetl výstupní hodnoty, které se použily pro řízení kloubů modelu.
@@ -376,11 +357,26 @@ V této práci se podařilo vyvinout kontroléry, které byly schopny řídit ro
 Tento pohyb byl ovšem velmi pomalý (0.054~m/s), ačkoli trvalý (až 20 minut).
 
 
+%3.3 Vlastní roboti v prostředí simulátoru MuJoCo
+%Zde popsat, jak Vás výše uvedené myšlenky ovlivnily v návrhu vlastních experimentů. Např. takto:
+%Podobně jako G. Hornby v [], budeme se v této práci zaměřovat na roboty tvořené vhodnou strukturou pohyblivých kloubů, pro něž
+%bude cílem evolučně navrhnout řídicí program tak, aby bylo dosaženo požadovaného chování robota. Pro tyto potřeby využijeme
+%koncept LGP popsaný v sekci XX a simulátor MuJoCo, kyterý se ukázal jako vhodný prostředek pro vyhodnocování kandidátních
+%řešení. V této sekci uvedeme vybrané struktury robotů, které budou předmětem experimentů v kapitole XXX.
+%Tato sekce by měla uvést i základní principy využití simulátoru MuJoCo
 
-\section{Použité modely}
-Níže si popíšeme dva modely robotů, se kterými byly provedeny experimenty.
+\section{Vlastní roboti v prostředí simulátoru MuJoCo}
+Podobně jako v práci G. Hornbyho~\cite{Hornby2003} jsou roboti v této práci složeni z pevných tyčí, které mají různou délku, bloků pro spojení těchto tyčí a poháněných kloubů.
+Pro účely této práce byly vytvořeny dva počítačové modely robotů, pro které bylo cílem evolučně navrhnout řídící program tak, aby robot vykazoval požadované chování.
+Pro tyto potřeby byl použit zjednodušený koncept LGP, který bude blíže představen v sekci~\ref{sec:realizace_rizeni_modelu}, a simulátor MuJoCo\footnote{Web: \url{http://www.mujoco.org/index.html}}.
 
-První model, zvaný trojnožka, je vidět na obrázku~\ref{fig:trojnozka}
+\todo{popis MuJoCo na 1-2 odstavce - obecne o simulatoru, jak se definuji modely, mozna dat ukazku meho modelu}
+
+Níže si popíšeme dva modely robotů, se kterými byly provedeny 2 experimenty.
+Tyto experimenty zahrnovaly pohyb po přímce a spirále.
+
+
+První model, zvaný trojnožka, je vidět na obrázku~\ref{fig:trojnozka}.
 Robot má 3 nohy, každá z nich je spojena s jádrem robota kloubem, který se otáčí v jedné ose.
 Rozsah pohybu těchto kloubů je omezen na 50 stupňů.
 Model robota má v horní části v místě kloubů umístěny kontaktní body.
@@ -400,7 +396,7 @@ Tyto body slouží k detekci převrácení robota (kolizi ze zemí).
 \end{figure}
 
 
-Druhý robot, zvaný mravenec, je vidět na obrázku~\ref{fig:mravenec}
+Druhý robot, zvaný mravenec, je vidět na obrázku~\ref{fig:mravenec}.
 Robot má 3 páry nohou, které jsou všechny připojeny k tělu robota.
 Rozsah pohybu kloubů, které rotují kolem horizontální osy a spojují tělo robota s jeho nohou, je omezen na 100 stupňů.
 Rozsah kloubů, které rotují kolem svislé osy a spojují dvě části nohy, je omezen na 65 stupňů.
@@ -425,24 +421,33 @@ Rozsah kloubů, které rotují kolem svislé osy a spojují dvě části nohy, j
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Evoluční návrh pohyblivých objektů}
-V této kapitole si nejdříve popíšeme způsob, jakým je realizováno řízení robota a poté instanci EA, která je v této práci použita.
+V této kapitole si nejdříve v sekci \ref{sec:realizace_rizeni_modelu} popíšeme způsob, jakým je realizováno řízení robota a poté si v sekci \ref{sec:instance_ea} nstanci EA, která je v této práci použita.
 
 
 \section{Relizace řízení modelu}
-V simulátoru Mujoco je vytvořena scéna, která obsahuje model a množinu referenčních bodů, které svým pořadím a umístěním ve scéně definují trajektorii, kterou má modelu následovat.
+\label{sec:realizace_rizeni_modelu}
+
+V simulátoru Mujoco je vytvořena scéna, která obsahuje model a množinu referenčních bodů, které svým pořadím a umístěním ve scéně definují trajektorii, kterou má modelu následovat. Tato scéna je poté využita v simulaci, ve které probíhá vyhodnocování daného robotického modelu s vyvíjeným řízením.
 
 \subsection{Interpret}
-Program, který řídí model robota, je vykonáván v interpretu.
-Interpret obsahuje vstupní, výstupní a konstantní registry.
-Každý registr je indetifikovaný unikátním číslem, které se navýzá index.
-Registry mohou obsahovat celočíselné hodnoty v rozsahu od -5 do 5.
-Počty registrů jsou následující: 11 konstatních registrů s hodnotami od -5 do 5, 2 vstupní registry, a 3, nebo 12, výstupních registrů (pro každý kloub modelu jeden registr).
-Interpret vykonává program, který je složen z instrukcí.
 
+Program, který řídí model robota, je vykonáván v interpretu.
+Interpret obsahuje množinu registrů, kde každý registr je identifikovaný unikátním číslem, které se navýzá index.
+Tyto registry mohou obsahovat celočíselné hodnoty v rozsahu od -5 do 5.
+
+Pracuje se zde se třemi typy registrů.
+Prvním typem jsou vstupní registry, které obsahují vstupní data programu, jsou chráněné proti přepisu a v interpretu jsou 2.
+Dalším typem jsou konstatní registry, kterých je v interpretu 11.
+Tyto registry obsahují všechna celá čísla (v rozsahu od -5 do 5), které mohou být do registrů uložena, a tyto registry jsou taktéž chráněny proti přepisu.
+Posledním typem jsou výstupní registry, které řídí jednotlivé klouby modelu a jejich obsah je modifikován instrukcemi.
+Počet těchto registrů závisí na počtu poháněných kloubů modelu, pro který je program určen -- pro modely, které se v této práci používají, jsou počty výstupních registrů 3 a 12.
+
+
+Interpret vykonává program, který je složen z instrukcí.
 Je zde použit jen jeden druh instrukce, a to instukce s názvem COPY\@.
 Tato instrukce má 2 parametry: zdrojový registr a cílový registr.
 Výsledkem této instrukce je zkopírování hodnoty ze vstupního, nebo konstatního, registru do výstupního registru.
-Interpret je schématikcy znázorněn na obrázku~\ref{fig:interpret}
+Interpret je schématikcy znázorněn na obrázku~\ref{fig:interpret}.
 
 \begin{figure}[h]
     \centering
@@ -459,7 +464,7 @@ V průběhu simulace je vykonáván program, který čte hodnoty ze vstupních r
 
 \subsection{Podprogramy}
 
-Pro účely experimentů se spirálovou trajektoríí byl navržen koncept podprogramů, který je popsán dále.
+Pro účely experimentů se spirálovou trajektorií byl navržen koncept podprogramů, který je popsán dále.
 V experimentech s přímkovou trajektorií je z těchto podprogramů použit jen podprogram main.
 
 Každý program, který reprezentuje kandidátní řešení, je pro vykonávání v průběhu simulace rozdělen na 3 podprogramy.
@@ -469,7 +474,7 @@ Podprogram init se vykoná pouze na začátku simulace a všechny instrukce jsou
 Účelem podprogramu init je nastavení počátečního natočení kloubů modelu.
 
 Podprogram main je v průběhu simulace vykonáván v nekonečné smyčce.
-Instrukce v tomto podprogramu se nevykonají všechny v nulovém čase, ale vyonávají se s periodou 0.3 sekundy.
+Instrukce v tomto podprogramu se nevykonají všechny v nulovém čase, ale vykonávají se s časovým rozestupem 0.3 sekundy mezi každou z instrukcí.
 Jedná se o nejdelší a nejdůležitější podprogram.
 
 Podprogram event se vykoná v situaci, kdy se model přiblíží do určené vzdálenosti od referenčního bodu, avšak pro každý referenční bod pouze jednou.
@@ -484,6 +489,8 @@ Prostor kolem modelu je rozdělen na 11 kruhových výsečí, kde každá výse�
 Informace o směru je rovna ohodnocení výseče, ve které se nachází další referenční bod.
 Tato informace je v nezměněné podobě vložena do prvního vstupního registru.
 Do druhého registru je vložena hodnota s převráceným znaménkem.
+Tyto vstupní hodnoty mohou sloužit programům ke korekci směru, kterým se robot pohybuje, v závislosti na poloze dalšího bodu, ke kterému se má tento robot přiblížit.
+
 
 \begin{figure}[h]
     \centering
@@ -516,29 +523,30 @@ Ve zjednodušené formě je program znázorněn na algoritmu~\ref{alg:algoritmus
 \todo{popsat, jak se tvori modely v xml jazyce?}
 
 \begin{algorithm}[H]
-    Načti model ze souboru\;
-    Nastav čas simulace $t = 0$\;
-    Vykonej celý program init\;
+    načti model ze souboru\;
+    nastav čas simulace $t = 0$\;
+    vykonej celý program init\;
     \While{($t$ < délka simulace)}{
-    Proveď další kroku simulace - mj\_step()\;
-    \If{(došlo ke kolizi se zemí)}{
-    Ukonči simulaci\;
+    proveď další kroku simulace - mj\_step()\;
+    \If{(došlo k převrácení modelu)}{
+    ukonči simulaci\;
     }
-    Vypočti vstupní hodnoty interpretu\;
-    Vykonej instrukci z programu main\;
-    Použij výstupní hodnoty interpretu pro řízení modelu\;
-    Zaznamenej vzdálenosti od jednotlivých referenčních bodů\;
+    vypočti vstupní hodnoty interpretu\;
+    vykonej instrukci z programu main\;
+    použij výstupní hodnoty interpretu pro řízení modelu\;
+    zaznamenej vzdálenosti od jednotlivých referenčních bodů\;
     \If{(došlo k přiblížení k následujícímu referenčnímu bodu)} {
-    Vykonej celý program event\;
+    vykonej celý program event\;
     }
-    Přičti k času $t$ časový krok simulace\;
+    přičti k času $t$ časový krok simulace\;
     }
-    Vypočti fitness hodnotu\;
+    vypočti fitness hodnotu\;
     \caption{Algoritmus simulátoru}
     \label{alg:algoritmus_simulatoru}
 \end{algorithm}
 
 \section{Instance evolučního algoritmu}
+\label{sec:instance_ea}
 
 \subsection{Reprezentace}
 Použtá reprezentace pracuje s genomem fixní délky, která se liší pro každý model a experiment.
@@ -546,8 +554,9 @@ Tato délka bude uvedena u každého z experimentů v následující kapitole.
 Tato reprezentace kóduje každou instrukci jako n-tici, ve které je prvním prvkem název instrukce a poté následují její argumenty.
 Aktuálně jediná použitá instrukce je složena ze svého názvu (COPY, nebo i starší název SRE) a dvou celých čísel, které označují zdrojový a cílový registr.
 
-Tato n-tice je použita jako hodnota jednoho genu \todo{alela?}.
+Tato n-tice je použita jako hodnota jednoho genu.
 Pro experimenty se spirálovou trajektori je celý genotyp pro účely křížení rozdělen na 3 části, které korespondují s podprogramy, viz obrázek~\ref{fig:genotyp}.
+Pro experimenty s přímkovou trajektorií je použit jen podprogram main.
 
 \begin{figure}[h]
     \centering
@@ -607,7 +616,7 @@ Nejlepší jedinec v aktuální populaci a jeho mutant jsou zkopírováni do ná
 \subsection{Křížení}
 Pro účely této práce byl implementován vlastní operátor křížení, který je založen na uniformním křížením.
 Narozdíl od uniformního křížení, které pracuje na úrovni genů, křížení použité zde pracuje na úrovni podprogramů.
-V genomu jsou tedy 3 části, které se mohou mezi rodiči vyměňovat, viz obrázek.~\ref{fig:krizeni_podprogramu}
+V genomu jsou tedy 3 části, které se mohou mezi rodiči vyměňovat, viz obrázek.~\ref{fig:krizeni_podprogramu}.
 
 \begin{figure}[h]
     \centering
@@ -628,7 +637,7 @@ Tento operátor je implementován následovně.
 Náhodně se vybere jedna instrukce z genotypu.
 S 20~\% pravděpodobností je tato instrukce vymazána a je nahrazena novou, náhodně vygenerovanou.
 S 80~\% pravděpodobností je tato instrukce upravena a to tak, že je zde 50~\% pravděpodobnost na mutaci prvního, nebo druhého argumentu.
-Mutace argumentu je implementována tak, že je hodnota zahozena a je vygenerována nová.
+Mutace argumentu je implementována zahozením aktuální hodnoty a vygenerováním hondnoty nové.
 
 
 \subsection{Ukončovací podmínka}
