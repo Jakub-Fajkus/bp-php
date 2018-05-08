@@ -368,9 +368,54 @@ Tento pohyb byl ovšem velmi pomalý (0.054~m/s), ačkoli trvalý (až 20 minut)
 \section{Vlastní roboti v prostředí simulátoru MuJoCo}
 Podobně jako v práci G. Hornbyho~\cite{Hornby2003} jsou roboti v této práci složeni z pevných tyčí, které mají různou délku, bloků pro spojení těchto tyčí a poháněných kloubů.
 Pro účely této práce byly vytvořeny dva počítačové modely robotů, pro které bylo cílem evolučně navrhnout řídící program tak, aby robot vykazoval požadované chování.
-Pro tyto potřeby byl použit zjednodušený koncept LGP, který bude blíže představen v sekci~\ref{sec:realizace_rizeni_modelu}, a simulátor MuJoCo\footnote{Web: \url{http://www.mujoco.org/index.html}}.
+Pro tyto potřeby byl použit zjednodušený koncept LGP, který bude blíže představen v sekci~\ref{sec:realizace_rizeni_modelu}, a simulátor MuJoCo\footnote{\url{http://www.mujoco.org/index.html}}.
 
-\todo{popis MuJoCo na 1-2 odstavce - obecne o simulatoru, jak se definuji modely, mozna dat ukazku meho modelu}
+MuJoCo je fyzikální simulátor určený k vývoji v oblasti robotiky, biomechaniky, grafiky a simulace, strojového učení a všech dalších oblastí, ve kterých je potřeba provádět rychlé a přesné simulace komplexních dynamických systémů.
+Tento simulátor byl od začátku postaven tak, aby byl co nejvýkonnější a bylo jej tedy možné využít v situacích, kdy je potřeba provádět simulace mnohem rychleji, než-li v reálném čase.
+Simulátor je napsán jako dynamická knihovna s rozhraním v jazyce C a má zabudovanou interaktivní vizualizaci, založenou na OpenGL.
+
+Modely pro tento simulátor se specifikují v XML souboru ve formátu MJCF, který je lidsky čitelný a je relativně jednoduché s ním pracovat.
+Tento soubor také obsahuje nastavení všech parametrů simulace.
+Všechny parametry mají své výchozí hodnoty, takže je není nutné pro jednoduché pokusy nastavovat.
+V programu~\ref{code:mujoco_simple_model} můžeme vidět ukázku minimalistického MJCF souboru definující objekt, který je vidět na obrázku~\ref{fig:mujoco_simple_model}.
+Tento MJCF soubor je při spuštění simulace přeložen na nízkoúrovňové struktury, se kterými se poté pracuje v samotné simulaci.
+
+\lstset{
+    language=XML,
+    caption={
+        Minimalistický MJCF soubor.
+        Tento soubor definuje bílou krychli~(viz obrázek~\ref{fig:mujoco_simple_model}) jednotkové velikosti, která je umístěna v prostoru na souřadnicích 1,1,1.
+    },
+    label=code:mujoco_simple_model
+}
+
+
+\begin{figure}[h]
+    \begin{minipage}[c]{0.68\linewidth}
+        \begin{lstlisting}
+<mujoco>
+    <worldbody>
+        <geom type="box" pos="1 1 1" size="1 1 1"
+            rgba="255 255 255 1"/>
+    </worldbody>
+</mujoco>
+        \end{lstlisting}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.30\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/mujoco_simple_model.png}
+        \caption{
+            Výsledek MJCF souboru~\ref{code:mujoco_simple_model}
+        }
+        \label{fig:mujoco_simple_model}
+    \end{minipage}
+    %
+\end{figure}
+
+
+
+
+
 
 Níže si popíšeme dva modely robotů, se kterými byly provedeny 2 experimenty.
 Tyto experimenty zahrnovaly pohyb po přímce a spirále.
@@ -513,14 +558,11 @@ Druhá informace je dána velikostí hodnoty a určuje velikost této síly.
 
 
 \subsection{Simulátor}
-Simulátor Mujoco je dynamická knihovna napsaná v jazyce C.
-Tato knihovna poskytuje řadu funkcí, které umožňují řídít běh simulace.
+Simulátor poskytuje řadu funkcí, které umožňují řídít běh simulace.
 Tyto funkce se poté používají v uživatelském programu, ve kterém nutné z těchto funkcí sestavit algoritmus spojité simulace (ukázkové uživatelské programy jsou součástí distribuce simulátoru).
 Uživatel má plnou kontrolu nad během simulace, a to tím, že volá knihovní funkci mj\_step(), která v simulaci pokročí definovaným krokem.
 Ve smyčce algoritmu spojité simulace jsou vloženy funkce zajišťující běh interpretu, výpočet fitness funkce, mapování výstupních hodnot z interpretu na ovládací signály a získávání pozic objektů z dat simulace.
 Ve zjednodušené formě je program znázorněn na algoritmu~\ref{alg:algoritmus_simulatoru}.
-
-\todo{popsat, jak se tvori modely v xml jazyce?}
 
 \begin{algorithm}[H]
     načti model ze souboru\;
