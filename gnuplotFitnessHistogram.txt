@@ -1,7 +1,7 @@
 clear
 reset
 unset key
-set term png size 1280, 960
+set terminal png interlace enhanced font '/usr/share/fonts/TTF/DejaVuSans.ttf' 20 size 1280,960
 
 #generationNumber je promenna
 set output 'fitnessHistogram'.generationNumber.'.png'
@@ -14,16 +14,16 @@ set style data histogram
 set style fill solid border
 
 #generationNumber je promenna
-set title "Individuals of fitness in generation number #".generationNumber
+set title "Počet jedinců s danou fitness v ".generationNumber.". generaci"
 
 set grid ytics
 set yrange [0:]
 
-set key right center
+set key center top
 
 set style histogram clustered
 set xlabel "Fitness"
-set ylabel "# of individuals"
+set ylabel "počet jedinců"
 
 #dataFile je promenna, ktera se zadava z prikazove radky pres: -e "dataFile='filename'"
 #columnCount je promenna z konzole

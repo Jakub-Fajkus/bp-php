@@ -10,7 +10,7 @@ if ($argc !== 2) {
 $generationNumber = (int)$argv[1];
 
 $lowValue = 0;
-$highValue = 320;
+$highValue = 290;
 $step = 10;
 
 $histogramBounds = range($lowValue, $highValue, $step);
@@ -61,7 +61,7 @@ foreach ($runDirectories as $runDirectory) {
 
 echo "konec " . array_sum(array_values($histogramData));
 
-$output = '"Fitness range"	"#invididuals"' . PHP_EOL;
+$output = '"Fitness range"	"Počet jedinců"' . PHP_EOL;
 
 foreach ($histogramData as $index => $count) {
     $lowerBound = $index*$step;
@@ -75,7 +75,7 @@ file_put_contents($dataFile, $output);
 $absolutePath = realpath($dataFile);
 
 $columnCount = 1;
-$generationNumberString = str_pad((string)$generationNumber, 4, (string)0, STR_PAD_LEFT);
+$generationNumberString = (string)$generationNumber;
 $variables = "\"dataFile='$absolutePath'; generationNumber='$generationNumberString'; dataColumns='$columnCount'\"";
 echo PHP_EOL . $variables . PHP_EOL;
 $gnuplotCommand = "gnuplot -e $variables /home/jakub/PhpstormProjects/bp/gnuplotFitnessHistogram.txt";
