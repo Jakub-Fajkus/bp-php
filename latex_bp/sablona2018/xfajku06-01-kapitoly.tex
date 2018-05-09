@@ -816,6 +816,15 @@ Pro každý experiment byla poté vykreslena sada histogramů, které ukazují r
 V této kapitole je pro každý experiment prezentován graf vývoje průměrné a maximální fitness hodnoty v populaci a také box plot fitness hodnot pro vybrané generace pro nejlepší evoluční běh.
 Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílohách na přiloženém médiu.
 
+Jedním z parametrů evolučních běhů byla délka simulace, která byla provedena pro každé kandidátní řešení.
+Na obrázcích, které zobrazují trajektorii nalezených rešení, je trajektorie vyznačena červenou a zelenou barvou.
+Tato trajektorie byla vykreslena až při ručním vyhodnocování experimentů po zkončení všech evolučních běhů.
+Při tomto ručním vyhodnocování nebyl nastaven časový limit simulace a tudíž se mohlo projevit chování modelu v delším časovém horizontu.
+Červená barva označuje body v prostoru, do kterých se model dostal, něž vypršel čas přidělený na simulaci daného kandidátního řešení v evolučním běhu.
+Zelená barva označuje body v prostoru, do kterých se už model nestihl v rámci evolučních běhů dostat a je tedy pro něj při zvětšeném času simulace nezmáme prostředí.
+Model tedy nebyl za pohyb po této (zelené) trajektorii nijak hodnocen a jeho pohyb tak zcela závisí na schopnosti kontroléru navigovat model k dalšímu referenčnímu bodu.
+Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného řešení v prostředích, na které toto řešení nebylo učeno.
+
 \section{Přímka}
 
 \subsection{Model trojnožky na přímce}
@@ -987,6 +996,7 @@ Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílo
 \section{Spirála}
 \todo{napsat, ze bez podprogramu a input hodnot to neslo}
 \todo{napsat, ze trojnozka casto upadne a proto je vysoke cislo jedincu, kteri maji nulu!}
+\todo{napsat, ze model zacinal uprostred}
 
 \subsection{Model trojnožky na spirále}
 \todo{dobra trajektorie}
@@ -1051,21 +1061,71 @@ Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílo
 
 %donutime LaTeX vysazet vsechny obrazky, ktere dotez jeste nevysazel
 \clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Model mravence na spirále}
+Trajektorii řešení s nejvyšší hodnotou fitness, které bylo v průběhu evolučních běhů pro tento experiment nalezeno, můžeme vidět na obrázku~\ref{fig:mravenec_spirala_zhora_nejlepsi_reseni_neoptimalni_trajektorie}.
+Toto řešení je asi o 7 bodů fitness lepší, než-li druhé nejlepší řešení, jehož trajektorie je vidět na obrázku~\ref{fig:mravenec_spirala_zhora_nejlepsi_reseni_trajektorie}.
+Při porovnání trajektorií nejlepšího a druhého nejlepšího řešení lze usoudit, že zde došlo k přílišné specializaci na danou spirálu a že toto řešení již není schopné správně pokračovat po zbytku spirály.
+Nejlepší řešení má tedy o pár bodů fitness více, ale není tak dobré na zbytku trajektorie, kterou už model nestihl v přiděleném čase na simulaci dokončit.
+
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=\linewidth]{obrazky/mravenec_spirala_zhora_nejlepsi_reseni_neoptimalni_trajektorie.png}}
+    \caption{
+    Trajektorie rešení s největší fitness mravence na spirále
+    }
+    \label{fig:mravenec_spirala_zhora_nejlepsi_reseni_neoptimalni_trajektorie}
+\end{figure}
+
+U trajektorie druhého nejlepšího řešení (obrázek \ref{fig:mravenec_spirala_zhora_nejlepsi_reseni_trajektorie}) se na chvíli pozastvíme.
+Na této trajektorie lze pozorovat několik zajímavostí.
+Výchozí pozice modelu byla ve středu spirály a tento model směřoval směrem na obrázku doprava.
+V průběhu evolučních běhů bylo toto řešení schopné se přiblížit v přiděleném čase k prvním 7 referenčním bodům~(červená trajektorie).
+Při ručním vyhodnocování řešení bylo toto řešení schopno pokračovat po stanovené trajektorii~(zelená část), která byla zhruba definována referenčními body, které od sebe byly relativně velmi vzdálené.
+
+Požadovaná spirálová trajektorie nebyla definována dostatečným počtem bodů, výsledné řešení tedy mezi těmito body zvolilo nejkratší možnou cestu.
+Po přiblížení k poslednímu referenčnímu bodu již toto řešení nedostávalo validní informaci o směru k dalšímu referenčnímu bodu, protože zde již další referenční bod nebyl.
+Místo toho tato inforamce pro program znamenala to, že další referenční bod se vyskytuje přímo před modelem.
+Model tedy opsal téměř dokonalou kružnici a v tomto pohybu pokračoval až do ukončení simulace.
+
+Z tohoto chování lze vypozorovat způsob, jakým tento konkrétní kontrolér řídí model~(ačkoli stejné chování bylo pozorováni i ve výsledcích experimentů s trojnožkou na spirále).
+Tento kontrolér, bez informací o směru k dalšímu referenčnímu bodu, má za následek pohyb modelu po kružnici ve směru hodinových ručiček.
+Tento pohyb je poté s použitím informací o směru k dalšímu referenčnímu bodu korigován tak, že se je model schopný pohybovat po přímce, nebo i dokonce po oblouku opečného směru, tedy proti směru hodinových ručiček.
+Je tedy zajímavé, že pro potřeby pohybu po spirále, po které se má model pohybovat proti směru hodinových ručiček, se vyvinul kontrolér, který provádí přesně opačný pohyb.
+
+
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=\linewidth]{obrazky/mravenec_spirala_zhora_nejlepsi_reseni_trajektorie.png}}
+    \caption{
+    Trajektorie nejlepšího rešení mravence na spirále
+    }
+    \label{fig:mravenec_spirala_zhora_nejlepsi_reseni_trajektorie}
+\end{figure}
+
+Na obrázcích~\ref{fig:bar_whisker_mravenec_spirala_top50} a~\ref{fig:bar_whisker_mravenec_spirala} jsou vykresleny grafy, ukazující maximální a minimální hodnoty fitness, stejně jako její kvartily.
+První z grafů je vykreslen pro lepší polovinu populace, druhý je vykreslen pro celou populaci.
+
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_mravenec_spirala_top50.png}
         \caption{Box plot fitness hodnot lepší poloviny populace nejlepšího běhu experimentu mravence na spirále}
+        \label{fig:bar_whisker_mravenec_spirala_top50}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_mravenec_spirala.png}
         \caption{Box plot fitness hodnot populace nejlepšího běhu experimentu mravence na spirále}
+        \label{fig:bar_whisker_mravenec_spirala}
     \end{minipage}
     %
 \end{figure}
 
-
+Obrázek~\ref{fig:mravenec_spirala_fitness_prubeh} zobrazuje průběh maximální a průměrné fitness hodnoty v jednotlivých generacích pro nejlepší běh evoluce.
+Obrázky~\ref{fig:mravenec_spirala_histogram_10} až~\ref{fig:mravenec_spirala_histogram_300} zobrazují agregovaná data všech 20 simulačních běhů pro tento experiment.
+Jsou zde vykresleny počty jedinců, jejichž fitness spadala do daného rozsahu hodnot.
 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
@@ -1073,11 +1133,13 @@ Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílo
         \caption{
         Nejlepší běh pro experiment s mravencem na spirále
         }
+        \label{fig:mravenec_spirala_fitness_prubeh}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/mravenec_spirala_fitnessHistogram10.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích mravence na spirále v 10. generaci}
+        \label{fig:mravenec_spirala_histogram_10}
     \end{minipage}
     %
 \end{figure}
@@ -1086,11 +1148,13 @@ Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílo
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/mravenec_spirala_fitnessHistogram50.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích mravence na spirále v 50. generaci}
+        \label{fig:mravenec_spirala_histogram_50}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/mravenec_spirala_fitnessHistogram100.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích mravence na spirále v 100. generaci}
+        \label{fig:mravenec_spirala_histogram_100}
     \end{minipage}
     %
 \end{figure}
@@ -1099,11 +1163,13 @@ Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílo
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/mravenec_spirala_fitnessHistogram200.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích mravence na spirále v 200. generaci}
+        \label{fig:mravenec_spirala_histogram_200}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/mravenec_spirala_fitnessHistogram300.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích mravence na spirále v 300. generaci}
+        \label{fig:mravenec_spirala_histogram_300}
     \end{minipage}
     %
 \end{figure}
