@@ -6,7 +6,7 @@
 \todo{dat obrazky vedle sebe, asy se usetrilo misto!}
 \todo{zvyraznit terminy, jako napr. main, event, init}
 \todo{todo pridat "Zdroj: [8]" k hornbymu}
-
+\todo{pridat znimku do uvodu, nebo abstraktu, o tom, ze mravenec umi chodit po nezname trajektorii}
 \chapter{Úvod}
 Vygenerovano: \DTMnow
 
@@ -1173,6 +1173,39 @@ Jsou zde vykresleny počty jedinců, jejichž fitness spadala do daného rozsahu
     \end{minipage}
     %
 \end{figure}
+
+Nalezené řešení bylo ověřeno na několika dalších trajektoriích, které jsou znázorněny na obrázcích~\ref{fig:mravenec_testovaci_trajektorie1} až~\ref{fig:mravenec_testovaci_trajektorie3}.
+Z těchto trajektorií lze vypozorovat, že schopnost daného řešení pohybovat se po neznámé trajektorii se různí.
+Trajektorii vycházející z funkce cosinus~(obrázek~\ref{fig:mravenec_testovaci_trajektorie1}), zvládlo řešení běz problému.
+Další trajektorii vyžadující relativně rychlé otočení modelu~(obrázek~\ref{fig:mravenec_testovaci_trajektorie2}), toto řešení také zvládlo bez větších problémů.
+Poslední trajektorii, která definovala čtverec~(obrázek~\ref{fig:mravenec_testovaci_trajektorie3}), toto řešení side dokončilo, ale velmi neefektivním způsobem.
+
+
+\begin{figure}[h]
+    \centering
+    {\includegraphics[width=\linewidth]{obrazky/mravenec_testovaci_trajektorie1.png}}
+    \caption{
+    Neznámá testovací trajektorie č.1 pro kontrolér mravence
+    }
+    \label{fig:mravenec_testovaci_trajektorie1}
+\end{figure}
+
+\begin{figure}[h]
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/mravenec_testovaci_trajektorie2.png}
+        \caption{Neznámá testovací trajektorie č.2 pro kontrolér mravence}
+        \label{fig:mravenec_testovaci_trajektorie2}
+
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/mravenec_testovaci_trajektorie3.png}
+        \caption{Neznámá testovací trajektorie č.3 pro kontrolér mravence}
+        \label{fig:mravenec_testovaci_trajektorie3}
+    \end{minipage}
+    %
+\end{figure}
+
 
 %donutime LaTeX vysazet vsechny obrazky, ktere dotez jeste nevysazel
 \clearpage
