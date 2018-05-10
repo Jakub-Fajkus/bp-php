@@ -1310,9 +1310,16 @@ Poslední trajektorii, která definovala čtverec~(obrázek~\ref{fig:mravenec_te
 
 \chapter{Závěr}
 \label{chap:zaver}
-\todo{obsah cd}
-\todo{dokumentace nebo manual}
+Tato práce se zabývala evolučním návrhem kontroléru pro robotický model v počítačové simulaci, který měl za úkol pohybovat se po stanovené trajektorii.
+K tomuto účelu byla použita metoda, založená na lineárním genetickém programování.
+Funkčnost této metody byla ověřena provedením 4 experimentů.
+Tyto experimenty ukázaly, že je tuto metodu možné použít pro evoluční návrh jednoduchých robotických kontrolérů.
+Pro všechny experimenty se podařilo najít kontrolér, který by odpovídal požadavkům, které byly dány konfigurací konkrétního experimentu.
+Konkrétně experimenty na spirále, ve kterých byly použity informace o směru k dalšímu referenčnímu bodu, ukázaly, že nalezená řešení jsou částečně schopná řídit robota i v prostředích, kterým nikdy nebyla vystavena -- tato schopnost je nejlepší u kontroléru, který byl vyvinut pro experiment s mravencem na spirále.
 
-Závěrečná kapitola obsahuje zhodnocení dosažených výsledků se zvlášť vyznačeným vlastním přínosem studenta. Povinně se zde objeví i zhodnocení z pohledu dalšího vývoje projektu, student uvede náměty vycházející ze zkušeností s řešeným projektem a uvede rovněž návaznosti na právě dokončené projekty.
+Jako pokračování v této práci bych se chtěl zaměřit na schopnost řídit model robota i v neznámých prostředích.
+K tomu bych využil způsob, kdy by fitness funkce byla složena z více simulací na různých trajektoriích, jejichž výsledky se poté skládaly do výsledné fitness hodnoty.
+Pro urychlení evolučního běhu by se také dal využít přístup, kdy by se počáteční populace kandidátních řešení negenerovala náhodně, ale byla by založena na kandidátních řešeních, které byly schopné model ovládat na přímkové trajektorii.
+Tyto kontroléry by se poté mohly evolučně upravovat a tak by mohly zvládat i jiné trajektorie.
 
 %=========================================================================
