@@ -1,31 +1,18 @@
 %=========================================================================
 % (c) Michal Bidlo, Bohuslav Křena, 2008
 \todo{shrnuti kazde kapitoly!}
-\todo{ukazka trajektorie spatneho genomu}
 \todo{vlna!}
-\todo{dat obrazky vedle sebe, asy se usetrilo misto!}
 \todo{zvyraznit terminy, jako napr. main, event, init}
-\todo{todo pridat "Zdroj: [8]" k hornbymu}
-\todo{pridat znimku do uvodu, nebo abstraktu, o tom, ze mravenec umi chodit po nezname trajektorii}
 \chapter{Úvod}
-Vygenerovano: \DTMnow
+
+\todo{Vygenerovano: \DTMnow}
 
 % vycistit kody
 % zautomatizovat dokonceni behu, tj. vygenerovat vsechny zajimave a potrebne veci
 % rucni skript jen po dokoneceni vsech behu a vyplivnuti nejakych statistik
 
-%roztahnout uvod
-
-%krabicov7 graf = box plot
-%vysvetlit grafy
-
 %cd: zdrojaky, uzivatelsky manual, jak nainstalovat a spustit aplikaci!
 %po odevzdani se sejit s oponentem a zive mu to predvest.
-
-%k lGP pripsat vice a dat priklady
-
-%pridat povidani k vysledkum
-%obrazky vysledku dat na jednu stranu aby zabraly co nejmin mista
 
 
 Robotika představuje v současné době velmi aktuální oblast aplikace výpočetní techniky, jejímž cílem je řízení nejrůznějších
@@ -50,13 +37,20 @@ Pro návrh vhodného programu je použita technika zjednodušeného Lineárního
 Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco~\cite{Todorov2012}.
 Účinnost softwarového řízení je experimentálně doložena s použitím dvou robotických modelů na dvou trajektoriích.
 
+Tato práce začíná úvodem do problematiky evolučních algoritmů a lineárního genetického programování v kapitole~\ref{chap:evolucni_algoritmy}.
+Následuje kapitola~\ref{chap:zkoumani_pohyblivych_objektu}, ve které jsou představeny některé koncepty pohyblivých struktur a poté je popsán vlastní koncept a dva modely robotů, které jsou zde použity.
+Kapitola~\ref{chap:zkoumani_pohyblivych_objektu} popisuje vlastní přístup, který je použit pro řízení robotického modelu v simulátoru, a způsob, jakým je implementována evoluce programů.
+Kapitola~\ref{chap:experimenty} představuje 4 experimenty, které byly provedeny k ověření funkčnosti vlastních přístupů, prezentovaných v této práci.
+Výskedky těchto experimentů jsou prezentovány v kapitole~\ref{chap:vysledky}, po které následuje samotný závěr této práce, ve kterém jsou komentovány dosažené výsledky.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \chapter{Evoluční algoritmy}
-V této kapitole si nejpreve v sekci~\ref{sec:koncept_ea} představíme základní koncept evolučních algoritmů.
+\label{chap:evolucni_algoritmy}
+
+V této kapitole si nejprve v sekci~\ref{sec:koncept_ea} představíme základní koncept evolučních algoritmů.
 Poté následuje v sekci~\ref{sec:gp} stručný úvod ke Genetickému Programování (GP), na který naváže sekce~\ref{sec:lgp} o Lineárním Genetickém Programováním (LGP).
 
 \section{Koncept evolunčích algoritmů}
@@ -153,7 +147,7 @@ Zkombinováním rodičů, kteří mají odlišné, ale vhodné vlasnosti, může
 
 Jako představitele si můžeme uvést jednobodové a uniformní křížení.
 
-Jednobodové křížení bylo původně představeno J. H. Hollandem v \todo{220} a jeho funkce je následující.
+Jednobodové křížení bylo původně představeno J. H. Hollandem v~\cite{Holland1992} a jeho funkce je následující.
 Vygeneruje se náhodné číslo $r$ z intervalu $\langle 1, L-1\rangle$, kde L je délka genomu.
 Poté se genomy rozdelí v tomto bodě $r$ na počáteční a koncovou část a noví jedinci vznikají záměnou těchto koncových částí, viz obrázek~\ref{fig:jednobodove_krizeni}.
 
@@ -166,7 +160,7 @@ Poté se genomy rozdelí v tomto bodě $r$ na počáteční a koncovou část a 
     \label{fig:jednobodove_krizeni}
 \end{figure}
 
-Uniformní křížení bylo představeno v \todo{422} a pracuje následovně.
+Uniformní křížení bylo představeno v~\ref{Syswerda1989} a pracuje následovně.
 Pro každý gen se vygeneruje náhodné číslo $r$ z rovnoměrného rozložení na intervalu $\langle 0, 1\rangle$.
 Číslo $r$ se poté porovná s parametrem $p$, který bývá obvykle roven 0.5, a pokud je $r < p$, tak se použije gen z prvního rodiče, jinak ze druhého.
 Druhý potomek je vytvořen z genů, které nebyly vybrány do prvního potomka, viz obrázek~\ref{fig:uniformni_krizeni}.
@@ -297,10 +291,16 @@ Tento pracovní registr je poté využit jako operand pro instrukci dělení, kt
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Zkoumání pohyblivých objektů}
+\label{chap:zkoumani_pohyblivych_objektu}
+
 Tato práce se zabývá evolučním návrhem řízení vybraných typů pohyblivých struktur (robotů) pomocí evolučních algoritmů.
 V této kapitole shrneme myšlenky vycházející z relevantní literatury a představíme vlastní koncept evolučního návrhu řízení robotů.
 
+V sekci ~\ref{sec:l_systemy} si nejprve stručně shrneme použití L-systémů pro development robotů, poté krátce představíme použití LGP pro vývoj kontrolérů modelu ~\ref{sec:bipedie_lgp} a nakonec je zde představen vlastní konceptu modelů~\ref{sec:vlastni_roboti}.
+
 \section{Návrh pohyblivých struktur pomocí L-systémů}
+\label{sec:l_systemy}
+
 G. Hornby ve své disertaci~\cite{Hornby2003} pomocí generativních reprezentací (L-systémů) mimo jiné vyvíjel fyzickou strukturu i řízení robotických modelů.
 Pro vývoj řízení byly použity 2 přístupy.
 První přístup byl založen na oscilujících poháněných kloubech, které měly 2 parametry -- rychlost oscilace a fázový posun.
@@ -312,7 +312,7 @@ V této práci byli roboti složeni ze 3 prvků -- tyče fixní délky, bloky pr
     \centering
     {\includegraphics[width=15em]{obrazky/hornby_stavebni_prvky.png}}
     \caption{
-    Stavební prvky robotů v práci G. Hornbyho: tyče fixní délky, bloky pro spojení těchto tyčí a poháněné klouby.
+    Stavební prvky robotů v práci G. Hornbyho: tyče fixní délky, bloky pro spojení těchto tyčí a poháněné klouby. Zdroj:~\cite{Hornby2003}
     }
     \label{fig:hornby_stavebni_prvky}
 \end{figure}
@@ -342,11 +342,13 @@ G. Hornby touto metodou vyvinul množstí robotů, z nichž některé i skutečn
         \caption{Reálný robot}
         \label{fig:hornby_roboti_real}
     \end{subfigure}
-    \caption{Robot vyvinutý G. Hornbym}
+    \caption{Robot vyvinutý G. Hornbym. Zdroj:~\cite{Hornby2003}}
     \label{fig:hornby_roboti}
 \end{figure}
 
 \section{Evoluce bipedie s použitím LGP}
+\label{sec:bipedie_lgp}
+
 Wolff a Wahde ve své práci~\cite{Wolff2007} využili koncept LGP pro vývoj kontroléru pro humanidního robota, který měl za úkol chodit v simulovaném prostředí.
 Použili zde 7 typů instrukcí: sčítání, odčítání, násobení, dělění, funkce sinus, a dvě varianty větvení.
 Programy měly k dispozici řadu hodnot ze senzorů, jako např. natočení jednotlivých kloubů modelu, aktuální zrychlení jednotlivých částí robota nebo relativní natočení částí těla k některé z os.
@@ -367,6 +369,8 @@ Tento pohyb byl ovšem velmi pomalý (0.054~m/s), ačkoli trvalý (až 20 minut)
 %Tato sekce by měla uvést i základní principy využití simulátoru MuJoCo
 
 \section{Vlastní roboti v prostředí simulátoru MuJoCo}
+\label{sec:vlastni_roboti}
+
 Podobně jako v práci G. Hornbyho~\cite{Hornby2003} jsou roboti v této práci složeni z pevných tyčí, které mají různou délku, bloků pro spojení těchto tyčí a poháněných kloubů.
 Pro účely této práce byly vytvořeny dva počítačové modely robotů, pro které bylo cílem evolučně navrhnout řídící program tak, aby robot vykazoval požadované chování.
 Pro tyto potřeby byl použit zjednodušený koncept LGP, který bude blíže představen v sekci~\ref{sec:realizace_rizeni_modelu}, a simulátor MuJoCo\footnote{\url{http://www.mujoco.org/index.html}}.
@@ -467,6 +471,7 @@ Rozsah kloubů, které rotují kolem svislé osy a spojují dvě části nohy, j
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Evoluční návrh pohyblivých objektů}
+\label{chap:evolucni_navrh_pohyblivych_objektu}
 V této kapitole si nejdříve v sekci \ref{sec:realizace_rizeni_modelu} popíšeme způsob, jakým je realizováno řízení robota a poté si v sekci \ref{sec:instance_ea} nstanci EA, která je v této práci použita.
 
 
@@ -687,13 +692,12 @@ Mutace argumentu je implementována zahozením aktuální hodnoty a vygenerován
 Jako ukončovací podmínka byla zvoleno ukončení evoluce po provedení daného počtu generací.
 
 
-\todo{zminka o implementaci programu?}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Experimenty}
+\label{chap:experimenty}
 Pro účely experimentálního ověření funkčnosti použitých postupů byly navrženy 2 experimenty, které byly provedeny s každým modelem, tedy celkem 4 experimenty.
 
 \section{Přímka}
@@ -753,7 +757,7 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
 \section{Spirála}
 Tento experiment měl za cíl ověřit, zda-li je použitý způsob řízení modelu schopný pohybu i po netriviální trajektorii, která byla definována pomocí 9 referenčních bodů.
 Úlohou modelu bylo pohybovat se po spirále, na které leželo 9 referenčních bodů.
-V průběhu tohoto experimentu byl laďěn systém podprogramů a vstupních informací pro program.
+Pro účely tohoto experimenty bylo zavedeno použití podprogramů a vstupních informací pro program.
 
 \subsection{Model trojnožky}
 V tomto experimentu byla použita následující nastavení:
@@ -768,7 +772,7 @@ V tomto experimentu byla použita následující nastavení:
 Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:trojnozka_spirala_zhora}.
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky/trojnozka_spirala_zhora.png}}
+    {\includegraphics[width=20em]{obrazky/trojnozka_spirala_zhora.png}}
     \caption{
     Scéna pro experiment s trojnožkou na spirále
     }
@@ -790,7 +794,7 @@ V tomto experimentu byla použita následující nastavení:
 Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec_spirala_zhora}.
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky/mravenec_spirala_zhora.png}}
+    {\includegraphics[width=20em]{obrazky/mravenec_spirala_zhora.png}}
     \caption{
     Scéna pro experiment s mravencem na spirále
     }
@@ -802,7 +806,7 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Výsledky experimentů}
-\todo{umistit obrazky pod sebe na jednu stranu: 3 sloupce, 2 radky}
+\label{chap:vysledky}
 Pro každý experiment bylo provedeno 20 evolučních běhů, ze kterých byly zaznamenány fitness hodnoty všech jedinců.
 Pro každý evoluční běh byly z těchto hodnot vykresleny 2 typy grafů:
 
@@ -817,7 +821,7 @@ V této kapitole je pro každý experiment prezentován graf vývoje průměrné
 Veškeré další grafy, které byly vygenerovány, je možné nalézt v přílohách na přiloženém médiu.
 
 Jedním z parametrů evolučních běhů byla délka simulace, která byla provedena pro každé kandidátní řešení.
-Na obrázcích, které zobrazují trajektorii nalezených rešení, je trajektorie vyznačena červenou a zelenou barvou.
+Na obrázcích, které zobrazují trajektorii nalezených řešení, je trajektorie vyznačena červenou a zelenou barvou.
 Tato trajektorie byla vykreslena až při ručním vyhodnocování experimentů po zkončení všech evolučních běhů.
 Při tomto ručním vyhodnocování nebyl nastaven časový limit simulace a tudíž se mohlo projevit chování modelu v delším časovém horizontu.
 Červená barva označuje body v prostoru, do kterých se model dostal, něž vypršel čas přidělený na simulaci daného kandidátního řešení v evolučním běhu.
@@ -828,54 +832,65 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
 \section{Přímka}
 
 \subsection{Model trojnožky na přímce}
-\todo{mozna vypsat do tabulky pro kazdy beh: nejlepsi, prumernou fitness?}
-\todo{zduvodnit velkou variaci v hodnotach fitness}
+Trajektorii řešení s nejvyšší hodnotou fitness, které bylo v průběhu evolučních běhů pro tento experiment nalezeno, můžeme vidět na obrázku~\ref{fig:trojnozka_primka_zhora_nejlepsi_reseni_trajektorie}.
+Tuto trajektorii můžeme srovnat s jinou, která vznikla řízením neoptimálním řešením, viz obrázek~\ref{fig:trojnozka_primka_zhora_neoptimalni_reseni_trajektorie}.
+
+
+\begin{figure}[h]
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_zhora_nejlepsi_reseni_trajektorie.png}
+        \caption{Trajektorie nejlepšího řešení trojnožky na přímce}
+        \label{fig:trojnozka_primka_zhora_nejlepsi_reseni_trajektorie}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_zhora_neoptimalni_reseni_trajektorie.png}
+        \caption{Trajektorie neoptimálního řešení trojnožky na přímce}
+        \label{fig:trojnozka_primka_zhora_neoptimalni_reseni_trajektorie}
+    \end{minipage}
+    %
+\end{figure}
+
+Na obrázcích~\ref{fig:bar_whisker_trojnozka_primka_top50} a~\ref{fig:bar_whisker_trojnozka_primka} jsou vykresleny grafy, ukazující maximální a minimální hodnoty fitness, stejně jako její kvartily.
+První z grafů je vykreslen pro lepší polovinu populace, druhý je vykreslen pro celou populaci.
 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_primka_top50.png}
         \caption{Box plot fitness hodnot lepší poloviny populace nejlepšího běhu experimentu trojnožky na přímce}
+        \label{fig:bar_whisker_trojnozka_primka_top50}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_primka.png}
         \caption{Box plot fitness hodnot populace nejlepšího běhu experimentu trojnožky na přímce}
+        \label{fig:bar_whisker_trojnozka_primka}
     \end{minipage}
     %
 \end{figure}
 
-\begin{figure}[h]
-    \centering
-    {\includegraphics[width=30em]{obrazky/trojnozka_primka_zhora_nejlepsi_reseni_trajektorie.png}}
-    \caption{
-    Trajektorie nejlepšího rešení trojnožky na přímce
-    }
-    \label{fig:trojnozka_primka_zhora_nejlepsi_reseni_trajektorie}
-\end{figure}
+Obrázek~\ref{fig:trojnozka_primka_fitness_prubeh} zobrazuje průběh maximální a průměrné fitness hodnoty v jednotlivých generacích pro nejlepší běh evoluce.
+Obrázky~\ref{fig:trojnozka_primka_histogram_10} až~\ref{fig:trojnozka_primka_histogram_200} zobrazují agregovaná data všech 20 simulačních běhů pro tento experiment.
+Jsou zde vykresleny počty jedinců, jejichž fitness spadala do daného rozsahu hodnot.
 
-\begin{figure}[h]
-    \centering
-    {\includegraphics[width=20em]{obrazky/trojnozka_primka_zhora_neoptimalni_reseni_trajektorie.png}}
-    \caption{
-    Trajektorie neoptimálního rešení trojnožky na přímce
-    }
-    \label{fig:trojnozka_primka_zhora_nejlepsi_reseni_trajektorie}
-\end{figure}
-
+Můžeme si všimnout, že na histogramech i box plotech je vidět velký počet jedinců, kteří mají velmi malou fitness v rozmezí 0 až 10 bodů.
+To je způsobeno skutečností, že model trojnožky je výjimečně nestabilní a tak i zdánlivě malá změna, jinak dobře fungujícího programu, může mít za následek převrácení modelu.
+Pokud v simulaci došlo k převrácení modelu, bylo toto kandidátní řešení ohodnoceno fitness hodnotou 0 a simulace byla přerušena.
 
 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
     {\includegraphics[width=20em]{obrazky/trojnozka_primka_fitness_prubeh.png}}
-        %/home/jakub/PhpstormProjects/bp/data/bp_compute_primka_7_referenci_trojnozka_1000_jedincu_bez_rekombinace_turnaj_2_ss/2018-03-12T23:07:24+00:00/runFitnessGraph.png
         \caption{
             Nejlepší běh pro experiment s trojnožkou na přímce
         }
+        \label{fig:trojnozka_primka_fitness_prubeh}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram10.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích trojnožky na přímce v 10. generaci}
+        \label{fig:trojnozka_primka_histogram_10}
     \end{minipage}
     %
 \end{figure}
@@ -884,11 +899,13 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram50.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích trojnožky na přímce v 50. generaci}
+        \label{fig:trojnozka_primka_histogram_50}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram100.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích trojnožky na přímce v 100. generaci}
+        \label{fig:trojnozka_primka_histogram_100}
     \end{minipage}
     %
 \end{figure}
@@ -897,11 +914,13 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram150.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích trojnožky na přímce v 150. generaci}
+        \label{fig:trojnozka_primka_histogram_150}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_primka_fitnessHistogram200.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích trojnožky na přímce v 200. generaci}
+        \label{fig:trojnozka_primka_histogram_200}
     \end{minipage}
     %
 \end{figure}
@@ -912,39 +931,47 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Model mravence na přímce}
+Trajektorii řešení s nejvyšší hodnotou fitness, které bylo v průběhu evolučních běhů pro tento experiment nalezeno, můžeme vidět na obrázku~\ref{fig:mravenec_primka_zhora_nejlepsi_reseni_trajektorie}.
+Tuto trajektorii můžeme srovnat s jinou, která vznikla řízením neoptimálním řešením, viz obrázek~\ref{fig:mravenec_primka_zhora_neoptimalni_reseni_trajektorie}.
+
+
+
+\begin{figure}[h]
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/mravenec_primka_zhora_nejlepsi_reseni_trajektorie.png}
+        \caption{Trajektorie nejlepšího řešení mravence na přímce}
+        \label{fig:mravenec_primka_zhora_nejlepsi_reseni_trajektorie}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/mravenec_zhora_neoptimalni_reseni_trajektorie.png}
+        \caption{Trajektorie neoptimálního řešení mravence na přímce}
+        \label{fig:mravenec_primka_zhora_neoptimalni_reseni_trajektorie}
+    \end{minipage}
+    %
+\end{figure}
+
+Na obrázcích~\ref{fig:bar_whisker_mravenec_primka_top50} a~\ref{fig:bar_whisker_mravenec_primka} jsou vykresleny grafy, ukazující maximální a minimální hodnoty fitness, stejně jako její kvartily.
+První z grafů je vykreslen pro lepší polovinu populace, druhý je vykreslen pro celou populaci.
 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_mravenec_primka_top50.png}
         \caption{Box plot fitness hodnot lepší poloviny populace nejlepšího běhu experimentu mravence na přímce}
-
+        \label{fig:bar_whisker_mravenec_primka_top50}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_mravenec_primka.png}
         \caption{Box plot fitness hodnot populace nejlepšího běhu experimentu mravence na přímce}
+        \label{fig:bar_whisker_mravenec_primka}
     \end{minipage}
     %
 \end{figure}
 
-\begin{figure}[h]
-    \centering
-    {\includegraphics[width=30em]{obrazky/mravenec_primka_zhora_nejlepsi_reseni_trajektorie.png}}
-    \caption{
-    Trajektorie nejlepšího rešení mravence na přímce
-    }
-    \label{fig:mravenec_primka_zhora_nejlepsi_reseni_trajektorie}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    {\includegraphics[width=20em]{obrazky/mravenec_zhora_neoptimalni_reseni_trajektorie.png}}
-    \caption{
-    Trajektorie neoptimálního rešení mravence na přímce
-    }
-    \label{fig:mravenec_primka_zhora_neoptimalni_reseni_trajektorie}
-\end{figure}
-
+Obrázek~\ref{fig:mravenec_primka_fitness_prubeh} zobrazuje průběh maximální a průměrné fitness hodnoty v jednotlivých generacích pro nejlepší běh evoluce.
+Obrázky~\ref{fig:mravenec_primka_histogram_10} až~\ref{fig:mravenec_primka_histogram_120} zobrazují agregovaná data všech 20 simulačních běhů pro tento experiment.
+Jsou zde vykresleny počty jedinců, jejichž fitness spadala do daného rozsahu hodnot.
 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
@@ -953,11 +980,14 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
         \caption{
         Nejlepší běh pro experiment s mravencem na přímce
         }
+        \label{fig:mravenec_primka_fitness_prubeh}
+
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/mravenec_primka_fitnessHistogram10.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích mravence na přímce v 10. generaci}
+        \label{fig:mravenec_primka_histogram_10}
     \end{minipage}
     %
 \end{figure}
@@ -966,11 +996,13 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/mravenec_primka_fitnessHistogram30.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích mravence na přímce v 30. generaci}
+        \label{fig:mravenec_primka_histogram_30}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/mravenec_primka_fitnessHistogram60.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích mravence na přímce v 60. generaci}
+        \label{fig:mravenec_primka_histogram_60}
     \end{minipage}
     %
 \end{figure}
@@ -979,11 +1011,13 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/mravenec_primka_fitnessHistogram90.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích mravence na přímce v 90. generaci}
+        \label{fig:mravenec_primka_histogram_90}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/mravenec_primka_fitnessHistogram120.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích mravence na přímce v 120. generaci}
+        \label{fig:mravenec_primka_histogram_120}
     \end{minipage}
     %
 \end{figure}
@@ -994,28 +1028,54 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
 \clearpage
 
 \section{Spirála}
-\todo{napsat, ze bez podprogramu a input hodnot to neslo}
-\todo{napsat, ze trojnozka casto upadne a proto je vysoke cislo jedincu, kteri maji nulu!}
-\todo{napsat, ze model zacinal uprostred}
-
 \subsection{Model trojnožky na spirále}
-\todo{dobra trajektorie}
-\todo{spatna trajektorie}
+
+Trajektorii řešení s nejvyšší hodnotou fitness, které bylo v průběhu evolučních běhů pro tento experiment nalezeno, můžeme vidět na obrázku~\ref{fig:trojnozka_spirala_zhora_nejlepsi_reseni_trajektorie}.
+Tuto trajektorii můžeme srovnat s jinou, která vznikla řízením neoptimálním řešením, viz obrázek~\ref{fig:trojnozka_spirala_zhora_neoptimalni_reseni_trajektorie}.
+
+Na trajektorii nejlepšího jedince~\ref{fig:trojnozka_spirala_zhora_nejlepsi_reseni_trajektorie} můžeme vidět velmi podobné chování, jako u experimentu s mravencem na spirále, které je blíže popsáno u tohoto experimentu v podsekci~\ref{subsec:mravenec_spirala}.
+Toto konkrétní řešení ovládá model tak, že bez informace o směru k dalšímu referenčnímu bodu se model pohybuje po téměř dokonalé kružnici a to ve směru hodinových ručiček.
+Tento pohyb je korigován pomocí vstupních hodnot programu tak, že je model schopný pohybu po přímce, nebo i po spirále, která vyžaduje pohyb proti směru hodinových ručiček.
+
+\begin{figure}[h]
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/trojnozka_spirala_zhora_nejlepsi_reseni_trajektorie.png}
+        \caption{Trajektorie nejlepšího řešení trojnožky na spirále}
+        \label{fig:trojnozka_spirala_zhora_nejlepsi_reseni_trajektorie}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/trojnozka_spirala_zhora_neoptimalni_reseni_trajektorie.png}
+        \caption{Trajektorie neoptimálního řešení trojnožky na spirále}
+        \label{fig:trojnozka_spirala_zhora_neoptimalni_reseni_trajektorie}
+    \end{minipage}
+    %
+\end{figure}
+
+Na obrázcích~\ref{fig:bar_whisker_trojnozka_spirala_top50} a~\ref{fig:bar_whisker_trojnozka_spirala} jsou vykresleny grafy, ukazující maximální a minimální hodnoty fitness, stejně jako její kvartily.
+První z grafů je vykreslen pro lepší polovinu populace, druhý je vykreslen pro celou populaci.
 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_spirala_top50.png}
         \caption{Box plot fitness hodnot lepší poloviny populace nejlepšího běhu experimentu trojnožky na spirále}
+        \label{fig:bar_whisker_trojnozka_spirala_top50}
+
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_spirala.png}
         \caption{Box plot fitness hodnot populace nejlepšího běhu experimentu trojnožky na spirále}
+        \label{fig:bar_whisker_trojnozka_spirala}
+
     \end{minipage}
     %
 \end{figure}
 
-
+Obrázek~\ref{fig:trojnozka_spirala_fitness_prubeh} zobrazuje průběh maximální a průměrné fitness hodnoty v jednotlivých generacích pro nejlepší běh evoluce.
+Obrázky~\ref{fig:trojnozka_spirala_histogram_10} až~\ref{fig:trojnozka_spirala_histogram_300} zobrazují agregovaná data všech 20 simulačních běhů pro tento experiment.
+Jsou zde vykresleny počty jedinců, jejichž fitness spadala do daného rozsahu hodnot.
+Na těchto grafech je možné opět pozorovat velké množstí jedinců s nízkou fitness, stejně jako ve výsledcích experimentu s trojnožkou na přímce.
 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
@@ -1024,11 +1084,14 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
         \caption{
         Nejlepší běh pro experiment s trojnožkou na spirále
         }
+        \label{fig:trojnozka_spirala_fitness_prubeh}
+
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_spirala_fitnessHistogram10.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích trojnožky na spirále v 10. generaci}
+        \label{fig:trojnozka_spirala_histogram_10}
     \end{minipage}
     %
 \end{figure}
@@ -1037,11 +1100,13 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_spirala_fitnessHistogram50.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích trojnožky na spirále v 50. generaci}
+        \label{fig:trojnozka_spirala_histogram_50}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_spirala_fitnessHistogram100.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích trojnožky na spirále v 100. generaci}
+        \label{fig:trojnozka_spirala_histogram_100}
     \end{minipage}
     %
 \end{figure}
@@ -1050,14 +1115,37 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_spirala_fitnessHistogram200.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích trojnožky na spirále v 200. generaci}
+        \label{fig:trojnozka_spirala_histogram_200}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/trojnozka_spirala_fitnessHistogram300.png}
         \caption{Histogram celkového počtu jedinců ve všech bězích trojnožky na spirále v 300. generaci}
+        \label{fig:trojnozka_spirala_histogram_300}
     \end{minipage}
     %
 \end{figure}
+
+
+\begin{figure}[h]
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/trojnozka_testovaci_trajektorie1_nejlepsi_reseni.png}
+        \caption{Nejznámá testovací trajektorie č.1 pro kontrolér trojnožky -- nejlepší řešení}
+        \label{fig:trojnozka_testovaci_trajektorie1_nejlepsi_reseni}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.48\linewidth}
+        \includegraphics[width=\linewidth]{obrazky/trojnozka_testovaci_trajektorie1_druhe_reseni.png}
+        \caption{Nejznámá testovací trajektorie č.1 pro kontrolér trojnožky -- druhé nejlepší řešení}
+        \label{fig:trojnozka_testovaci_trajektorie1_druhe_reseni}
+    \end{minipage}
+    %
+\end{figure}
+
+Podobně jako v experimentu s mravencem na spirále, i zde řešení s nejlepší hodnotou fitness nevykazovalo nejlepší chování při ručním vyhodnocování.
+Toto lze pozorovat například na čtvercové trajektorii, kde můžeme porovnat trajektorii nejlepšího řešení~\ref{fig:trojnozka_testovaci_trajektorie1_nejlepsi_reseni} s trajektoríí druhého nejlepšího řešení~\ref{fig:trojnozka_testovaci_trajektorie1_druhe_reseni}.
+Na jiných trajektoriích měla vetšina řešení problémy se stabilitou modelu a docházelo k převrácení.
+To je dáno tím, že samotný model trojnožky je nestabilní a tak např. při nutnosti prudce změnit směr pohybu může jednoduše dojít k převrácení.
 
 %donutime LaTeX vysazet vsechny obrazky, ktere dotez jeste nevysazel
 \clearpage
@@ -1065,23 +1153,24 @@ Zelená trajektorie tedy může být použita k hodnocení kvality nalezeného �
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Model mravence na spirále}
+\label{subsec:mravenec_spirala}
+
 Trajektorii řešení s nejvyšší hodnotou fitness, které bylo v průběhu evolučních běhů pro tento experiment nalezeno, můžeme vidět na obrázku~\ref{fig:mravenec_spirala_zhora_nejlepsi_reseni_neoptimalni_trajektorie}.
 Toto řešení je asi o 7 bodů fitness lepší, než-li druhé nejlepší řešení, jehož trajektorie je vidět na obrázku~\ref{fig:mravenec_spirala_zhora_nejlepsi_reseni_trajektorie}.
-Při porovnání trajektorií nejlepšího a druhého nejlepšího řešení lze usoudit, že zde došlo k přílišné specializaci na danou spirálu a že toto řešení již není schopné správně pokračovat po zbytku spirály.
+Při porovnání trajektorií nejlepšího a druhého nejlepšího řešení lze usoudit, že zde došlo k přílišné specializaci pouze na část spirály a že toto řešení již není schopné správně pokračovat po zbytku spirály.
 Nejlepší řešení má tedy o pár bodů fitness více, ale není tak dobré na zbytku trajektorie, kterou už model nestihl v přiděleném čase na simulaci dokončit.
 
 \begin{figure}[h]
     \centering
     {\includegraphics[width=\linewidth]{obrazky/mravenec_spirala_zhora_nejlepsi_reseni_neoptimalni_trajektorie.png}}
     \caption{
-    Trajektorie rešení s největší fitness mravence na spirále
+    Trajektorie řešení s největší fitness mravence na spirále
     }
     \label{fig:mravenec_spirala_zhora_nejlepsi_reseni_neoptimalni_trajektorie}
 \end{figure}
 
 U trajektorie druhého nejlepšího řešení (obrázek \ref{fig:mravenec_spirala_zhora_nejlepsi_reseni_trajektorie}) se na chvíli pozastvíme.
 Na této trajektorie lze pozorovat několik zajímavostí.
-Výchozí pozice modelu byla ve středu spirály a tento model směřoval směrem na obrázku doprava.
 V průběhu evolučních běhů bylo toto řešení schopné se přiblížit v přiděleném čase k prvním 7 referenčním bodům~(červená trajektorie).
 Při ručním vyhodnocování řešení bylo toto řešení schopno pokračovat po stanovené trajektorii~(zelená část), která byla zhruba definována referenčními body, které od sebe byly relativně velmi vzdálené.
 
@@ -1100,7 +1189,7 @@ Je tedy zajímavé, že pro potřeby pohybu po spirále, po které se má model 
     \centering
     {\includegraphics[width=\linewidth]{obrazky/mravenec_spirala_zhora_nejlepsi_reseni_trajektorie.png}}
     \caption{
-    Trajektorie nejlepšího rešení mravence na spirále
+    Trajektorie nejlepšího řešení mravence na spirále
     }
     \label{fig:mravenec_spirala_zhora_nejlepsi_reseni_trajektorie}
 \end{figure}
@@ -1214,21 +1303,13 @@ Poslední trajektorii, která definovala čtverec~(obrázek~\ref{fig:mravenec_te
 
 
 
-
-
-
-
-
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \chapter{Závěr}
+\label{chap:zaver}
 \todo{obsah cd}
 \todo{dokumentace nebo manual}
 

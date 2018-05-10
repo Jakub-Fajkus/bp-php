@@ -2075,6 +2075,8 @@ QmCC
        preserveAspectRatio="none"
        height="285.75"
        width="508"
-       clip-path="url(#clipPath700)" />
+       clip-path="url(#clipPath700)"
+       inkscape:export-xdpi="150.09"
+       inkscape:export-ydpi="150.09" />
   </g>
 </svg>
