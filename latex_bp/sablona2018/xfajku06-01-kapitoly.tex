@@ -29,7 +29,7 @@ Využití evolučních algoritmů osvobozuje konstruktéry od řešení malých 
 
 Řízení robota je ovšem možné realizovat mnoha způsoby, např. umělými neuronovými sítěmi~\cite{Reil2002}, konenčnými automaty~\cite{Hodgins1996} nebo i programy v~imperativním jazyce~\cite{Wolff2007}.
 V~závislosti na vybrané metodě řízení robota jsou k~dispozici různé alogritmy a automatizované nástroje pro nalezení konfigurace zvoleného způsobu řízení, které bude mít za následek požadované chování robota.
-Touto konfigurací může být např. váhy neuronové sítě, definice konečného automatu nebo sekvence příkazů imperativního jazyka.
+Touto konfigurací mogou být např. váhy neuronové sítě, definice konečného automatu nebo sekvence příkazů imperativního jazyka.
 Právě řízením robota programy napsanými v~imperativním jazyce (byť jednoduchém) se zabývá tato práce, ve které jsou použity evoluční algoritmy pro automatizované hledání vhodného řízení robota.
 
 Cílem této práce je návrh a implementace nástroje pro automatizované hledání vhodného kontroléru robotického modelu pro průchod prostorem po dané trajektorii.
@@ -38,10 +38,10 @@ Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco~\cite{Todo
 Účinnost softwarového řízení je experimentálně doložena s~použitím dvou robotických modelů na dvou trajektoriích.
 
 Tato práce začíná úvodem do problematiky evolučních algoritmů a lineárního genetického programování v~kapitole~\ref{chap:evolucni_algoritmy}.
-Následuje kapitola~\ref{chap:zkoumani_pohyblivych_objektu}, ve které jsou představeny některé koncepty pohyblivých struktur a poté je popsán vlastní koncept a dva modely robotů, které jsou zde použity.
-Kapitola~\ref{chap:zkoumani_pohyblivych_objektu} popisuje vlastní přístup, který je použit pro řízení robotického modelu v~simulátoru, a způsob, jakým je implementována evoluce programů.
+Následuje kapitola~\ref{chap:zkoumani_pohyblivych_objektu}, ve které jsou představeny některé koncepty pohyblivých struktur a poté je popsán vlastní koncept a také dva modely robotů, které jsou zde použity.
+Kapitola~\ref{chap:evolucni_navrh_pohyblivych_objektu} popisuje vlastní přístup, který je použit pro řízení robotického modelu v~simulátoru, a způsob, jakým je implementována evoluce programů.
 Kapitola~\ref{chap:experimenty} představuje 4 experimenty, které byly provedeny k~ověření funkčnosti vlastních přístupů, prezentovaných v~této práci.
-Výskedky těchto experimentů jsou prezentovány v~kapitole~\ref{chap:vysledky}, po které následuje samotný závěr této práce, ve kterém jsou komentovány dosažené výsledky.
+Výskedky těchto experimentů jsou prezentovány v~kapitole~\ref{chap:vysledky}, po které následuje samotný závěr této práce, ve kterém jsou komentovány dosažené výsledky a možnost pokračování v této práci.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,7 +160,7 @@ Poté se genomy rozdelí v~tomto bodě $r$ na počáteční a koncovou část a 
     \label{fig:jednobodove_krizeni}
 \end{figure}
 
-Uniformní křížení bylo představeno v~\ref{Syswerda1989} a pracuje následovně.
+Uniformní křížení bylo představeno v~\cite{Syswerda1989} a pracuje následovně.
 Pro každý gen se vygeneruje náhodné číslo $r$ z~rovnoměrného rozložení na intervalu $\langle 0, 1\rangle$.
 Číslo $r$ se poté porovná s~parametrem $p$, který bývá obvykle roven 0.5, a pokud je $r < p$, tak se použije gen z~prvního rodiče, jinak ze druhého.
 Druhý potomek je vytvořen z~genů, které nebyly vybrány do prvního potomka, viz obrázek~\ref{fig:uniformni_krizeni}.
@@ -231,9 +231,9 @@ Mutace v~GA hraje menší roli a provádí drobné změny struktur v~populaci.
 Mutace sestává z~několika kroků:
 První krok je zvolení náhodného uzlu ve struktuře.
 Tento uzel může být vnitřní (funkce) i vnější (terminál).
-Druhým krokem je odstranění tohoto uzlu is celým podstromem, který je k~němu připojený.
+Druhým krokem je odstranění tohoto uzlu i s celým podstromem, který je k~němu připojený.
 Posledním krokem je vygenerování náhodného podstromu, který se poté připojí na místo odstraněného uzlu.
-Tato operace je řízena parametrem který říká, jakou výšku bude mít vygenerovaný podstrom.
+Tato operace je řízena parametrem který ovlivňuje výšku nově vygenerovaného podstromu.
 Speciálním případem mutace je operace, která vloží jeden terminál do náhodně vybraného uzlu ve stromu.
 
 \section{Lineární genetické programování}
@@ -241,7 +241,7 @@ Speciálním případem mutace je operace, která vloží jeden terminál do ná
 
 V~této práci se používá přístup inspirovaný Lineárním genetickým programováním (LGP), které si stručně popíšeme v~této sekci, krerá vychází z~\cite{Brameier2010}.
 
-LGP je varianta GP, které býlo stručně popsáno v~sekci~\ref{sec:gp}, ve které jsou programy reprezentovány jako posloupnost instrukcí strojového kódu nebo příkazů vhodného imperativního jazyka.
+LGP je varianta GP, které bylo stručně popsáno v~sekci~\ref{sec:gp}, ve které jsou programy reprezentovány jako posloupnost instrukcí strojového kódu nebo příkazů vhodného imperativního jazyka.
 Obecně jsou data, zpracovávaná pomocí programu LGP, uchovávána v~registrech, které jsou součástí interpretu LGP.
 
 Interpret má k~dispozici sadu registrů, jejichž počet je definován uživatelem.
@@ -317,7 +317,7 @@ V~této práci byli roboti složeni ze 3 prvků -- tyče fixní délky, bloky pr
     \label{fig:hornby_stavebni_prvky}
 \end{figure}
 
-V~programu, který konstruoval robota, se vyskytovaly instrukce pro budování fyzické struktury a také instukce pro konfiguraci kloubů a neuronové sítě.
+V~programu, který konstruoval robota, se vyskytovaly instrukce pro budování fyzické struktury a také instukce pro konfiguraci kloubů nebo neuronové sítě.
 Tímto se struktura robota vytváří současně s~vytvářením jeho řízení.
 
 G. Hornby touto metodou vyvinul množstí robotů, z~nichž některé i skutečně vyrobil, viz obrázek~\ref{fig:hornby_roboti}.
@@ -448,8 +448,8 @@ Tyto body slouží k~detekci převrácení robota (kolizi ze zemí).
 
 Druhý robot, zvaný mravenec, je vidět na obrázku~\ref{fig:mravenec}.
 Robot má 3 páry nohou, které jsou všechny připojeny k~tělu robota.
-Rozsah pohybu kloubů, které rotují kolem horizontální osy a spojují tělo robota s~jeho nohou, je omezen na 100 stupňů.
-Rozsah kloubů, které rotují kolem svislé osy a spojují dvě části nohy, je omezen na 65 stupňů.
+Rozsah pohybu kloubů, které rotují kolem vertikální osy a spojují tělo robota s~jeho nohou, je omezen na 100 stupňů.
+Rozsah kloubů, které rotují kolem horizontální osy a spojují dvě části nohy, je omezen na 65 stupňů.
 
 
 \begin{figure}[h]
@@ -460,8 +460,8 @@ Rozsah kloubů, které rotují kolem svislé osy a spojují dvě části nohy, j
     Tento model je složen z~těla robota (modře) a 6-ti nohou (hnědě).
     V~přední části robota je bod zvaný hlava (červeně).
     Každá noha je složena ze dvou pevných částí a jedoho kloubu.
-    Tento kloub se pohybuje pouze ve svislé ose, tj. může zvedat a snižovat robota.
-    Celá noha je připojena k~tělu robota kloubem, který se pohybuje horizontálně, tj. slouží k~odrážení.
+    Tento kloub rotuje kolem horizontální osy, tj. může zvedat a snižovat robota.
+    Celá noha je připojena k~tělu robota kloubem, který rotuje kolem veritkální osy, tj. slouží k~odrážení.
     }
     \label{fig:mravenec}
 \end{figure}
@@ -488,7 +488,7 @@ Tyto registry mohou obsahovat celočíselné hodnoty v~rozsahu od -5 do 5.
 
 Pracuje se zde se třemi typy registrů.
 Prvním typem jsou vstupní registry, které obsahují vstupní data programu, jsou chráněné proti přepisu a v~interpretu jsou 2.
-Dalším typem jsou konstatní registry, kterých je v~interpretu 11.
+Dalším typem jsou konstantní registry, kterých je v~interpretu 11.
 Tyto registry obsahují všechna celá čísla (v~rozsahu od -5 do 5), které mohou být do registrů uložena, a tyto registry jsou taktéž chráněny proti přepisu.
 Posledním typem jsou výstupní registry, které řídí jednotlivé klouby modelu a jejich obsah je modifikován instrukcemi.
 Počet těchto registrů závisí na počtu poháněných kloubů modelu, pro který je program určen -- pro modely, které se v~této práci používají, jsou počty výstupních registrů 3 a 12.
@@ -497,12 +497,12 @@ Počet těchto registrů závisí na počtu poháněných kloubů modelu, pro kt
 Interpret vykonává program, který je složen z~instrukcí.
 Je zde použit jen jeden druh instrukce, a to instukce s~názvem COPY\@.
 Tato instrukce má 2 parametry: zdrojový registr a cílový registr.
-Výsledkem této instrukce je zkopírování hodnoty ze vstupního, nebo konstatního, registru do výstupního registru.
+Výsledkem této instrukce je zkopírování hodnoty ze vstupního, nebo konstantního, registru do výstupního registru.
 Interpret je schématikcy znázorněn na obrázku~\ref{fig:interpret}.
 
 \begin{figure}[h]
     \centering
-    {\includegraphics[width=30em]{obrazky/interpret.eps}}
+    {\includegraphics[width=30em]{obrazky/interpret.png}}
     \caption[Schéma interpretu]{
     Schéma interpretu.
     Je zde znázorněna situace, ve které interpret vykonává instrukci z~podprogramu main.
@@ -533,6 +533,7 @@ Stejně jako u~podprogramu init jsou instrukce provedeny v~nulovém čase a pot�
 Účelem podprogramu event je změna natočení kloubů modelu jako příprava k~pohybu k~následujícímu referečnímu bodu.
 
 \subsection{Hodnoty vstupních registrů}
+Vstupní registry jsou použity pouze pro experimenty se spirálovou trajektorií.
 Hodnoty, které se ukládájí do vstupních registrů, vychází z~informace o~směru k~následujícímu referenčnímu bodu.
 Informace o~směru je opět vyjádřena číslem od -5 do 5 a vypočítává se následujícím mechanismem.
 
@@ -653,7 +654,7 @@ Nejlepší jedinec v~aktuální populaci a jeho mutant jsou zkopírováni do ná
     vlož tyto dva potomky do dočasné populace T\;
     }
     vlož jedince z~T do P(t)\;
-    odstraň k~nejhoršíh jedinců z~P(t)\;
+    odstraň k~nejhorších jedinců z~P(t)\;
     t = t + 1\;
     }
 
@@ -686,7 +687,7 @@ Tento operátor je implementován následovně.
 Náhodně se vybere jedna instrukce z~genotypu.
 S~20~\% pravděpodobností je tato instrukce vymazána a je nahrazena novou, náhodně vygenerovanou.
 S~80~\% pravděpodobností je tato instrukce upravena a to tak, že je zde 50~\% pravděpodobnost na mutaci prvního, nebo druhého argumentu.
-Mutace argumentu je implementována zahozením aktuální hodnoty a vygenerováním hondnoty nové.
+Mutace argumentu je implementována zahozením aktuální hodnoty a vygenerováním hodnoty nové.
 
 
 \subsection{Ukončovací podmínka}
@@ -701,7 +702,7 @@ Jako ukončovací podmínka byla zvoleno ukončení evoluce po provedení danéh
 \label{chap:experimenty}
 Pro účely experimentálního ověření funkčnosti použitých postupů byly navrženy 2 experimenty, které byly provedeny s~každým modelem, tedy celkem 4 experimenty.
 
-V~sekci~\ref{sec:experiment_primka} je představen experiment na s přímkovou trajektoríí pro oba modely, který je následován experimentem se spirálovou trajektoríí v sekci~\ref{sec:experiment_spirala}, rovněž pro oba modely.
+V~sekci~\ref{sec:experiment_primka} je představen experiment s přímkovou trajektoríí pro oba modely, který je následován experimentem se spirálovou trajektoríí v sekci~\ref{sec:experiment_spirala}, rovněž pro oba modely.
 
 
 \section{Přímka}
@@ -709,7 +710,6 @@ V~sekci~\ref{sec:experiment_primka} je představen experiment na s přímkovou t
 
 Tento experiment měl za cíl ověřit, zda-li je použitý způsob řízení modelu funkční.
 Úlohou modelu bylo pohybovat se po přímce, na které leželo 7 referenčních bodů.
-V~průběhu tohoto experimentu byl laďěn způsob řízení modelu a také parametry evolučního algoritmu.
 
 Programy zde použité byly složeny jen z podprogramu main, který neměl k dispozici informace o směru k dalšímu referenčnímu bodu.
 Délka simulace byla nastavena na 80s.
@@ -1268,6 +1268,7 @@ Nalezené řešení bylo ověřeno na několika dalších trajektoriích, které
 Z~těchto trajektorií lze vypozorovat, že schopnost daného řešení pohybovat se po neznámé trajektorii se různí.
 Trajektorii vycházející z~funkce cosinus~(obrázek~\ref{fig:mravenec_testovaci_trajektorie1}), zvládlo řešení běz problému.
 Další trajektorii vyžadující relativně rychlé otočení modelu~(obrázek~\ref{fig:mravenec_testovaci_trajektorie2}), toto řešení také zvládlo bez větších problémů.
+Můžeme zde pozorovat, že daný kontrolér má větší poloměr otáčení při zátáčení vpravo, než-li vlevo -- např. mezi druhým a třetím referenčním bodem, nebo při zařáčení k poslednímu referenčnímu bodu.
 Poslední trajektorii, která definovala čtverec~(obrázek~\ref{fig:mravenec_testovaci_trajektorie3}), toto řešení sice dokončilo, ale velmi neefektivním způsobem.
 
 
