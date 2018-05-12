@@ -17,7 +17,7 @@ interface FilesystemInterface
      *
      * @return string
      */
-    public function createDirectory(string $parent, string $name):string;
+    public function createDirectory(string $parent, string $name): string;
 
     /**
      * Create a file with the $fileName in the $directory
@@ -35,7 +35,7 @@ interface FilesystemInterface
      * @param string $filePath
      * @param string $content
      */
-    public function writeToFile(string $filePath, string $content):void;
+    public function writeToFile(string $filePath, string $content): void;
 
     /**
      * Read the file content and return it

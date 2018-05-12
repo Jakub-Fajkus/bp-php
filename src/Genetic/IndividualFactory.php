@@ -17,9 +17,9 @@ class IndividualFactory
     private $lastId = 0;
 
     /**
-     * @param GenerationInterface    $generation
+     * @param GenerationInterface $generation
      * @param InstructionInterface[] $genotype
-     * @param int|null               $id
+     * @param int|null $id
      *
      * @return Individual
      */
@@ -27,7 +27,8 @@ class IndividualFactory
         GenerationInterface $generation,
         array $genotype,
         ?int $id = null
-    ): Individual {
+    ): Individual
+    {
         if ($id === null) {
             $id = $this->lastId++;
         }

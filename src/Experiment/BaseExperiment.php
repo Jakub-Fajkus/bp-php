@@ -6,8 +6,6 @@ namespace Experiment;
 use Config\Config;
 use Filesystem\FilesystemInterface;
 use Genetic\Generator\GenerationGeneratorInterface;
-use Simulator\Model\ThreeLegLinearModelXml;
-use Simulator\Model\ModelInterface;
 use Simulator\Model\ModelXmlInterface;
 use Simulator\SimulatorInterface;
 use Statistics\AllIndividualsStatisticsInterface;

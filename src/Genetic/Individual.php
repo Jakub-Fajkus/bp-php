@@ -5,9 +5,8 @@ namespace Genetic;
 
 use Config\Config;
 use Genetic\Instruction\InstructionFactoryInterface;
-use Genetic\Instruction\LGP\LGPInstructionFactory;
-use Genetic\Instruction\SimpleInstructionFactory;
 use Genetic\Instruction\InstructionInterface;
+use Genetic\Instruction\LGP\LGPInstructionFactory;
 
 /**
  * Class Individual

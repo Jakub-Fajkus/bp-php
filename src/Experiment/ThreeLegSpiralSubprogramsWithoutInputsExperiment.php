@@ -3,16 +3,9 @@ declare(strict_types=1);
 
 namespace Experiment;
 
-use Cache\IndividualCacheFacade;
+
 use Config\Config;
-use Filesystem\Filesystem;
-use Genetic\Generator\GenerationGenerator;
-use Simulator\Model\ThreeLegLinearModelXml;
-use Simulator\Serializer\Instruction\InstructionSerializer;
-use Simulator\Simulator;
-use Statistics\CacheStatistics;
-use Statistics\GenerationStatistics;
-use Statistics\IndividualStatistics;
+
 
 /**
  * Class ThreeLegSpiralSubprogramsWithoutInputsExperiment

@@ -25,7 +25,7 @@ class AntSpiralExperimentSubprogramsInput extends BaseExperiment
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 600;
         Config::$generationCount = 300;
-        COnfig::$useSubprogramUniform = true;
+        Config::$useSubprogramUniform = true;
         Config::$initProgramLength = Config::getMotorCount();
         Config::$eventProgramLength = Config::getMotorCount();
     }

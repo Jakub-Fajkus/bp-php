@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Genetic;
 
 use Genetic\Instruction\InstructionFactoryInterface;
-use Genetic\Instruction\SimpleInstructionFactory;
 use Genetic\Instruction\InstructionInterface;
 
 /**
@@ -25,7 +24,7 @@ interface IndividualInterface
      *
      * @param IndividualInterface $individual
      *
-     * @param int|null            $crossoverPoint
+     * @param int|null $crossoverPoint
      *
      * @return IndividualInterface[] Array of 2 individuals that were created by the crossover
      */
@@ -44,7 +43,7 @@ interface IndividualInterface
      * @param IndividualInterface $individual
      * @return array
      */
-    public function uniformCrossover(IndividualInterface $individual):array;
+    public function uniformCrossover(IndividualInterface $individual): array;
 
     /**
      * Performs a crossover, which is similar to uniform crossover.

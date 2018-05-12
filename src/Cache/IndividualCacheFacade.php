@@ -4,11 +4,11 @@ declare(strict_types=1);
 namespace Cache;
 
 use Genetic\IndividualInterface;
-use Simulator\Serializer\Instruction\InstructionSerializer;
+
 
 /**
  * Class IndividualCacheFacade
- * todo: predelat na klasickou tridu, ktera se preda simulatoru
+ *
  * @package Cache
  */
 class IndividualCacheFacade
@@ -46,23 +46,6 @@ class IndividualCacheFacade
         self::getMemoryCache()->cacheIndividual($individual);
     }
 
-    public static function saveToFile(string $filename)
-    {
-//        file_put_contents($filename, serialize(self::$memoryCache->getCache()));
-    }
-
-    public static function loadFromFile(string $filename)
-    {
-//        if (file_exists($filename)) {
-//            $data = unserialize(file_get_contents($filename), []);
-//
-//            if ($data !== false) {
-//                self::getMemoryCache()->setCache($data);
-//            }
-//        } else {
-//            echo 'cache file not found' . PHP_EOL;
-//        }
-    }
 
     /**
      * @return int

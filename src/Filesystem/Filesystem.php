@@ -13,7 +13,7 @@ class Filesystem implements FilesystemInterface
      * Creates a directory within a $parent directory with the specified name and return its path without trailing slash
      *
      * @param string $parent Parent directory name
-     * @param string $name   Directory name
+     * @param string $name Directory name
      *
      * @return string
      */
@@ -31,7 +31,7 @@ class Filesystem implements FilesystemInterface
      * Create a file with the $fileName in the $directory
      *
      * @param string $directory Directory path
-     * @param string $fileName  File name
+     * @param string $fileName File name
      *
      * @return string
      */

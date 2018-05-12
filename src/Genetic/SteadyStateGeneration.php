@@ -41,7 +41,12 @@ class SteadyStateGeneration extends Generation
         return $newGeneration;
     }
 
-    protected function setGenerationToIndividuals(array $individuals, GenerationInterface $generation)
+    /**
+     * @param IndividualInterface[] $individuals
+     * @param GenerationInterface $generation
+     * @return array
+     */
+    protected function setGenerationToIndividuals(array $individuals, GenerationInterface $generation): array
     {
         $individualsCopied = [];
 

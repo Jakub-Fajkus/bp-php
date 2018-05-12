@@ -21,7 +21,7 @@ class AntLinearExperiment1000Individuals2SS extends BaseExperiment
         Config::setGenotypeSize(6 * Config::getMotorCount()); //bulharska konstanta
         Config::setSourceRegisterCount(13);
         Config::setMinimumDestinationIndex(13);
-        Config::setMaximumDestinationIndex(13 + Config::getMotorCount()-1);
+        Config::setMaximumDestinationIndex(13 + Config::getMotorCount() - 1);
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 120;
         Config::$generationCount = 200;

@@ -30,7 +30,7 @@ class SteadyStateGenerationGenerator implements GenerationGeneratorInterface
         $instructionFactory = new LGPInstructionFactory();
 
         for ($i = 0; $i < $individualCount; $i++) {
-            $newIndividual = $individualFactory->createIndividual($generation, [], $i+1);
+            $newIndividual = $individualFactory->createIndividual($generation, [], $i + 1);
             $newIndividual->randomizeGenotype($instructionFactory);
             $generation->addIndividual($newIndividual);
         }

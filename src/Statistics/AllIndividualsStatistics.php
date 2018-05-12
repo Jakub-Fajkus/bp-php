@@ -2,8 +2,9 @@
 declare(strict_types=1);
 
 namespace Statistics;
+
 use Genetic\GenerationInterface;
-use Genetic\IndividualInterface;
+
 
 /**
  * Class AllIndividualsStatistics
@@ -11,7 +12,7 @@ use Genetic\IndividualInterface;
  */
 class AllIndividualsStatistics implements AllIndividualsStatisticsInterface
 {
-    /** @var string  */
+    /** @var string */
     private $output = '';
 
     /**
@@ -29,7 +30,6 @@ class AllIndividualsStatistics implements AllIndividualsStatisticsInterface
             $this->output .= ">$generationId.$individualId< {$individual->getFitness()}\n";
         }
     }
-
 
 
     /**
