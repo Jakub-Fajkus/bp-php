@@ -1,5 +1,58 @@
 \chapter{Obsah přiloženého CD}
-\todo{Zde bude zminena struktura CD s~adresari, a jejich obsahem}
+%cd
+%├── experimenty - každá podsložka obsahuje grafy, přeložené binární soubory, soubor s modelem, nejlepší řešení a Makefile pro spuštění
+%│   ├── mravenec_primka
+%│   ├── mravenec_spirala
+%│   ├── multiple_individuals.txt
+%│   ├── trojnozka_primka
+%│   └── trojnozka_spirala
+%├── latex - zdrojové soubory pro \latex
+%└── zdrojove_kody
+%    ├── evo_framework
+%    └── simulator
+
+%zdroj: https://tex.stackexchange.com/questions/5073/making-a-simple-directory-tree
+\begin{forest}
+    for tree={
+    font=\ttfamily,
+    grow'=0,
+    child anchor=west,
+    parent anchor=south,
+    anchor=west,
+    calign=first,
+    edge path={
+    \noexpand\path [draw, \forestoption{edge}]
+    (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+    },
+    before typesetting nodes={
+    if n=1
+    {insert before={[,phantom]}}
+    {}
+    },
+    fit=band,
+    before computing xy={l=15pt},
+    }
+[cd
+    [experimenty
+        [mravenec\_primka]
+        [mravenec\_spirala]
+        [trojnozka\_primka]
+        [trojnozka\_spirala]
+    ]
+    [latex]
+    [zdrojove\_kody
+        [evo\_framework]
+        [simulator]
+    ]
+]
+\end{forest}
+
+Každý podadresář adresáře \texttt{experimenty} obsahují grafy, přeložené binární soubory, soubor s modelem, nejlepší řešení a Makefile pro spuštění daného experimentu. Pro spuštění stačí v konkrétním podadresáři~(např. mravenec\_primka) spustit \texttt{make compute} nebo \texttt{make render}.
+
+V adresáři \texttt{latex} jsou umístěny zdrojové soubory potřebné pro přeložení textu této práce.
+
+V adresáři \texttt{zdrojove\_kody} jsou umístěny zdrojové soubory aplikace, v podadresářích jsou poté zdrojové soubory aplikace se simulátorem a evolučního frameworku.
+
 
 \chapter{Instalace a spuštění aplikace}
 Pro běh aplikace jsou potřeba: CMake, PHP 7.2 a simulátor MuJoCo.
