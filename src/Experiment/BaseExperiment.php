@@ -156,7 +156,7 @@ abstract class BaseExperiment implements ExperimentInterface
             $generation = $generation->createNewGeneration();
             $generationEnd = microtime(true);
 
-            $output .= 'php time: ' . (($generationStart - $generationEnd) - ($beforeSim - $afterSim)) . 's' . PHP_EOL;
+            $output .= 'php time: ' . (($generationEnd - $generationStart) - ($afterSim - $beforeSim)) . 's' . PHP_EOL;
 
             $output .= PHP_EOL . PHP_EOL;
 

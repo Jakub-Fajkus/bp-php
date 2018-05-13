@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Experiment\Factory;
 
 use Experiment\ExperimentInterface;
-use Experiment\ThreeLegLinearExperiment1000Individuals2TournamentSS;
-use Experiment\ThreeLegSpiralSubprogramsWithoutInputsExperiment;
+use Experiment\ThreeLegLinearExperiment;
+use Experiment\ThreeLegSpiralExperiment;
 use Filesystem\Filesystem;
 use Genetic\Generator\SteadyStateGenerationGenerator;
 use Simulator\Model\ThreeLegLinearModelXml;
@@ -23,10 +23,10 @@ use Statistics\IndividualStatistics;
  */
 class ThreeLegLinearExperimentFactory
 {
-    public function create1000IndividualsExperiment2TournamentSS(): ExperimentInterface
+    public function createThreeLegLinearExperiment(): ExperimentInterface
     {
         //bez pocatecniho lomitka!
-        $executableName = 'bp_compute_ThreeLegLinearExperiment1000Individuals2TournamentSS';
+        $executableName = 'compute_ThreeLegLinearExperiment';
         $generationGenerator = new SteadyStateGenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
@@ -35,7 +35,7 @@ class ThreeLegLinearExperimentFactory
         $cacheStats = new CacheStatistics();
         $filesystem = new Filesystem();
 
-        $experiment = new ThreeLegLinearExperiment1000Individuals2TournamentSS(
+        $experiment = new ThreeLegLinearExperiment(
             $generationGenerator,
             $simulator,
             $individualStats,
@@ -51,10 +51,10 @@ class ThreeLegLinearExperimentFactory
     }
 
 
-    public function createThreeLegSpiralSubprogramsWithoutInputsExperiment(): ExperimentInterface
+    public function createThreeLegSpiralExperiment(): ExperimentInterface
     {
         //bez pocatecniho lomitka!
-        $executableName = 'bp_compute_spirala_9_referenci_vstupy_podprogramy_2_ss_v2';
+        $executableName = 'compute_ThreeLegSpiralExperiment';
         $generationGenerator = new SteadyStateGenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
@@ -63,7 +63,7 @@ class ThreeLegLinearExperimentFactory
         $cacheStats = new CacheStatistics();
         $filesystem = new Filesystem();
 
-        $experiment = new ThreeLegSpiralSubprogramsWithoutInputsExperiment(
+        $experiment = new ThreeLegSpiralExperiment(
             $generationGenerator,
             $simulator,
             $individualStats,

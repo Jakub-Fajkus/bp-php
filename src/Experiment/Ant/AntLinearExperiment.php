@@ -7,14 +7,14 @@ use Config\Config;
 use Experiment\BaseExperiment;
 
 /**
- * Class AntLinearExperiment1000Individuals2SS
+ * Class AntLinearExperiment
  * @package Experiment
  */
-class AntLinearExperiment1000Individuals2SS extends BaseExperiment
+class AntLinearExperiment extends BaseExperiment
 {
     public function prepare()
     {
-        Config::setIndividualCount(400);
+        Config::setIndividualCount(10);
         Config::setMutationRate(3);
         Config::setCrossoverRate(80);
         Config::setMotorCount(12);
@@ -24,6 +24,6 @@ class AntLinearExperiment1000Individuals2SS extends BaseExperiment
         Config::setMaximumDestinationIndex(13 + Config::getMotorCount() - 1);
         Config::$tournamentSize = 2;
         Config::$simulationDuration = 120;
-        Config::$generationCount = 200;
+        Config::$generationCount = 10;
     }
 }

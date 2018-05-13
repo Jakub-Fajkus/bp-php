@@ -16,7 +16,7 @@
    id="svg8"
    inkscape:version="0.92.2 2405546, 2018-03-11"
    sodipodi:docname="interpret.svg"
-   inkscape:export-filename="/home/jakub/PhpstormProjects/bp/latex/images/interpret.png"
+   inkscape:export-filename="/home/jakub/PhpstormProjects/bp/latex_bp/sablona2018/obrazky/interpret.png"
    inkscape:export-xdpi="399.96356"
    inkscape:export-ydpi="399.96356">
   <defs
@@ -60,7 +60,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>

@@ -5,11 +5,12 @@ namespace Experiment;
 
 use Config\Config;
 
+//ThreeLegLinearExperiment
 /**
- * Class ThreeLegLinearExperiment1000Individuals2TournamentSS
+ * Class ThreeLegLinearExperiment
  * @package Experiment
  */
-class ThreeLegLinearExperiment1000Individuals2TournamentSS extends BaseExperiment
+class ThreeLegLinearExperiment extends BaseExperiment
 {
     public function prepare()
     {

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Experiment\Factory;
 
-use Experiment\Ant\AntLinearExperiment1000Individuals2SS;
-use Experiment\Ant\AntSpiralExperimentSubprogramsInput;
+use Experiment\Ant\AntLinearExperiment;
+use Experiment\Ant\AntSpiralExperiment;
 use Experiment\ExperimentInterface;
 use Filesystem\Filesystem;
 use Genetic\Generator\SteadyStateGenerationGenerator;
@@ -23,12 +23,10 @@ use Statistics\IndividualStatistics;
  */
 class AntLinearExperimentFactory
 {
-
-
-    public function createAntSpiralSubprogramsInputsExperiment(): ExperimentInterface
+    public function createAntSpiralExperiment(): ExperimentInterface
     {
         //bez pocatecniho lomitka!
-        $executableName = 'bp_compute_spirala_9_referenci_mravenec_vstupy_podprogramy_2_ss';
+        $executableName = 'compute_AntSpiralExperiment';
         $generationGenerator = new SteadyStateGenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
@@ -37,7 +35,7 @@ class AntLinearExperimentFactory
         $cacheStats = new CacheStatistics();
         $filesystem = new Filesystem();
 
-        $experiment = new AntSpiralExperimentSubprogramsInput(
+        $experiment = new AntSpiralExperiment(
             $generationGenerator,
             $simulator,
             $individualStats,
@@ -53,10 +51,10 @@ class AntLinearExperimentFactory
     }
 
 
-    public function createAntLinearInputsExperiment(): ExperimentInterface
+    public function createAntLinearExperiment(): ExperimentInterface
     {
         //bez pocatecniho lomitka!
-        $executableName = 'bp_compute_AntLinearExperiment1000Individuals2SS';
+        $executableName = 'compute_AntLinearExperiment';
         $generationGenerator = new SteadyStateGenerationGenerator();
         $simulator = new Simulator(new InstructionSerializer(), '/' . $executableName);
         $individualStats = new IndividualStatistics();
@@ -65,7 +63,7 @@ class AntLinearExperimentFactory
         $cacheStats = new CacheStatistics();
         $filesystem = new Filesystem();
 
-        $experiment = new AntLinearExperiment1000Individuals2SS(
+        $experiment = new AntLinearExperiment(
             $generationGenerator,
             $simulator,
             $individualStats,

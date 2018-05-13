@@ -19,11 +19,13 @@ class Filesystem implements FilesystemInterface
      */
     public function createDirectory(string $parent, string $name): string
     {
-        //create the directory - if not possible, throw an exeption
-        if (!mkdir($parent . '/' . $name) && !is_dir($parent . '/' . $name)) {
-            throw new \RuntimeException(sprintf('Directory "%s" was not created', $parent . '/' . $name));
+        if (!file_exists($parent . '/' . $name)) {
+            //create the directory - if not possible, throw an exeption
+            if (!mkdir($parent . '/' . $name) && !is_dir($parent . '/' . $name)) {
+                throw new \RuntimeException(sprintf('Directory "%s" was not created', $parent . '/' . $name));
+            }
         }
-
+        
         return $parent . '/' . $name;
     }
 

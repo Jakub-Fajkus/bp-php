@@ -14,10 +14,10 @@ $antLinearFactory = new AntLinearExperimentFactory();
 
 /** @var ExperimentInterface[] $experiments */
 $experiments = [
-    'primka-trojnozka' => $threeLegLinearFactory->create1000IndividualsExperiment2TournamentSS(),
-    '3nozka_spiral_noinput' => $threeLegLinearFactory->createThreeLegSpiralSubprogramsWithoutInputsExperiment(),
-    'ant_spiral_inputs' => $antLinearFactory->createAntSpiralSubprogramsInputsExperiment(),
-    'ant_linear_inputs' => $antLinearFactory->createAntLinearInputsExperiment(),
+    'trojnozka-primka' => $threeLegLinearFactory->createThreeLegLinearExperiment(),
+    'trojnozka-spirala' => $threeLegLinearFactory->createThreeLegSpiralExperiment(),
+    'mravenec-primka' => $antLinearFactory->createAntLinearExperiment(),
+    'mravenec-spirala' => $antLinearFactory->createAntSpiralExperiment(),
 ];
 
 if ($argc === 1) {

@@ -7,10 +7,10 @@ use Config\Config;
 use Experiment\BaseExperiment;
 
 /**
- * Class AntSpiralExperimentSubprogramsInput
+ * Class AntSpiralExperiment
  * @package Experiment\Ant
  */
-class AntSpiralExperimentSubprogramsInput extends BaseExperiment
+class AntSpiralExperiment extends BaseExperiment
 {
     public function prepare()
     {

@@ -6,12 +6,12 @@ namespace Experiment;
 
 use Config\Config;
 
-
+//ThreeLegSpiralExperiment
 /**
- * Class ThreeLegSpiralSubprogramsWithoutInputsExperiment
+ * Class ThreeLegSpiralExperiment
  * @package Experiment
  */
-class ThreeLegSpiralSubprogramsWithoutInputsExperiment extends BaseExperiment
+class ThreeLegSpiralExperiment extends BaseExperiment
 {
     public function prepare()
     {

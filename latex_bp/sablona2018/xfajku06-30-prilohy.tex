@@ -1,3 +1,69 @@
 \chapter{Obsah přiloženého CD}
-Zde bude zminena struktura CD s~adresari, a jejich obsahem.
-Instalacni manual bych umistil na toto CD a zde bych jej neuvadel.
+\todo{Zde bude zminena struktura CD s~adresari, a jejich obsahem}
+
+\chapter{Instalace a spuštění aplikace}
+Pro běh aplikace jsou potřeba: CMake, PHP 7.2 a simulátor MuJoCo.
+
+Aplikace byla vyvíjena a testována na OS Linux~(Arch Linux, distribuce Manjaro).
+
+Návod pro instalaci simulátoru MuJoCo lze nalézt na oficiálních stránkách\footnote{\url{http://www.mujoco.org/book/programming.html\#Introduction}}.
+Pro běh simulátoru je potřeba mít licenci, kterou lze získat na webu\footnote{\url{https://www.roboti.us/license.html}}.
+Licence je vázaná na konkrétní počítač a je uložena v souboru mjkey.txt, který musí být umístěn ve stejném adresáři, jako binární soubory~(je zde umístěn prázdný soubor, který je potřeba nahradit souborem s licencí).
+Úspěšnost instalace simulátoru MuJoCo lze ověřit pomocí přložených programů a souboru Makefile v adresáři \texttt{sample}, který je součástí distribuce simulátoru.
+
+Pokud fungují programy v adresáři \texttt{sample}, mělo by být možné spustit binární soubory v adresáři \texttt{experimenty}, nebo přeložit zdrojové kódy~(postup dále).
+V adresáři \texttt{experimenty} jsou podadresáře pro každý experiment, obsahující binární soubory pro spuštění simulace~(\texttt{compute}), který vypočítává fitness hodnotu, nebo pro vizualizaci výsledku~(\texttt{render}).
+V každém podadresáři jsou také soubory, definující použitý model~(\texttt{model.xml}) a soubor s instrukcemi~(\texttt{individuals.txt}).
+
+Pro zkompilování zdrojových kódu je připraven konfigurační soubor pro CMake.
+Pomocí CMake můžeme následujícími příkazey vygenerovat Makefile a spustit jej:
+\begin{verbatim}
+    cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug
+    make
+\end{verbatim}
+
+Pro konfiguraci základních parametrů programů \texttt{compute} a \texttt{render} je připraven soubor \texttt{config.h}, ve kterém je možné nastavit počet referenčních bodů a počet řízených kloubů modelu~(např. při změně modelu nebo změně počtu referenčních bodů).
+Je zde také nastavení pro rychlost vizualizace.
+
+
+\section{Program compute}
+Program \texttt{compute} je aplikace, obalující simulátor, sloužící k výpočtu fitness hodnot programů.
+Tento program pracuje s xml souborem, obsahujícím model, a se souborem \texttt{individuals.txt}, ze kterého čte jednotlivá kandidátní řešení.
+Tato kandidátní řešení jsou v souboru oddělena řádkem začánajícím hvězdičkou~(viz soubor \texttt{experimenty/individuals.txt}).
+Program pro každé kandidátní řešení provede simulaci a do souboru \texttt{fitnesses.txt} vypíše fitness hodnoty pro každé kandidátní řešení v pořadí, v jakém byly v souboru \texttt{individuals.txt}.
+
+\section{Program render}
+Program \texttt{render} je aplikace, obalující simulátor, sloužící k vizualizaci konkrétního řešení.
+Tento program, stějně jako program compute, pracuje s xml souborem, obsahujícím model, a se souborem \texttt{individuals.txt}, ze kterého čte jedno kandidátní řešení.
+Program pro toto kandidátní řešení spustí simulaci, která je vizualizována pomocí OpenGL\@.
+V této simulaci je možné na model aplikovat různé síly~(posuny, rotace).
+
+
+\section{Evoluční framework}
+Aplikace obsahující evoluční algoritmus je samostatná aplikace napsaná v jazyce PHP verze 7.2.
+Pro běh aplikace je tedy nutné mít nainstalovaný na počítači interpret jazyka PHP verze 7.2, dostupný např. na webu\footnote{\url{http://php.net/downloads.php}}, nebo v balíčovacím systému OS~(doporučuji).
+
+Tato aplikace se spouští příkazem:
+\begin{verbatim}
+    php src/Run/run.php <EXPERIMENT>
+\end{verbatim}
+
+Kde <EXPERIMENT> je název experimentu, který chceme spustit.
+Dostupné experimenty mají jména:
+\begin{itemize}
+    \item trojnozka-primka
+    \item trojnozka-spirala
+    \item mravenec-spirala
+    \item mravenec-primka
+\end{itemize}
+
+Po spuštění aplikace vypíše název experimentu, který spouští~(to je ve skutečnosti název třídy, ve které je definované nastavení experimentu, jako např. počet jedinců nebo délka simulace).
+Aplikace při spuštěni vytvoří v adresáři \texttt{data} nový adresář, který se jmneuje podle názvu experimentu a v něm podadresář, jehož název je aktuální datum a čas.
+Aplikace pro každou generaci v tomto adresáři vytvoří nový podadresář pro každou generaci, která je vyhodnocena.
+Tento podadresář obsahuje souboru \texttt{individuals.txt} a \texttt{fitnesses.txt}
+Poté jsou po vyhodnocení všech jedinců vypsány statistiky o aktuální populaci, které se zároveň vypisují do souboru \texttt{log.txt}
+
+
+
+
+
