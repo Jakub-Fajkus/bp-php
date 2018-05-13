@@ -11,4 +11,4 @@ paste best.txt avg.txt avgTop.txt avgBottom.txt > joined.txt
 echo 'Generation  Best fitness    AverageFitness    Average Fitness in top half    Average Fitness in top half' > generations.txt
 #pridani cislovani radku
 awk 'NR==1{i=1}{print i " "$0} {i=i+1}' joined.txt  >> generations.txt
-gnuplot /home/jakub/PhpstormProjects/bp/gnuplotFitnessGraph.txt
+gnuplot ../../../gnuplotFitnessGraph.txt

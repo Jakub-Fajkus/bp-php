@@ -5,10 +5,10 @@ declare(strict_types=1);
 $generations = [];
 
 $individualCount = 1000;
+$generationCount = 300;
+$generationStep = 15;
+$selectBetterHalf = false;
 
-//$individualsFile = 'data/bp_compute_spirala_9_referenci_vstupy_podprogramy_2_ss/2018-03-25T17:58:49+00:00/allIndividuals.txt';
-//$individualsFile = 'data/bp_compute_ThreeLegLinearExperiment1000Individuals2TournamentSS/2018-05-02T20:20:17+00:00/allIndividuals.txt';
-//$individualsFile = 'data/bp_compute_primka_7_referenci_mravenec_vstupy_2_ss_OLD/2018-05-01T01:19:54+00:00/allIndividuals.txt';
 $individualsFile = 'data/bp_compute_spirala_9_referenci_mravenec_vstupy_podprogramy_2_ss/2018-03-27T10:23:15+00:00/allIndividuals.txt';
 if (file_exists($individualsFile)) {
     $individualsFileContent = file_get_contents($individualsFile);
@@ -35,9 +35,8 @@ if (file_exists($individualsFile)) {
     }
 } else {
     echo 'file does not exist';
+    return 1;
 }
-
-//var_dump($generations);
 
 $sortedGenerations = [];
 foreach ($generations as $generationNumber => $fitnesses) {
@@ -45,14 +44,16 @@ foreach ($generations as $generationNumber => $fitnesses) {
     $sortedGenerations[$generationNumber] = $fitnesses;
 }
 
-$selectedGenerations = range(0, 300, 15);
+$selectedGenerations = range(0, $generationCount, $generationStep);
 $selectedGenerations[0] += 1;
 
 $fileContent = '';
 foreach ($selectedGenerations as $generationNumber) {
     $generation = $sortedGenerations[$generationNumber];
 
-    $generation = array_slice($generation, $individualCount/2, $individualCount/2);
+    if ($selectBetterHalf) {
+        $generation = array_slice($generation, $individualCount/2, $individualCount/2);
+    }
 
     $min = min($generation);
     $max = max($generation);
@@ -66,6 +67,7 @@ foreach ($selectedGenerations as $generationNumber) {
 }
 file_put_contents('barAndWhiskerData.txt', $fileContent);
 
+//start source: https://blog.poettner.de/2011/06/09/simple-statistics-with-php/
 function Median($Array)
 {
     return Quartile_50($Array);
@@ -120,3 +122,4 @@ function StdDev($Array)
 
     return sqrt((1 / (count($Array) - 1)) * $sum);
 }
+//end source https://blog.poettner.de/2011/06/09/simple-statistics-with-php/

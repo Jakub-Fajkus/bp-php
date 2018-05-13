@@ -55,6 +55,9 @@ abstract class BaseExperiment implements ExperimentInterface
     /** @var ModelXmlInterface */
     protected $modelXml;
 
+    /** @var string */
+    protected $runDirectory;
+
     /**
      * BaseExperiment constructor.
      * @param GenerationGeneratorInterface $generationGenerator
@@ -118,11 +121,11 @@ abstract class BaseExperiment implements ExperimentInterface
         $date = new \DateTime();
 
         $executableDir = $this->filesystem->createDirectory(Config::getDataDir(), $this->executableName);
-        $runDir = $this->filesystem->createDirectory($executableDir, $date->format(DATE_ATOM));
+        $this->runDirectory = $this->filesystem->createDirectory($executableDir, $date->format(DATE_ATOM));
 
-        $modelFile = $this->filesystem->createFile($runDir, 'model.xml');
-        $this->logFile = $this->filesystem->createFile($runDir, 'log.txt');
-        $this->allIndividualsLogFile = $this->filesystem->createFile($runDir, 'allIndividuals.txt');
+        $modelFile = $this->filesystem->createFile($this->runDirectory, 'model.xml');
+        $this->logFile = $this->filesystem->createFile($this->runDirectory, 'log.txt');
+        $this->allIndividualsLogFile = $this->filesystem->createFile($this->runDirectory, 'allIndividuals.txt');
         $this->filesystem->writeToFile($modelFile, $this->modelXml->getAsString());
 
         $generation = $this->generationGenerator->generateGeneration(1, Config::getIndividualCount());
@@ -135,7 +138,7 @@ abstract class BaseExperiment implements ExperimentInterface
 
             $output .= "generation {$generation->getId()} with duration $duration" . PHP_EOL;
 
-            $generationDir = $this->filesystem->createDirectory($runDir, (string)$generation->getId());
+            $generationDir = $this->filesystem->createDirectory($this->runDirectory, (string)$generation->getId());
 
             $beforeSim = microtime(true);
 
@@ -175,5 +178,7 @@ abstract class BaseExperiment implements ExperimentInterface
 
         file_put_contents($this->logFile, $this->generationStats->getStatistics(), FILE_APPEND);
         file_put_contents($this->allIndividualsLogFile, $this->allIndividualsStats->getStatistics());
+
+        shell_exec("cd $this->runDirectory && pwd && ../../../render.sh && ../../..mergeRunFitnessImages.sh");
     }
 }

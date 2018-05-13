@@ -27,7 +27,6 @@ class AntLinearModelXml implements ModelXmlInterface
     <asset>
         <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1" width="256" height="256"/>
         <texture type="2d" name="checkers" builtin="checker" width="256" height="256" rgb1="0 0 0" rgb2="1 1 1"/>
-        <!--<texture type="2d" name="spiral" width="100" height="1000" rgb1="0 0 0" file="/home/jakub/CLionProjects/bp/spiral.png"/>-->
         <material name="checker_mat" texture="checkers" texrepeat="15 15"/>
         <!--<material name="spiral_mat"  texture="spiral" texrepeat="1 1"/>-->
     </asset>
