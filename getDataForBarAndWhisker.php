@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 $generations = [];
 
-$individualCount = 1000;
-$generationCount = 300;
-$generationStep = 15;
-$selectBetterHalf = false;
+$individualCount = 400;
+$generationCount = 120;
+$generationStep = 10;
+$selectBetterHalf = true;
 
-$individualsFile = 'data/bp_compute_spirala_9_referenci_mravenec_vstupy_podprogramy_2_ss/2018-03-27T10:23:15+00:00/allIndividuals.txt';
+//$individualsFile = 'data_old/bp_compute_spirala_9_referenci_vstupy_podprogramy_2_ss/2018-03-25T17:58:49+00:00/allIndividuals.txt';
+//$individualsFile = 'data_old/bp_compute_ThreeLegLinearExperiment1000Individuals2TournamentSS/2018-05-02T20:20:17+00:00/allIndividuals.txt';
+$individualsFile = 'data_old/bp_compute_primka_7_referenci_mravenec_vstupy_2_ss_OLD/2018-05-01T01:19:54+00:00/allIndividuals.txt';
+
+//$individualsFile = 'data_old/bp_compute_spirala_9_referenci_mravenec_vstupy_podprogramy_2_ss/2018-03-27T10:23:15+00:00/allIndividuals.txt';
 if (file_exists($individualsFile)) {
     $individualsFileContent = file_get_contents($individualsFile);
     //format: >GEN_ID.INDI_ID< FITNESS

@@ -6,8 +6,9 @@ set xlabel "Generace"
 set ylabel "Fitness"
 
 set boxwidth 2 absolute
-set title "Krabicový graf fitness hodnot lepší poloviny populace ve vybraných generacích"
-set xrange [ -10.00000 : 305.0000 ] noreverse nowriteback
+#lepší poloviny
+set title "Vývoj fitness hodnot populace ve vybraných generacích"
+set xrange [ -10.00000 : 125.0000 ] noreverse nowriteback
 set yrange [ 0.00000 : 300.0000 ] noreverse nowriteback
 DEBUG_TERM_HTIC = 119
 DEBUG_TERM_VTIC = 119
