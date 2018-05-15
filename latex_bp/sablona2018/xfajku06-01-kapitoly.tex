@@ -1,11 +1,6 @@
 %=========================================================================
 % (c) Michal Bidlo, Bohuslav Křena, 2008
-%\todo{shrnuti kazde kapitoly!}
-%\todo{vlna!}
-%\todo{zvyraznit terminy, jako napr. main, event, init}
 \chapter{Úvod}
-
-\todo{Vygenerovano: \DTMnow}
 
 % vycistit kody
 % zautomatizovat dokonceni behu, tj. vygenerovat vsechny zajimave a potrebne veci
@@ -19,7 +14,7 @@ Robotika představuje v~současné době velmi aktuální oblast aplikace výpo�
 elektromechanických systémů.
 Uplatnění nacházejí roboti zejména v~průmyslu, kde usnadňují a zefektivňují namáhavou a
 opakující se práci člověku, ale také je populární oblast autonomních robotů používaných např. pro operace v~těžko přístupných
-nebo nebezpečných místech (např.ponorky, podpora záchranářům apod.).
+nebo nebezpečných místech (např. ponorky, podpora záchranářům apod.).
 Jedním ze zásadních problémů konstrukce robotů obecně je návrh jejich efektivního řízení ve vztahu ke konkrétnímu typu robota a podmínkám jeho nasazení~\cite{Bongard2013}.
 
 Pro tyto potřeby je vhodné mít k~dispozici prostředky, které nám umožní rychle a levně prototypovat různé koncepty řízení
@@ -29,19 +24,19 @@ Využití evolučních algoritmů osvobozuje konstruktéry od řešení malých 
 
 Řízení robota je ovšem možné realizovat mnoha způsoby, např. umělými neuronovými sítěmi~\cite{Reil2002}, konenčnými automaty~\cite{Hodgins1996} nebo i programy v~imperativním jazyce~\cite{Wolff2007}.
 V~závislosti na vybrané metodě řízení robota jsou k~dispozici různé alogritmy a automatizované nástroje pro nalezení konfigurace zvoleného způsobu řízení, které bude mít za následek požadované chování robota.
-Touto konfigurací mogou být např. váhy neuronové sítě, definice konečného automatu nebo sekvence příkazů imperativního jazyka.
+Touto konfigurací mohou být např. váhy neuronové sítě, definice konečného automatu nebo sekvence příkazů imperativního jazyka.
 Právě řízením robota programy napsanými v~imperativním jazyce (byť jednoduchém) se zabývá tato práce, ve které jsou použity evoluční algoritmy pro automatizované hledání vhodného řízení robota.
 
 Cílem této práce je návrh a implementace nástroje pro automatizované hledání vhodného kontroléru robotického modelu pro průchod prostorem po dané trajektorii.
 Pro návrh vhodného programu je použita technika zjednodušeného Lineárního Genetického Programování~\cite{Brameier2010}.
-Pro simulaci pohybu robotického modelu byl použit simulátor Mujoco~\cite{Todorov2012}.
+Pro simulaci pohybu robotického modelu byl použit simulátor MuJoCo~\cite{Todorov2012}.
 Účinnost softwarového řízení je experimentálně doložena s~použitím dvou robotických modelů na dvou trajektoriích.
 
 Tato práce začíná úvodem do problematiky evolučních algoritmů a lineárního genetického programování v~kapitole~\ref{chap:evolucni_algoritmy}.
 Následuje kapitola~\ref{chap:zkoumani_pohyblivych_objektu}, ve které jsou představeny některé koncepty pohyblivých struktur a poté je popsán vlastní koncept a také dva modely robotů, které jsou zde použity.
 Kapitola~\ref{chap:evolucni_navrh_pohyblivych_objektu} popisuje vlastní přístup, který je použit pro řízení robotického modelu v~simulátoru, a způsob, jakým je implementována evoluce programů.
 Kapitola~\ref{chap:experimenty} představuje 4 experimenty, které byly provedeny k~ověření funkčnosti vlastních přístupů, prezentovaných v~této práci.
-Výskedky těchto experimentů jsou prezentovány v~kapitole~\ref{chap:vysledky}, po které následuje samotný závěr této práce, ve kterém jsou komentovány dosažené výsledky a možnost pokračování v této práci.
+Výskedky těchto experimentů jsou prezentovány v~kapitole~\ref{chap:vysledky}, po které následuje samotný závěr této práce, ve kterém jsou komentovány dosažené výsledky a možnost pokračování v~této práci.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -60,12 +55,13 @@ Informace v~této sekci vycházejí z~\cite{Eiben2015}.
 Evoluční algoritmy (EA) jsou inspirovány přírodními evolučními procesy a Darwinovou teorií evoluce.
 EA se využívají ke stochastickému prohledávání stavového prostoru.
 EA, narozdíl od jiných metod, pracují s~celou populací kandidátních řešení (jedinců), které se vyvíjí paralelně.
-Každý jedinec v~populaci v~sobě nese zakódovanou informaci o~konktrétním řešení, kterou nazýváme genotyp.
+Každý jedinec v~populaci v~sobě nese zakódovanou informaci o~konkrétním řešení, kterou nazýváme genotyp.
 Genotyp se poté dekóduje na fenotyp, který už reprezentuje řešení daného problému.
 
 Myšlenku EA můžeme popsat následovně.
 Máme populaci jedinců, kteří jsou všichni umístěni ve společném prostředí, ve kterém soutěží o~zdroje.
-To má za následek přirozený výběr jedinců, který se projevuje tak, že horší jedinci mají menší pravděpodobnost reprodukce, než-li ti lepší.
+Každému jedinci je přiřazena kvantitativní míra vyjadřující jeho schopnosti.
+Během evoluce dochází k~přirozenému výběru jedinců k~reprodukci, který se projevuje tak, že horší jedinci mají menší pravděpodobnost reprodukce, než-li ti lepší.
 Tímto se přirozeně zvyšuje kvalita populace.
 Reprodukce probíhá dvojím způsobem, a to křížením a mutací.
 Křížení pracuje se dvěmi rodiči a má za následek vytvoření dvou potomků, kteří vznikají kombinací genotypu obou rodičů.
@@ -89,7 +85,7 @@ Mutace pracuje nad jedním rodičem a produkuje jednoho potomka, který má naro
 \end{algorithm}
 
 \subsection{Reprezentace}
-Při návrhu řešení problému je často nutné abstrahovat reálný svět tak, aby jsme vytvořili prostředí, ve terém budou existovat kandidátní řešení a ve kterém budou tato řešení vyhodnocována.
+Při návrhu řešení problému je často nutné abstrahovat reálný svět tak, abychom vytvořili prostředí, ve terém budou existovat kandidátní řešení a ve kterém budou tato řešení vyhodnocována.
 Kandidátní řešení problému nazýváme fenotypy.
 Zakódované fenotypy nazýváme genotypy.
 Termín reprezentace se používá ve dvou kontextech.
@@ -99,35 +95,37 @@ V~druhé kontextu označuje spíše strukturu prostoru genotypů.
 \subsection{Fitness funkce}
 Úlohou fitnes funkce je reprezentování požadavků, které by populace měla splňovat.
 Tvoří základ pro funkci selekčních operátorů.
-Můžeme mluvit o~zobrazení z~jedince v~prostoru genotypů na reálné, nebo celé, číslo.
+Můžeme mluvit o~zobrazení z~jedince v~prostoru genotypů na reálné nebo celé číslo.
 Z~technického hlediska se jedná o~funkci, která měří míru kvality genotypu a přiřazuje mu tzv. fitness.
 Výpočet fitness funkce zahrnuje dekódování genotypu na fenotyp a následné vyhodnocení fenotypu, jako kandidátního řešení pro daný problém.
 
 \subsection{Populace}
 Úlohou populace je obsahovat množinu kandidátních řešení --- jedná se o~multimnožinu jedinců.
-Populace je struktura, která podléhá evoluci, zatímco jedinci jsou statické struktury.
+Populace je jednotkou populace, zatímco jedinci jsou statické objekty, které se nemění ani neadaptují.
+Je to právě populace, která podléhá změnám nebo adaptaci.
+
 Definice populace se může omezit pouze na její velikost, ale existují i specializované evoluční algoritmy, které pracují i s~rozložením jedinců v~prostoru.
 
 
 \subsection{Selekce}
-Operátor selekce slouží k~výběru rodičů pro křížení na základě jejich kvality.
-Tento operátor je nejšastěji založen na náhodě a to tak, že kvalitnější řešení jsou vybárána s~větší pravděpodností.
+Operátor selekce slouží k~výběru rodičů pro reprodukci na základě jejich kvality.
+Tento operátor je nejčastěji založen na náhodě a to tak, že kvalitnější řešení jsou vybárána s~větší pravděpodností.
 Změnou parametrů selekce nastavujeme tzv. selekční tlak, který ovlivňuje, do jaké míry jsou upřednostňováni lepší jedinci.
 
 Jako představitele selekce si můžeme uvést ruletovou selekci a selekci turnajem.
 
-Při použití ruletové selekce pravděpodobnost, že jedinec $j$ bude vybrán závisí na poměru fitness tohoto jedince a fitness celé populace:
-$P_r(j) = \frac{f_j}{\sum_{i=1}^{N}f_i}$
+Při použití ruletové selekce je pravděpodobnost $P_r$, že jedinec $j$ bude vybrán závisí na poměru fitness tohoto jedince $f_j$ a fitness celé populace:
+$P_r(j) = \frac{f_j}{\sum_{i=1}^{N}f_i}$, kde N je velikost populace a $f_i$ je fitnes jedince $i$ v~populaci.
 
 Selekce turnajem, narozdíl od ruletové selekce nevyžaduje znalost celé populace a přepočítávání fitness hodnot.
 Selekce turnajem ani nevyžaduje, aby vyhodnocení fitness funkcí bylo kvantifikované, ale pro jeho funkci stačí, aby byla mezi jedinci definována operace uspořádání.
-Díky toho je tato metoda nenáročná na implementaci a na výpočetní čas.
+Díky tomu je tato metoda nenáročná na implementaci a na výpočetní čas.
 Základní alogoritmus selekce turnajem můžeme vidět na algoritmu~\ref{alg:EA_turnaj}.
 
 \begin{algorithm}[H]
     // Chceme vytvořit mating pool velikosti $\lambda$ jedinců\;
     \While{(dokud mating pool neobsahuje $\lambda$ jedinců)}{
-    Náhodně vyber $k$ jedinců\;
+    Náhodně vyber $k$ jedinců z~populace\;
     Porovnej mezi sebou těchto $k$ jedinců a vyber z~nich nejlepšího jedince $i$\;
     Vlož jedince $i$ do mating pool
     }
@@ -140,8 +138,8 @@ Základní alogoritmus selekce turnajem můžeme vidět na algoritmu~\ref{alg:EA
 \subsection{Křížení}
 Operátor křížení slouží ke spojení částí genotypů rodičů a tím dochází k~vytvoření nových jedinců.
 Operátor je většinou aplikován pouze s~určitou pravděpodobností $p_r$.
-Nejčastěji se používá křížení pracující se dvěmi rodiči.
-Výběr, jeké části ze kterého rodiče budou vybrány, je založen na náhodě.
+Nejčastěji se používá křížení pracující se dvěma rodiči.
+Výběr, jaké části ze kterého rodiče budou vybrány, je založen na náhodě.
 Myšlenka za použitím křížení je následující.
 Zkombinováním rodičů, kteří mají odlišné, ale vhodné vlasnosti, může vzniknout jedinec, který tyto vlastnosti v~sobě kombinuje a dosahuje tak vyšší kvality.
 
@@ -149,7 +147,7 @@ Jako představitele si můžeme uvést jednobodové a uniformní křížení.
 
 Jednobodové křížení bylo původně představeno J. H. Hollandem v~\cite{Holland1992} a jeho funkce je následující.
 Vygeneruje se náhodné číslo $r$ z~intervalu $\langle 1, L-1\rangle$, kde L je délka genomu.
-Poté se genomy rozdelí v~tomto bodě $r$ na počáteční a koncovou část a noví jedinci vznikají záměnou těchto koncových částí, viz obrázek~\ref{fig:jednobodove_krizeni}.
+Poté se genomy rozdělí v~tomto bodě $r$ na počáteční a koncovou část a noví jedinci vznikají záměnou těchto koncových částí, viz obrázek~\ref{fig:jednobodove_krizeni}.
 
 \begin{figure}[h]
     \centering
@@ -189,7 +187,7 @@ Tato varianta je vhodná, jsou-li hodnoty genomu např. parametry systému nebo 
 
 \subsection{Ukončovací podmínka}
 Ukončovací podmínka určuje, kdy se zastaví evoluce aktuální populace.
-K~tomuto je možné využít: dosažení předem dané fitness hodnoty, spotřebování určeného strojového času, provedení určeného počtu vyhodnocení fitness funkce, ukončení v~případě, že se populace dostatečně rychle nezlepšuje nebo že pokud dojde ke snížení diverzity populace po daný limit.
+K~tomuto je možné využít: dosažení předem dané fitness hodnoty, spotřebování určeného strojového času, provedení určeného počtu vyhodnocení fitness funkce, ukončení v~případě, že se populace dostatečně rychle nezlepšuje nebo pokud dojde ke snížení diverzity populace po daný limit.
 
 \section{Genetické programování}
 \label{sec:gp}
@@ -202,7 +200,7 @@ Programy v~GP jsou složeny z~funkcí, které ve stromové struktuře odpovídaj
 Vyvíjené programy jsou typicky vyhodnocovány nad sadou vstupů, tzv. fitness cases, u~kterých jsou známy požadované výstupy programu.
 Výsledná fitness programu se pak může počítat jako suma nebo průměr výsledků z~každého "fitness case".
 
-V~GA je nejdůležitějším operátorem křížení.
+V~GP je nejdůležitějším operátorem křížení.
 Křížení pracuje na základě výměny náhodně vybraných podstromů z~rodičů.
 Toto křžení se skládá z~několika kroků.
 Prvním krokem je výběr rodičů.
@@ -231,7 +229,7 @@ Mutace v~GA hraje menší roli a provádí drobné změny struktur v~populaci.
 Mutace sestává z~několika kroků:
 První krok je zvolení náhodného uzlu ve struktuře.
 Tento uzel může být vnitřní (funkce) i vnější (terminál).
-Druhým krokem je odstranění tohoto uzlu i s celým podstromem, který je k~němu připojený.
+Druhým krokem je odstranění tohoto uzlu i s~celým podstromem, který je k~němu připojený.
 Posledním krokem je vygenerování náhodného podstromu, který se poté připojí na místo odstraněného uzlu.
 Tato operace je řízena parametrem který ovlivňuje výšku nově vygenerovaného podstromu.
 Speciálním případem mutace je operace, která vloží jeden terminál do náhodně vybraného uzlu ve stromu.
@@ -248,7 +246,7 @@ Interpret má k~dispozici sadu registrů, jejichž počet je definován uživate
 Tyto registry se dělí na vstupní, výstupní a pracovní registry.
 Vstupní registry obsahují vstupní data, se kterými je program spouštěn.
 Pracovní registry jsou určeny pro uložení mezivýsledků výpočtů a jsou před spuštěním programu inicializovány vhodnou konstantou, např. 1.
-Jeden nebo více vstupních nebo pracovních registrů může být označen jako výstupní registr, ze kterého se poté po zkončení programu čte výsledek.
+Jeden nebo více vstupních nebo pracovních registrů může být označen jako výstupní registr, ze kterého se poté po skončení programu čte výsledek.
 
 Programy v~LGP mohou být také vykonávány bez interpretu, a to tak, že se převedou do programu v~jazyce C.
 Ukázkový program v~jazyce C můžeme vidět na obrázku~\ref{code:lgp_c}.
@@ -260,8 +258,8 @@ Imperativní instrukce obsahuje operaci, která pracuje nad zdrojovými registry
 
 V~LGP je nutné zajistit, aby byly vytvářeny pouze programy, které jsou validní.
 Gentické operátory mutace a křížení proto musí zachovat syntaktickou správnost nově vytvořených programů.
-To lze zajistit například tak, že bod křížení nemůže být určen urvnitř instrukce, nebo při aplikováni operátoru mutace zakážeme záměnu operátoru instrukce za registr.
-Pro zajištění sémantické správnosti je nutné ošetřit všechny operátory a funkce, které nejsou definovány pro všechny možné hodnoty, tak aby pro nedefinovaný výstup vracely konstantu, např. velké celé číslo.
+To lze zajistit například tak, že bod křížení nemůže být určen urvnitř instrukce, nebo při aplikování operátoru mutace zakážeme záměnu operátoru instrukce za registr.
+Pro zajištění sémantické správnosti je nutné ošetřit všechny operátory a funkce, které nejsou definovány pro všechny možné hodnoty tak, aby pro nedefinovaný výstup vracely konstantu, např. velké celé číslo.
 
 Schopnost genetického programování nalézt řešení velmi závisí na zvolené instrukční sadě.
 Kompletní instrukční sada je taková, která obsahuje všechny prvky, které jsou potřebné k~vytvoření optimálního řešení za předpokladu, že je počet registrů a rozsah použitých konstant dostatečný.
@@ -274,7 +272,7 @@ První instrukcí programu je sečtení dvou vstupních registrů a uložení v�
 Tento pracovní registr je poté využit jako operand pro instrukci dělení, která uloží výsledek do výstupního registru r[0].
 
 
-\lstset{language=C,caption={LGP program v~C pro sečtení 3 čísel},label=code:lgp_c}
+\lstset{language=C,caption={LGP program v~C pro sečtení dvou čísel},label=code:lgp_c}
 
 \begin{lstlisting}
     double r[4];
@@ -296,7 +294,7 @@ Tento pracovní registr je poté využit jako operand pro instrukci dělení, kt
 Tato práce se zabývá evolučním návrhem řízení vybraných typů pohyblivých struktur (robotů) pomocí evolučních algoritmů.
 V~této kapitole shrneme myšlenky vycházející z~relevantní literatury a představíme vlastní koncept evolučního návrhu řízení robotů.
 
-V~sekci ~\ref{sec:l_systemy} si nejprve stručně shrneme použití L-systémů pro development robotů, poté krátce představíme použití LGP pro vývoj kontrolérů modelu v sekci~\ref{sec:bipedie_lgp} a nakonec je zde představen vlastní konceptu modelů v sekci~\ref{sec:vlastni_roboti}.
+V~sekci ~\ref{sec:l_systemy} si nejprve stručně shrneme použití L-systémů pro development robotů, poté krátce představíme použití LGP pro vývoj kontrolérů modelu v~sekci~\ref{sec:bipedie_lgp} a nakonec je zde představen vlastní konceptu modelů v~sekci~\ref{sec:vlastni_roboti}.
 
 \section{Návrh pohyblivých struktur pomocí L-systémů}
 \label{sec:l_systemy}
@@ -359,20 +357,11 @@ Pro evoluci programů zde použili steady state algoritmus, selekci turnajem vel
 V~této práci se podařilo vyvinout kontroléry, které byly schopny řídit robota tak, aby se pohyboval.
 Tento pohyb byl ovšem velmi pomalý (0.054~m/s), ačkoli trvalý (až 20 minut).
 
-
-%3.3 Vlastní roboti v prostředí simulátoru MuJoCo
-%Zde popsat, jak Vás výše uvedené myšlenky ovlivnily v návrhu vlastních experimentů. Např. takto:
-%Podobně jako G. Hornby v [], budeme se v této práci zaměřovat na roboty tvořené vhodnou strukturou pohyblivých kloubů, pro něž
-%bude cílem evolučně navrhnout řídicí program tak, aby bylo dosaženo požadovaného chování robota. Pro tyto potřeby využijeme
-%koncept LGP popsaný v sekci XX a simulátor MuJoCo, kyterý se ukázal jako vhodný prostředek pro vyhodnocování kandidátních
-%řešení. V této sekci uvedeme vybrané struktury robotů, které budou předmětem experimentů v kapitole XXX.
-%Tato sekce by měla uvést i základní principy využití simulátoru MuJoCo
-
 \section{Vlastní roboti v~prostředí simulátoru MuJoCo}
 \label{sec:vlastni_roboti}
 
 Podobně jako v~práci G. Hornbyho~\cite{Hornby2003} jsou roboti v~této práci složeni z~pevných tyčí, které mají různou délku, bloků pro spojení těchto tyčí a poháněných kloubů.
-Pro účely této práce byly vytvořeny dva počítačové modely robotů, pro které bylo cílem evolučně navrhnout řídící program tak, aby robot vykazoval požadované chování.
+Pro účely této práce byly vytvořeny dva počítačové modely robotů, pro které bylo cílem evolučně navrhnout řídicí program tak, aby robot vykazoval požadované chování.
 Pro tyto potřeby byl použit zjednodušený koncept LGP, který bude blíže představen v~sekci~\ref{sec:realizace_rizeni_modelu}, a simulátor MuJoCo\footnote{\url{http://www.mujoco.org/index.html}}.
 
 MuJoCo je fyzikální simulátor určený k~vývoji v~oblasti robotiky, biomechaniky, grafiky a simulace, strojového učení a všech dalších oblastí, ve kterých je potřeba provádět rychlé a přesné simulace komplexních dynamických systémů.
@@ -422,7 +411,7 @@ Tento MJCF soubor je při spuštění simulace přeložen na nízkoúrovňové s
 
 
 
-Níže si popíšeme dva modely robotů, se kterými byly provedeny 2 experimenty.
+Níže si popíšeme dva modely robotů, se kterými buou v~této práci představeny různé experimenty.
 Tyto experimenty zahrnovaly pohyb po přímce a spirále.
 
 
@@ -478,7 +467,8 @@ V~této kapitole si nejdříve v~sekci \ref{sec:realizace_rizeni_modelu} popíš
 \section{Relizace řízení modelu}
 \label{sec:realizace_rizeni_modelu}
 
-V~simulátoru Mujoco je vytvořena scéna, která obsahuje model a množinu referenčních bodů, které svým pořadím a umístěním ve scéně definují trajektorii, kterou má modelu následovat. Tato scéna je poté využita v~simulaci, ve které probíhá vyhodnocování daného robotického modelu s~vyvíjeným řízením.
+V~simulátoru MuJoCo je vytvořena scéna, která obsahuje model a množinu referenčních bodů, které svým pořadím a umístěním ve scéně definují trajektorii, kterou má model následovat.
+Tato scéna je poté využita v~simulaci, ve které probíhá vyhodnocování daného robotického modelu s~vyvíjeným řízením.
 
 \subsection{Interpret}
 
@@ -511,7 +501,7 @@ Interpret je schématikcy znázorněn na obrázku~\ref{fig:interpret}.
     \label{fig:interpret}
 \end{figure}
 
-V~průběhu simulace je vykonáván program, který čte hodnoty ze vstupních registrů, které obsahují informaci o~směru k~dalšímu referenčnímu bodu, nebo konstantních registrů a zapisuje hodnoty do výstupních registrů, které se převádí na sílu, která je aplikována v~jednotlivých kloubech.
+V~průběhu simulace je vykonáván program, který čte hodnoty ze vstupních registrů, nebo konstantních registrů a zapisuje hodnoty do výstupních registrů, které se převádí na sílu, která je aplikována v~jednotlivých kloubech.
 
 \subsection{Podprogramy}
 
@@ -521,15 +511,15 @@ V~experimentech s~přímkovou trajektorií je z~těchto podprogramů použit jen
 Každý program, který reprezentuje kandidátní řešení, je pro vykonávání v~průběhu simulace rozdělen na 3 podprogramy.
 Tyto podprogramy se nazývají init, main a event.
 
-Podprogram init se vykoná pouze na začátku simulace a všechny instrukce jsou provedeny v~nulovém čase a poté je po 1 sekundě spuštěn podprogram main.
+Podprogram init se vykoná pouze na začátku simulace a všechny instrukce jsou provedeny ve stejném simulačním čase a poté je po 1 sekundě spuštěn podprogram main.
 Účelem podprogramu init je nastavení počátečního natočení kloubů modelu.
 
 Podprogram main je v~průběhu simulace vykonáván v~nekonečné smyčce.
-Instrukce v~tomto podprogramu se nevykonají všechny v~nulovém čase, ale vykonávají se s~časovým rozestupem 0.3 sekundy mezi každou z~instrukcí.
+Instrukce v~tomto podprogramu se nevykonají všechny v~nulovém čase, ale vykonávají se s~časovým rozestupem 0.33 sekundy mezi každou z~instrukcí.
 Jedná se o~nejdelší a nejdůležitější podprogram.
 
 Podprogram event se vykoná v~situaci, kdy se model přiblíží do určené vzdálenosti od referenčního bodu, avšak pro každý referenční bod pouze jednou.
-Stejně jako u~podprogramu init jsou instrukce provedeny v~nulovém čase a poté je po 1 sekundě spuštěn podprogram main.
+Stejně jako u~podprogramu init jsou instrukce provedeny ve stejném simulačním čase a poté je po 1 sekundě spuštěn podprogram main.
 Účelem podprogramu event je změna natočení kloubů modelu jako příprava k~pohybu k~následujícímu referečnímu bodu.
 
 \subsection{Hodnoty vstupních registrů}
@@ -569,7 +559,7 @@ Simulátor poskytuje řadu funkcí, které umožňují řídít běh simulace.
 Tyto funkce se poté používají v~uživatelském programu, ve kterém nutné z~těchto funkcí sestavit algoritmus spojité simulace (ukázkové uživatelské programy jsou součástí distribuce simulátoru).
 Uživatel má plnou kontrolu nad během simulace, a to tím, že volá knihovní funkci mj\_step(), která v~simulaci pokročí definovaným krokem.
 Ve smyčce algoritmu spojité simulace jsou vloženy funkce zajišťující běh interpretu, výpočet fitness funkce, mapování výstupních hodnot z~interpretu na ovládací signály a získávání pozic objektů z~dat simulace.
-Ve zjednodušené formě je program znázorněn na algoritmu~\ref{alg:algoritmus_simulatoru}.
+Ve zjednodušené formě je algoritmus simulace znázorněn na algoritmu~\ref{alg:algoritmus_simulatoru}.
 
 \begin{algorithm}[H]
     načti model ze souboru\;
@@ -604,7 +594,7 @@ Tato reprezentace kóduje každou instrukci jako n-tici, ve které je prvním pr
 Aktuálně jediná použitá instrukce je složena ze svého názvu (COPY, nebo i starší název SRE) a dvou celých čísel, které označují zdrojový a cílový registr.
 
 Tato n-tice je použita jako hodnota jednoho genu.
-Pro experimenty se spirálovou trajektori je celý genotyp pro účely křížení rozdělen na 3 části, které korespondují s~podprogramy, viz obrázek~\ref{fig:genotyp}.
+Pro experimenty se spirálovou trajektorií je celý genotyp pro účely křížení rozdělen na 3 části, které korespondují s~podprogramy, viz obrázek~\ref{fig:genotyp}.
 Pro experimenty s~přímkovou trajektorií je použit jen podprogram main.
 
 \begin{figure}[h]
@@ -620,9 +610,9 @@ Pro experimenty s~přímkovou trajektorií je použit jen podprogram main.
 
 
 \subsection{Fitness funkce}
-Fitness hodnota programu se počítá následující způsobem.
+Fitness hodnota kandidátního programu se počítá následující způsobem.
 V~průběhu simulace se pro každý referenční bod $i$ zaznamenává nejmenší vzdálenost $D_i$ mezi tímto bodem a modelem.
-$D_i = \min{F(R, P_i)}$, kde $F$ je funkce vypočítávající vzdálenost, $R$ je pozice modelu v~prostoru, $P_i$ je pozice referenčního bodu v~prostoru a $i=1, \cdots N$, kde $N$ je pocet referenčních bodů.
+$D_i = \min{F(R, P_i)}$, kde $F$ je funkce vypočítávající vzdálenost, $R$ je pozice modelu v~prostoru, $P_i$ je pozice referenčního bodu v~prostoru a $i=1, \cdots N$, kde $N$ je počet referenčních bodů.
 
 Po dokončení simulace je pro každý referenční bod je vypočteno skóre následujícím způsobem:
 $$S_i=\left\{\begin{matrix}
@@ -635,38 +625,51 @@ $$f=\sum_{i=1}^{N}S_i$$
 
 Na základe rozměru modelu a celé scény v~simulátoru byla zvolena hodnota parametru $t = 40$.
 
+Motivací k~použití tohoto systému byla myšlenka, že robotický model v~průběhu simulace získává odměnu~(skóre), kterou se poté GA snaží maximalizovat.
+Opačným přístupem by mohlo být použití metody nejmenších čtverců.
+Při tomto přístupu by GA minimalizoval nejmneší vzdálenost od každého referenčního bodu, do které se model v~průběhu simulace dostal.
+
 \subsection{Populace a selekce}
-Pro evoluci programů byla vybrána varianta steady-state algoritmu (algoritmus~\ref{alg:ss_algoritmus}) s~velikostí populace 1000 nebo 400 jedinců.
+Pro evoluci programů byla vybrána varianta steady-state genetického algoritmu (algoritmus~\ref{alg:ss_algoritmus}) s~velikostí populace 1000 nebo 400 jedinců.
 Operátor selekce je implementován jako turnaj velikosti $k = 2$.
 Nejlepší jedinec v~aktuální populaci a jeho mutant jsou zkopírováni do následující populace.
 
 \begin{algorithm}[H]
     \SetKwRepeat{Do}{do}{while}
-
-    nastav čas t = 0\;
-    inicializuj všechny chromozomy v~P(t) náhodnými alelami\;
+    //$v$ je velikost populace $P$\;
+    nastav čas $t = 0$\;
+    inicializuj všechny chromozomy v~$P(t)$ náhodnými alelami\;
     \Do{(není splněna ukončující podmínka)}{
-    vypočítj fitness hodnoty v~P(t)\;
-    \Do{(v~populaci T je méně než k~jedinců)}{
-    vyber dva jedince z~rodičovské populace P(t)\;
+    vypočítej fitness hodnoty v~$P(t)$\;
+    \Do{(v~populaci $T$ je méně než $v$/2~jedinců)}{
+    vyber dva jedince z~rodičovské populace $P(t)$\;
     vytvoř dva potomky použitím operátoru křížení\;
     aplikuj operátor mutace na oba potomky\;
-    vlož tyto dva potomky do dočasné populace T\;
+    vlož tyto dva potomky do dočasné populace $T$\;
     }
-    vlož jedince z~T do P(t)\;
-    odstraň k~nejhorších jedinců z~P(t)\;
-    t = t + 1\;
+    přepiš $k$ nejhorších jedinců v~P(t) jedinci z~$T$
+    vlož jedince z~$T$ do $P(t)$\;
+    odstraň $k$~nejhorších jedinců z~$P(t)$\;
+    $t = t + 1$\;
     }
 
-    \caption{Steady state algoritmus}
+    \caption{Steady state genetický algoritmus}
     \label{alg:ss_algoritmus}
 \end{algorithm}
 
 \subsection{Křížení}
 \label{subs:krizeni_podprogramu}
 Pro účely této práce byl implementován vlastní operátor křížení, který je založen na uniformním křížením.
+Křížení je aplikováno s~pravděpodobností $p_r = 0.8$.
 Narozdíl od uniformního křížení, které pracuje na úrovni genů, křížení použité zde pracuje na úrovni podprogramů.
 V~genomu jsou tedy 3 části, které se mohou mezi rodiči vyměňovat, viz obrázek.~\ref{fig:krizeni_podprogramu}.
+
+Pro každý gen se vygeneruje náhodné číslo $r$ z~rovnoměrného rozložení na intervalu $\langle 0, 1\rangle$.
+Číslo $r$ se poté porovná s~parametrem $p = 0.5$, a pokud je $r < p$, tak se použije podprogram z~prvního rodiče, jinak ze druhého.
+Druhý potomek je vytvořen z~podprogramů, které nebyly vybrány do prvního potomka
+
+Tento operátor je použit pouze v~experimentech se spriálovou trajektorií.
+V~experimentech s~přímkovou trajektorií je použito prosté jednobodové křížení s~pravděpodobností $p_r = 0.8$, pracující na úrovni instrukcí.
 
 \begin{figure}[h]
     \centering
@@ -687,11 +690,12 @@ Tento operátor je implementován následovně.
 Náhodně se vybere jedna instrukce z~genotypu.
 S~20~\% pravděpodobností je tato instrukce vymazána a je nahrazena novou, náhodně vygenerovanou.
 S~80~\% pravděpodobností je tato instrukce upravena a to tak, že je zde 50~\% pravděpodobnost na mutaci prvního, nebo druhého argumentu.
-Mutace argumentu je implementována zahozením aktuální hodnoty a vygenerováním hodnoty nové.
+Mutace argumentu je implementována přepsáním původní hodnoty nově vygenerovanou hodnotou.
 
 
 \subsection{Ukončovací podmínka}
 Jako ukončovací podmínka byla zvoleno ukončení evoluce po provedení daného počtu generací.
+Tento počet se liší pro jednotlivé experimenty, proto budou hodnoty uvedeny v~popisu konfigurace GA v~kapitole~\ref{chap:experimenty}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -702,7 +706,7 @@ Jako ukončovací podmínka byla zvoleno ukončení evoluce po provedení danéh
 \label{chap:experimenty}
 Pro účely experimentálního ověření funkčnosti použitých postupů byly navrženy 2 experimenty, které byly provedeny s~každým modelem, tedy celkem 4 experimenty.
 
-V~sekci~\ref{sec:experiment_primka} je představen experiment s přímkovou trajektoríí pro oba modely, který je následován experimentem se spirálovou trajektoríí v sekci~\ref{sec:experiment_spirala}, rovněž pro oba modely.
+V~sekci~\ref{sec:experiment_primka} je představen experiment s~přímkovou trajektoríí pro oba modely, který je následován experimentem se spirálovou trajektoríí v~sekci~\ref{sec:experiment_spirala}, rovněž pro oba modely.
 
 
 \section{Přímka}
@@ -711,16 +715,15 @@ V~sekci~\ref{sec:experiment_primka} je představen experiment s přímkovou traj
 Tento experiment měl za cíl ověřit, zda-li je použitý způsob řízení modelu funkční.
 Úlohou modelu bylo pohybovat se po přímce, na které leželo 7 referenčních bodů.
 
-Programy zde použité byly složeny jen z podprogramu main, který neměl k dispozici informace o směru k dalšímu referenčnímu bodu.
+Programy zde použité byly složeny jen z~podprogramu main, který neměl k~dispozici informace o~směru k~dalšímu referenčnímu bodu.
 Délka simulace byla nastavena na 80s.
-Bylo zde použito jednobodové křížení s pravděpodobností $p_r = 0.8$.
 
 \subsection{Model trojnožky}
 V~tomto experimentu byly použity následující parametry:
 \begin{itemize}
-    \item 1000 jedinců v~populaci
-    \item ukončení běhu evoluce po 200 generacích
-    \item 18 genů v~genotypu
+    \item 1000 jedinců v~populaci,
+    \item ukončení běhu evoluce po 200 generacích,
+    \item 18 genů v~genotypu.
 \end{itemize}
 
 Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:trojnozka_primka_zhora}.
@@ -762,10 +765,10 @@ Snímek scény simulátoru pro tento experiment je na obrázku~\ref{fig:mravenec
 \label{sec:experiment_spirala}
 Tento experiment měl za cíl ověřit, zda-li je použitý způsob řízení modelu schopný pohybu i po netriviální trajektorii.
 Úlohou modelu bylo pohybovat se po spirále, na které leželo 9 referenčních bodů.
-Pro účely tohoto experimenty bylo zavedeno použití podprogramů a vstupních informací pro program.
+Pro účely tohoto experimentu bylo zavedeno použití podprogramů a vstupních informací pro program.
 
-Délka simulace pro tyto experimenty byla nastavena na 600s a bylo zde použito podprogramové uniformní křížení s~pravděpodobností $p_r = 0.8$, popsané v podsekci~\ref{subs:krizeni_podprogramu}.
-V populaci bylo 1000 jedinců a každý evoluční běh byl ukončen po 300 generacích.
+Délka simulace pro tyto experimenty byla nastavena na 600s a bylo zde použito podprogramové uniformní křížení s~pravděpodobností $p_r = 0.8$, popsané v~podsekci~\ref{subs:krizeni_podprogramu}.
+V~populaci bylo 1000 jedinců a každý evoluční běh byl ukončen po 300 generacích.
 
 \subsection{Model trojnožky}
 V~tomto experimentu byly použity následující parametry:
@@ -812,21 +815,21 @@ Pro každý experiment bylo provedeno 20 evolučních běhů, ze kterých byly z
 Pro každý evoluční běh byly z~těchto hodnot vykresleny 2 typy grafů:
 
 \begin{itemize}
-    \item vývoj maximální a průměrné fitness hodnoty jedinců v~závislosti na generaci
-    \item box plot fitness hodnot pro vybrané generace
+    \item vývoj maximální a průměrné fitness hodnoty jedinců v~závislosti na generaci,
+    \item vývoj fitness hodnot pro vybrané generace.
 \end{itemize}
 
 Pro každý experiment byla poté vykreslena sada histogramů, které ukazují rozložení fitness hodnot jedinců napříč všemi evolučními běhy.
 
-V~této kapitole je pro každý experiment prezentován graf vývoje průměrné a maximální fitness hodnoty v~populaci a také box plot fitness hodnot pro vybrané generace pro nejlepší evoluční běh.
+V~této kapitole je pro každý experiment prezentován graf vývoje průměrné a maximální fitness hodnoty v~populaci a také vývoj fitness hodnot pro vybrané generace pro nejlepší evoluční běh.
 Veškeré další grafy, které byly vygenerovány, je možné nalézt v~přílohách na přiloženém médiu.
 
 Jedním z~parametrů evolučních běhů byla délka simulace, která byla provedena pro každé kandidátní řešení.
 Na obrázcích, které zobrazují trajektorii nalezených řešení, je trajektorie vyznačena červenou a zelenou barvou.
-Tato trajektorie byla vykreslena až při ručním vyhodnocování experimentů po zkončení všech evolučních běhů.
+Tato trajektorie byla vykreslena až při ručním vyhodnocování experimentů po skončení všech evolučních běhů.
 Při tomto ručním vyhodnocování nebyl nastaven časový limit simulace a tudíž se mohlo projevit chování modelu v~delším časovém horizontu.
 Červená barva označuje body v~prostoru, do kterých se model dostal, něž vypršel čas přidělený na simulaci daného kandidátního řešení v~evolučním běhu.
-Zelená barva označuje body v~prostoru, do kterých se už model nestihl v~rámci evolučních běhů dostat a je tedy pro něj při zvětšeném času simulace nezmáme prostředí.
+Zelená barva označuje body v~prostoru, do kterých se už model nestihl v~rámci evolučních běhů dostat.
 Model tedy nebyl za pohyb po této (zelené) trajektorii nijak hodnocen a jeho pohyb tak zcela závisí na schopnosti kontroléru navigovat model k~dalšímu referenčnímu bodu.
 Zelená trajektorie tedy může být použita k~hodnocení kvality nalezeného řešení v~prostředích, na které toto řešení nebylo učeno.
 
@@ -835,6 +838,10 @@ Zelená trajektorie tedy může být použita k~hodnocení kvality nalezeného �
 \subsection{Model trojnožky na přímce}
 Trajektorii řešení s~nejvyšší hodnotou fitness, které bylo v~průběhu evolučních běhů pro tento experiment nalezeno, můžeme vidět na obrázku~\ref{fig:trojnozka_primka_zhora_nejlepsi_reseni_trajektorie}.
 Tuto trajektorii můžeme srovnat s~jinou, která vznikla řízením neoptimálním řešením, viz obrázek~\ref{fig:trojnozka_primka_zhora_neoptimalni_reseni_trajektorie}.
+
+Na těchto trajektoriích je možné vidět, že kontrolér po překročení času simulace, který byl nastaven při trénování, nebyl schopný řídit model tak, aby pokračoval ve stanovené trajektorii.
+Toto je způsobeno tím, že kontrolér nemá k~dispozici žádné vstupní informace o~svém prostředí.
+Výsledné řešení je tedy schopné ovládat model jen na trajektorii, na které bylo trénováno, a to pouze po dobu, která byla definována simulačním časem při trénování.
 
 
 \begin{figure}[h]
@@ -858,13 +865,13 @@ První z~grafů je vykreslen pro lepší polovinu populace, druhý je vykreslen 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_primka_top50.png}
-        \caption{Box plot fitness hodnot lepší poloviny populace nejlepšího běhu experimentu trojnožky na přímce}
+        \caption{Vývoj fitness hodnot lepší poloviny populace evolučního běhu, který vedl k~nalezení nejlepšího jedince experimentu trojnožky na přímce}
         \label{fig:bar_whisker_trojnozka_primka_top50}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_primka.png}
-        \caption{Box plot fitness hodnot populace nejlepšího běhu experimentu trojnožky na přímce}
+        \caption{Vývoj fitness hodnot populace evolučního běhu, který vedl k~nalezení nejlepšího jedince experimentu trojnožky na přímce}
         \label{fig:bar_whisker_trojnozka_primka}
     \end{minipage}
     %
@@ -874,7 +881,7 @@ Obrázek~\ref{fig:trojnozka_primka_fitness_prubeh} zobrazuje průběh maximáln�
 Obrázky~\ref{fig:trojnozka_primka_histogram_10} až~\ref{fig:trojnozka_primka_histogram_200} zobrazují agregovaná data všech 20 simulačních běhů pro tento experiment.
 Jsou zde vykresleny počty jedinců, jejichž fitness spadala do daného rozsahu hodnot.
 
-Můžeme si všimnout, že na histogramech i box plotech je vidět velký počet jedinců, kteří mají velmi malou fitness v~rozmezí 0 až 10 bodů.
+Můžeme si všimnout, že na histogramech i vývojích fitness hodnot je vidět velký počet jedinců, kteří mají velmi malou fitness v~rozmezí 0 až 10 bodů.
 To je způsobeno skutečností, že model trojnožky je výjimečně nestabilní a tak i zdánlivě malá změna, jinak dobře fungujícího programu, může mít za následek převrácení modelu.
 Pokud v~simulaci došlo k~převrácení modelu, bylo toto kandidátní řešení ohodnoceno fitness hodnotou 0 a simulace byla přerušena.
 
@@ -883,7 +890,7 @@ Pokud v~simulaci došlo k~převrácení modelu, bylo toto kandidátní řešení
     \begin{minipage}[c]{0.48\linewidth}
     {\includegraphics[width=20em]{obrazky/trojnozka_primka_fitness_prubeh.png}}
         \caption{
-            Nejlepší běh pro experiment s~trojnožkou na přímce
+            Průběh evoluce, která vedla k~nalezení nejlepšího jedince pro experiment s~trojnožkou na přímce
         }
         \label{fig:trojnozka_primka_fitness_prubeh}
     \end{minipage}
@@ -935,6 +942,8 @@ Pokud v~simulaci došlo k~převrácení modelu, bylo toto kandidátní řešení
 Trajektorii řešení s~nejvyšší hodnotou fitness, které bylo v~průběhu evolučních běhů pro tento experiment nalezeno, můžeme vidět na obrázku~\ref{fig:mravenec_primka_zhora_nejlepsi_reseni_trajektorie}.
 Tuto trajektorii můžeme srovnat s~jinou, která vznikla řízením neoptimálním řešením, viz obrázek~\ref{fig:mravenec_primka_zhora_neoptimalni_reseni_trajektorie}.
 
+Na trajektorii nejlepšího řešení lze vidět, že toto řešení bylo schopné pokračovat ve stanovené trajektorii i po překročení času simulace, který byl nastaven při trénování.
+Ve srovnání s~trojnožkou je tento výsledek lepší, ale i zde není řešení schopné generalizace -- tedy není schopné navigace v~neznámém prostředí.
 
 
 \begin{figure}[h]
@@ -958,13 +967,13 @@ První z~grafů je vykreslen pro lepší polovinu populace, druhý je vykreslen 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_mravenec_primka_top50.png}
-        \caption{Box plot fitness hodnot lepší poloviny populace nejlepšího běhu experimentu mravence na přímce}
+        \caption{Vývoj fitness hodnot lepší poloviny populace evolučního běhu, který vedl k~nalezení nejlepšího jedince experimentu mravence na přímce}
         \label{fig:bar_whisker_mravenec_primka_top50}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_mravenec_primka.png}
-        \caption{Box plot fitness hodnot populace nejlepšího běhu experimentu mravence na přímce}
+        \caption{Vývoj fitness hodnot populace evolučního běhu, který vedl k~nalezení nejlepšího jedince experimentu mravence na přímce}
         \label{fig:bar_whisker_mravenec_primka}
     \end{minipage}
     %
@@ -979,7 +988,7 @@ Jsou zde vykresleny počty jedinců, jejichž fitness spadala do daného rozsahu
     {\includegraphics[width=20em]{obrazky/mravenec_primka_fitness_prubeh.png}}
         %        /home/jakub/PhpstormProjects/bp/data/bp_compute_spirala_9_referenci_vstupy_podprogramy_2_ss/2018-03-25T17:58:49+00:00/runFitnessGraph.png/
         \caption{
-        Nejlepší běh pro experiment s~mravencem na přímce
+        Průběh evoluce, která vedla k~nalezení nejlepšího jedince pro experiment s~mravencem na přímce
         }
         \label{fig:mravenec_primka_fitness_prubeh}
 
@@ -1034,9 +1043,12 @@ Jsou zde vykresleny počty jedinců, jejichž fitness spadala do daného rozsahu
 Trajektorii řešení s~nejvyšší hodnotou fitness, které bylo v~průběhu evolučních běhů pro tento experiment nalezeno, můžeme vidět na obrázku~\ref{fig:trojnozka_spirala_zhora_nejlepsi_reseni_trajektorie}.
 Tuto trajektorii můžeme srovnat s~jinou, která vznikla řízením neoptimálním řešením, viz obrázek~\ref{fig:trojnozka_spirala_zhora_neoptimalni_reseni_trajektorie}.
 
-Na trajektorii nejlepšího jedince~\ref{fig:trojnozka_spirala_zhora_nejlepsi_reseni_trajektorie} můžeme vidět velmi podobné chování, jako u~experimentu s~mravencem na spirále, které je blíže popsáno u~tohoto experimentu v~podsekci~\ref{subsec:mravenec_spirala}.
+Na trajektorii nejlepšího jedince~(obrázek~\ref{fig:trojnozka_spirala_zhora_nejlepsi_reseni_trajektorie}) můžeme vidět velmi podobné chování, jako u~experimentu s~mravencem na spirále, které je blíže popsáno u~tohoto experimentu v~podsekci~\ref{subsec:mravenec_spirala}.
 Toto konkrétní řešení ovládá model tak, že bez informace o~směru k~dalšímu referenčnímu bodu se model pohybuje po téměř dokonalé kružnici a to ve směru hodinových ručiček.
 Tento pohyb je korigován pomocí vstupních hodnot programu tak, že je model schopný pohybu po přímce, nebo i po spirále, která vyžaduje pohyb proti směru hodinových ručiček.
+
+Na této trajektorii můžeme také vidět, že kontrolér byl díky informaci o~svém prostředí~(směru k~dalšímu referenčnímu bodu) schopen řídit model tak, že tento model pokračoval v~pohybu k~dalšímu referenčnímu bodu, a dosáhl tedy jisté úrovně generalizace.
+
 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
@@ -1059,14 +1071,14 @@ První z~grafů je vykreslen pro lepší polovinu populace, druhý je vykreslen 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_spirala_top50.png}
-        \caption{Box plot fitness hodnot lepší poloviny populace nejlepšího běhu experimentu trojnožky na spirále}
+        \caption{Vývoj fitness hodnot lepší poloviny populace evolučního běhu, který vedl k~nalezení nejlepšího jedince experimentu trojnožky na spirále}
         \label{fig:bar_whisker_trojnozka_spirala_top50}
 
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_trojnozka_spirala.png}
-        \caption{Box plot fitness hodnot populace nejlepšího běhu experimentu trojnožky na spirále}
+        \caption{Vývoj fitness hodnot populace evolučního běhu, který vedl k~nalezení nejlepšího jedince experimentu trojnožky na spirále}
         \label{fig:bar_whisker_trojnozka_spirala}
 
     \end{minipage}
@@ -1083,7 +1095,7 @@ Na těchto grafech je možné opět pozorovat velké množstí jedinců s~nízko
     {\includegraphics[width=20em]{obrazky/trojnozka_spirala_fitness_prubeh.png}}
 %        /home/jakub/PhpstormProjects/bp/data/bp_compute_spirala_9_referenci_vstupy_podprogramy_2_ss/2018-03-25T17:58:49+00:00/runFitnessGraph.png/
         \caption{
-        Nejlepší běh pro experiment s~trojnožkou na spirále
+        Průběh evoluce, která vedla k~nalezení nejlepšího jedince pro experiment s~trojnožkou na spirále
         }
         \label{fig:trojnozka_spirala_fitness_prubeh}
 
@@ -1201,13 +1213,13 @@ První z~grafů je vykreslen pro lepší polovinu populace, druhý je vykreslen 
 \begin{figure}[h]
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_mravenec_spirala_top50.png}
-        \caption{Box plot fitness hodnot lepší poloviny populace nejlepšího běhu experimentu mravence na spirále}
+        \caption{Vývoj fitness hodnot lepší poloviny populace evolučního běhu, který vedl k~nalezení nejlepšího jedince experimentu mravence na spirále}
         \label{fig:bar_whisker_mravenec_spirala_top50}
     \end{minipage}
     \hfill
     \begin{minipage}[c]{0.48\linewidth}
         \includegraphics[width=\linewidth]{obrazky/bar_whisker_mravenec_spirala.png}
-        \caption{Box plot fitness hodnot populace nejlepšího běhu experimentu mravence na spirále}
+        \caption{Vývoj fitness hodnot populace evolučního běhu, který vedl k~nalezení nejlepšího jedince experimentu mravence na spirále}
         \label{fig:bar_whisker_mravenec_spirala}
     \end{minipage}
     %
@@ -1221,7 +1233,7 @@ Jsou zde vykresleny počty jedinců, jejichž fitness spadala do daného rozsahu
     \begin{minipage}[c]{0.48\linewidth}
     {\includegraphics[width=20em]{obrazky/mravenec_spirala_fitness_prubeh.png}}
         \caption{
-        Nejlepší běh pro experiment s~mravencem na spirále
+        Průběh evoluce, která vedla k~nalezení nejlepšího jedince pro experiment s~mravencem na spirále
         }
         \label{fig:mravenec_spirala_fitness_prubeh}
     \end{minipage}
@@ -1268,8 +1280,9 @@ Nalezené řešení bylo ověřeno na několika dalších trajektoriích, které
 Z~těchto trajektorií lze vypozorovat, že schopnost daného řešení pohybovat se po neznámé trajektorii se různí.
 Trajektorii vycházející z~funkce cosinus~(obrázek~\ref{fig:mravenec_testovaci_trajektorie1}), zvládlo řešení běz problému.
 Další trajektorii vyžadující relativně rychlé otočení modelu~(obrázek~\ref{fig:mravenec_testovaci_trajektorie2}), toto řešení také zvládlo bez větších problémů.
-Můžeme zde pozorovat, že daný kontrolér má větší poloměr otáčení při zátáčení vpravo, než-li vlevo -- např. mezi druhým a třetím referenčním bodem, nebo při zařáčení k poslednímu referenčnímu bodu.
+Můžeme zde pozorovat, že daný kontrolér má větší poloměr otáčení při zátáčení vpravo, než-li vlevo -- např. mezi druhým a třetím referenčním bodem, nebo při zatáčení k~poslednímu referenčnímu bodu.
 Poslední trajektorii, která definovala čtverec~(obrázek~\ref{fig:mravenec_testovaci_trajektorie3}), toto řešení sice dokončilo, ale velmi neefektivním způsobem.
+Ukázalo se, že toto řešení bylo do jisté míry schopné generalizace, ale tato schopnost nebyla dokonalá.
 
 
 \begin{figure}[h]
@@ -1317,11 +1330,11 @@ K~tomuto účelu byla použita metoda, založená na lineárním genetickém pro
 Funkčnost této metody byla ověřena provedením 4 experimentů.
 Tyto experimenty ukázaly, že je tuto metodu možné použít pro evoluční návrh jednoduchých robotických kontrolérů.
 Pro všechny experimenty se podařilo najít kontrolér, který by odpovídal požadavkům, které byly dány konfigurací konkrétního experimentu.
-Konkrétně experimenty na spirále, ve kterých byly použity informace o~směru k~dalšímu referenčnímu bodu, ukázaly, že nalezená řešení jsou částečně schopná řídit robota i v~prostředích, kterým nikdy nebyla vystavena -- tato schopnost je nejlepší u~kontroléru, který byl vyvinut pro experiment s~mravencem na spirále.
+Konkrétně experimenty na spirále, ve kterých byly použity informace o~směru k~dalšímu referenčnímu bodu, ukázaly, že nalezená řešení jsou částečně schopná generalizace, tedy řídit robota i v~prostředích, kterým nikdy nebyla vystavena -- tato schopnost je nejlepší u~kontroléru, který byl vyvinut pro experiment s~mravencem na spirále.
 
-Jako pokračování v~této práci bych se chtěl zaměřit na schopnost řídit model robota i v~neznámých prostředích.
+Jako pokračování v~této práci bych se chtěl zaměřit na zvýšení schopnosti generaliace kontrolérů.
 K~tomu bych využil způsob, kdy by fitness funkce byla složena z~více simulací na různých trajektoriích, jejichž výsledky se poté skládaly do výsledné fitness hodnoty.
 Pro urychlení evolučního běhu by se také dal využít přístup, kdy by se počáteční populace kandidátních řešení negenerovala náhodně, ale byla by založena na kandidátních řešeních, které byly schopné model ovládat na přímkové trajektorii.
-Tyto kontroléry by se poté mohly evolučně upravovat a tak by mohly zvládat i jiné trajektorie.
+Tímto způsobem by při evoluci nebylo nutné od začátku hledat kontroléry, které jsou schopné řídit model tak, aby byl schopen chodit, ale bylo by možné se zaměřit na schopnost generalizace.
 
 %=========================================================================
