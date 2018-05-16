@@ -174,7 +174,7 @@ Druhý potomek je vytvořen z~genů, které nebyly vybrány do prvního potomka,
 
 
 \subsection{Mutace}
-Operátor mutace se aplikuje na jednoho rodiče a jeho výsledkem je jeden potomek.
+Operátor mutace se aplikuje na jendoho rodiče a jeho výsledkem je jeden potomek.
 Cílem mutace je provést malou změnu genotypu.
 Operátor je většinou aplikován pouze s~určitou pravděpodobností $p_m$ a jeho implementace je závislá na použité reprezentaci.
 
@@ -187,7 +187,7 @@ Tato varianta je vhodná, jsou-li hodnoty genomu např. parametry systému nebo 
 
 \subsection{Ukončovací podmínka}
 Ukončovací podmínka určuje, kdy se zastaví evoluce aktuální populace.
-K~tomuto je možné využít: dosažení předem dané fitness hodnoty, spotřebování určeného strojového času, provedení určeného počtu vyhodnocení fitness funkce, ukončení v~případě, že se populace dostatečně rychle nezlepšuje nebo pokud dojde ke snížení diverzity populace pod daný limit.
+K~tomuto je možné využít: dosažení předem dané fitness hodnoty, spotřebování určeného strojového času, provedení určeného počtu vyhodnocení fitness funkce, ukončení v~případě, že se populace dostatečně rychle nezlepšuje nebo pokud dojde ke snížení diverzity populace po daný limit.
 
 \section{Genetické programování}
 \label{sec:gp}
@@ -248,8 +248,8 @@ Vstupní registry obsahují vstupní data, se kterými je program spouštěn.
 Pracovní registry jsou určeny pro uložení mezivýsledků výpočtů a jsou před spuštěním programu inicializovány vhodnou konstantou, např. 1.
 Jeden nebo více vstupních nebo pracovních registrů může být označen jako výstupní registr, ze kterého se poté po skončení programu čte výsledek.
 
-Programy v~LGP mohou být také vykonávány bez interpretu, a to tak, že se převedou do programu v~jazyce C\@.
-Ukázkový program v~jazyce C můžeme vidět na programu~\ref{code:lgp_c}.
+Programy v~LGP mohou být také vykonávány bez interpretu, a to tak, že se převedou do programu v~jazyce C.
+Ukázkový program v~jazyce C můžeme vidět na obrázku~\ref{code:lgp_c}.
 
 Instrukční sada definuje programovací jazyk, ve kterém jsou vyvíjené programy napsány.
 LGP systém je založen na dvou základních typech instrukcí: operace a podmíněné větvení.
@@ -265,7 +265,7 @@ Schopnost genetického programování nalézt řešení velmi závisí na zvolen
 Kompletní instrukční sada je taková, která obsahuje všechny prvky, které jsou potřebné k~vytvoření optimálního řešení za předpokladu, že je počet registrů a rozsah použitých konstant dostatečný.
 Na druhou stranu, rozměr stavového prostoru, který obsahuje všechny programy, které je možné sestavit z~dostupných instrukcí, roste exponenciálně s~počtem instrukcí a registrů.
 
-Na programu~\ref{code:lgp_c} v~jazyce C si ukážeme průběh vykonávání programu pro výpočet průměru 2 čísel.
+Na programu \ref{code:lgp_c} v~jazyce C si ukážeme průběh vykonávání programu pro výpočet průměru 2 čísel.
 Tento program má k~dispozici výstupní registr r[0], ve kterém bude uložen výsledek, dva vstupní registry r[1] a r[2], které obsahují vstupy programu a jeden pracovní registr r[3].
 Před spuštěním programu jsou do vstupních registrů nakopírovány hodnoty a pracovní registr je inicializován na hodnotu 1.
 První instrukcí programu je sečtení dvou vstupních registrů a uložení výsledku do pracovního registru.
@@ -277,7 +277,7 @@ Tento pracovní registr je poté využit jako operand pro instrukci dělení, kt
 \begin{lstlisting}
     double r[4];
 
-    void lgp(double r[4])
+    void lgp(r)
     {
         r[3] = r[1] + r[2];
         r[0] = r[3] / 2;
@@ -511,11 +511,11 @@ V~experimentech s~přímkovou trajektorií je z~těchto podprogramů použit jen
 Každý program, který reprezentuje kandidátní řešení, je pro vykonávání v~průběhu simulace rozdělen na 3 podprogramy.
 Tyto podprogramy se nazývají init, main a event.
 
-Podprogram init se vykoná pouze na začátku simulace a všechny instrukce jsou provedeny ve stejném simulačním čase~(simulace je pozastavena) a poté je po 1 sekundě spuštěn podprogram main.
+Podprogram init se vykoná pouze na začátku simulace a všechny instrukce jsou provedeny ve stejném simulačním čase a poté je po 1 sekundě spuštěn podprogram main.
 Účelem podprogramu init je nastavení počátečního natočení kloubů modelu.
 
 Podprogram main je v~průběhu simulace vykonáván v~nekonečné smyčce.
-Instrukce v~tomto podprogramu se vykonávají s~časovým rozestupem 0.33 sekundy mezi každou z~instrukcí.
+Instrukce v~tomto podprogramu se nevykonají všechny v~nulovém čase, ale vykonávají se s~časovým rozestupem 0.33 sekundy mezi každou z~instrukcí.
 Jedná se o~nejdelší a nejdůležitější podprogram.
 
 Podprogram event se vykoná v~situaci, kdy se model přiblíží do určené vzdálenosti od referenčního bodu, avšak pro každý referenční bod pouze jednou.
@@ -681,6 +681,9 @@ V~experimentech s~přímkovou trajektorií je použito prosté jednobodové kř�
     \label{fig:krizeni_podprogramu}
 \end{figure}
 
+Tento operátor se používá v~experimentech se spirálovou trajektorií.
+Pro experimenty s~přímkovou trajektorí se používá jednobodové křížení, které pracuje na úrovni jednotlivých instrukcí.
+
 \subsection{Mutace}
 Operátor mutace je nastaven s~$p_m = 1$ a vždy mutuje jen jeden gen.
 Tento operátor je implementován následovně.
@@ -703,7 +706,7 @@ Tento počet se liší pro jednotlivé experimenty, proto budou hodnoty uvedeny 
 \label{chap:experimenty}
 Pro účely experimentálního ověření funkčnosti použitých postupů byly navrženy 2 experimenty, které byly provedeny s~každým modelem, tedy celkem 4 experimenty.
 
-V~sekci~\ref{sec:experiment_primka} je představen experiment s~přímkovou trajektorií pro oba modely, který je následován experimentem se spirálovou trajektorií v~sekci~\ref{sec:experiment_spirala}, rovněž pro oba modely.
+V~sekci~\ref{sec:experiment_primka} je představen experiment s~přímkovou trajektoríí pro oba modely, který je následován experimentem se spirálovou trajektoríí v~sekci~\ref{sec:experiment_spirala}, rovněž pro oba modely.
 
 
 \section{Přímka}
@@ -1153,7 +1156,7 @@ Na těchto grafech je možné opět pozorovat velké množstí jedinců s~nízko
 \end{figure}
 
 Podobně jako v~experimentu s~mravencem na spirále, i zde řešení s~nejlepší hodnotou fitness nevykazovalo nejlepší chování při ručním vyhodnocování.
-Toto lze pozorovat například na čtvercové trajektorii, kde můžeme porovnat trajektorii nejlepšího řešení~\ref{fig:trojnozka_testovaci_trajektorie1_nejlepsi_reseni} s~trajektorií druhého nejlepšího řešení~\ref{fig:trojnozka_testovaci_trajektorie1_druhe_reseni}.
+Toto lze pozorovat například na čtvercové trajektorii, kde můžeme porovnat trajektorii nejlepšího řešení~\ref{fig:trojnozka_testovaci_trajektorie1_nejlepsi_reseni} s~trajektoríí druhého nejlepšího řešení~\ref{fig:trojnozka_testovaci_trajektorie1_druhe_reseni}.
 Na jiných trajektoriích měla vetšina řešení problémy se stabilitou modelu a docházelo k~převrácení.
 To je dáno tím, že samotný model trojnožky je nestabilní a tak např. při nutnosti prudce změnit směr pohybu může jednoduše dojít k~převrácení.
 
@@ -1323,7 +1326,7 @@ Ukázalo se, že toto řešení bylo do jisté míry schopné generalizace, ale 
 \chapter{Závěr}
 \label{chap:zaver}
 Tato práce se zabývala evolučním návrhem kontroléru pro robotický model v~počítačové simulaci, který měl za úkol pohybovat se po stanovené trajektorii.
-K~tomuto účelu byla použita metoda založená na lineárním genetickém programování.
+K~tomuto účelu byla použita metoda, založená na lineárním genetickém programování.
 Funkčnost této metody byla ověřena provedením 4 experimentů.
 Tyto experimenty ukázaly, že je tuto metodu možné použít pro evoluční návrh jednoduchých robotických kontrolérů.
 Pro všechny experimenty se podařilo najít kontrolér, který by odpovídal požadavkům, které byly dány konfigurací konkrétního experimentu.
